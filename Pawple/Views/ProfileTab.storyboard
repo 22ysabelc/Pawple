@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="drR-Pe-lSf">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Pawple-->
+        <scene sceneID="mI3-0j-cdh">
+            <objects>
+                <viewController id="b1s-RL-81w" customClass="ProfileViewController" customModule="Pawple" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="CHQ-qT-mt0">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person.circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="Yjb-VU-Fka">
+                                <rect key="frame" x="50" y="138.5" width="80" height="79"/>
+                                <color key="tintColor" name="BrandPurple"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="80" id="Pz7-ed-2en"/>
+                                    <constraint firstAttribute="width" constant="80" id="X9D-tH-5Bq"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VBA-eM-HGf" userLabel="User Name">
+                                <rect key="frame" x="155" y="163" width="229" height="0.0"/>
+                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="25"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="Yjb-VU-Fka" firstAttribute="leading" secondItem="Bwf-NA-JhI" secondAttribute="leading" constant="50" id="39q-6U-tgB"/>
+                            <constraint firstItem="VBA-eM-HGf" firstAttribute="leading" secondItem="Yjb-VU-Fka" secondAttribute="trailing" constant="25" id="6tP-pE-K2i"/>
+                            <constraint firstItem="VBA-eM-HGf" firstAttribute="top" secondItem="Bwf-NA-JhI" secondAttribute="top" constant="75" id="9I7-HK-jKd"/>
+                            <constraint firstItem="Bwf-NA-JhI" firstAttribute="trailing" secondItem="VBA-eM-HGf" secondAttribute="trailing" constant="30" id="JCq-5E-Hmi"/>
+                            <constraint firstItem="Yjb-VU-Fka" firstAttribute="top" secondItem="Bwf-NA-JhI" secondAttribute="top" constant="50" id="fcF-Na-k2v"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Bwf-NA-JhI"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Pawple" id="Wuj-Ce-s5V">
+                        <barButtonItem key="rightBarButtonItem" title="•••" id="J0B-0P-Bc1" userLabel="Menu">
+                            <color key="tintColor" name="BrandPurple"/>
+                            <connections>
+                                <action selector="menuButtonClicked:" destination="b1s-RL-81w" id="pcr-ig-WuI"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="menuButton" destination="J0B-0P-Bc1" id="YPQ-hK-3pG"/>
+                        <outlet property="userImage" destination="Yjb-VU-Fka" id="Qlh-6E-mYy"/>
+                        <outlet property="userName" destination="VBA-eM-HGf" id="iOt-Pc-V2h"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ILH-TH-GYn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="6286" y="-640"/>
+        </scene>
+        <!--Pawple-->
+        <scene sceneID="yO5-Yl-Uvx">
+            <objects>
+                <viewController storyboardIdentifier="editProfileVC" extendedLayoutIncludesOpaqueBars="YES" id="f1i-Yp-mAp" customClass="EditProfileViewController" customModule="Pawple" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="mgO-uD-8Tf">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person.circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="KqR-q3-SEQ" userLabel="User Image">
+                                <rect key="frame" x="30" y="138.5" width="80" height="79"/>
+                                <color key="tintColor" name="BrandPurple"/>
+                                <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="80" id="k95-jU-1aE"/>
+                                    <constraint firstAttribute="width" constant="80" id="vT8-6g-6j5"/>
+                                </constraints>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="ELD-gU-60L" appends="YES" id="und-Xa-Sav"/>
+                                </connections>
+                            </imageView>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Your name" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8ze-Yi-OQG" userLabel="User Name">
+                                <rect key="frame" x="135" y="163" width="249" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="KqR-q3-SEQ" firstAttribute="leading" secondItem="6Bl-Zs-I29" secondAttribute="leading" constant="30" id="ezt-Mq-WI3"/>
+                            <constraint firstItem="6Bl-Zs-I29" firstAttribute="trailing" secondItem="8ze-Yi-OQG" secondAttribute="trailing" constant="30" id="gH0-cQ-kuZ"/>
+                            <constraint firstItem="8ze-Yi-OQG" firstAttribute="leading" secondItem="KqR-q3-SEQ" secondAttribute="trailing" constant="25" id="mWl-UW-0tR"/>
+                            <constraint firstItem="KqR-q3-SEQ" firstAttribute="top" secondItem="6Bl-Zs-I29" secondAttribute="top" constant="50" id="ry6-BH-n5J"/>
+                            <constraint firstItem="8ze-Yi-OQG" firstAttribute="top" secondItem="6Bl-Zs-I29" secondAttribute="top" constant="75" id="uFi-5L-KRt"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Bl-Zs-I29"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Pawple" id="4Wf-wC-h4V">
+                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="Ewb-nA-88t">
+                            <connections>
+                                <action selector="cancelButtonPressed:" destination="f1i-Yp-mAp" id="5nY-2d-UBk"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Save" id="RPs-Pw-AEd">
+                            <connections>
+                                <action selector="saveButtonPressed:" destination="f1i-Yp-mAp" id="iig-3v-YfA"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="userImage" destination="KqR-q3-SEQ" id="eI0-gf-3LA"/>
+                        <outlet property="userName" destination="8ze-Yi-OQG" id="7WP-cp-MlG"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="aED-b8-eCf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="ELD-gU-60L">
+                    <connections>
+                        <action selector="editProfileImageAction:" destination="f1i-Yp-mAp" id="uc3-pt-hZP"/>
+                        <outlet property="delegate" destination="KqR-q3-SEQ" id="xgR-er-U4G"/>
+                    </connections>
+                </tapGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="7661" y="-640"/>
+        </scene>
+        <!--ProfileNC-->
+        <scene sceneID="G77-g9-zuI">
+            <objects>
+                <navigationController title="ProfileNC" automaticallyAdjustsScrollViewInsets="NO" id="drR-Pe-lSf" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Profile" image="person.fill" catalog="system" id="sVD-gr-6Ma"/>
+                    <toolbarItems/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="8VK-uC-i1I">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <textAttributes key="titleTextAttributes">
+                            <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="22"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="b1s-RL-81w" kind="relationship" relationship="rootViewController" id="OIE-9t-pXF"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fIp-h8-MWh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5583" y="-640"/>
+        </scene>
+        <!--EditProfileNC-->
+        <scene sceneID="hn5-5D-4f6">
+            <objects>
+                <navigationController title="EditProfileNC" automaticallyAdjustsScrollViewInsets="NO" id="ejD-Gw-9OB" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="EnE-6s-V9m">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <textAttributes key="titleTextAttributes">
+                            <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="22"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="f1i-Yp-mAp" kind="relationship" relationship="rootViewController" id="fbX-dZ-2zc"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jis-b2-NUL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="7007" y="-640"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="person.circle" catalog="system" width="128" height="121"/>
+        <image name="person.fill" catalog="system" width="128" height="120"/>
+        <namedColor name="BrandPurple">
+            <color red="0.67500001192092896" green="0.43500000238418579" blue="0.9179999828338623" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

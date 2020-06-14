@@ -1,0 +1,308 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="m7M-sa-tcy">
+    <device id="retina6_5" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Pawple-->
+        <scene sceneID="Ioq-Bn-144">
+            <objects>
+                <viewController id="caM-kA-B5R" customClass="ProfileViewController" customModule="Pawple" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="H5d-ZZ-XkC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person.circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="Dbw-0J-aLZ">
+                                <rect key="frame" x="50" y="139" width="80" height="78.666666666666671"/>
+                                <color key="tintColor" name="BrandPurple"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="80" id="dsm-8e-S5t"/>
+                                    <constraint firstAttribute="width" constant="80" id="oZp-Zn-RDn"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zOc-GI-659" userLabel="User Name">
+                                <rect key="frame" x="155" y="163" width="229" height="0.0"/>
+                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="25"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="XAv-gb-TXT" firstAttribute="trailing" secondItem="zOc-GI-659" secondAttribute="trailing" constant="30" id="FWm-r9-QI8"/>
+                            <constraint firstItem="Dbw-0J-aLZ" firstAttribute="top" secondItem="XAv-gb-TXT" secondAttribute="top" constant="50" id="KC1-Y2-gtl"/>
+                            <constraint firstItem="zOc-GI-659" firstAttribute="leading" secondItem="Dbw-0J-aLZ" secondAttribute="trailing" constant="25" id="Tzf-r2-gGO"/>
+                            <constraint firstItem="zOc-GI-659" firstAttribute="top" secondItem="XAv-gb-TXT" secondAttribute="top" constant="75" id="n74-T7-Re3"/>
+                            <constraint firstItem="Dbw-0J-aLZ" firstAttribute="leading" secondItem="XAv-gb-TXT" secondAttribute="leading" constant="50" id="rBu-zn-rNX"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="XAv-gb-TXT"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Pawple" id="D4u-vg-B1n">
+                        <barButtonItem key="rightBarButtonItem" title="•••" id="lrh-Cd-lnO" userLabel="Menu">
+                            <color key="tintColor" name="BrandPurple"/>
+                            <connections>
+                                <action selector="menuButtonClicked:" destination="caM-kA-B5R" id="NOK-n6-BG8"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="menuButton" destination="lrh-Cd-lnO" id="HRe-gz-eId"/>
+                        <outlet property="userImage" destination="Dbw-0J-aLZ" id="RFL-g2-Y1L"/>
+                        <outlet property="userName" destination="zOc-GI-659" id="OPV-vM-yut"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lXO-PC-AOB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="6267" y="-640"/>
+        </scene>
+        <!--Pawple-->
+        <scene sceneID="6gl-u0-P2X">
+            <objects>
+                <viewController storyboardIdentifier="editProfileVC" extendedLayoutIncludesOpaqueBars="YES" id="EHQ-nf-7SX" customClass="EditProfileViewController" customModule="Pawple" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8gQ-oW-frZ">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person.circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="38g-k1-Gc2" userLabel="User Image">
+                                <rect key="frame" x="30" y="139" width="80" height="78.666666666666671"/>
+                                <color key="tintColor" name="BrandPurple"/>
+                                <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="80" id="9KL-uw-vqw"/>
+                                    <constraint firstAttribute="height" constant="80" id="KQN-EM-eWo"/>
+                                </constraints>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="hdZ-N7-Zgl" appends="YES" id="WqH-hY-ADb"/>
+                                </connections>
+                            </imageView>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Your name" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="85W-La-6Hu" userLabel="User Name">
+                                <rect key="frame" x="135" y="163" width="249" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="38g-k1-Gc2" firstAttribute="top" secondItem="3Nv-Pc-X83" secondAttribute="top" constant="50" id="5VD-4m-hnh"/>
+                            <constraint firstItem="85W-La-6Hu" firstAttribute="leading" secondItem="38g-k1-Gc2" secondAttribute="trailing" constant="25" id="GvA-HW-SqV"/>
+                            <constraint firstItem="85W-La-6Hu" firstAttribute="top" secondItem="3Nv-Pc-X83" secondAttribute="top" constant="75" id="TXf-gb-hBl"/>
+                            <constraint firstItem="3Nv-Pc-X83" firstAttribute="trailing" secondItem="85W-La-6Hu" secondAttribute="trailing" constant="30" id="UEg-VX-BBG"/>
+                            <constraint firstItem="38g-k1-Gc2" firstAttribute="leading" secondItem="3Nv-Pc-X83" secondAttribute="leading" constant="30" id="h7R-Ij-J2e"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="3Nv-Pc-X83"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Pawple" id="HHA-Aa-nUA">
+                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="RAm-lN-yNf">
+                            <connections>
+                                <action selector="cancelButtonPressed:" destination="EHQ-nf-7SX" id="UJo-tX-amc"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Save" id="Cf3-La-UOT">
+                            <connections>
+                                <action selector="saveButtonPressed:" destination="EHQ-nf-7SX" id="tnr-2d-QX4"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="userImage" destination="38g-k1-Gc2" id="tv8-5U-19z"/>
+                        <outlet property="userName" destination="85W-La-6Hu" id="Izn-VD-k2e"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sYq-nw-dah" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="hdZ-N7-Zgl">
+                    <connections>
+                        <action selector="editProfileImageAction:" destination="EHQ-nf-7SX" id="s1B-vY-pfy"/>
+                        <outlet property="delegate" destination="38g-k1-Gc2" id="0Tp-9Q-cUE"/>
+                    </connections>
+                </tapGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="7661" y="-640"/>
+        </scene>
+        <!--Pawple-->
+        <scene sceneID="v0S-Ge-yJm">
+            <objects>
+                <viewController id="zBr-ET-KqN" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="3Ka-gQ-fkW">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="XbU-jn-mJq"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Pawple" id="bf5-7B-n3R"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qm1-Yn-Cg5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="9739.1304347826099" y="-640.17857142857144"/>
+        </scene>
+        <!--TabBarVC-->
+        <scene sceneID="KnA-Px-ZIw">
+            <objects>
+                <tabBarController storyboardIdentifier="tabBar" title="TabBarVC" automaticallyAdjustsScrollViewInsets="NO" id="m7M-sa-tcy" customClass="TabBarViewController" customModule="Pawple" customModuleProvider="target" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" title="Pawple" id="V9D-wB-bPb"/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="7cX-mG-JFw">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="selectedImageTintColor" name="BrandPurple"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="LXV-RM-Hz6" kind="relationship" relationship="viewControllers" id="DxU-zI-2Qz"/>
+                        <segue destination="o71-AI-hx2" kind="relationship" relationship="viewControllers" id="tQf-Aq-Jhm"/>
+                        <segue destination="tGM-GO-hC9" kind="relationship" relationship="viewControllers" id="TQF-Ch-ig9"/>
+                        <segue destination="WsW-PN-qTK" kind="relationship" relationship="viewControllers" id="Cu0-0f-Kp4"/>
+                        <segue destination="x0n-hc-lUi" kind="relationship" relationship="viewControllers" id="F5o-1Z-qNo"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="emg-Ed-BLK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4703" y="141"/>
+        </scene>
+        <!--MatchTab-->
+        <scene sceneID="f5a-Xg-bq7">
+            <objects>
+                <viewControllerPlaceholder storyboardName="MatchTab" id="WsW-PN-qTK" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="O9I-6L-nrc"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="VB1-bq-KIU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5341" y="141"/>
+        </scene>
+        <!--MarketplaceTab-->
+        <scene sceneID="iqg-XN-0NL">
+            <objects>
+                <viewControllerPlaceholder storyboardName="MarketplaceTab" id="x0n-hc-lUi" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="cK9-TB-dSv"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3MX-Ln-5Oy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5339" y="276"/>
+        </scene>
+        <!--ProfileNC-->
+        <scene sceneID="Z6y-oL-4vv">
+            <objects>
+                <navigationController title="ProfileNC" automaticallyAdjustsScrollViewInsets="NO" id="LXV-RM-Hz6" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Profile" image="person.fill" catalog="system" id="1VC-5d-cgp"/>
+                    <toolbarItems/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="n9s-pJ-cRj">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <textAttributes key="titleTextAttributes">
+                            <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="22"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="caM-kA-B5R" kind="relationship" relationship="rootViewController" id="Di2-AL-85Y"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="PaM-ie-PMY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5583" y="-640"/>
+        </scene>
+        <!--Chat-->
+        <scene sceneID="8sN-oL-ZDa">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="o71-AI-hx2" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Chat" image="message.fill" catalog="system" id="xt6-JC-PxP"/>
+                    <toolbarItems/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="4LK-ku-EzU">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <textAttributes key="titleTextAttributes">
+                            <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="22"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="UxX-gO-aGP">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
+                    <connections>
+                        <segue destination="zBr-ET-KqN" kind="relationship" relationship="rootViewController" id="1Qv-3c-c7c"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6sx-1n-3Af" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="9050.7246376811599" y="-640.17857142857144"/>
+        </scene>
+        <!--EditProfileNC-->
+        <scene sceneID="R7L-XQ-wIc">
+            <objects>
+                <navigationController title="EditProfileNC" automaticallyAdjustsScrollViewInsets="NO" id="aXN-w6-onp" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="IOi-kt-wgP">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <textAttributes key="titleTextAttributes">
+                            <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="22"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="EHQ-nf-7SX" kind="relationship" relationship="rootViewController" id="thq-yM-4eU"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8VE-hA-LSA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="7007" y="-640"/>
+        </scene>
+        <!--Pawple-->
+        <scene sceneID="Dfo-vy-PUK">
+            <objects>
+                <viewController id="V7F-i0-9fV" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="4MS-oG-eBH">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="aiI-iB-Owr"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Pawple" id="ZW4-oU-8MC"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Pbb-Tm-u1R" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="8367" y="141"/>
+        </scene>
+        <!--Search-->
+        <scene sceneID="6ab-yY-mQj">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="tGM-GO-hC9" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Search" image="magnifyingglass" catalog="system" id="2vD-am-NwO"/>
+                    <toolbarItems/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="UCT-gL-534">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <textAttributes key="titleTextAttributes">
+                            <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="22"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="5Ee-rg-hWa">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
+                    <connections>
+                        <segue destination="V7F-i0-9fV" kind="relationship" relationship="rootViewController" id="GaT-2S-yU1"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vJ7-yu-C5z" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="7661" y="141"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="magnifyingglass" catalog="system" width="128" height="115"/>
+        <image name="message.fill" catalog="system" width="128" height="113"/>
+        <image name="person.circle" catalog="system" width="128" height="121"/>
+        <image name="person.fill" catalog="system" width="128" height="120"/>
+        <namedColor name="BrandPurple">
+            <color red="0.67500001192092896" green="0.43500000238418579" blue="0.9179999828338623" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

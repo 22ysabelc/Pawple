@@ -28,6 +28,9 @@ class ProfileViewController: UIViewController {
         userImage.layer.masksToBounds = false
         userImage.layer.cornerRadius = userImage.frame.width / 2
         userImage.clipsToBounds = true
+        
+        let userDefaults = PawpleUserDefaults()
+        userDefaults.getUser()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -45,9 +48,8 @@ class ProfileViewController: UIViewController {
     }
     
     //finish this method
-//RETRIEVE DATA FROM FIRESTORE (NAMED: "PROFILE" AKA C.FSTORE.PROFILECOLLECTIONNAME)
     func loadProfile() {
-        //make image a circle
+        
     }
     
     func customizeDropDown() {

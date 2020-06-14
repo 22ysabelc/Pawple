@@ -34,6 +34,7 @@ class LogInViewController: UIViewController {
                     let obj: PawpleUserDefaults = PawpleUserDefaults()
                     obj.saveUserState(key: true)
                     User.shared.email = self.emailTextField.text!
+                    obj.storeUser()
                     self.navigationController?.dismiss(animated: true)
                 }
             }

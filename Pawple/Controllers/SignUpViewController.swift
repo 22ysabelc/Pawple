@@ -31,6 +31,8 @@ class SignUpViewController: UIViewController {
                 } else {
                     let obj: PawpleUserDefaults = PawpleUserDefaults()
                     obj.saveUserState(key: true)
+                    User.shared.email = email
+                    obj.storeUser()
                     self.navigationController?.dismiss(animated: true)
                 }
             }

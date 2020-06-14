@@ -25,7 +25,6 @@
 		AF9198C22496A96D000A0218 /* CustomImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF9198C12496A96D000A0218 /* CustomImagePicker.swift */; };
 		AF9198C62496AAB3000A0218 /* String+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF9198C52496AAB3000A0218 /* String+extensions.swift */; };
 		AF9198C82496ACB8000A0218 /* UIViewController+Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF9198C72496ACB8000A0218 /* UIViewController+Alert.swift */; };
-		AF9198CA2496AE0B000A0218 /* ProfileTab.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AF9198C92496AE0B000A0218 /* ProfileTab.storyboard */; };
 		AFA2AD1224593F820068B4ED /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFA2AD1124593F820068B4ED /* TabBarViewController.swift */; };
 		AFA7B9A8245E5442009C293B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AFA7B9A7245E5442009C293B /* Foundation.framework */; };
 		AFA7B9AA245E545D009C293B /* Pods_Pawple.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AFA7B9A9245E545D009C293B /* Pods_Pawple.framework */; };
@@ -63,7 +62,6 @@
 		AF9198C12496A96D000A0218 /* CustomImagePicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomImagePicker.swift; sourceTree = "<group>"; };
 		AF9198C52496AAB3000A0218 /* String+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+extensions.swift"; sourceTree = "<group>"; };
 		AF9198C72496ACB8000A0218 /* UIViewController+Alert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Alert.swift"; sourceTree = "<group>"; };
-		AF9198C92496AE0B000A0218 /* ProfileTab.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ProfileTab.storyboard; sourceTree = "<group>"; };
 		AFA2AD1124593F820068B4ED /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		AFA7B9A0245E5074009C293B /* Pods_Pawple.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_Pawple.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AFA7B9A2245E5087009C293B /* DropDown.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = DropDown.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -191,7 +189,6 @@
 			children = (
 				AFF0B73C2479C165001F332A /* Welcome.storyboard */,
 				AF7C635B245140820088C0D3 /* Main.storyboard */,
-				AF9198C92496AE0B000A0218 /* ProfileTab.storyboard */,
 				AFB3D140247999CF00FA76DC /* ChatTab.storyboard */,
 				AFB3D13624798B9C00FA76DC /* MatchTab.storyboard */,
 				AFB3D13924798C1200FA76DC /* MarketplaceTab.storyboard */,
@@ -282,7 +279,6 @@
 			files = (
 				AFB3D13A24798C1200FA76DC /* MarketplaceTab.storyboard in Resources */,
 				AF8F9B39245A8FE000CAAEBF /* Main.storyboard in Resources */,
-				AF9198CA2496AE0B000A0218 /* ProfileTab.storyboard in Resources */,
 				AF7C6365245140860088C0D3 /* LaunchScreen.storyboard in Resources */,
 				AF7C6362245140860088C0D3 /* Assets.xcassets in Resources */,
 				AFB3D13824798B9C00FA76DC /* MatchTab.storyboard in Resources */,

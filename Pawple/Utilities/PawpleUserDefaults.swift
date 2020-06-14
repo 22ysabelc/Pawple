@@ -17,4 +17,18 @@ struct PawpleUserDefaults {
     public func isUserSignedIn() -> Bool {
         UserDefaults.standard.bool(forKey: "isUserSignedIn")
     }
+    
+    public func storeUser() {
+        UserDefaults.standard.set(User.shared.email, forKey: "emailID")
+        UserDefaults.standard.set(User.shared.name, forKey: "username")
+    }
+    
+    public func getUser() {
+        if let emailID = UserDefaults.standard.object(forKey: "emailID") {
+            User.shared.email = emailID as! String
+        }
+        if let username = UserDefaults.standard.object(forKey: "username") {
+            User.shared.name = username as! String
+        }
+    }
 }

@@ -2,7 +2,7 @@
 //  UIViewController+Alert.swift
 //  Pawple
 //
-//  Created by Hitesh Arora on 6/12/20.
+//  Created by 22ysabelc on 6/12/20.
 //  Copyright © 2020 Ysabel Chen. All rights reserved.
 //
 

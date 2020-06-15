@@ -26,7 +26,6 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
 
     @IBOutlet weak var userImage: UIImageView!
     @IBOutlet weak var userName: UITextField!
-    @IBOutlet weak var editImage: UIButton!
     
     let db = Firestore.firestore()
     
@@ -48,11 +47,8 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
     }
     
     func insertUserInfo() {
-        
-    }
-    
-    @IBAction func editProfileImageAction(_ sender: UITapGestureRecognizer) {
-        present(imagePicker, animated: true, completion: nil)
+        userImage.image = User.shared.userImage ?? UIImage(systemName: "person.circle")
+        userName.text = User.shared.name
     }
     
     @IBAction func cancelButtonPressed(_ sender: UIBarButtonItem) {
@@ -72,9 +68,11 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
         })
     }
     
-    @IBAction func saveButtonPressed(_ sender: UIBarButtonItem) {
-        //DOES IT ADD ANOTHER DICTIONARY OR UPDATE USER'S INFO???
+    @IBAction func editProfileImageAction(_ sender: UITapGestureRecognizer) {
+        present(imagePicker, animated: true, completion: nil)
+    }
 
+    @IBAction func saveButtonPressed(_ sender: UIBarButtonItem) {
         var firebaseDictionary = [String : Any]()
         guard let username = userName.text, username != "" else {
             let alert = UIAlertController(title: "Username is empty", message: "", preferredStyle: .alert)

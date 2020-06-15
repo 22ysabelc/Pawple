@@ -23,7 +23,6 @@ class ProfileViewController: UIViewController {
         super.viewDidLoad()
         
         setupMenuButtonDropdown()
-        loadProfile()
         
         userImage.layer.masksToBounds = false
         userImage.layer.cornerRadius = userImage.frame.width / 2
@@ -34,7 +33,9 @@ class ProfileViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        tabBarController?.tabBar.isHidden = false
         getLoginState()
+        loadProfile()
     }
     
     func getLoginState() {
@@ -47,9 +48,9 @@ class ProfileViewController: UIViewController {
         }
     }
     
-    //finish this method
     func loadProfile() {
-        
+        userImage.image = User.shared.userImage ?? UIImage(systemName: "person.circle")
+        userName.text = User.shared.name
     }
     
     func customizeDropDown() {

@@ -24,8 +24,8 @@
                                     <constraint firstAttribute="width" constant="80" id="oZp-Zn-RDn"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zOc-GI-659" userLabel="User Name">
-                                <rect key="frame" x="155" y="163" width="229" height="0.0"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zOc-GI-659" userLabel="User Name">
+                                <rect key="frame" x="155" y="163" width="229" height="34.333333333333343"/>
                                 <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="25"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -52,7 +52,7 @@
                     <connections>
                         <outlet property="menuButton" destination="lrh-Cd-lnO" id="HRe-gz-eId"/>
                         <outlet property="userImage" destination="Dbw-0J-aLZ" id="RFL-g2-Y1L"/>
-                        <outlet property="userName" destination="zOc-GI-659" id="OPV-vM-yut"/>
+                        <outlet property="userName" destination="zOc-GI-659" id="C9d-0x-7Ib"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lXO-PC-AOB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

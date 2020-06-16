@@ -98,12 +98,7 @@ class ProfileViewController: UIViewController {
                     obj.saveUserState(key: false)
                     self?.getLoginState()
                 } catch let signOutError as NSError {
-                    let alert = UIAlertController(title: "Error logging out", message: signOutError.localizedDescription, preferredStyle: .alert)
-                    let action = UIAlertAction(title: "OK", style: .default) { (action) in
-                        alert.dismiss(animated: true, completion: nil)
-                    }
-                    alert.addAction(action)
-                    self?.present(alert, animated: true, completion: nil)
+                    self?.alert(title: "Error logging out", message: signOutError.localizedDescription)
                 }
             }
         }

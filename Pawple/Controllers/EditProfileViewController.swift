@@ -37,7 +37,6 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
         tabBarController?.tabBar.isHidden = true
         
         imagePicker.delegate = self
-        imagePicker.sourceType = .photoLibrary
         imagePicker.allowsEditing = true
         
         userImage.layer.masksToBounds = false
@@ -69,18 +68,24 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
     }
     
     @IBAction func editProfileImageAction(_ sender: UITapGestureRecognizer) {
-        present(imagePicker, animated: true, completion: nil)
+        let alert = UIAlertController(title: "Camera or Photo Library?", message: "", preferredStyle: .alert)
+        let camera = UIAlertAction(title: "Camera", style: .default) { (action) in
+            self.imagePicker.sourceType = .camera
+            self.present(self.imagePicker, animated: true, completion: nil)
+        }
+        let photoLibrary = UIAlertAction(title: "Photo Library", style: .default) { (action) in
+            self.imagePicker.sourceType = .photoLibrary
+            self.present(self.imagePicker, animated: true, completion: nil)
+        }
+        alert.addAction(camera)
+        alert.addAction(photoLibrary)
+        self.present(alert, animated: true, completion: nil)
     }
 
     @IBAction func saveButtonPressed(_ sender: UIBarButtonItem) {
         var firebaseDictionary = [String : Any]()
         guard let username = userName.text, username != "" else {
-            let alert = UIAlertController(title: "Username is empty", message: "", preferredStyle: .alert)
-            let action = UIAlertAction(title: "OK", style: .default) { (action) in
-                alert.dismiss(animated: true, completion: nil)
-            }
-            alert.addAction(action)
-            self.present(alert, animated: true, completion: nil)
+            self.alert(title: "Username is empty", message: "")
             return
         }
 
@@ -96,12 +101,7 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
         ) { (error) in
             if let e = error {
                 //FIX ERROR ABOUT IMAGE BEING MORE THAN ___ BYTES
-                let alert = UIAlertController(title: "Error saving data", message: e.localizedDescription, preferredStyle: .alert)
-                let action = UIAlertAction(title: "OK", style: .default) { (action) in
-                    alert.dismiss(animated: true, completion: nil)
-                }
-                alert.addAction(action)
-                self.present(alert, animated: true, completion: nil)
+                self.alert(title: "Error saving data", message: e.localizedDescription)
             }
             else {
                 User.shared.name = username

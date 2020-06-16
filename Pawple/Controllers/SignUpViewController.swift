@@ -22,12 +22,7 @@ class SignUpViewController: UIViewController {
             }
             Auth.auth().createUser(withEmail: email, password: password) { authResult, error in
                 if let e = error {
-                    let alert = UIAlertController(title: "Error with email or password", message: e.localizedDescription, preferredStyle: .alert)
-                    let action = UIAlertAction(title: "OK", style: .default) { (action) in
-                        alert.dismiss(animated: true, completion: nil)
-                    }
-                    alert.addAction(action)
-                    self.present(alert, animated: true, completion: nil)
+                    self.alert(title: "Error with email or password", message: e.localizedDescription)
                 } else {
                     let obj: PawpleUserDefaults = PawpleUserDefaults()
                     obj.saveUserState(key: true)

@@ -146,7 +146,6 @@
 				AF8CEB42246264D10033C719 /* Models */,
 				AFAE274D2452A47B00A78E05 /* Views */,
 				AFAE274E2452A48300A78E05 /* Controllers */,
-				AFAE27512452A85100A78E05 /* RoundButton.swift */,
 				AF7C6361245140860088C0D3 /* Assets.xcassets */,
 				AF7C6363245140860088C0D3 /* LaunchScreen.storyboard */,
 				AF7C6366245140860088C0D3 /* Info.plist */,
@@ -180,6 +179,7 @@
 			children = (
 				AF9198C52496AAB3000A0218 /* String+extensions.swift */,
 				AF9198C72496ACB8000A0218 /* UIViewController+Alert.swift */,
+				AFAE27512452A85100A78E05 /* RoundButton.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";

@@ -33,6 +33,8 @@
 		AFAE27522452A85100A78E05 /* RoundButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFAE27512452A85100A78E05 /* RoundButton.swift */; };
 		AFB3D13824798B9C00FA76DC /* MatchTab.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AFB3D13624798B9C00FA76DC /* MatchTab.storyboard */; };
 		AFB3D13A24798C1200FA76DC /* MarketplaceTab.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AFB3D13924798C1200FA76DC /* MarketplaceTab.storyboard */; };
+		AFE98E0024996E50002573EF /* SwipeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFE98DFF24996E50002573EF /* SwipeTableViewController.swift */; };
+		AFE98E04249973B8002573EF /* MessageListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFE98E03249973B8002573EF /* MessageListTableViewController.swift */; };
 		AFF0B73B2479B16B001F332A /* PawpleUserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFF0B73A2479B16B001F332A /* PawpleUserDefaults.swift */; };
 		AFF0B73D2479C165001F332A /* Welcome.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AFF0B73C2479C165001F332A /* Welcome.storyboard */; };
 /* End PBXBuildFile section */
@@ -73,7 +75,8 @@
 		AFAE27512452A85100A78E05 /* RoundButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundButton.swift; sourceTree = "<group>"; };
 		AFB3D13724798B9C00FA76DC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MatchTab.storyboard; sourceTree = "<group>"; };
 		AFB3D13924798C1200FA76DC /* MarketplaceTab.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MarketplaceTab.storyboard; sourceTree = SOURCE_ROOT; };
-		AFB3D140247999CF00FA76DC /* ChatTab.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = ChatTab.storyboard; path = /Users/22ysabelc/Desktop/Pawple/Pawple/Pawple/Views/ChatTab.storyboard; sourceTree = "<absolute>"; };
+		AFE98DFF24996E50002573EF /* SwipeTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeTableViewController.swift; sourceTree = "<group>"; };
+		AFE98E03249973B8002573EF /* MessageListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageListTableViewController.swift; sourceTree = "<group>"; };
 		AFF0B73A2479B16B001F332A /* PawpleUserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PawpleUserDefaults.swift; sourceTree = "<group>"; };
 		AFF0B73C2479C165001F332A /* Welcome.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Welcome.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -189,7 +192,6 @@
 			children = (
 				AFF0B73C2479C165001F332A /* Welcome.storyboard */,
 				AF7C635B245140820088C0D3 /* Main.storyboard */,
-				AFB3D140247999CF00FA76DC /* ChatTab.storyboard */,
 				AFB3D13624798B9C00FA76DC /* MatchTab.storyboard */,
 				AFB3D13924798C1200FA76DC /* MarketplaceTab.storyboard */,
 			);
@@ -205,6 +207,8 @@
 				AFA2AD1124593F820068B4ED /* TabBarViewController.swift */,
 				AF8F9B37245A873800CAAEBF /* ProfileViewController.swift */,
 				AF8CEB4524626C580033C719 /* EditProfileViewController.swift */,
+				AFE98DFF24996E50002573EF /* SwipeTableViewController.swift */,
+				AFE98E03249973B8002573EF /* MessageListTableViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -340,6 +344,8 @@
 				AF8CEB44246269E60033C719 /* Constants.swift in Sources */,
 				AF8CEB41246264CA0033C719 /* Profile.swift in Sources */,
 				AF9198C82496ACB8000A0218 /* UIViewController+Alert.swift in Sources */,
+				AFE98E0024996E50002573EF /* SwipeTableViewController.swift in Sources */,
+				AFE98E04249973B8002573EF /* MessageListTableViewController.swift in Sources */,
 				AF7C6360245140820088C0D3 /* Pawple.xcdatamodeld in Sources */,
 				AF9198C62496AAB3000A0218 /* String+extensions.swift in Sources */,
 				AFF0B73B2479B16B001F332A /* PawpleUserDefaults.swift in Sources */,

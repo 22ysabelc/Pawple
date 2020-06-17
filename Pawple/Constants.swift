@@ -9,12 +9,18 @@
 import Foundation
 
 struct C {
+    
+    static let cellIdentifier = "ReusableCell"
+    static let cellNibName = "MessageCell"
+    
     struct FStore {
         static let profileCollectionName = "profile"
-        static let chatCollectionName = "messages"
-        static let messageTextField = "text"
-        static let messageDateField = "date"
         static let userName = "name"
         static let profileImage = "profileImage"
+        
+        static let chatCollectionName = "messages"
+        static let senderField = "sender"
+        static let messageTextField = "text"
+        static let messageDateField = "date"
     }
 }

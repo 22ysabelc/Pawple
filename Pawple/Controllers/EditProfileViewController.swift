@@ -70,12 +70,20 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
     @IBAction func editProfileImageAction(_ sender: UITapGestureRecognizer) {
         let alert = UIAlertController(title: "Camera or Photo Library?", message: "", preferredStyle: .alert)
         let camera = UIAlertAction(title: "Camera", style: .default) { (action) in
-            self.imagePicker.sourceType = .camera
-            self.present(self.imagePicker, animated: true, completion: nil)
+            if UIImagePickerController.isSourceTypeAvailable(.camera)
+            {
+                self.present(self.imagePicker, animated: true, completion: nil)
+            } else {
+                self.alert(title: "Camera is not available", message: "")
+            }
         }
         let photoLibrary = UIAlertAction(title: "Photo Library", style: .default) { (action) in
-            self.imagePicker.sourceType = .photoLibrary
-            self.present(self.imagePicker, animated: true, completion: nil)
+            if UIImagePickerController.isSourceTypeAvailable(.photoLibrary)
+            {
+                self.present(self.imagePicker, animated: true, completion: nil)
+            } else {
+                self.alert(title: "Photo Library is not available", message: "")
+            }
         }
         alert.addAction(camera)
         alert.addAction(photoLibrary)

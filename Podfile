@@ -11,5 +11,6 @@ target 'Pawple' do
   pod 'Firebase/Firestore'
   pod 'DropDown', '2.3.13'
   pod 'RSKImageCropper'
+  pod 'SwipeCellKit'
   
 end

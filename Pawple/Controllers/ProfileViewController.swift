@@ -79,7 +79,7 @@ class ProfileViewController: UIViewController {
     
         menuButtonDropdown.dataSource = [
             "Edit Profile",
-            "Log Out",
+            "Log Out"
         ]
         
         menuButtonDropdown.selectionAction = { [weak self] (index, item) in

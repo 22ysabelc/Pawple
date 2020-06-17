@@ -1,0 +1,28 @@
+# To see the list of rules that are currently enabled, enter 'swiftlint rules' in the location of the project in the terminal
+
+excluded: # paths to ignore during linting. Takes precedence over `included`.
+  - Pods
+
+dynamic_inline: 
+  severity: warning
+
+force_cast:
+  severity: warning
+
+force_try:
+  severity: warning
+
+shorthand_operator: 
+  severity: warning
+
+line_length: 300
+
+disabled_rules:
+    - vertical_whitespace
+    - identifier_name
+    - large_tuple
+    - function_body_length
+    - switch_case_alignment
+    - trailing_whitespace
+    - line_length
+    - function_parameter_count

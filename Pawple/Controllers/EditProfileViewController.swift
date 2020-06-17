@@ -31,9 +31,7 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        insertUserInfo()
-        
+                
         tabBarController?.tabBar.isHidden = true
         
         imagePicker.delegate = self
@@ -43,6 +41,10 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
         userImage.layer.cornerRadius = userImage.frame.size.width / 2
         userImage.clipsToBounds = true
         
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        insertUserInfo()
     }
     
     func insertUserInfo() {

@@ -26,8 +26,7 @@ class SwipeTableViewController: UITableViewController, SwipeTableViewCellDelegat
         return UITableViewCell()
     }
     
-    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath,
-                     for orientation: SwipeActionsOrientation) -> [SwipeAction]? {
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> [SwipeAction]? {
         
         guard orientation == .right else { return nil }
 
@@ -42,8 +41,7 @@ class SwipeTableViewController: UITableViewController, SwipeTableViewCellDelegat
         return [deleteAction]
     }
     
-    func tableView(_ tableView: UITableView, editActionsOptionsForRowAt indexPath: IndexPath,
-                     for orientation: SwipeActionsOrientation) -> SwipeOptions {
+    func tableView(_ tableView: UITableView, editActionsOptionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> SwipeOptions {
         var options = SwipeOptions()
         options.expansionStyle = .destructive
         options.transitionStyle = .border

@@ -27,7 +27,4 @@ class WelcomeViewController: UIViewController {
             self.pawpleText.text = " Pawple "
         }
     }
-
-
 }
-

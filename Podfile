@@ -12,5 +12,6 @@ target 'Pawple' do
   pod 'DropDown', '2.3.13'
   pod 'RSKImageCropper'
   pod 'SwipeCellKit'
+  pod 'SwiftLint'
   
 end

@@ -24,10 +24,8 @@ class WelcomeViewController: UIViewController {
         
         welcomeText.text = "    Welcome to"
         Timer.scheduledTimer(withTimeInterval: 1.5, repeats: false) { (timer) in
+            print("timer: \(timer)")
             self.pawpleText.text = " Pawple "
         }
     }
-
-
 }
-

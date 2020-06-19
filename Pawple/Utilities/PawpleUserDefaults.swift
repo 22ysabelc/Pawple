@@ -24,11 +24,11 @@ struct PawpleUserDefaults {
     }
     
     public func getUser() {
-        if let emailID = UserDefaults.standard.object(forKey: "emailID") {
-            User.shared.email = emailID as! String
+        if let emailID = UserDefaults.standard.object(forKey: "emailID") as? String {
+            User.shared.email = emailID
         }
-        if let username = UserDefaults.standard.object(forKey: "username") {
-            User.shared.name = username as! String
+        if let username = UserDefaults.standard.object(forKey: "username") as? String {
+            User.shared.name = username
         }
     }
 }

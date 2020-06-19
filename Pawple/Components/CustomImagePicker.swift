@@ -42,4 +42,3 @@ public class CustomImagePicker: UIViewController, UIImagePickerControllerDelegat
         picker.dismiss(animated: true, completion: nil)
     }
 }
-

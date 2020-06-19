@@ -41,7 +41,7 @@ class ProfileViewController: UIViewController {
     func getLoginState() {
         let obj: PawpleUserDefaults = PawpleUserDefaults()
         if !obj.isUserSignedIn() {
-            let storyboard = UIStoryboard(name:"Welcome", bundle: nil)
+            let storyboard = UIStoryboard(name: "Welcome", bundle: nil)
             let login = storyboard.instantiateViewController(withIdentifier: "loginNC")
             login.modalPresentationStyle = .fullScreen
             self.present(login, animated: true)
@@ -79,15 +79,17 @@ class ProfileViewController: UIViewController {
     
         menuButtonDropdown.dataSource = [
             "Edit Profile",
-            "Log Out",
+            "Log Out"
         ]
         
         menuButtonDropdown.selectionAction = { [weak self] (index, item) in
             //edit profile
             if index == 0 && item == "Edit Profile" {
-                let editProfileVC = self?.storyboard?.instantiateViewController(withIdentifier: "editProfileVC") as! EditProfileViewController
-                self?.navigationController?.pushViewController(editProfileVC, animated: true)
-                editProfileVC.navigationItem.hidesBackButton = true
+                if let editProfileVC = self?.storyboard?.instantiateViewController(withIdentifier: "editProfileVC")
+                    as? EditProfileViewController {
+                    self?.navigationController?.pushViewController(editProfileVC, animated: true)
+                    editProfileVC.navigationItem.hidesBackButton = true
+                }
             }
             
             //log out

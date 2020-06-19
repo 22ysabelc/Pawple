@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		9D31C2CA2499C5EC00F6CB48 /* ProfileTab.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9D31C2C92499C5EC00F6CB48 /* ProfileTab.storyboard */; };
+		9D31C2CD2499E12400F6CB48 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 9D31C2CC2499E12400F6CB48 /* .swiftlint.yml */; };
 		AF492D6324564E9700ED4130 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF492D6224564E9700ED4130 /* LogInViewController.swift */; };
 		AF492D6524564EA400ED4130 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF492D6424564EA400ED4130 /* SignUpViewController.swift */; };
 		AF492D6724565BA500ED4130 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AF492D6624565BA500ED4130 /* GoogleService-Info.plist */; };
@@ -47,6 +48,7 @@
 		32F2DA29F2FB992101FE4BBB /* Pods_Pawple.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Pawple.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5A20D4E5C997825C9B97C033 /* Pods-Pawple.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pawple.debug.xcconfig"; path = "Target Support Files/Pods-Pawple/Pods-Pawple.debug.xcconfig"; sourceTree = "<group>"; };
 		9D31C2C92499C5EC00F6CB48 /* ProfileTab.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ProfileTab.storyboard; sourceTree = "<group>"; };
+		9D31C2CC2499E12400F6CB48 /* .swiftlint.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		AF492D6224564E9700ED4130 /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
 		AF492D6424564EA400ED4130 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		AF492D6624565BA500ED4130 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -129,6 +131,7 @@
 		AF7C6349245140820088C0D3 = {
 			isa = PBXGroup;
 			children = (
+				9D31C2CC2499E12400F6CB48 /* .swiftlint.yml */,
 				AF7C6354245140820088C0D3 /* Pawple */,
 				AF7C6353245140820088C0D3 /* Products */,
 				19179F8E42017DC0704DEC4E /* Pods */,
@@ -242,6 +245,7 @@
 				AF7C634F245140820088C0D3 /* Frameworks */,
 				AF7C6350245140820088C0D3 /* Resources */,
 				A2451423BC25F13D6DBA5918 /* [CP] Embed Pods Frameworks */,
+				9D31C2CB2499DEDA00F6CB48 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -290,7 +294,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+<<<<<<< HEAD
 				AF544808249C166100A5AAA0 /* ChatTab.storyboard in Resources */,
+=======
+				9D31C2CD2499E12400F6CB48 /* .swiftlint.yml in Resources */,
+>>>>>>> f1aa43daac391b0abf787c152265ebefb2633332
 				AFB3D13A24798C1200FA76DC /* MarketplaceTab.storyboard in Resources */,
 				AF8F9B39245A8FE000CAAEBF /* Main.storyboard in Resources */,
 				AF7C6365245140860088C0D3 /* LaunchScreen.storyboard in Resources */,
@@ -306,6 +314,23 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		9D31C2CB2499DEDA00F6CB48 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nif which swiftlint >/dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
 		A163C877FE9C8C01D7E22390 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;

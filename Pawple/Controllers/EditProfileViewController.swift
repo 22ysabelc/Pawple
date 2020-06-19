@@ -58,11 +58,12 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
     
     let imagePicker = UIImagePickerController()
     
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        let image : UIImage = (info[UIImagePickerController.InfoKey.originalImage] as? UIImage)!
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo
+                                 info: [UIImagePickerController.InfoKey: Any]) {
+        let image: UIImage = (info[UIImagePickerController.InfoKey.originalImage] as? UIImage)!
 
         picker.dismiss(animated: false, completion: { () -> Void in
-            var imageCropVC : RSKImageCropViewController!
+            var imageCropVC: RSKImageCropViewController!
             imageCropVC = RSKImageCropViewController(image: image, cropMode: RSKImageCropMode.circle)
             imageCropVC.delegate = self
             self.navigationController?.pushViewController(imageCropVC, animated: true)
@@ -71,17 +72,15 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
     
     @IBAction func editProfileImageAction(_ sender: UITapGestureRecognizer) {
         let alert = UIAlertController(title: "Camera or Photo Library?", message: "", preferredStyle: .alert)
-        let camera = UIAlertAction(title: "Camera", style: .default) { (action) in
-            if UIImagePickerController.isSourceTypeAvailable(.camera)
-            {
+        let camera = UIAlertAction(title: "Camera", style: .default) { _ in
+            if UIImagePickerController.isSourceTypeAvailable(.camera) {
                 self.present(self.imagePicker, animated: true, completion: nil)
             } else {
                 self.alert(title: "Camera is not available", message: "")
             }
         }
-        let photoLibrary = UIAlertAction(title: "Photo Library", style: .default) { (action) in
-            if UIImagePickerController.isSourceTypeAvailable(.photoLibrary)
-            {
+        let photoLibrary = UIAlertAction(title: "Photo Library", style: .default) { _ in
+            if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {
                 self.present(self.imagePicker, animated: true, completion: nil)
             } else {
                 self.alert(title: "Photo Library is not available", message: "")
@@ -93,7 +92,7 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
     }
 
     @IBAction func saveButtonPressed(_ sender: UIBarButtonItem) {
-        var firebaseDictionary = [String : Any]()
+        var firebaseDictionary = [String: Any]()
         guard let username = userName.text, username != "" else {
             self.alert(title: "Username is empty", message: "")
             return
@@ -112,8 +111,7 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
             if let e = error {
                 //FIX ERROR ABOUT IMAGE BEING MORE THAN ___ BYTES
                 self.alert(title: "Error saving data", message: e.localizedDescription)
-            }
-            else {
+            } else {
                 User.shared.name = username
                 User.shared.userImage = self.userImage.image
                 self.navigationController?.popViewController(animated: true)

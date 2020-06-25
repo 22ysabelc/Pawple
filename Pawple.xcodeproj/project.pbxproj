@@ -294,11 +294,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-<<<<<<< HEAD
 				AF544808249C166100A5AAA0 /* ChatTab.storyboard in Resources */,
-=======
 				9D31C2CD2499E12400F6CB48 /* .swiftlint.yml in Resources */,
->>>>>>> f1aa43daac391b0abf787c152265ebefb2633332
 				AFB3D13A24798C1200FA76DC /* MarketplaceTab.storyboard in Resources */,
 				AF8F9B39245A8FE000CAAEBF /* Main.storyboard in Resources */,
 				AF7C6365245140860088C0D3 /* LaunchScreen.storyboard in Resources */,
@@ -551,6 +548,7 @@
 				CODE_SIGN_ENTITLEMENTS = Pawple/Pawple.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = Pawple/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -570,6 +568,7 @@
 				CODE_SIGN_ENTITLEMENTS = Pawple/Pawple.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = Pawple/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

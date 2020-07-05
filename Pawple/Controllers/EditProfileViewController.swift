@@ -96,7 +96,6 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
     @IBAction func saveButtonPressed(_ sender: UIBarButtonItem) {
         activityIndicator.isHidden = false
         
-        var firebaseDictionary = [String: Any]()
         guard let username = userName.text, username != "" else {
             self.alert(title: "Username is empty", message: "")
             return
@@ -108,20 +107,16 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
             // Create a storage reference from our storage service
             let storageRef = storage.reference()
             let userID = Auth.auth().currentUser?.uid
-            var spaceRef = storageRef.child("ProfilePictures/\(userID).png")
+            let spaceRef = storageRef.child(String(format: "ProfilePictures/%@.png", userID!))
             
-            let uploadTask = spaceRef.putData(uploadData, metadata: nil) { (metadata, error) in
-                guard let metadata = metadata else {
+            spaceRef.putData(uploadData, metadata: nil) { (metadata, error) in
+                guard metadata != nil else {
                     // Uh-oh, an error occurred!
                     self.activityIndicator.isHidden = true
                     return
                 }
-                // Metadata contains file metadata such as size, content-type.
-                let size = metadata.size
-                // You can also access to download URL after upload.
                 spaceRef.downloadURL { (url, error) in
                     guard let downloadURL = url else {
-                        // Uh-oh, an error occurred!
                         self.activityIndicator.isHidden = true
                         return
                     }
@@ -145,6 +140,7 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
             }
             //TODO: add action to "ok" and pop on press
             self.activityIndicator.isHidden = true
+            self.userImage.sd_setImage(with: photoURL, placeholderImage: UIImage(named: "person.circle"))
             self.navigationController?.popViewController(animated: true)
         }
     }

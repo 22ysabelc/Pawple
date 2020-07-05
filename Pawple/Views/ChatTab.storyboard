@@ -35,7 +35,7 @@
         <!--Pawple-->
         <scene sceneID="dMq-hz-hHV">
             <objects>
-                <tableViewController id="u4c-ev-CHS" customClass="CategoryViewController" customModule="Pawple" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="u4c-ev-CHS" customClass="MessageListTableViewController" customModule="Pawple" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="FgW-hB-qnB">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -56,10 +56,10 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Pawple" id="fuX-uP-BVC">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="uTA-5b-5BW">
+                        <barButtonItem key="rightBarButtonItem" image="square.and.pencil" catalog="system" id="uTA-5b-5BW">
                             <color key="tintColor" red="0.67450980390000004" green="0.43529411759999997" blue="0.91764705879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
-                                <action selector="addButtonPressed:" destination="u4c-ev-CHS" id="Isu-pW-9Jk"/>
+                                <action selector="handleNewMessage:" destination="u4c-ev-CHS" id="IQ5-WL-dJE"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -71,5 +71,6 @@
     </scenes>
     <resources>
         <image name="message.fill" catalog="system" width="128" height="113"/>
+        <image name="square.and.pencil" catalog="system" width="128" height="118"/>
     </resources>
 </document>

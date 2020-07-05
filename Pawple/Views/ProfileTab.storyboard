@@ -85,14 +85,20 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="tFl-Mb-deQ">
+                                <rect key="frame" x="188.5" y="399.5" width="37" height="37"/>
+                                <color key="color" red="0.67450980390000004" green="0.43529411759999997" blue="0.91764705879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="rUQ-Ny-bW9" firstAttribute="leading" secondItem="vyz-Xk-xlB" secondAttribute="leading" constant="30" id="3ev-eB-sRP"/>
+                            <constraint firstItem="tFl-Mb-deQ" firstAttribute="centerY" secondItem="vyz-Xk-xlB" secondAttribute="centerY" constant="-32.5" id="8ft-Eh-WIE"/>
                             <constraint firstItem="rUQ-Ny-bW9" firstAttribute="top" secondItem="vyz-Xk-xlB" secondAttribute="top" constant="50" id="9fV-qZ-UVx"/>
                             <constraint firstItem="weV-qa-jwm" firstAttribute="leading" secondItem="rUQ-Ny-bW9" secondAttribute="trailing" constant="25" id="Hsm-Gc-0aj"/>
                             <constraint firstItem="weV-qa-jwm" firstAttribute="top" secondItem="vyz-Xk-xlB" secondAttribute="top" constant="75" id="Qdo-SM-C6y"/>
                             <constraint firstItem="vyz-Xk-xlB" firstAttribute="trailing" secondItem="weV-qa-jwm" secondAttribute="trailing" constant="30" id="dVn-aw-Kem"/>
+                            <constraint firstItem="tFl-Mb-deQ" firstAttribute="centerX" secondItem="vyz-Xk-xlB" secondAttribute="centerX" id="fWe-gO-oZz"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="vyz-Xk-xlB"/>
                     </view>
@@ -109,6 +115,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="activityIndicator" destination="tFl-Mb-deQ" id="bxE-oN-dhl"/>
                         <outlet property="userImage" destination="rUQ-Ny-bW9" id="yV9-Fh-Udm"/>
                         <outlet property="userName" destination="weV-qa-jwm" id="rVD-Lr-9Z1"/>
                     </connections>

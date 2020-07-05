@@ -9,6 +9,7 @@
 import UIKit
 import Firebase
 import DropDown
+import SDWebImage
 
 class ProfileViewController: UIViewController {
     
@@ -39,8 +40,7 @@ class ProfileViewController: UIViewController {
     }
     
     func getLoginState() {
-        let obj: PawpleUserDefaults = PawpleUserDefaults()
-        if !obj.isUserSignedIn() {
+        if Auth.auth().currentUser == nil {
             let storyboard = UIStoryboard(name: "Welcome", bundle: nil)
             let login = storyboard.instantiateViewController(withIdentifier: "loginNC")
             login.modalPresentationStyle = .fullScreen
@@ -49,8 +49,9 @@ class ProfileViewController: UIViewController {
     }
     
     func loadProfile() {
-        userImage.image = User.shared.userImage ?? UIImage(systemName: "person.circle")
-        userName.text = User.shared.name
+        let user = Auth.auth().currentUser
+        userImage.sd_setImage(with: user?.photoURL, placeholderImage: UIImage(named: "person.circle"))
+        userName.text = user?.displayName
     }
     
     func customizeDropDown() {

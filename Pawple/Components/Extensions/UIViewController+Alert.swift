@@ -16,7 +16,7 @@ public extension UIViewController {
         self.present(alertController, animated: false, completion: nil)
     }
 
-    func showGeneralErrorAlert(message: String = "ErrorTryAgainLater") {
+    func showGeneralErrorAlert(message: String = "Error: Try again later") {
         self.alert(message: message)
     }
 }

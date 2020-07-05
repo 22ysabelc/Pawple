@@ -91,11 +91,21 @@
                                                     </button>
                                                 </subviews>
                                             </stackView>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0DS-xb-rJo" customClass="GIDSignInButton">
+                                                <rect key="frame" x="20" y="49" width="374" height="60"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="60" id="iWd-xh-osG"/>
+                                                </constraints>
+                                            </view>
                                         </subviews>
                                         <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="0DS-xb-rJo" secondAttribute="trailing" constant="20" id="7Z0-M7-LIj"/>
                                             <constraint firstItem="CFC-eK-ZrY" firstAttribute="centerX" secondItem="jnS-DT-sBF" secondAttribute="centerX" id="Bbn-1H-BWq"/>
                                             <constraint firstItem="CFC-eK-ZrY" firstAttribute="leading" secondItem="jnS-DT-sBF" secondAttribute="leading" constant="20" id="J3o-E2-ebK"/>
                                             <constraint firstItem="CFC-eK-ZrY" firstAttribute="centerY" secondItem="jnS-DT-sBF" secondAttribute="centerY" id="OuN-pM-Emp"/>
+                                            <constraint firstItem="f61-77-QlW" firstAttribute="top" secondItem="0DS-xb-rJo" secondAttribute="bottom" constant="19.5" id="Q1A-os-nrp"/>
+                                            <constraint firstItem="0DS-xb-rJo" firstAttribute="leading" secondItem="jnS-DT-sBF" secondAttribute="leading" constant="20" id="yUh-Gg-zuO"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -117,6 +127,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="2rB-Q8-B0H"/>
                     <connections>
+                        <outlet property="googleSignInButton" destination="0DS-xb-rJo" id="nVu-DW-iyN"/>
                         <outlet property="pawpleText" destination="CxG-81-gg9" id="fdP-w0-uLg"/>
                         <outlet property="welcomeText" destination="Vv3-Ig-QAL" id="hJ0-Xw-RHM"/>
                     </connections>

@@ -16,5 +16,6 @@ target 'Pawple' do
   pod 'SwipeCellKit'
   pod 'SwiftLint'
   pod 'GoogleSignIn'
+  pod 'SDWebImage', '~> 5.0'
   
 end

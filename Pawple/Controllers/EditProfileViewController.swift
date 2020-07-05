@@ -11,6 +11,7 @@ import Firebase
 import CoreML
 import Vision
 import RSKImageCropper
+import FirebaseStorage
 
 class EditProfileViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, RSKImageCropViewControllerDelegate {
     
@@ -23,33 +24,31 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
         self.navigationController?.popViewController(animated: true)
     }
     
-
+    
     @IBOutlet weak var userImage: UIImageView!
     @IBOutlet weak var userName: UITextField!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     let db = Firestore.firestore()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-                
+        
         tabBarController?.tabBar.isHidden = true
         
         imagePicker.delegate = self
-        imagePicker.allowsEditing = true
         
         userImage.layer.masksToBounds = false
         userImage.layer.cornerRadius = userImage.frame.size.width / 2
         userImage.clipsToBounds = true
         
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
         insertUserInfo()
     }
     
     func insertUserInfo() {
-        userImage.image = User.shared.userImage ?? UIImage(systemName: "person.circle")
-        userName.text = User.shared.name
+        let user = Auth.auth().currentUser
+        userImage.sd_setImage(with: user?.photoURL, placeholderImage: UIImage(named: "person.circle"))
+        userName.text = user?.displayName
     }
     
     @IBAction func cancelButtonPressed(_ sender: UIBarButtonItem) {
@@ -59,9 +58,10 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
     let imagePicker = UIImagePickerController()
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo
-                                 info: [UIImagePickerController.InfoKey: Any]) {
+        info: [UIImagePickerController.InfoKey: Any]) {
+        
         let image: UIImage = (info[UIImagePickerController.InfoKey.originalImage] as? UIImage)!
-
+        
         picker.dismiss(animated: false, completion: { () -> Void in
             var imageCropVC: RSKImageCropViewController!
             imageCropVC = RSKImageCropViewController(image: image, cropMode: RSKImageCropMode.circle)
@@ -90,33 +90,62 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
         alert.addAction(photoLibrary)
         self.present(alert, animated: true, completion: nil)
     }
-
+    
+    
+    //TODO: change to jpeg, add compression
     @IBAction func saveButtonPressed(_ sender: UIBarButtonItem) {
+        activityIndicator.isHidden = false
+        
         var firebaseDictionary = [String: Any]()
         guard let username = userName.text, username != "" else {
             self.alert(title: "Username is empty", message: "")
             return
         }
-
-        firebaseDictionary[C.FStore.userName] = username
-
-        if let image = userImage.image {
-            let data = image.jpegData(compressionQuality: 2.0) ?? Data()
-            firebaseDictionary[C.FStore.profileImage] = data
-        }
-
-        db.collection(C.FStore.profileCollectionName).addDocument(data:
-            firebaseDictionary
-        ) { (error) in
-            if let e = error {
-                //FIX ERROR ABOUT IMAGE BEING MORE THAN ___ BYTES
-                self.alert(title: "Error saving data", message: e.localizedDescription)
-            } else {
-                User.shared.name = username
-                User.shared.userImage = self.userImage.image
-                self.navigationController?.popViewController(animated: true)
+        
+        if let uploadData = userImage.image?.pngData() {
+            // Get a reference to the storage service using the default Firebase App
+            let storage = Storage.storage()
+            // Create a storage reference from our storage service
+            let storageRef = storage.reference()
+            let userID = Auth.auth().currentUser?.uid
+            var spaceRef = storageRef.child("ProfilePictures/\(userID).png")
+            
+            let uploadTask = spaceRef.putData(uploadData, metadata: nil) { (metadata, error) in
+                guard let metadata = metadata else {
+                    // Uh-oh, an error occurred!
+                    self.activityIndicator.isHidden = true
+                    return
+                }
+                // Metadata contains file metadata such as size, content-type.
+                let size = metadata.size
+                // You can also access to download URL after upload.
+                spaceRef.downloadURL { (url, error) in
+                    guard let downloadURL = url else {
+                        // Uh-oh, an error occurred!
+                        self.activityIndicator.isHidden = true
+                        return
+                    }
+                    self.updateProfileWithName(name: username, photoURL: downloadURL)
+                }
             }
+            
+        }
+        
+    }
+    
+    private func updateProfileWithName(name: String, photoURL: URL) {
+        let changeRequest = Auth.auth().currentUser?.createProfileChangeRequest()
+        changeRequest?.displayName = name
+        changeRequest?.photoURL = photoURL
+        changeRequest?.commitChanges { (error) in
+            if error != nil {
+                self.alert(title: "Error updating profile", message: error?.localizedDescription)
+                self.activityIndicator.isHidden = true
+                return
+            }
+            //TODO: add action to "ok" and pop on press
+            self.activityIndicator.isHidden = true
+            self.navigationController?.popViewController(animated: true)
         }
     }
-
 }

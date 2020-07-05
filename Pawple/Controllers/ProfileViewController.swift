@@ -9,6 +9,7 @@
 import UIKit
 import Firebase
 import DropDown
+import SDWebImage
 
 class ProfileViewController: UIViewController {
     
@@ -48,8 +49,9 @@ class ProfileViewController: UIViewController {
     }
     
     func loadProfile() {
-        userImage.image = User.shared.userImage ?? UIImage(systemName: "person.circle")
-        userName.text = User.shared.name
+        let user = Auth.auth().currentUser
+        userImage.sd_setImage(with: user?.photoURL, placeholderImage: UIImage(named: "person.circle"))
+        userName.text = user?.displayName
     }
     
     func customizeDropDown() {

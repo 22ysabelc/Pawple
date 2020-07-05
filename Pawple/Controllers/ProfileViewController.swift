@@ -39,8 +39,7 @@ class ProfileViewController: UIViewController {
     }
     
     func getLoginState() {
-        let obj: PawpleUserDefaults = PawpleUserDefaults()
-        if !obj.isUserSignedIn() {
+        if Auth.auth().currentUser == nil {
             let storyboard = UIStoryboard(name: "Welcome", bundle: nil)
             let login = storyboard.instantiateViewController(withIdentifier: "loginNC")
             login.modalPresentationStyle = .fullScreen

@@ -9,9 +9,12 @@ target 'Pawple' do
   pod 'CLTypingLabel', '~> 0.4.0'
   pod 'Firebase/Auth'
   pod 'Firebase/Firestore'
+  pod 'Firebase/Database'
+  pod 'Firebase/Storage'
   pod 'DropDown', '2.3.13'
   pod 'RSKImageCropper'
   pod 'SwipeCellKit'
   pod 'SwiftLint'
+  pod 'GoogleSignIn'
   
 end

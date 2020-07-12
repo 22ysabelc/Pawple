@@ -64,17 +64,17 @@ extension WelcomeViewController: GIDSignInDelegate {
         Auth.auth().signIn(with: credential) { (authResult, error) in
           if let error = error {
             let authError = error as NSError
-            // ...
+            self.alert(title: "Error signing in", message: authError.localizedDescription)
             return
           }
-            print("Sign in with firebase")
-            let user = Auth.auth().currentUser
+//            print("Sign in with firebase")
+//            let user = Auth.auth().currentUser
             
             //from firebase
-            print("userid:", user?.uid)
-            print("name:", user?.displayName)
-            print("photoURL:", user?.photoURL)
-            print("email:", user?.email)
+//            print("userid:", user?.uid)
+//            print("name:", user?.displayName)
+//            print("photoURL:", user?.photoURL)
+//            print("email:", user?.email)
           // User is signed in
             self.navigationController?.dismiss(animated: true, completion: nil)
         }

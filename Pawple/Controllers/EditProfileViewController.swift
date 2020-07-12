@@ -92,7 +92,6 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
     }
     
     
-    //TODO: change to jpeg, add compression
     @IBAction func saveButtonPressed(_ sender: UIBarButtonItem) {
         activityIndicator.isHidden = false
         
@@ -101,13 +100,13 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
             return
         }
         
-        if let uploadData = userImage.image?.pngData() {
+        if let uploadData = userImage.image?.jpegData(compressionQuality: 0.2) {
             // Get a reference to the storage service using the default Firebase App
             let storage = Storage.storage()
             // Create a storage reference from our storage service
             let storageRef = storage.reference()
             let userID = Auth.auth().currentUser?.uid
-            let spaceRef = storageRef.child(String(format: "ProfilePictures/%@.png", userID!))
+            let spaceRef = storageRef.child(String(format: "ProfilePictures/%@.jpeg", userID!))
             
             spaceRef.putData(uploadData, metadata: nil) { (metadata, error) in
                 guard metadata != nil else {
@@ -138,7 +137,6 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
                 self.activityIndicator.isHidden = true
                 return
             }
-            //TODO: add action to "ok" and pop on press
             self.activityIndicator.isHidden = true
             self.userImage.sd_setImage(with: photoURL, placeholderImage: UIImage(named: "person.circle"))
             self.navigationController?.popViewController(animated: true)

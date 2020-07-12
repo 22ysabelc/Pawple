@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		9D31C2CA2499C5EC00F6CB48 /* ProfileTab.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9D31C2C92499C5EC00F6CB48 /* ProfileTab.storyboard */; };
 		9D31C2CD2499E12400F6CB48 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 9D31C2CC2499E12400F6CB48 /* .swiftlint.yml */; };
+		AF04A5B324BB9BE7006099B9 /* UsersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF04A5B224BB9BE7006099B9 /* UsersTableViewController.swift */; };
+		AF04A5B524BBAACD006099B9 /* UserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF04A5B424BBAACC006099B9 /* UserTableViewCell.swift */; };
 		AF492D6324564E9700ED4130 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF492D6224564E9700ED4130 /* LogInViewController.swift */; };
 		AF492D6524564EA400ED4130 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF492D6424564EA400ED4130 /* SignUpViewController.swift */; };
 		AF492D6724565BA500ED4130 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AF492D6624565BA500ED4130 /* GoogleService-Info.plist */; };
@@ -49,6 +51,8 @@
 		5A20D4E5C997825C9B97C033 /* Pods-Pawple.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pawple.debug.xcconfig"; path = "Target Support Files/Pods-Pawple/Pods-Pawple.debug.xcconfig"; sourceTree = "<group>"; };
 		9D31C2C92499C5EC00F6CB48 /* ProfileTab.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ProfileTab.storyboard; sourceTree = "<group>"; };
 		9D31C2CC2499E12400F6CB48 /* .swiftlint.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
+		AF04A5B224BB9BE7006099B9 /* UsersTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersTableViewController.swift; sourceTree = "<group>"; };
+		AF04A5B424BBAACC006099B9 /* UserTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTableViewCell.swift; sourceTree = "<group>"; };
 		AF492D6224564E9700ED4130 /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
 		AF492D6424564EA400ED4130 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		AF492D6624565BA500ED4130 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -220,6 +224,8 @@
 				AF8F9B37245A873800CAAEBF /* ProfileViewController.swift */,
 				AF8CEB4524626C580033C719 /* EditProfileViewController.swift */,
 				AFE98E03249973B8002573EF /* MessageListTableViewController.swift */,
+				AF04A5B224BB9BE7006099B9 /* UsersTableViewController.swift */,
+				AF04A5B424BBAACC006099B9 /* UserTableViewCell.swift */,
 				AFB7056824AC3A3700340FC5 /* NewMessageTableViewController.swift */,
 			);
 			path = Controllers;
@@ -408,8 +414,10 @@
 				AFB7056924AC3A3700340FC5 /* NewMessageTableViewController.swift in Sources */,
 				AF8CEB4624626C580033C719 /* EditProfileViewController.swift in Sources */,
 				AF8F9B38245A873800CAAEBF /* ProfileViewController.swift in Sources */,
+				AF04A5B524BBAACD006099B9 /* UserTableViewCell.swift in Sources */,
 				AF7C6356245140820088C0D3 /* AppDelegate.swift in Sources */,
 				AF7C6358245140820088C0D3 /* SceneDelegate.swift in Sources */,
+				AF04A5B324BB9BE7006099B9 /* UsersTableViewController.swift in Sources */,
 				AF9198C22496A96D000A0218 /* CustomImagePicker.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

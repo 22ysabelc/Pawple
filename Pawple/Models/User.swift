@@ -8,9 +8,9 @@
 
 import UIKit
 
+//TODO: add userID
 public class User: NSObject {
-    public static let shared = User()
-    public var email: String = ""
-    public var name: String = ""
-    public var userImage: UIImage?
+    public var email: String?
+    public var name: String?
+    public var photoURL: String?
 }

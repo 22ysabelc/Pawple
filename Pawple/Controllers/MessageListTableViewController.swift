@@ -16,10 +16,10 @@ class MessageListTableViewController: UITableViewController {
     }
     
     @IBAction func handleNewMessage(_ sender: UIBarButtonItem) {
-        let newMessageController = NewMessageTableViewController()
-        let navController = UINavigationController(rootViewController: newMessageController)
-        navController.modalPresentationStyle = .fullScreen
-        present(navController, animated: true, completion: nil)
+//        let newMessageController = NewMessageTableViewController()
+//        let navController = UINavigationController(rootViewController: newMessageController)
+//        navController.modalPresentationStyle = .fullScreen
+//        present(navController, animated: true, completion: nil)
     }
     
 }

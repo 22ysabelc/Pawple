@@ -67,6 +67,30 @@ extension WelcomeViewController: GIDSignInDelegate {
             self.alert(title: "Error signing in", message: authError.localizedDescription)
             return
           }
+            
+            let user = Auth.auth().currentUser
+            
+            guard let uid = user?.uid else {
+                return
+            }
+            
+            var values = [String: Any]()
+            if let photoURL = user?.photoURL {
+                values["photoURL"] = photoURL.absoluteString
+            }
+            let databaseRef = Database.database().reference()
+            let userRef = databaseRef.child("users").child(uid)
+            if let name = user?.displayName, let email = user?.email {
+                values["name"] = name
+                values["email"] = email
+                userRef.updateChildValues(values) { (error, databaseReference) in
+                    if error != nil {
+                        self.alert(title: "Error updating database", message: error?.localizedDescription)
+                        return
+                    }
+                    self.navigationController?.dismiss(animated: true, completion: nil)
+                }
+            }
 //            print("Sign in with firebase")
 //            let user = Auth.auth().currentUser
             
@@ -76,7 +100,6 @@ extension WelcomeViewController: GIDSignInDelegate {
 //            print("photoURL:", user?.photoURL)
 //            print("email:", user?.email)
           // User is signed in
-            self.navigationController?.dismiss(animated: true, completion: nil)
         }
     }
     

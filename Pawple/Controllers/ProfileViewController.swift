@@ -29,8 +29,6 @@ class ProfileViewController: UIViewController {
         userImage.layer.cornerRadius = userImage.frame.width / 2
         userImage.clipsToBounds = true
         
-        let userDefaults = PawpleUserDefaults()
-        userDefaults.getUser()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -41,10 +39,19 @@ class ProfileViewController: UIViewController {
     
     func getLoginState() {
         if Auth.auth().currentUser == nil {
+            handleLogout()
+        }
+    }
+    
+    func handleLogout() {
+        do {
+            try Auth.auth().signOut()
             let storyboard = UIStoryboard(name: "Welcome", bundle: nil)
             let login = storyboard.instantiateViewController(withIdentifier: "loginNC")
             login.modalPresentationStyle = .fullScreen
             self.present(login, animated: true)
+        } catch let signOutError as NSError {
+            self.alert(title: "Error logging out", message: signOutError.localizedDescription)
         }
     }
     
@@ -95,14 +102,7 @@ class ProfileViewController: UIViewController {
             
             //log out
             else if index == 1 && item == "Log Out" {
-                do {
-                    try Auth.auth().signOut()
-                    let obj: PawpleUserDefaults = PawpleUserDefaults()
-                    obj.saveUserState(key: false)
-                    self?.getLoginState()
-                } catch let signOutError as NSError {
-                    self?.alert(title: "Error logging out", message: signOutError.localizedDescription)
-                }
+                self?.handleLogout()
             }
         }
     }

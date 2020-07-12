@@ -26,10 +26,6 @@ class SignUpViewController: UIViewController {
                     self.alert(title: "Error with email or password", message: e.localizedDescription)
                 } else {
                     print("AuthResult \(String(describing: authResult))")
-                    let obj: PawpleUserDefaults = PawpleUserDefaults()
-                    obj.saveUserState(key: true)
-                    User.shared.email = email
-                    obj.storeUser()
                     self.navigationController?.dismiss(animated: true)
                 }
             }

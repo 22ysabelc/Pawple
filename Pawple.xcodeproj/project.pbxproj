@@ -39,8 +39,8 @@
 		AFAE27522452A85100A78E05 /* RoundButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFAE27512452A85100A78E05 /* RoundButton.swift */; };
 		AFB3D13824798B9C00FA76DC /* MatchTab.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AFB3D13624798B9C00FA76DC /* MatchTab.storyboard */; };
 		AFB3D13A24798C1200FA76DC /* MarketplaceTab.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AFB3D13924798C1200FA76DC /* MarketplaceTab.storyboard */; };
-		AFB7056924AC3A3700340FC5 /* NewMessageTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFB7056824AC3A3700340FC5 /* NewMessageTableViewController.swift */; };
-		AFE98E04249973B8002573EF /* MessageListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFE98E03249973B8002573EF /* MessageListTableViewController.swift */; };
+		AFC17D1924D747C300CC29C7 /* ChatLogCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFC17D1824D747C300CC29C7 /* ChatLogCollectionViewController.swift */; };
+		AFE98E04249973B8002573EF /* ChatListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFE98E03249973B8002573EF /* ChatListTableViewController.swift */; };
 		AFF0B73B2479B16B001F332A /* PawpleUserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFF0B73A2479B16B001F332A /* PawpleUserDefaults.swift */; };
 		AFF0B73D2479C165001F332A /* Welcome.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AFF0B73C2479C165001F332A /* Welcome.storyboard */; };
 /* End PBXBuildFile section */
@@ -87,8 +87,8 @@
 		AFAE27512452A85100A78E05 /* RoundButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundButton.swift; sourceTree = "<group>"; };
 		AFB3D13724798B9C00FA76DC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MatchTab.storyboard; sourceTree = "<group>"; };
 		AFB3D13924798C1200FA76DC /* MarketplaceTab.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MarketplaceTab.storyboard; sourceTree = SOURCE_ROOT; };
-		AFB7056824AC3A3700340FC5 /* NewMessageTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewMessageTableViewController.swift; sourceTree = "<group>"; };
-		AFE98E03249973B8002573EF /* MessageListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageListTableViewController.swift; sourceTree = "<group>"; };
+		AFC17D1824D747C300CC29C7 /* ChatLogCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatLogCollectionViewController.swift; sourceTree = "<group>"; };
+		AFE98E03249973B8002573EF /* ChatListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatListTableViewController.swift; sourceTree = "<group>"; };
 		AFF0B73A2479B16B001F332A /* PawpleUserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PawpleUserDefaults.swift; sourceTree = "<group>"; };
 		AFF0B73C2479C165001F332A /* Welcome.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Welcome.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -223,10 +223,10 @@
 				AFA2AD1124593F820068B4ED /* TabBarViewController.swift */,
 				AF8F9B37245A873800CAAEBF /* ProfileViewController.swift */,
 				AF8CEB4524626C580033C719 /* EditProfileViewController.swift */,
-				AFE98E03249973B8002573EF /* MessageListTableViewController.swift */,
+				AFE98E03249973B8002573EF /* ChatListTableViewController.swift */,
 				AF04A5B224BB9BE7006099B9 /* UsersTableViewController.swift */,
 				AF04A5B424BBAACC006099B9 /* UserTableViewCell.swift */,
-				AFB7056824AC3A3700340FC5 /* NewMessageTableViewController.swift */,
+				AFC17D1824D747C300CC29C7 /* ChatLogCollectionViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -402,8 +402,9 @@
 				AF8CEB44246269E60033C719 /* Constants.swift in Sources */,
 				AF8CEB41246264CA0033C719 /* Profile.swift in Sources */,
 				AF9198C82496ACB8000A0218 /* UIViewController+Alert.swift in Sources */,
-				AFE98E04249973B8002573EF /* MessageListTableViewController.swift in Sources */,
+				AFE98E04249973B8002573EF /* ChatListTableViewController.swift in Sources */,
 				AF7C6360245140820088C0D3 /* Pawple.xcdatamodeld in Sources */,
+				AFC17D1924D747C300CC29C7 /* ChatLogCollectionViewController.swift in Sources */,
 				AF9198C62496AAB3000A0218 /* String+extensions.swift in Sources */,
 				AFF0B73B2479B16B001F332A /* PawpleUserDefaults.swift in Sources */,
 				AF492D6524564EA400ED4130 /* SignUpViewController.swift in Sources */,
@@ -411,7 +412,6 @@
 				AFAE27522452A85100A78E05 /* RoundButton.swift in Sources */,
 				AF492D6324564E9700ED4130 /* LogInViewController.swift in Sources */,
 				AF7C635A245140820088C0D3 /* WelcomeViewController.swift in Sources */,
-				AFB7056924AC3A3700340FC5 /* NewMessageTableViewController.swift in Sources */,
 				AF8CEB4624626C580033C719 /* EditProfileViewController.swift in Sources */,
 				AF8F9B38245A873800CAAEBF /* ProfileViewController.swift in Sources */,
 				AF04A5B524BBAACD006099B9 /* UserTableViewCell.swift in Sources */,

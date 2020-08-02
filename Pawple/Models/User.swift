@@ -13,4 +13,5 @@ public class User: NSObject {
     public var email: String?
     public var name: String?
     public var photoURL: String?
+    public var uid: String?
 }

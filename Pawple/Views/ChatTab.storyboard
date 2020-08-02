@@ -3,6 +3,8 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -31,7 +33,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uW5-AO-U7i" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="9050.7246376811599" y="-640.17857142857144"/>
+            <point key="canvasLocation" x="6204" y="-753"/>
         </scene>
         <!--Chats-->
         <scene sceneID="dMq-hz-hHV">
@@ -67,7 +69,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IJc-jb-6Fy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="9759" y="-640"/>
+            <point key="canvasLocation" x="6912" y="-753"/>
         </scene>
         <!--Users Table View Controller-->
         <scene sceneID="UbX-Ly-qWC">
@@ -137,52 +139,110 @@
                     </tableView>
                     <navigationItem key="navigationItem" id="eRX-eR-4fZ"/>
                     <connections>
-                        <segue destination="xP0-I6-SpM" kind="show" identifier="ChatLogCollectionVC" id="yVr-f4-cJi"/>
+                        <segue destination="6wI-5f-Lsv" kind="show" identifier="ChatLogVC" id="GDD-5m-9fF"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="r3L-u5-wbg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="10479.710144927538" y="-640.17857142857144"/>
+            <point key="canvasLocation" x="7633" y="-753"/>
         </scene>
-        <!--Chat Log Collection View Controller-->
-        <scene sceneID="j3J-1m-PLh">
+        <!--Chat Log View Controller-->
+        <scene sceneID="32o-8f-jNo">
             <objects>
-                <collectionViewController id="xP0-I6-SpM" customClass="ChatLogCollectionViewController" customModule="Pawple" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="zpn-19-Mg0">
+                <viewController id="6wI-5f-Lsv" customClass="ChatLogViewController" customModule="Pawple" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="4Kt-tz-C8g">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ttn-av-DXu">
+                                <rect key="frame" x="0.0" y="810" width="414" height="60"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FSI-38-GIP">
+                                        <rect key="frame" x="356" y="13.5" width="40" height="33"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="33" id="X17-bs-9Fr"/>
+                                            <constraint firstAttribute="width" constant="40" id="ksm-UA-JDS"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <state key="normal" title="Send">
+                                            <color key="titleColor" name="BrandPurple"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="sendPressed:" destination="6wI-5f-Lsv" eventType="touchUpInside" id="5Lw-oN-IFb"/>
+                                        </connections>
+                                    </button>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Type message..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tVI-Jm-hv9">
+                                        <rect key="frame" x="20" y="10" width="320" height="40"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="GeQ-Ce-7Tk"/>
+                                        </constraints>
+                                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="DIO-ob-wcg"/>
+                                    <constraint firstAttribute="trailing" secondItem="FSI-38-GIP" secondAttribute="trailing" constant="18" id="Pqd-eP-73I"/>
+                                    <constraint firstItem="tVI-Jm-hv9" firstAttribute="centerY" secondItem="Ttn-av-DXu" secondAttribute="centerY" id="S4X-Br-gtw"/>
+                                    <constraint firstItem="tVI-Jm-hv9" firstAttribute="leading" secondItem="Ttn-av-DXu" secondAttribute="leading" constant="20" id="qS4-Gl-tMg"/>
+                                    <constraint firstItem="FSI-38-GIP" firstAttribute="leading" secondItem="tVI-Jm-hv9" secondAttribute="trailing" constant="16" id="rAm-Cz-ErD"/>
+                                    <constraint firstItem="FSI-38-GIP" firstAttribute="centerY" secondItem="Ttn-av-DXu" secondAttribute="centerY" id="toG-zs-bf4"/>
+                                </constraints>
+                            </view>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="A3j-cm-IKu">
+                                <rect key="frame" x="0.0" y="88" width="414" height="721"/>
+                                <color key="backgroundColor" red="0.3692403011" green="0.87020320600000001" blue="0.63588803599999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="YGc-xX-n81">
+                                    <size key="itemSize" width="128" height="128"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="vjh-cl-PDY">
+                                        <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="6Aj-ON-35m">
+                                            <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </collectionViewCellContentView>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="ovi-oT-daw">
-                            <size key="itemSize" width="128" height="128"/>
-                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                        </collectionViewFlowLayout>
-                        <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="5n2-ap-0DI">
-                                <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="POm-ig-abh">
-                                    <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </collectionViewCellContentView>
-                            </collectionViewCell>
-                        </cells>
-                        <connections>
-                            <outlet property="dataSource" destination="xP0-I6-SpM" id="llI-JP-bMu"/>
-                            <outlet property="delegate" destination="xP0-I6-SpM" id="auN-e9-lsE"/>
-                        </connections>
-                    </collectionView>
-                    <navigationItem key="navigationItem" id="hA7-an-jmN"/>
-                </collectionViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="hM3-xp-HUu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                        <constraints>
+                            <constraint firstItem="Ttn-av-DXu" firstAttribute="top" secondItem="A3j-cm-IKu" secondAttribute="bottom" constant="1" id="22Z-Ea-ndb"/>
+                            <constraint firstItem="A3j-cm-IKu" firstAttribute="top" secondItem="Tz2-Qm-m8R" secondAttribute="top" id="4PR-5v-IrT"/>
+                            <constraint firstItem="Tz2-Qm-m8R" firstAttribute="trailing" secondItem="Ttn-av-DXu" secondAttribute="trailing" id="AvU-Xf-3Qb"/>
+                            <constraint firstItem="Ttn-av-DXu" firstAttribute="bottom" secondItem="Tz2-Qm-m8R" secondAttribute="bottom" constant="8" id="GwH-8G-VGR"/>
+                            <constraint firstItem="Ttn-av-DXu" firstAttribute="leading" secondItem="Tz2-Qm-m8R" secondAttribute="leading" id="Wzk-Fc-zEs"/>
+                            <constraint firstItem="A3j-cm-IKu" firstAttribute="leading" secondItem="Tz2-Qm-m8R" secondAttribute="leading" id="jHd-eX-UD3"/>
+                            <constraint firstItem="Tz2-Qm-m8R" firstAttribute="trailing" secondItem="A3j-cm-IKu" secondAttribute="trailing" id="psc-lk-wcN"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Tz2-Qm-m8R"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="WBa-Bu-9Gl"/>
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="containerView" destination="Ttn-av-DXu" id="YOR-SD-SsW"/>
+                        <outlet property="inputTextField" destination="tVI-Jm-hv9" id="OY4-tz-C79"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6bn-Yc-iYe" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="11200" y="-640"/>
+            <point key="canvasLocation" x="8343" y="-753"/>
         </scene>
     </scenes>
     <resources>
         <image name="message.fill" catalog="system" width="128" height="113"/>
         <image name="person.circle" catalog="system" width="128" height="121"/>
         <image name="square.and.pencil" catalog="system" width="128" height="118"/>
+        <namedColor name="BrandPurple">
+            <color red="0.67500001192092896" green="0.43500000238418579" blue="0.9179999828338623" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
     </resources>
 </document>

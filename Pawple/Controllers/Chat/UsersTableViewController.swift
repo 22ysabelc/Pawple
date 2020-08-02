@@ -43,7 +43,7 @@ class UsersTableViewController: UITableViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let objVC = segue.destination as? ChatLogCollectionViewController {
+        if let objVC = segue.destination as? ChatLogViewController {
             objVC.user = sender as? User
         }
     }
@@ -68,6 +68,6 @@ extension UsersTableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "ChatLogCollectionVC", sender: users[indexPath.row])
+        performSegue(withIdentifier: "ChatLogVC", sender: users[indexPath.row])
     }
 }

@@ -31,6 +31,7 @@ class UsersTableViewController: UITableViewController {
     func fetchUser() {
         databaseRef.child("users").observe(.childAdded) { (snapshot) in
             if let dictionary = snapshot.value as? [String: String] {
+//TODO: put in model, return user, pass in dictionary
                 let user = User()
                 user.name = dictionary["name"]
                 user.email = dictionary["email"]

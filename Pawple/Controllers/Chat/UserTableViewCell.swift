@@ -7,12 +7,43 @@
 //
 
 import UIKit
+import Firebase
 
 class UserTableViewCell: UITableViewCell {
 
     @IBOutlet weak var userImageView: UIImageView!
     @IBOutlet weak var name: UILabel!
-    @IBOutlet weak var email: UILabel!
+    @IBOutlet weak var subtitle: UILabel!
+    @IBOutlet weak var timestamp: UILabel!
+    
+    var user = User()
+    
+    var message: Message? {
+        didSet {
+            if let toID = message?.toID {
+                let userRef = Database.database().reference().child("users").child(toID)
+                userRef.observeSingleEvent(of: .value) { (snapshot) in
+                    if let dictionary = snapshot.value as? [String: String] {
+//TODO: put in model, return user, pass in dictionary
+                        let user = User()
+                        user.name = dictionary["name"]
+                        user.email = dictionary["email"]
+                        user.photoURL = dictionary["photoURL"]
+                        user.uid = snapshot.key
+                        self.user = user
+                        self.name.text = user.name
+                        
+                        let photoURL: URL? = URL(string: user.photoURL ?? "")
+                        self.userImageView.sd_setImage(with: photoURL, placeholderImage: UIImage(named: "person.circle"))
+                    }
+                }
+            }
+            self.subtitle.text = message?.text
+            if let timestamp = message?.timestamp {
+                self.timestamp.text = CommonFunctions.getTimeStamp(timestamp: timestamp)
+            }
+        }
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -22,13 +53,11 @@ class UserTableViewCell: UITableViewCell {
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
     
     func configureCellWithUser(user: User) {
         self.name.text = user.name
-        self.email.text = user.email
+        self.subtitle.text = user.email
         
         let photoURL: URL? = URL(string: user.photoURL ?? "")
         self.userImageView.sd_setImage(with: photoURL, placeholderImage: UIImage(named: "person.circle"))

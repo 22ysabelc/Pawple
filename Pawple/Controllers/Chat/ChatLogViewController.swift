@@ -9,8 +9,8 @@
 import UIKit
 import Firebase
 
-class ChatLogViewController: UIViewController {
-
+class ChatLogViewController: UIViewController, UITextFieldDelegate, UICollectionViewDelegateFlowLayout {
+    
     var user: User? = nil
     
     @IBOutlet weak var inputTextField: UITextField!
@@ -18,14 +18,80 @@ class ChatLogViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         tabBarController?.tabBar.isHidden = true
         
         self.title = user?.name
+        
+        setUpInputComponents()
+        setUpKeyboardObservers()
+        
+//        collectionview?.keyboardDismissMode = .interactive
+        //  TODO: figure out how to move containerView up and down with the keyboard on drag
+    
+    }
+    
+//  another way to move keyboard up and down. BUT keyboard doesn't link to textfield
+//    override var inputAccessoryView: UIView? {
+//        get {
+//            return containerView
+//        }
+//    }
+//
+//    override var canBecomeFirstResponder: Bool {
+//        return true
+//    }
+    
+    var containerViewBottomAnchor: NSLayoutConstraint?
+    
+    func setUpInputComponents() {
+        containerViewBottomAnchor = containerView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
+        containerViewBottomAnchor?.isActive = true
+        
+        let separatorLineView = UIView()
+        separatorLineView.backgroundColor = UIColor(named: "BrandPurple")
+        separatorLineView.translatesAutoresizingMaskIntoConstraints = false
+        containerView.addSubview(separatorLineView)
+        separatorLineView.leftAnchor.constraint(equalTo: containerView.leftAnchor).isActive = true
+        separatorLineView.topAnchor.constraint(equalTo: containerView.topAnchor).isActive = true
+        separatorLineView.widthAnchor.constraint(equalTo: containerView.widthAnchor).isActive = true
+        separatorLineView.heightAnchor.constraint(equalToConstant: 1).isActive = true
+    }
+    
+    func setUpKeyboardObservers() {
+        NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardWillShow), name: UIResponder.keyboardDidShowNotification, object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(true)
+        
+        NotificationCenter.default.removeObserver(self)
+    }
+    
+//TODO: fix duration for going up
+//TODO: move this code to the extensions folder
+    @objc func handleKeyboardWillShow(notification: NSNotification) {
+        let keyboardFrame = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as AnyObject).cgRectValue
+        let keyboardDuration = (notification.userInfo?[UIResponder.keyboardAnimationDurationUserInfoKey] as AnyObject).doubleValue
+        if let height = keyboardFrame?.height {
+            containerViewBottomAnchor?.constant = -height + view.safeAreaInsets.bottom
+        }
+        UIView.animate(withDuration: keyboardDuration!) {
+            self.view.layoutIfNeeded()
+        }
+    }
+    
+    @objc func handleKeyboardWillHide(notification: NSNotification) {
+        containerViewBottomAnchor?.constant = view.safeAreaInsets.bottom
+        let keyboardDuration = (notification.userInfo?[UIResponder.keyboardAnimationDurationUserInfoKey] as AnyObject).doubleValue
+        UIView.animate(withDuration: keyboardDuration!) {
+            self.view.layoutIfNeeded()
+        }
     }
     
     @IBAction func sendPressed(_ sender: UIButton) {
-        print(inputTextField.text)
         saveMessages()
     }
     
@@ -43,20 +109,8 @@ class ChatLogViewController: UIViewController {
                     self.alert(title: "Error updating database", message: error?.localizedDescription)
                     return
                 }
-                print("Success")
                 self.inputTextField.text = ""
             }
         }
     }
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

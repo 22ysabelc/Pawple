@@ -39,6 +39,8 @@
 		AFAE27522452A85100A78E05 /* RoundButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFAE27512452A85100A78E05 /* RoundButton.swift */; };
 		AFB3D13824798B9C00FA76DC /* MatchTab.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AFB3D13624798B9C00FA76DC /* MatchTab.storyboard */; };
 		AFB3D13A24798C1200FA76DC /* MarketplaceTab.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AFB3D13924798C1200FA76DC /* MarketplaceTab.storyboard */; };
+		AFB8E7B524E0888C00F05698 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFB8E7B424E0888C00F05698 /* Message.swift */; };
+		AFB8E7B724E098EF00F05698 /* CommonFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFB8E7B624E098EF00F05698 /* CommonFunctions.swift */; };
 		AFC17D1B24D751A700CC29C7 /* ChatLogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFC17D1A24D751A700CC29C7 /* ChatLogViewController.swift */; };
 		AFE98E04249973B8002573EF /* ChatListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFE98E03249973B8002573EF /* ChatListTableViewController.swift */; };
 		AFF0B73B2479B16B001F332A /* PawpleUserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFF0B73A2479B16B001F332A /* PawpleUserDefaults.swift */; };
@@ -87,6 +89,8 @@
 		AFAE27512452A85100A78E05 /* RoundButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundButton.swift; sourceTree = "<group>"; };
 		AFB3D13724798B9C00FA76DC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MatchTab.storyboard; sourceTree = "<group>"; };
 		AFB3D13924798C1200FA76DC /* MarketplaceTab.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MarketplaceTab.storyboard; sourceTree = SOURCE_ROOT; };
+		AFB8E7B424E0888C00F05698 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
+		AFB8E7B624E098EF00F05698 /* CommonFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonFunctions.swift; sourceTree = "<group>"; };
 		AFC17D1A24D751A700CC29C7 /* ChatLogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatLogViewController.swift; sourceTree = "<group>"; };
 		AFE98E03249973B8002573EF /* ChatListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatListTableViewController.swift; sourceTree = "<group>"; };
 		AFF0B73A2479B16B001F332A /* PawpleUserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PawpleUserDefaults.swift; sourceTree = "<group>"; };
@@ -177,6 +181,7 @@
 			children = (
 				AF8CEB40246264CA0033C719 /* Profile.swift */,
 				AF9198BF24969E43000A0218 /* User.swift */,
+				AFB8E7B424E0888C00F05698 /* Message.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -184,8 +189,8 @@
 		AF9198C32496AA6B000A0218 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				AFB8E7B624E098EF00F05698 /* CommonFunctions.swift */,
 				AF9198C42496AA7F000A0218 /* Extensions */,
-				AF9198C12496A96D000A0218 /* CustomImagePicker.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -196,6 +201,7 @@
 				AF9198C52496AAB3000A0218 /* String+extensions.swift */,
 				AF9198C72496ACB8000A0218 /* UIViewController+Alert.swift */,
 				AFAE27512452A85100A78E05 /* RoundButton.swift */,
+				AF9198C12496A96D000A0218 /* CustomImagePicker.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -423,7 +429,9 @@
 				AF8CEB4624626C580033C719 /* EditProfileViewController.swift in Sources */,
 				AF8F9B38245A873800CAAEBF /* ProfileViewController.swift in Sources */,
 				AF04A5B524BBAACD006099B9 /* UserTableViewCell.swift in Sources */,
+				AFB8E7B524E0888C00F05698 /* Message.swift in Sources */,
 				AF7C6356245140820088C0D3 /* AppDelegate.swift in Sources */,
+				AFB8E7B724E098EF00F05698 /* CommonFunctions.swift in Sources */,
 				AF7C6358245140820088C0D3 /* SceneDelegate.swift in Sources */,
 				AF04A5B324BB9BE7006099B9 /* UsersTableViewController.swift in Sources */,
 				AF9198C22496A96D000A0218 /* CustomImagePicker.swift in Sources */,

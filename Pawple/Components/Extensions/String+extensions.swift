@@ -6,7 +6,7 @@
 //  Copyright © 2020 Ysabel Chen. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 extension String {
     func isValidEmail() -> Bool {
@@ -15,4 +15,5 @@ extension String {
         let emailPred = NSPredicate(format: "SELF MATCHES %@", emailRegEx)
         return emailPred.evaluate(with: self)
     }
+    
 }

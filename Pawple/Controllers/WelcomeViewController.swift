@@ -29,7 +29,6 @@ class WelcomeViewController: UIViewController {
         
         welcomeText.text = "    Welcome to"
         Timer.scheduledTimer(withTimeInterval: 1.5, repeats: false) { (timer) in
-            print("timer: \(timer)")
             self.pawpleText.text = " Pawple "
         }
     }
@@ -41,22 +40,13 @@ extension WelcomeViewController: GIDSignInDelegate {
               withError error: Error!) {
       if let error = error {
         if (error as NSError).code == GIDSignInErrorCode.hasNoAuthInKeychain.rawValue {
-          print("The user has not signed in before or they have since signed out.")
+          alert(title: "The user has not signed in before or they have since signed out.", message: "")
         } else {
-          print("\(error.localizedDescription)")
+          alert(title: "Error signing in", message: error.localizedDescription)
         }
         return
       }
-      // Perform any operations on signed in user here.
-//      let userId = user.userID                  // For client-side use only
-//      let idToken = user.authentication.idToken // Safe to send to the server
-//      let fullName = user.profile.name
-//      let givenName = user.profile.givenName
-//      let familyName = user.profile.familyName
-//      let email = user.profile.email
-      // ...
         
-        print("Sign in with google, successful sign in")
         
         guard let authentication = user.authentication else { return }
         let credential = GoogleAuthProvider.credential(withIDToken: authentication.idToken, accessToken: authentication.accessToken)
@@ -91,15 +81,6 @@ extension WelcomeViewController: GIDSignInDelegate {
                     self.navigationController?.dismiss(animated: true, completion: nil)
                 }
             }
-//            print("Sign in with firebase")
-//            let user = Auth.auth().currentUser
-            
-            //from firebase
-//            print("userid:", user?.uid)
-//            print("name:", user?.displayName)
-//            print("photoURL:", user?.photoURL)
-//            print("email:", user?.email)
-          // User is signed in
         }
     }
     

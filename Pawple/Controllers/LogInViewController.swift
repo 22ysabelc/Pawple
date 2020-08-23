@@ -26,7 +26,6 @@ class LogInViewController: UIViewController {
                 if let e = error {
                     self.alert(title: "Error with email or password", message: e.localizedDescription)
                 } else {
-                    print("AuthResult \(String(describing: authResult))")
                     self.navigationController?.dismiss(animated: true)
                 }
             }

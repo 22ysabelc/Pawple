@@ -31,17 +31,6 @@ class ChatLogViewController: UIViewController, UITextFieldDelegate, UICollection
     
     }
     
-//  another way to move keyboard up and down. BUT keyboard doesn't link to textfield
-//    override var inputAccessoryView: UIView? {
-//        get {
-//            return containerView
-//        }
-//    }
-//
-//    override var canBecomeFirstResponder: Bool {
-//        return true
-//    }
-    
     var containerViewBottomAnchor: NSLayoutConstraint?
     
     func setUpInputComponents() {
@@ -71,7 +60,6 @@ class ChatLogViewController: UIViewController, UITextFieldDelegate, UICollection
     }
     
 //TODO: fix duration for going up
-//TODO: move this code to the extensions folder
     @objc func handleKeyboardWillShow(notification: NSNotification) {
         let keyboardFrame = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as AnyObject).cgRectValue
         let keyboardDuration = (notification.userInfo?[UIResponder.keyboardAnimationDurationUserInfoKey] as AnyObject).doubleValue

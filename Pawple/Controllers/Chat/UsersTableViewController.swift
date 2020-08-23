@@ -10,9 +10,8 @@ import UIKit
 import Firebase
 import FirebaseDatabase
 
-//TODO: userID in fetchUser(), add to dictionary
 class UsersTableViewController: UITableViewController {
-
+    
     let databaseRef = Database.database().reference()
     
     var users = [User]()
@@ -30,12 +29,8 @@ class UsersTableViewController: UITableViewController {
     
     func fetchUser() {
         databaseRef.child("users").observe(.childAdded) { (snapshot) in
-            if let dictionary = snapshot.value as? [String: String] {
-//TODO: put in model, return user, pass in dictionary
-                let user = User()
-                user.name = dictionary["name"]
-                user.email = dictionary["email"]
-                user.photoURL = dictionary["photoURL"]
+            if let dictionary = snapshot.value as? [String: AnyObject] {
+                let user = User().initWithDictionary(dictionary: dictionary)
                 user.uid = snapshot.key
                 self.users.append(user)
                 self.tableView.reloadData()
@@ -54,11 +49,11 @@ extension UsersTableViewController {
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
-
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.users.count
     }
-
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: UserTableViewCell = tableView.dequeueReusableCell(withIdentifier: "UserTableViewCell", for: indexPath) as! UserTableViewCell
         let user = self.users[indexPath.row]

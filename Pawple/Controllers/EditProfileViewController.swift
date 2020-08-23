@@ -101,16 +101,13 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
         }
         
         if let uploadData = userImage.image?.jpegData(compressionQuality: 0.2) {
-            // Get a reference to the storage service using the default Firebase App
             let storage = Storage.storage()
-            // Create a storage reference from our storage service
             let storageRef = storage.reference()
             let userID = Auth.auth().currentUser?.uid
             let spaceRef = storageRef.child(String(format: "ProfilePictures/%@.jpeg", userID!))
             
             spaceRef.putData(uploadData, metadata: nil) { (metadata, error) in
                 guard metadata != nil else {
-                    // Uh-oh, an error occurred!
                     self.activityIndicator.isHidden = true
                     return
                 }

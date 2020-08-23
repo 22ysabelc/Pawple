@@ -190,6 +190,7 @@
 			isa = PBXGroup;
 			children = (
 				AFB8E7B624E098EF00F05698 /* CommonFunctions.swift */,
+				AF9198C12496A96D000A0218 /* CustomImagePicker.swift */,
 				AF9198C42496AA7F000A0218 /* Extensions */,
 			);
 			path = Components;
@@ -201,7 +202,6 @@
 				AF9198C52496AAB3000A0218 /* String+extensions.swift */,
 				AF9198C72496ACB8000A0218 /* UIViewController+Alert.swift */,
 				AFAE27512452A85100A78E05 /* RoundButton.swift */,
-				AF9198C12496A96D000A0218 /* CustomImagePicker.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";

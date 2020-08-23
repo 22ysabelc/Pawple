@@ -10,7 +10,7 @@ import UIKit
 import Firebase
 
 class UserTableViewCell: UITableViewCell {
-
+    
     @IBOutlet weak var userImageView: UIImageView!
     @IBOutlet weak var name: UILabel!
     @IBOutlet weak var subtitle: UILabel!
@@ -23,12 +23,8 @@ class UserTableViewCell: UITableViewCell {
             if let toID = message?.toID {
                 let userRef = Database.database().reference().child("users").child(toID)
                 userRef.observeSingleEvent(of: .value) { (snapshot) in
-                    if let dictionary = snapshot.value as? [String: String] {
-//TODO: put in model, return user, pass in dictionary
-                        let user = User()
-                        user.name = dictionary["name"]
-                        user.email = dictionary["email"]
-                        user.photoURL = dictionary["photoURL"]
+                    if let dictionary = snapshot.value as? [String: AnyObject] {
+                        let user = User().initWithDictionary(dictionary: dictionary)
                         user.uid = snapshot.key
                         self.user = user
                         self.name.text = user.name
@@ -50,7 +46,7 @@ class UserTableViewCell: UITableViewCell {
         
         self.userImageView.layer.cornerRadius = self.userImageView.frame.height / 2
     }
-
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }
@@ -62,5 +58,5 @@ class UserTableViewCell: UITableViewCell {
         let photoURL: URL? = URL(string: user.photoURL ?? "")
         self.userImageView.sd_setImage(with: photoURL, placeholderImage: UIImage(named: "person.circle"))
     }
-
+    
 }

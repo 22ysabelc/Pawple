@@ -15,9 +15,8 @@ class CommonFunctions: NSObject {
         dateFormatter.timeStyle = DateFormatter.Style.medium
         dateFormatter.dateStyle = DateFormatter.Style.medium
         dateFormatter.timeZone = .current
-        let localDate = dateFormatter.string(from: date)
-        print(localDate)
-        
+//        let localDate = dateFormatter.string(from: date)
+
         var formattedString = ""
         
         let interval = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute], from: date, to: Date())

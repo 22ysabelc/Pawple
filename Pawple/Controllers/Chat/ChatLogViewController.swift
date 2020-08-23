@@ -80,7 +80,9 @@ class ChatLogViewController: UIViewController, UITextFieldDelegate, UICollection
     }
     
     @IBAction func sendPressed(_ sender: UIButton) {
-        saveMessages()
+        if inputTextField.text != "" {
+            saveMessages()
+        }
     }
     
     func saveMessages() {
@@ -97,6 +99,27 @@ class ChatLogViewController: UIViewController, UITextFieldDelegate, UICollection
                     self.alert(title: "Error updating database", message: error?.localizedDescription)
                     return
                 }
+                guard let userID = Auth.auth().currentUser?.uid else {
+                    return
+                }
+                guard let recipientUserID = self.user?.uid else {
+                    return
+                }
+                let userMessagesRef = databaseRef.child("user-messages")
+                let fromIDRef = userMessagesRef.child(userID)
+                let recipientIDRef = userMessagesRef.child(recipientUserID)
+                if let messageID = messagesRef.key {
+                    var dict = [String: Any]()
+                    dict[messageID] = 1
+                    fromIDRef.updateChildValues(dict) { (error, databaseReference) in
+                        if error != nil {
+                            self.alert(title: "Error updating database for user messages", message: error?.localizedDescription)
+                            return
+                        }
+                    }
+                    recipientIDRef.updateChildValues(dict)
+                }
+                
                 self.inputTextField.text = ""
             }
         }

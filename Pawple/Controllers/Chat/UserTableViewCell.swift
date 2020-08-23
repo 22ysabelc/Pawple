@@ -20,8 +20,12 @@ class UserTableViewCell: UITableViewCell {
     
     var message: Message? {
         didSet {
-            if let toID = message?.toID {
-                let userRef = Database.database().reference().child("users").child(toID)
+            if let toID = message?.toID, let fromID = message?.fromID {
+                var userID = toID
+                if Auth.auth().currentUser?.uid == toID {
+                    userID = fromID
+                }
+                let userRef = Database.database().reference().child("users").child(userID)
                 userRef.observeSingleEvent(of: .value) { (snapshot) in
                     if let dictionary = snapshot.value as? [String: AnyObject] {
                         let user = User().initWithDictionary(dictionary: dictionary)

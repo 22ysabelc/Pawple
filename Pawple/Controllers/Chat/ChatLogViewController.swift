@@ -9,11 +9,18 @@
 import UIKit
 import Firebase
 
-class ChatLogViewController: UIViewController, UITextFieldDelegate, UICollectionViewDelegateFlowLayout {
+class ChatLogViewController: UIViewController, UITextFieldDelegate {
     
-    var user: User? = nil
+    var user: User? {
+        didSet {
+            observeUserMessages()
+        }
+    }
+    var messages = [Message]()
+    var messagesDictionary = [String: Message]()
     
     @IBOutlet weak var inputTextField: UITextField!
+    @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var containerView: UIView!
     
     override func viewDidLoad() {
@@ -22,29 +29,57 @@ class ChatLogViewController: UIViewController, UITextFieldDelegate, UICollection
         tabBarController?.tabBar.isHidden = true
         
         self.title = user?.name
-        
+                
         setUpInputComponents()
         setUpKeyboardObservers()
         
-//        collectionview?.keyboardDismissMode = .interactive
+        collectionView.isScrollEnabled = true
+        collectionView.keyboardDismissMode = .interactive
         //  TODO: figure out how to move containerView up and down with the keyboard on drag
     
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+        scrollToBottom()
+    }
+    
+    private func scrollToBottom() {
+        let item = self.collectionView(self.collectionView, numberOfItemsInSection: 1) - 1
+        let lastItemIndex = NSIndexPath(item: item, section: 0)
+        self.collectionView.scrollToItem(at: lastItemIndex as IndexPath, at: .top, animated: true)
+    }
+    
+    func observeUserMessages() {
+        guard let uid = Auth.auth().currentUser?.uid else {
+            return
+        }
+        let dbRef = Database.database().reference()
+        let userMessagesRef = dbRef.child("user-messages").child(uid)
+        userMessagesRef.observe(.childAdded) { (snapshot) in
+            let messageID = snapshot.key
+            let messageRef = dbRef.child("messages").child(messageID)
+            messageRef.observe(.value) { (snapshot) in
+                if let dictionary = snapshot.value as? [String: AnyObject] {
+                    let message = Message().initWithDictionary(dictionary: dictionary)
+                    if message.chatPartnerId() == self.user?.uid {
+                        self.messages.append(message)
+                        
+                        DispatchQueue.main.async {
+                            self.collectionView.reloadData()
+                            self.scrollToBottom()
+                        }
+                    }
+                }
+            }
+        }
+    }
+        
     var containerViewBottomAnchor: NSLayoutConstraint?
     
     func setUpInputComponents() {
         containerViewBottomAnchor = containerView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
         containerViewBottomAnchor?.isActive = true
-        
-        let separatorLineView = UIView()
-        separatorLineView.backgroundColor = UIColor(named: "BrandPurple")
-        separatorLineView.translatesAutoresizingMaskIntoConstraints = false
-        containerView.addSubview(separatorLineView)
-        separatorLineView.leftAnchor.constraint(equalTo: containerView.leftAnchor).isActive = true
-        separatorLineView.topAnchor.constraint(equalTo: containerView.topAnchor).isActive = true
-        separatorLineView.widthAnchor.constraint(equalTo: containerView.widthAnchor).isActive = true
-        separatorLineView.heightAnchor.constraint(equalToConstant: 1).isActive = true
     }
     
     func setUpKeyboardObservers() {
@@ -68,6 +103,7 @@ class ChatLogViewController: UIViewController, UITextFieldDelegate, UICollection
         }
         UIView.animate(withDuration: keyboardDuration!) {
             self.view.layoutIfNeeded()
+            self.scrollToBottom()
         }
     }
     
@@ -119,9 +155,40 @@ class ChatLogViewController: UIViewController, UITextFieldDelegate, UICollection
                     }
                     recipientIDRef.updateChildValues(dict)
                 }
-                
                 self.inputTextField.text = ""
+//                self.scrollToBottom()
             }
         }
     }
+}
+
+extension ChatLogViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return self.messages.count
+    }
+    
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 1
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: view.frame.width, height: 60)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let message = messages[indexPath.row]
+        if message.fromID == Auth.auth().currentUser?.uid {
+            let cell: UserMessageCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "UserMessageCollectionViewCell", for: indexPath) as! UserMessageCollectionViewCell
+            cell.textView.text = message.text
+            return cell
+        } else {
+            let cell: ChatPartnerCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "ChatPartnerCollectionViewCell", for: indexPath) as! ChatPartnerCollectionViewCell
+            cell.textView.text = message.text
+            
+            let photoURL: URL? = URL(string: self.user?.photoURL ?? "")
+            cell.profileImage.sd_setImage(with: photoURL, placeholderImage: UIImage(named: "person.circle"))
+            return cell
+        }
+    }
+    
 }

@@ -22,7 +22,8 @@ class ChatListTableViewController: UITableViewController {
         super.viewWillAppear(true)
         tabBarController?.tabBar.isHidden = false
         
-        messages = []
+        messages.removeAll()
+        messagesDictionary.removeAll()
         tableView.reloadData()
         observeUserMessages()
     }
@@ -39,8 +40,8 @@ class ChatListTableViewController: UITableViewController {
             messageRef.observe(.value) { (snapshot) in
                 if let dictionary = snapshot.value as? [String: AnyObject] {
                     let message = Message().initWithDictionary(dictionary: dictionary)
-                    if let toID = message.toID {
-                        self.messagesDictionary[toID] = message
+                    if let chatPartnerId = message.chatPartnerId() {
+                        self.messagesDictionary[chatPartnerId] = message
                         self.messages = Array (self.messagesDictionary.values)
                         self.messages.sort { (message1, message2) -> Bool in
                             if let timestamp1 = message1.timestamp, let timestamp2 = message2.timestamp {
@@ -49,28 +50,10 @@ class ChatListTableViewController: UITableViewController {
                             return true
                         }
                     }
-                    self.tableView.reloadData()
-                }
-            }
-        }
-    }
-    
-    func observeMessages() {
-        let dbRef = Database.database().reference().child("messages")
-        dbRef.observe(.childAdded) { (snapshot) in
-            if let dictionary = snapshot.value as? [String: AnyObject] {
-                let message = Message().initWithDictionary(dictionary: dictionary)
-                if let toID = message.toID {
-                    self.messagesDictionary[toID] = message
-                    self.messages = Array (self.messagesDictionary.values)
-                    self.messages.sort { (message1, message2) -> Bool in
-                        if let timestamp1 = message1.timestamp, let timestamp2 = message2.timestamp {
-                            return timestamp1 > timestamp2
-                        }
-                        return true
+                    DispatchQueue.main.async {
+                        self.tableView.reloadData()
                     }
                 }
-                self.tableView.reloadData()
             }
         }
     }
@@ -96,7 +79,7 @@ extension ChatListTableViewController {
         let cell: UserTableViewCell = tableView.dequeueReusableCell(withIdentifier: "UserTableViewCell", for: indexPath) as! UserTableViewCell
         let message = self.messages[indexPath.row]
         
-        cell.message = message
+        cell.setUpCellWithMessage(message)
         
         return cell
     }

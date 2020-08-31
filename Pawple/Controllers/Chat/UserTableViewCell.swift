@@ -18,30 +18,26 @@ class UserTableViewCell: UITableViewCell {
     
     var user = User()
     
-    var message: Message? {
-        didSet {
-            if let toID = message?.toID, let fromID = message?.fromID {
-                var userID = toID
-                if Auth.auth().currentUser?.uid == toID {
-                    userID = fromID
-                }
-                let userRef = Database.database().reference().child("users").child(userID)
-                userRef.observeSingleEvent(of: .value) { (snapshot) in
-                    if let dictionary = snapshot.value as? [String: AnyObject] {
-                        let user = User().initWithDictionary(dictionary: dictionary)
-                        user.uid = snapshot.key
-                        self.user = user
-                        self.name.text = user.name
-                        
-                        let photoURL: URL? = URL(string: user.photoURL ?? "")
-                        self.userImageView.sd_setImage(with: photoURL, placeholderImage: UIImage(named: "person.circle"))
-                    }
+    var message: Message?
+    
+    func setUpCellWithMessage(_ message: Message) {
+        if let chatPartnerId = message.chatPartnerId() {
+            let userRef = Database.database().reference().child("users").child(chatPartnerId)
+            userRef.observeSingleEvent(of: .value) { (snapshot) in
+                if let dictionary = snapshot.value as? [String: AnyObject] {
+                    let user = User().initWithDictionary(dictionary: dictionary)
+                    user.uid = snapshot.key
+                    self.user = user
+                    self.name.text = user.name
+                    
+                    let photoURL: URL? = URL(string: user.photoURL ?? "")
+                    self.userImageView.sd_setImage(with: photoURL, placeholderImage: UIImage(named: "person.circle"))
                 }
             }
-            self.subtitle.text = message?.text
-            if let timestamp = message?.timestamp {
-                self.timestamp.text = CommonFunctions.getTimeStamp(timestamp: timestamp)
-            }
+        }
+        self.subtitle.text = message.text
+        if let timestamp = message.timestamp {
+            self.timestamp.text = CommonFunctions.getTimeStamp(timestamp: timestamp)
         }
     }
     

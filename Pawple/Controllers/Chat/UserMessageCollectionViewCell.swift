@@ -12,7 +12,7 @@ class UserMessageCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var textView: UITextView! {
         didSet {
-            self.textView.contentInset = UIEdgeInsets(top: 0, left: 5, bottom: 0, right: 0)
+            self.textView.contentInset = UIEdgeInsets(top: 0, left: 4, bottom: 0, right: 0)
         }
     }
     

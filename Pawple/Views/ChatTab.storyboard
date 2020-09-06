@@ -289,14 +289,14 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2Ln-kY-s8g">
-                                                    <rect key="frame" x="120" y="5" width="272" height="40"/>
+                                                    <rect key="frame" x="98" y="5" width="294" height="40"/>
                                                     <color key="backgroundColor" name="BrandPurple"/>
                                                 </view>
                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QYy-1i-9mT">
-                                                    <rect key="frame" x="122" y="5" width="260" height="40"/>
+                                                    <rect key="frame" x="102" y="5" width="280" height="40"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" relation="lessThanOrEqual" constant="260" id="6IT-za-pff"/>
+                                                        <constraint firstAttribute="width" relation="lessThanOrEqual" constant="280" id="6IT-za-pff"/>
                                                     </constraints>
                                                     <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -306,7 +306,7 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstAttribute="trailing" secondItem="QYy-1i-9mT" secondAttribute="trailing" constant="32" id="5WO-Og-vG4"/>
-                                                <constraint firstItem="2Ln-kY-s8g" firstAttribute="width" secondItem="QYy-1i-9mT" secondAttribute="width" multiplier="1.03" constant="4.1999999999999886" id="8fB-5D-7hG"/>
+                                                <constraint firstItem="2Ln-kY-s8g" firstAttribute="width" secondItem="QYy-1i-9mT" secondAttribute="width" multiplier="1.035" constant="4.2000000000000002" id="8fB-5D-7hG"/>
                                                 <constraint firstItem="QYy-1i-9mT" firstAttribute="top" secondItem="6Aj-ON-35m" secondAttribute="top" constant="5" id="CAf-Yb-ewS"/>
                                                 <constraint firstAttribute="bottom" secondItem="2Ln-kY-s8g" secondAttribute="bottom" constant="5" id="jNQ-vd-Wsc"/>
                                                 <constraint firstAttribute="bottom" secondItem="QYy-1i-9mT" secondAttribute="bottom" constant="5" id="jm9-bd-g5v"/>

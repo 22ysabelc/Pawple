@@ -46,6 +46,7 @@ class ProfileViewController: UIViewController {
     func handleLogout() {
         do {
             try Auth.auth().signOut()
+            NotificationCenter.default.post(name: Notification.Name("userSignedOutEvent"), object: nil)
             let storyboard = UIStoryboard(name: "Welcome", bundle: nil)
             let login = storyboard.instantiateViewController(withIdentifier: "loginNC")
             login.modalPresentationStyle = .fullScreen

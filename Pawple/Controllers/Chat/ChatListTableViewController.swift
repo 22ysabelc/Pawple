@@ -16,16 +16,21 @@ class ChatListTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(userSignedOut), name: Notification.Name(rawValue: "userSignedOutEvent"), object: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         tabBarController?.tabBar.isHidden = false
         
+        observeUserMessages()
+    }
+    
+    @objc func userSignedOut(notification: NSNotification) {
         messages.removeAll()
         messagesDictionary.removeAll()
         tableView.reloadData()
-        observeUserMessages()
     }
     
     func observeUserMessages() {

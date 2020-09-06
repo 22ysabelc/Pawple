@@ -156,7 +156,6 @@ class ChatLogViewController: UIViewController, UITextFieldDelegate {
                     recipientIDRef.updateChildValues(dict)
                 }
                 self.inputTextField.text = ""
-//                self.scrollToBottom()
             }
         }
     }

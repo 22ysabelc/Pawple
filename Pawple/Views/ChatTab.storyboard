@@ -289,7 +289,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2Ln-kY-s8g">
-                                                    <rect key="frame" x="108" y="5" width="294" height="40"/>
+                                                    <rect key="frame" x="107" y="5" width="295" height="40"/>
                                                     <color key="backgroundColor" name="BrandPurple"/>
                                                 </view>
                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QYy-1i-9mT">
@@ -306,7 +306,7 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstAttribute="trailing" secondItem="QYy-1i-9mT" secondAttribute="trailing" constant="22" id="5WO-Og-vG4"/>
-                                                <constraint firstItem="2Ln-kY-s8g" firstAttribute="width" secondItem="QYy-1i-9mT" secondAttribute="width" multiplier="1.01" constant="11" id="8fB-5D-7hG"/>
+                                                <constraint firstItem="2Ln-kY-s8g" firstAttribute="width" secondItem="QYy-1i-9mT" secondAttribute="width" multiplier="1.01" constant="12" id="8fB-5D-7hG"/>
                                                 <constraint firstItem="QYy-1i-9mT" firstAttribute="top" secondItem="6Aj-ON-35m" secondAttribute="top" constant="5" id="CAf-Yb-ewS"/>
                                                 <constraint firstAttribute="bottom" secondItem="2Ln-kY-s8g" secondAttribute="bottom" constant="5" id="jNQ-vd-Wsc"/>
                                                 <constraint firstAttribute="bottom" secondItem="QYy-1i-9mT" secondAttribute="bottom" constant="5" id="jm9-bd-g5v"/>
@@ -328,7 +328,7 @@
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qpo-Yb-2n5">
-                                                    <rect key="frame" x="48" y="5" width="273.5" height="40"/>
+                                                    <rect key="frame" x="48" y="5" width="276" height="40"/>
                                                     <color key="backgroundColor" white="0.82965632335680739" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </view>
                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tjQ-sA-Gvo">
@@ -361,7 +361,7 @@
                                                 <constraint firstAttribute="bottom" secondItem="tjQ-sA-Gvo" secondAttribute="bottom" constant="5" id="pLP-4g-z6Q"/>
                                                 <constraint firstItem="Qpo-Yb-2n5" firstAttribute="top" secondItem="8fV-14-rDo" secondAttribute="top" constant="5" id="r2H-MJ-zDh"/>
                                                 <constraint firstItem="Qpo-Yb-2n5" firstAttribute="leading" secondItem="maW-pf-YPA" secondAttribute="trailing" constant="8" id="u1C-Pi-Xoi"/>
-                                                <constraint firstItem="Qpo-Yb-2n5" firstAttribute="width" secondItem="tjQ-sA-Gvo" secondAttribute="width" multiplier="1.01" constant="11" id="zSg-1x-yt8"/>
+                                                <constraint firstItem="Qpo-Yb-2n5" firstAttribute="width" secondItem="tjQ-sA-Gvo" secondAttribute="width" multiplier="1.01" constant="13.399999999999977" id="zSg-1x-yt8"/>
                                             </constraints>
                                         </collectionViewCellContentView>
                                         <size key="customSize" width="414" height="50"/>

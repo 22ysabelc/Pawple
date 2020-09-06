@@ -10,11 +10,16 @@ import UIKit
 
 class ChatPartnerCollectionViewCell: UICollectionViewCell {
     
-    @IBOutlet weak var textView: UITextView!
+    @IBOutlet weak var textView: UITextView! {
+        didSet {
+            self.textView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 4)
+        }
+    }
+    
     @IBOutlet weak var viewBubble: UIView! {
         didSet {
             //TODO: adjust to liking
-            self.viewBubble.layer.cornerRadius = 15
+            self.viewBubble.layer.cornerRadius = 16
         }
     }
     @IBOutlet weak var profileImage: UIImageView! {

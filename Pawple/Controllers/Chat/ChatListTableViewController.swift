@@ -44,7 +44,7 @@ class ChatListTableViewController: UITableViewController {
             let messageRef = dbRef.child("messages").child(messageID)
             messageRef.observe(.value) { (snapshot) in
                 if let dictionary = snapshot.value as? [String: AnyObject] {
-                    let message = Message().initWithDictionary(dictionary: dictionary)
+                    let message = Message().initWithDictionary(dictionary: dictionary, messageID: messageID)
                     if let chatPartnerId = message.chatPartnerId() {
                         self.messagesDictionary[chatPartnerId] = message
                         self.messages = Array (self.messagesDictionary.values)
@@ -91,6 +91,10 @@ extension ChatListTableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath) as? UserTableViewCell
+        
+        let message = self.messages[indexPath.row]
+        message.updateMessageToRead()
+        
         performSegue(withIdentifier: "ChatLogVC", sender: cell?.user)
     }
 }

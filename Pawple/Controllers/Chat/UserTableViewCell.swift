@@ -15,6 +15,7 @@ class UserTableViewCell: UITableViewCell {
     @IBOutlet weak var name: UILabel!
     @IBOutlet weak var subtitle: UILabel!
     @IBOutlet weak var timestamp: UILabel!
+    @IBOutlet weak var isRead: UIImageView!
     
     var user = User()
     
@@ -36,6 +37,7 @@ class UserTableViewCell: UITableViewCell {
             }
         }
         self.subtitle.text = message.text
+        self.isRead.isHidden = message.isRead ?? true
         if let timestamp = message.timestamp {
             self.timestamp.text = CommonFunctions.getTimeStamp(timestamp: timestamp)
         }
@@ -58,5 +60,4 @@ class UserTableViewCell: UITableViewCell {
         let photoURL: URL? = URL(string: user.photoURL ?? "")
         self.userImageView.sd_setImage(with: photoURL, placeholderImage: UIImage(named: "person.circle"))
     }
-    
 }

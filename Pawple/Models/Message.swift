@@ -14,16 +14,30 @@ class Message: NSObject {
     var toID: String?
     var text: String?
     var timestamp: Int?
+    var isRead: Bool?
+    var messageID: String?
     
-    func initWithDictionary(dictionary: [String: AnyObject]) -> Message {
+    func initWithDictionary(dictionary: [String: AnyObject], messageID: String) -> Message {
         self.fromID = dictionary["fromID"] as? String
         self.toID = dictionary["toID"] as? String
         self.text = dictionary["text"] as? String
         self.timestamp = dictionary["timestamp"] as? Int
+        self.isRead = dictionary["isRead"] as? Bool
+        self.messageID = messageID
         return self
     }
     
     func chatPartnerId() -> String? {
         return fromID == Auth.auth().currentUser?.uid ? toID : fromID
+    }
+    
+    func updateMessageToRead() {
+        let dbRef = Database.database().reference()
+        var dictionary = [String: Any]()
+        if let msgID = self.messageID {
+            let messagesRef = dbRef.child("messages").child(msgID)
+            dictionary["isRead"] = true
+            messagesRef.updateChildValues(dictionary)
+        }
     }
 }

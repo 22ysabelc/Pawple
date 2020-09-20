@@ -61,12 +61,15 @@ class ChatLogViewController: UIViewController, UITextFieldDelegate {
             let messageRef = dbRef.child("messages").child(messageID)
             messageRef.observe(.value) { (snapshot) in
                 if let dictionary = snapshot.value as? [String: AnyObject] {
-                    let message = Message().initWithDictionary(dictionary: dictionary)
+                    let message = Message().initWithDictionary(dictionary: dictionary, messageID: messageID)
                     if message.chatPartnerId() == self.user?.uid {
-                        self.messages.append(message)
-                        
+                        if self.messages.last?.messageID != message.messageID {
+                            self.messages.append(message)
+                        }
                         DispatchQueue.main.async {
                             self.collectionView.reloadData()
+                            let message = self.messages.last
+                            message?.updateMessageToRead()
                             self.scrollToBottom()
                         }
                     }
@@ -130,6 +133,7 @@ class ChatLogViewController: UIViewController, UITextFieldDelegate {
             dictionary["toID"] = self.user?.uid
             dictionary["text"] = message
             dictionary["timestamp"] = Int(Date().timeIntervalSince1970)
+            dictionary["isRead"] = false
             messagesRef.updateChildValues(dictionary) { (error, databaseReference) in
                 if error != nil {
                     self.alert(title: "Error updating database", message: error?.localizedDescription)

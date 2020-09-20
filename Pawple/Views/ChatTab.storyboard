@@ -94,6 +94,14 @@
                                                 <constraint firstAttribute="height" constant="15.5" id="JSL-5Q-yRb"/>
                                             </constraints>
                                         </imageView>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bubble.right.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="AeX-fg-h3f">
+                                            <rect key="frame" x="370" y="28" width="15" height="15"/>
+                                            <color key="tintColor" name="BrandPurple"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="16" id="TY0-lb-j6P"/>
+                                                <constraint firstAttribute="width" constant="15" id="vG0-Qm-K8h"/>
+                                            </constraints>
+                                        </imageView>
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="L2G-ul-xoP" firstAttribute="top" secondItem="ZSi-Qd-ebY" secondAttribute="top" constant="8" id="1zs-nq-XWZ"/>
@@ -101,9 +109,11 @@
                                         <constraint firstAttribute="trailing" secondItem="L2G-ul-xoP" secondAttribute="trailing" constant="7" id="GMx-Kh-tRr"/>
                                         <constraint firstAttribute="trailing" secondItem="3KJ-z3-Gre" secondAttribute="trailing" constant="20" id="H73-qV-QSP"/>
                                         <constraint firstAttribute="bottom" secondItem="Gld-Wi-oqH" secondAttribute="bottom" constant="8" id="HCN-7d-IZM"/>
+                                        <constraint firstAttribute="trailing" secondItem="AeX-fg-h3f" secondAttribute="trailing" constant="29" id="MB8-9o-WDU"/>
                                         <constraint firstItem="R1t-IC-9a4" firstAttribute="top" secondItem="ZSi-Qd-ebY" secondAttribute="top" constant="10" id="YOl-GH-W6o"/>
                                         <constraint firstItem="L2G-ul-xoP" firstAttribute="leading" secondItem="3KJ-z3-Gre" secondAttribute="trailing" constant="6" id="Yln-Px-AGb"/>
                                         <constraint firstItem="3KJ-z3-Gre" firstAttribute="centerY" secondItem="ZSi-Qd-ebY" secondAttribute="centerY" constant="-16.5" id="aPS-Qb-vNo"/>
+                                        <constraint firstItem="AeX-fg-h3f" firstAttribute="centerY" secondItem="ZSi-Qd-ebY" secondAttribute="centerY" id="bFB-t6-NG8"/>
                                         <constraint firstItem="R1t-IC-9a4" firstAttribute="leading" secondItem="EAU-Dd-YKj" secondAttribute="trailing" constant="31" id="i4g-Sb-duR"/>
                                         <constraint firstAttribute="trailing" secondItem="Gld-Wi-oqH" secondAttribute="trailing" constant="20" id="lEG-kE-2Ip"/>
                                         <constraint firstItem="EAU-Dd-YKj" firstAttribute="centerY" secondItem="ZSi-Qd-ebY" secondAttribute="centerY" id="lah-vv-Azx"/>
@@ -112,6 +122,7 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="isRead" destination="AeX-fg-h3f" id="83m-Y7-Sja"/>
                                     <outlet property="name" destination="R1t-IC-9a4" id="9ms-L4-wWt"/>
                                     <outlet property="subtitle" destination="Gld-Wi-oqH" id="qPf-XP-Z4c"/>
                                     <outlet property="timestamp" destination="3KJ-z3-Gre" id="bXO-S9-czy"/>
@@ -407,6 +418,7 @@
         <segue reference="jW2-uW-c0F"/>
     </inferredMetricsTieBreakers>
     <resources>
+        <image name="bubble.right.fill" catalog="system" width="128" height="110"/>
         <image name="chevron.right" catalog="system" width="96" height="128"/>
         <image name="message.fill" catalog="system" width="128" height="113"/>
         <image name="person.circle" catalog="system" width="128" height="121"/>

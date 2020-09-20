@@ -29,14 +29,14 @@ class ChatLogViewController: UIViewController, UITextFieldDelegate {
         tabBarController?.tabBar.isHidden = true
         
         self.title = user?.name
-                
+        
         setUpInputComponents()
         setUpKeyboardObservers()
         
         collectionView.isScrollEnabled = true
         collectionView.keyboardDismissMode = .interactive
         //  TODO: figure out how to move containerView up and down with the keyboard on drag
-    
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -77,7 +77,7 @@ class ChatLogViewController: UIViewController, UITextFieldDelegate {
             }
         }
     }
-        
+    
     var containerViewBottomAnchor: NSLayoutConstraint?
     
     func setUpInputComponents() {
@@ -97,7 +97,7 @@ class ChatLogViewController: UIViewController, UITextFieldDelegate {
         NotificationCenter.default.removeObserver(self)
     }
     
-//TODO: fix duration for going up
+    //TODO: fix duration for going up
     @objc func handleKeyboardWillShow(notification: NSNotification) {
         let keyboardFrame = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as AnyObject).cgRectValue
         let keyboardDuration = (notification.userInfo?[UIResponder.keyboardAnimationDurationUserInfoKey] as AnyObject).doubleValue
@@ -188,9 +188,20 @@ extension ChatLogViewController: UICollectionViewDelegate, UICollectionViewDataS
             let cell: ChatPartnerCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "ChatPartnerCollectionViewCell", for: indexPath) as! ChatPartnerCollectionViewCell
             cell.textView.text = message.text
             
+            let index = indexPath.row
+            cell.profileImage.isHidden = false
+            if index > 0 {
+                let fromID = messages[index-1].fromID
+                if fromID == message.chatPartnerId() {
+                    cell.profileImage.isHidden = true
+                }
+            }
+            
             let photoURL: URL? = URL(string: self.user?.photoURL ?? "")
             cell.profileImage.sd_setImage(with: photoURL, placeholderImage: UIImage(named: "person.circle"))
+            
             return cell
+            
         }
     }
     

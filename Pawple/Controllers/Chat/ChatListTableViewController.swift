@@ -68,7 +68,6 @@ class ChatListTableViewController: UITableViewController {
             objVC.user = sender as? User
         }
     }
-    
 }
 
 extension ChatListTableViewController {
@@ -96,5 +95,14 @@ extension ChatListTableViewController {
         message.updateMessageToRead()
         
         performSegue(withIdentifier: "ChatLogVC", sender: cell?.user)
+    }
+    
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            let message = messages[indexPath.row]
+            message.deleteMessage()
+            messages.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .fade)
+        }
     }
 }

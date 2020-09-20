@@ -40,4 +40,12 @@ class Message: NSObject {
             messagesRef.updateChildValues(dictionary)
         }
     }
+    
+    func deleteMessage() {
+        let dbRef = Database.database().reference()
+        if let msgID = self.messageID {
+            let messageRef = dbRef.child("messages").child(msgID)
+            messageRef.removeValue()
+        }
+    }
 }

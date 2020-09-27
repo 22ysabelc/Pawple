@@ -259,7 +259,7 @@
                                         </connections>
                                     </button>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Type message..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tVI-Jm-hv9">
-                                        <rect key="frame" x="20" y="10" width="320" height="40"/>
+                                        <rect key="frame" x="50" y="10" width="290" height="40"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="GeQ-Ce-7Tk"/>
@@ -268,16 +268,30 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cTn-N7-wOU">
+                                        <rect key="frame" x="7" y="10" width="40" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="40" id="Bro-aV-GTC"/>
+                                            <constraint firstAttribute="height" constant="40" id="q6q-w2-vc5"/>
+                                        </constraints>
+                                        <color key="tintColor" name="BrandPurple"/>
+                                        <state key="normal" image="photo" catalog="system"/>
+                                        <connections>
+                                            <action selector="uploadPhotoButton:" destination="6wI-5f-Lsv" eventType="touchUpInside" id="gAf-6F-2DB"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="DIO-ob-wcg"/>
                                     <constraint firstAttribute="trailing" secondItem="FSI-38-GIP" secondAttribute="trailing" constant="18" id="Pqd-eP-73I"/>
+                                    <constraint firstItem="cTn-N7-wOU" firstAttribute="centerY" secondItem="Ttn-av-DXu" secondAttribute="centerY" id="RM5-dq-H60"/>
                                     <constraint firstItem="tVI-Jm-hv9" firstAttribute="centerY" secondItem="Ttn-av-DXu" secondAttribute="centerY" id="S4X-Br-gtw"/>
                                     <constraint firstAttribute="trailing" secondItem="hNC-7n-CFA" secondAttribute="trailing" id="TfD-xg-Z5M"/>
+                                    <constraint firstItem="cTn-N7-wOU" firstAttribute="leading" secondItem="Ttn-av-DXu" secondAttribute="leading" constant="7" id="UaL-h5-bTY"/>
                                     <constraint firstItem="hNC-7n-CFA" firstAttribute="top" secondItem="Ttn-av-DXu" secondAttribute="top" id="X1s-u7-IF3"/>
                                     <constraint firstItem="hNC-7n-CFA" firstAttribute="leading" secondItem="Ttn-av-DXu" secondAttribute="leading" id="ffE-Kk-Gsz"/>
-                                    <constraint firstItem="tVI-Jm-hv9" firstAttribute="leading" secondItem="Ttn-av-DXu" secondAttribute="leading" constant="20" id="qS4-Gl-tMg"/>
+                                    <constraint firstItem="tVI-Jm-hv9" firstAttribute="leading" secondItem="Ttn-av-DXu" secondAttribute="leading" constant="50" id="qS4-Gl-tMg"/>
                                     <constraint firstItem="FSI-38-GIP" firstAttribute="leading" secondItem="tVI-Jm-hv9" secondAttribute="trailing" constant="16" id="rAm-Cz-ErD"/>
                                     <constraint firstItem="FSI-38-GIP" firstAttribute="centerY" secondItem="Ttn-av-DXu" secondAttribute="centerY" id="toG-zs-bf4"/>
                                 </constraints>
@@ -423,6 +437,7 @@
         <image name="chevron.right" catalog="system" width="96" height="128"/>
         <image name="message.fill" catalog="system" width="128" height="113"/>
         <image name="person.circle" catalog="system" width="128" height="121"/>
+        <image name="photo" catalog="system" width="128" height="93"/>
         <image name="square.and.pencil" catalog="system" width="128" height="118"/>
         <namedColor name="BrandPurple">
             <color red="0.67500001192092896" green="0.43500000238418579" blue="0.9179999828338623" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

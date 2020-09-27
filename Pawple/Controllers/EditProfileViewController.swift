@@ -71,24 +71,7 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
     }
     
     @IBAction func editProfileImageAction(_ sender: UITapGestureRecognizer) {
-        let alert = UIAlertController(title: "Camera or Photo Library?", message: "", preferredStyle: .alert)
-        let camera = UIAlertAction(title: "Camera", style: .default) { _ in
-            if UIImagePickerController.isSourceTypeAvailable(.camera) {
-                self.present(self.imagePicker, animated: true, completion: nil)
-            } else {
-                self.alert(title: "Camera is not available", message: "")
-            }
-        }
-        let photoLibrary = UIAlertAction(title: "Photo Library", style: .default) { _ in
-            if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {
-                self.present(self.imagePicker, animated: true, completion: nil)
-            } else {
-                self.alert(title: "Photo Library is not available", message: "")
-            }
-        }
-        alert.addAction(camera)
-        alert.addAction(photoLibrary)
-        self.present(alert, animated: true, completion: nil)
+        CommonFunctions.imagePicker(objVC: self, picker: imagePicker)
     }
     
     
@@ -101,27 +84,25 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
         }
         
         if let uploadData = userImage.image?.jpegData(compressionQuality: 0.2) {
-            let storage = Storage.storage()
-            let storageRef = storage.reference()
-            let userID = Auth.auth().currentUser?.uid
-            let spaceRef = storageRef.child(String(format: "ProfilePictures/%@.jpeg", userID!))
-            
-            spaceRef.putData(uploadData, metadata: nil) { (metadata, error) in
-                guard metadata != nil else {
-                    self.activityIndicator.isHidden = true
-                    return
-                }
-                spaceRef.downloadURL { (url, error) in
-                    guard let downloadURL = url else {
+            let storageRef = Storage.storage().reference()
+            if let userID = Auth.auth().currentUser?.uid {
+                let spaceRef = storageRef.child(String(format: "ProfilePictures/%@.jpeg", userID))
+                
+                spaceRef.putData(uploadData, metadata: nil) { (metadata, error) in
+                    guard metadata != nil else {
                         self.activityIndicator.isHidden = true
                         return
                     }
-                    self.updateProfileWithName(name: username, photoURL: downloadURL)
+                    spaceRef.downloadURL { (url, error) in
+                        guard let downloadURL = url else {
+                            self.activityIndicator.isHidden = true
+                            return
+                        }
+                        self.updateProfileWithName(name: username, photoURL: downloadURL)
+                    }
                 }
             }
-            
         }
-        
     }
     
     private func updateProfileWithName(name: String, photoURL: URL) {

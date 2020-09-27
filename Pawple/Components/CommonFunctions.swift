@@ -57,4 +57,29 @@ class CommonFunctions: NSObject {
         
         return formattedString
     }
+    
+    class func imagePicker(objVC: UIViewController, picker: UIImagePickerController) {
+        let alert = UIAlertController(title: "Camera or Photo Library?", message: "", preferredStyle: .alert)
+        let camera = UIAlertAction(title: "Camera", style: .default) { _ in
+            if UIImagePickerController.isSourceTypeAvailable(.camera) {
+                objVC.present(picker, animated: true, completion: nil)
+            } else {
+                objVC.alert(title: "Camera is not available", message: "")
+            }
+        }
+        let photoLibrary = UIAlertAction(title: "Photo Library", style: .default) { _ in
+            if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {
+                objVC.present(picker, animated: true, completion: nil)
+            } else {
+                objVC.alert(title: "Photo Library is not available", message: "")
+            }
+        }
+        let cancel = UIAlertAction(title: "Cancel", style: .cancel) { (action) in
+            return
+        }
+        alert.addAction(camera)
+        alert.addAction(photoLibrary)
+        alert.addAction(cancel)
+        objVC.present(alert, animated: true, completion: nil)
+    }
 }

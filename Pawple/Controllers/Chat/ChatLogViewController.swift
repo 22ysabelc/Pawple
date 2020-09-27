@@ -9,7 +9,7 @@
 import UIKit
 import Firebase
 
-class ChatLogViewController: UIViewController, UITextFieldDelegate {
+class ChatLogViewController: UIViewController, UITextFieldDelegate, UINavigationControllerDelegate {
     
     var user: User? {
         didSet {
@@ -37,6 +37,8 @@ class ChatLogViewController: UIViewController, UITextFieldDelegate {
         collectionView.keyboardDismissMode = .interactive
         //  TODO: figure out how to move containerView up and down with the keyboard on drag
         
+        imagePicker.delegate = self
+        imagePicker.allowsEditing = true
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -161,6 +163,40 @@ class ChatLogViewController: UIViewController, UITextFieldDelegate {
                 self.inputTextField.text = ""
             }
         }
+    }
+    
+    let imagePicker = UIImagePickerController()
+
+    @IBAction func uploadPhotoButton(_ sender: UIButton) {
+        CommonFunctions.imagePicker(objVC: self, picker: imagePicker)
+    }
+}
+
+extension ChatLogViewController: UIImagePickerControllerDelegate {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo
+        info: [UIImagePickerController.InfoKey: Any]) {
+        
+        let image: UIImage = (info[UIImagePickerController.InfoKey.originalImage] as? UIImage)!
+        
+        picker.dismiss(animated: false, completion: { () -> Void in
+            if let uploadData = image.jpegData(compressionQuality: 0.2) {
+                let storageRef = Storage.storage().reference()
+                let imageName = NSUUID().uuidString
+                let spaceRef = storageRef.child(String(format: "MessageImages/%@.jpeg", imageName))
+                
+                spaceRef.putData(uploadData, metadata: nil) { (metadata, error) in
+                    guard metadata != nil else {
+                        return
+                    }
+                    spaceRef.downloadURL { (url, error) in
+                        guard let downloadURL = url else {
+                            return
+                        }
+                        print(downloadURL.absoluteString)
+                    }
+                }
+            }
+        })
     }
 }
 

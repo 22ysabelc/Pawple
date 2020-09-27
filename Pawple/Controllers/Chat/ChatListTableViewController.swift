@@ -47,17 +47,8 @@ class ChatListTableViewController: UITableViewController {
                         let message = Message().initWithDictionary(dictionary: dictionary, messageID: snapshot.key)
                         if let chatPartnerId = message.chatPartnerId() {
                             self.messagesDictionary[chatPartnerId] = message
-                            self.messages = Array (self.messagesDictionary.values)
-                            self.messages.sort { (message1, message2) -> Bool in
-                                if let timestamp1 = message1.timestamp, let timestamp2 = message2.timestamp {
-                                    return timestamp1 > timestamp2
-                                }
-                                return true
-                            }
                         }
-                        DispatchQueue.main.async {
-                            self.tableView.reloadData()
-                        }
+                        self.handleTableViewReload()
                     }
                 }
             }
@@ -67,6 +58,19 @@ class ChatListTableViewController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let objVC = segue.destination as? ChatLogViewController {
             objVC.user = sender as? User
+        }
+    }
+    
+    private func handleTableViewReload() {
+        self.messages = Array (self.messagesDictionary.values)
+        self.messages.sort { (message1, message2) -> Bool in
+            if let timestamp1 = message1.timestamp, let timestamp2 = message2.timestamp {
+                return timestamp1 > timestamp2
+            }
+            return true
+        }
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
         }
     }
 }
@@ -100,10 +104,22 @@ extension ChatListTableViewController {
     
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            let message = messages[indexPath.row]
-            message.deleteMessage()
-            messages.remove(at: indexPath.row)
-            tableView.deleteRows(at: [indexPath], with: .fade)
+            if let uid = Auth.auth().currentUser?.uid {
+                let message = messages[indexPath.row]
+                if let chatPartnerId = message.chatPartnerId() {
+                    Database.database().reference().child("user-messages").child(uid).child(chatPartnerId).removeValue { (error, dbReference) in
+                        if error != nil {
+                            self.alert(title: "Error", message: "Failed to delete chat")
+                            return
+                        }
+                        self.messagesDictionary.removeValue(forKey: chatPartnerId)
+                        self.messages.remove(at: indexPath.row)
+                        DispatchQueue.main.async {
+                            self.tableView.deleteRows(at: [indexPath], with: .top)
+                        }
+                    }
+                }
+            }
         }
     }
 }

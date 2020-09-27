@@ -40,23 +40,24 @@ class ChatListTableViewController: UITableViewController {
         let dbRef = Database.database().reference()
         let userMessagesRef = dbRef.child("user-messages").child(uid)
         userMessagesRef.observe(.childAdded) { (snapshot) in
-            let messageID = snapshot.key
-            let messageRef = dbRef.child("messages").child(messageID)
-            messageRef.observe(.value) { (snapshot) in
-                if let dictionary = snapshot.value as? [String: AnyObject] {
-                    let message = Message().initWithDictionary(dictionary: dictionary, messageID: messageID)
-                    if let chatPartnerId = message.chatPartnerId() {
-                        self.messagesDictionary[chatPartnerId] = message
-                        self.messages = Array (self.messagesDictionary.values)
-                        self.messages.sort { (message1, message2) -> Bool in
-                            if let timestamp1 = message1.timestamp, let timestamp2 = message2.timestamp {
-                                return timestamp1 > timestamp2
+            let recipientUID = snapshot.key
+            userMessagesRef.child(recipientUID).observe(.childAdded) { (snapshot) in
+                dbRef.child("messages").child(snapshot.key).observe(.value) { (snapshot) in
+                    if let dictionary = snapshot.value as? [String: AnyObject] {
+                        let message = Message().initWithDictionary(dictionary: dictionary, messageID: snapshot.key)
+                        if let chatPartnerId = message.chatPartnerId() {
+                            self.messagesDictionary[chatPartnerId] = message
+                            self.messages = Array (self.messagesDictionary.values)
+                            self.messages.sort { (message1, message2) -> Bool in
+                                if let timestamp1 = message1.timestamp, let timestamp2 = message2.timestamp {
+                                    return timestamp1 > timestamp2
+                                }
+                                return true
                             }
-                            return true
                         }
-                    }
-                    DispatchQueue.main.async {
-                        self.tableView.reloadData()
+                        DispatchQueue.main.async {
+                            self.tableView.reloadData()
+                        }
                     }
                 }
             }

@@ -51,11 +51,11 @@ class ChatLogViewController: UIViewController, UITextFieldDelegate {
     }
     
     func observeUserMessages() {
-        guard let uid = Auth.auth().currentUser?.uid else {
+        guard let uid = Auth.auth().currentUser?.uid, let partnerUID = self.user?.uid else {
             return
         }
         let dbRef = Database.database().reference()
-        let userMessagesRef = dbRef.child("user-messages").child(uid)
+        let userMessagesRef = dbRef.child("user-messages").child(uid).child(partnerUID)
         userMessagesRef.observe(.childAdded) { (snapshot) in
             let messageID = snapshot.key
             let messageRef = dbRef.child("messages").child(messageID)
@@ -66,10 +66,9 @@ class ChatLogViewController: UIViewController, UITextFieldDelegate {
                         if self.messages.last?.messageID != message.messageID {
                             self.messages.append(message)
                         }
+                        self.messages.last?.updateMessageToRead()
                         DispatchQueue.main.async {
                             self.collectionView.reloadData()
-                            let message = self.messages.last
-                            message?.updateMessageToRead()
                             self.scrollToBottom()
                         }
                     }
@@ -146,8 +145,8 @@ class ChatLogViewController: UIViewController, UITextFieldDelegate {
                     return
                 }
                 let userMessagesRef = databaseRef.child("user-messages")
-                let fromIDRef = userMessagesRef.child(userID)
-                let recipientIDRef = userMessagesRef.child(recipientUserID)
+                let fromIDRef = userMessagesRef.child(userID).child(recipientUserID)
+                let recipientIDRef = userMessagesRef.child(recipientUserID).child(userID)
                 if let messageID = messagesRef.key {
                     var dict = [String: Any]()
                     dict[messageID] = 1

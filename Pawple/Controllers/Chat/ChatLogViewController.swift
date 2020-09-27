@@ -121,47 +121,15 @@ class ChatLogViewController: UIViewController, UITextFieldDelegate, UINavigation
     
     @IBAction func sendPressed(_ sender: UIButton) {
         if inputTextField.text != "" {
-            saveMessages()
+            sendTextMessage()
         }
     }
     
-    func saveMessages() {
-        let databaseRef = Database.database().reference()
-        let messagesRef = databaseRef.child("messages").childByAutoId()
+    func sendTextMessage() {
         if let message = inputTextField.text {
-            var dictionary = [String: Any]()
-            dictionary["fromID"] = Auth.auth().currentUser?.uid
-            dictionary["toID"] = self.user?.uid
-            dictionary["text"] = message
-            dictionary["timestamp"] = Int(Date().timeIntervalSince1970)
-            dictionary["isRead"] = false
-            messagesRef.updateChildValues(dictionary) { (error, databaseReference) in
-                if error != nil {
-                    self.alert(title: "Error updating database", message: error?.localizedDescription)
-                    return
-                }
-                guard let userID = Auth.auth().currentUser?.uid else {
-                    return
-                }
-                guard let recipientUserID = self.user?.uid else {
-                    return
-                }
-                let userMessagesRef = databaseRef.child("user-messages")
-                let fromIDRef = userMessagesRef.child(userID).child(recipientUserID)
-                let recipientIDRef = userMessagesRef.child(recipientUserID).child(userID)
-                if let messageID = messagesRef.key {
-                    var dict = [String: Any]()
-                    dict[messageID] = 1
-                    fromIDRef.updateChildValues(dict) { (error, databaseReference) in
-                        if error != nil {
-                            self.alert(title: "Error updating database for user messages", message: error?.localizedDescription)
-                            return
-                        }
-                    }
-                    recipientIDRef.updateChildValues(dict)
-                }
-                self.inputTextField.text = ""
-            }
+            var properties = [String: Any]()
+            properties["text"] = message
+            sendMessageToFirebase(properties: properties)
         }
     }
     
@@ -169,6 +137,46 @@ class ChatLogViewController: UIViewController, UITextFieldDelegate, UINavigation
 
     @IBAction func uploadPhotoButton(_ sender: UIButton) {
         CommonFunctions.imagePicker(objVC: self, picker: imagePicker)
+    }
+    
+    private func sendMessageToFirebase(properties: [String: Any]) {
+        let databaseRef = Database.database().reference()
+        let messagesRef = databaseRef.child("messages").childByAutoId()
+        var dictionary = [String: Any]()
+        dictionary["fromID"] = Auth.auth().currentUser?.uid
+        dictionary["toID"] = self.user?.uid
+        dictionary["timestamp"] = Int(Date().timeIntervalSince1970)
+        dictionary["isRead"] = false
+        
+        // $0 -> key, $1 -> value
+        properties.forEach { (dictionary[$0] = $1) }
+        messagesRef.updateChildValues(dictionary) { (error, databaseReference) in
+            if error != nil {
+                self.alert(title: "Error updating database", message: error?.localizedDescription)
+                return
+            }
+            guard let userID = Auth.auth().currentUser?.uid else {
+                return
+            }
+            guard let recipientUserID = self.user?.uid else {
+                return
+            }
+            let userMessagesRef = databaseRef.child("user-messages")
+            let fromIDRef = userMessagesRef.child(userID).child(recipientUserID)
+            let recipientIDRef = userMessagesRef.child(recipientUserID).child(userID)
+            if let messageID = messagesRef.key {
+                var dict = [String: Any]()
+                dict[messageID] = 1
+                fromIDRef.updateChildValues(dict) { (error, databaseReference) in
+                    if error != nil {
+                        self.alert(title: "Error updating database for user messages", message: error?.localizedDescription)
+                        return
+                    }
+                }
+                recipientIDRef.updateChildValues(dict)
+            }
+            self.inputTextField.text = ""
+        }
     }
 }
 
@@ -192,11 +200,17 @@ extension ChatLogViewController: UIImagePickerControllerDelegate {
                         guard let downloadURL = url else {
                             return
                         }
-                        print(downloadURL.absoluteString)
+                        self.sendImageMessage(imageURL: downloadURL.absoluteString)
                     }
                 }
             }
         })
+    }
+    
+    private func sendImageMessage(imageURL: String) {
+        var properties = [String: Any]()
+        properties["imageURL"] = imageURL
+        sendMessageToFirebase(properties: properties)
     }
 }
 

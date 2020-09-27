@@ -16,6 +16,7 @@ class Message: NSObject {
     var timestamp: Int?
     var isRead: Bool?
     var messageID: String?
+    var imageURL: String?
     
     func initWithDictionary(dictionary: [String: AnyObject], messageID: String) -> Message {
         self.fromID = dictionary["fromID"] as? String
@@ -24,6 +25,7 @@ class Message: NSObject {
         self.timestamp = dictionary["timestamp"] as? Int
         self.isRead = dictionary["isRead"] as? Bool
         self.messageID = messageID
+        self.imageURL = dictionary["imageURL"] as? String
         return self
     }
     

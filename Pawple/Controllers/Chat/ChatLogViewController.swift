@@ -64,15 +64,13 @@ class ChatLogViewController: UIViewController, UITextFieldDelegate, UINavigation
             messageRef.observe(.value) { (snapshot) in
                 if let dictionary = snapshot.value as? [String: AnyObject] {
                     let message = Message().initWithDictionary(dictionary: dictionary, messageID: messageID)
-                    if message.chatPartnerId() == self.user?.uid {
-                        if self.messages.last?.messageID != message.messageID {
-                            self.messages.append(message)
-                        }
-                        self.messages.last?.updateMessageToRead()
-                        DispatchQueue.main.async {
-                            self.collectionView.reloadData()
-                            self.scrollToBottom()
-                        }
+                    if self.messages.last?.messageID != message.messageID {
+                        self.messages.append(message)
+                    }
+                    self.messages.last?.updateMessageToRead()
+                    DispatchQueue.main.async {
+                        self.collectionView.reloadData()
+                        self.scrollToBottom()
                     }
                 }
             }
@@ -200,16 +198,25 @@ extension ChatLogViewController: UIImagePickerControllerDelegate {
                         guard let downloadURL = url else {
                             return
                         }
-                        self.sendImageMessage(imageURL: downloadURL.absoluteString)
+                        if let error = error {
+                            print(error)
+                        } else {
+                            print(url)
+                        }
+                        print("image width ", image.size.width)
+                        print("image height ", image.size.height)
+                        self.sendImageMessage(imageURL: downloadURL.absoluteString, width: Float(image.size.width), height: Float(image.size.height))
                     }
                 }
             }
         })
     }
     
-    private func sendImageMessage(imageURL: String) {
+    private func sendImageMessage(imageURL: String, width: Float, height: Float) {
         var properties = [String: Any]()
         properties["imageURL"] = imageURL
+        properties["imageWidth"] = width
+        properties["imageHeight"] = height
         sendMessageToFirebase(properties: properties)
     }
 }
@@ -224,18 +231,43 @@ extension ChatLogViewController: UICollectionViewDelegate, UICollectionViewDataS
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: view.frame.width, height: 60)
+        let message = messages[indexPath.row]
+        if let text = message.text {
+            return CGSize(width: view.frame.width, height: 60)
+        } else {
+            let width = message.imageWidth
+            let height = message.imageHeight
+            return CGSize(width: width, height: height)
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let message = messages[indexPath.row]
         if message.fromID == Auth.auth().currentUser?.uid {
             let cell: UserMessageCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "UserMessageCollectionViewCell", for: indexPath) as! UserMessageCollectionViewCell
-            cell.textView.text = message.text
+            if let text = message.text {
+                cell.textView.text = text
+                cell.textView.isHidden = false
+                cell.imgView.isHidden = true
+            } else if let imageURL = message.imageURL {
+                let photoURL: URL? = URL(string: imageURL)
+                cell.imgView.sd_setImage(with: photoURL)
+                cell.imgView.isHidden = false
+                cell.textView.isHidden = true
+            }
             return cell
         } else {
             let cell: ChatPartnerCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "ChatPartnerCollectionViewCell", for: indexPath) as! ChatPartnerCollectionViewCell
-            cell.textView.text = message.text
+            if let text = message.text {
+                cell.textView.text = text
+                cell.textView.isHidden = false
+                cell.imgView.isHidden = true
+            } else if let imageURL = message.imageURL {
+                let photoURL: URL? = URL(string: imageURL)
+                cell.imgView.sd_setImage(with: photoURL)
+                cell.imgView.isHidden = false
+                cell.textView.isHidden = true
+            }
             
             let index = indexPath.row
             cell.profileImage.isHidden = false

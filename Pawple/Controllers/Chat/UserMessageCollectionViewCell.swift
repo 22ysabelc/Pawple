@@ -10,6 +10,7 @@ import UIKit
 
 class UserMessageCollectionViewCell: UICollectionViewCell {
     
+    @IBOutlet weak var imgView: UIImageView!
     @IBOutlet weak var textView: UITextView! {
         didSet {
             self.textView.contentInset = UIEdgeInsets(top: 0, left: 4, bottom: 0, right: 0)

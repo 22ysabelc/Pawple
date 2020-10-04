@@ -17,6 +17,8 @@ class Message: NSObject {
     var isRead: Bool?
     var messageID: String?
     var imageURL: String?
+    var imageWidth: Float?
+    var imageHeight: Float?
     
     func initWithDictionary(dictionary: [String: AnyObject], messageID: String) -> Message {
         self.fromID = dictionary["fromID"] as? String
@@ -26,6 +28,8 @@ class Message: NSObject {
         self.isRead = dictionary["isRead"] as? Bool
         self.messageID = messageID
         self.imageURL = dictionary["imageURL"] as? String
+        self.imageWidth = dictionary["imageWidth"] as? Float
+        self.imageHeight = dictionary["imageHeight"] as? Float
         return self
     }
     

@@ -36,7 +36,11 @@ class UserTableViewCell: UITableViewCell {
                 }
             }
         }
-        self.subtitle.text = message.text
+        if let text = message.text {
+            self.subtitle.text = text
+        } else if (message.imageURL != nil) {
+            self.subtitle.text = "Sent an image..."
+        }
         self.isRead.isHidden = message.isRead ?? true
         if let timestamp = message.timestamp {
             self.timestamp.text = CommonFunctions.getTimeStamp(timestamp: timestamp)

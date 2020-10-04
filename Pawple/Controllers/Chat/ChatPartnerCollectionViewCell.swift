@@ -10,6 +10,7 @@ import UIKit
 
 class ChatPartnerCollectionViewCell: UICollectionViewCell {
     
+    @IBOutlet weak var imgView: UIImageView!
     @IBOutlet weak var textView: UITextView! {
         didSet {
             self.textView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 4)

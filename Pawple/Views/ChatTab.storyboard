@@ -319,6 +319,9 @@
                                                 </view>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="NhG-hL-k1H">
                                                     <rect key="frame" x="107" y="5" width="295" height="40"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" relation="lessThanOrEqual" constant="200" id="TBj-fQ-Vzw"/>
+                                                    </constraints>
                                                 </imageView>
                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QYy-1i-9mT">
                                                     <rect key="frame" x="112" y="5" width="280" height="40"/>
@@ -336,12 +339,12 @@
                                                 <constraint firstAttribute="trailing" secondItem="QYy-1i-9mT" secondAttribute="trailing" constant="22" id="5WO-Og-vG4"/>
                                                 <constraint firstItem="2Ln-kY-s8g" firstAttribute="width" secondItem="QYy-1i-9mT" secondAttribute="width" multiplier="1.01" constant="12" id="8fB-5D-7hG"/>
                                                 <constraint firstItem="QYy-1i-9mT" firstAttribute="top" secondItem="6Aj-ON-35m" secondAttribute="top" constant="5" id="CAf-Yb-ewS"/>
+                                                <constraint firstAttribute="bottom" secondItem="NhG-hL-k1H" secondAttribute="bottom" constant="5" id="F8Y-D5-y9z"/>
+                                                <constraint firstItem="NhG-hL-k1H" firstAttribute="top" secondItem="6Aj-ON-35m" secondAttribute="top" constant="5" id="G3U-pB-Z9I"/>
                                                 <constraint firstAttribute="trailing" secondItem="NhG-hL-k1H" secondAttribute="trailing" constant="12" id="HKW-hO-GWU"/>
                                                 <constraint firstItem="NhG-hL-k1H" firstAttribute="width" secondItem="2Ln-kY-s8g" secondAttribute="width" id="K2T-NM-wbz"/>
-                                                <constraint firstAttribute="bottom" secondItem="NhG-hL-k1H" secondAttribute="bottom" constant="5" id="QmN-yY-zsD"/>
                                                 <constraint firstAttribute="bottom" secondItem="2Ln-kY-s8g" secondAttribute="bottom" constant="5" id="jNQ-vd-Wsc"/>
                                                 <constraint firstAttribute="bottom" secondItem="QYy-1i-9mT" secondAttribute="bottom" constant="5" id="jm9-bd-g5v"/>
-                                                <constraint firstItem="NhG-hL-k1H" firstAttribute="top" secondItem="6Aj-ON-35m" secondAttribute="top" constant="5" id="qE0-4Y-3j6"/>
                                                 <constraint firstAttribute="trailing" secondItem="2Ln-kY-s8g" secondAttribute="trailing" constant="12" id="qcB-ch-TRW"/>
                                                 <constraint firstItem="2Ln-kY-s8g" firstAttribute="top" secondItem="6Aj-ON-35m" secondAttribute="top" constant="5" id="vs2-Uj-aVS"/>
                                             </constraints>
@@ -365,8 +368,15 @@
                                                     <rect key="frame" x="48" y="5" width="276" height="40"/>
                                                     <color key="backgroundColor" white="0.82965632335680739" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </view>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="7qq-mW-hA0">
+                                                <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="7qq-mW-hA0">
                                                     <rect key="frame" x="48" y="5" width="276" height="40"/>
+                                                    <gestureRecognizers/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" relation="lessThanOrEqual" constant="200" id="YDD-Ar-GuS"/>
+                                                    </constraints>
+                                                    <connections>
+                                                        <outletCollection property="gestureRecognizers" destination="3vP-Hg-gKV" appends="YES" id="8lR-zy-BJS"/>
+                                                    </connections>
                                                 </imageView>
                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tjQ-sA-Gvo">
                                                     <rect key="frame" x="55" y="5" width="260" height="40"/>
@@ -398,9 +408,9 @@
                                                 <constraint firstItem="7qq-mW-hA0" firstAttribute="width" secondItem="Qpo-Yb-2n5" secondAttribute="width" id="UKq-zl-tTH"/>
                                                 <constraint firstItem="7qq-mW-hA0" firstAttribute="top" secondItem="8fV-14-rDo" secondAttribute="top" constant="5" id="cXO-aS-Ndf"/>
                                                 <constraint firstItem="7qq-mW-hA0" firstAttribute="leading" secondItem="maW-pf-YPA" secondAttribute="trailing" constant="8" id="eTP-cT-UiO"/>
-                                                <constraint firstAttribute="bottom" secondItem="7qq-mW-hA0" secondAttribute="bottom" constant="5" id="fmq-3c-05Q"/>
                                                 <constraint firstAttribute="bottom" secondItem="tjQ-sA-Gvo" secondAttribute="bottom" constant="5" id="pLP-4g-z6Q"/>
                                                 <constraint firstItem="Qpo-Yb-2n5" firstAttribute="top" secondItem="8fV-14-rDo" secondAttribute="top" constant="5" id="r2H-MJ-zDh"/>
+                                                <constraint firstAttribute="bottom" secondItem="7qq-mW-hA0" secondAttribute="bottom" constant="5" id="rIr-1s-2Sx"/>
                                                 <constraint firstItem="Qpo-Yb-2n5" firstAttribute="leading" secondItem="maW-pf-YPA" secondAttribute="trailing" constant="8" id="u1C-Pi-Xoi"/>
                                                 <constraint firstItem="Qpo-Yb-2n5" firstAttribute="width" secondItem="tjQ-sA-Gvo" secondAttribute="width" multiplier="1.01" constant="13.399999999999977" id="zSg-1x-yt8"/>
                                             </constraints>
@@ -437,10 +447,16 @@
                     <connections>
                         <outlet property="collectionView" destination="A3j-cm-IKu" id="X6s-ae-Kls"/>
                         <outlet property="containerView" destination="Ttn-av-DXu" id="IZe-Hn-HVz"/>
+                        <outlet property="imageGestureRecognizer" destination="3vP-Hg-gKV" id="oHd-zP-X6j"/>
                         <outlet property="inputTextField" destination="tVI-Jm-hv9" id="OY4-tz-C79"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6bn-Yc-iYe" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="1" id="3vP-Hg-gKV">
+                    <connections>
+                        <action selector="saveImageGesture:" destination="6wI-5f-Lsv" id="kP5-RU-O4w"/>
+                    </connections>
+                </pongPressGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="8342.0289855072479" y="-753.34821428571422"/>
         </scene>

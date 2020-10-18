@@ -9,7 +9,7 @@
 import UIKit
 import Firebase
 
-class ChatLogViewController: UIViewController, UITextFieldDelegate, UINavigationControllerDelegate {
+class ChatLogViewController: UIViewController, UITextFieldDelegate, UINavigationControllerDelegate, UIActionSheetDelegate {
     
     var user: User? {
         didSet {
@@ -19,9 +19,26 @@ class ChatLogViewController: UIViewController, UITextFieldDelegate, UINavigation
     var messages = [Message]()
     var messagesDictionary = [String: Message]()
     
+    var lastIndexChatPartner: Int = 0
+    
+    
     @IBOutlet weak var inputTextField: UITextField!
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var containerView: UIView!
+    @IBOutlet var imageGestureRecognizer: UILongPressGestureRecognizer!
+    
+    @IBAction func saveImageGesture(_ sender: UILongPressGestureRecognizer) {
+        let alert = UIAlertController(title: "Save Image to Photo Library", message: "", preferredStyle: .alert)
+        let save = UIAlertAction(title: "Save", style: .default) { _ in
+            
+        }
+        let cancel = UIAlertAction(title: "Cancel", style: .cancel) { (action) in
+            return
+        }
+        alert.addAction(save)
+        alert.addAction(cancel)
+        self.present(alert, animated: true, completion: nil)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -67,6 +84,7 @@ class ChatLogViewController: UIViewController, UITextFieldDelegate, UINavigation
                     if self.messages.last?.messageID != message.messageID {
                         self.messages.append(message)
                     }
+                    self.returnLastIndexChatPartner();
                     self.messages.last?.updateMessageToRead()
                     DispatchQueue.main.async {
                         self.collectionView.reloadData()
@@ -75,6 +93,17 @@ class ChatLogViewController: UIViewController, UITextFieldDelegate, UINavigation
                 }
             }
         }
+    }
+    
+    func returnLastIndexChatPartner() {
+        let message = messages.last {
+            element in
+                return element.fromID == self.user?.uid
+        }
+        if let msg = message {
+            lastIndexChatPartner = messages.lastIndex(of: msg) ?? 0
+        }
+        print(lastIndexChatPartner)
     }
     
     var containerViewBottomAnchor: NSLayoutConstraint?
@@ -182,7 +211,7 @@ extension ChatLogViewController: UIImagePickerControllerDelegate {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo
         info: [UIImagePickerController.InfoKey: Any]) {
         
-        let image: UIImage = (info[UIImagePickerController.InfoKey.originalImage] as? UIImage)!
+        let image: UIImage = (info[UIImagePickerController.InfoKey.editedImage] as? UIImage)!
         
         picker.dismiss(animated: false, completion: { () -> Void in
             if let uploadData = image.jpegData(compressionQuality: 0.2) {
@@ -232,12 +261,13 @@ extension ChatLogViewController: UICollectionViewDelegate, UICollectionViewDataS
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let message = messages[indexPath.row]
-        if let text = message.text {
-            return CGSize(width: view.frame.width, height: 60)
+        if let imageWidth = message.imageWidth, let imageHeight = message.imageHeight {
+            print("imageWidth \(imageWidth)")
+            print("imageHeight \(imageHeight)")
+            return CGSize(width: view.frame.width, height: 200)
         } else {
-            let width = message.imageWidth
-            let height = message.imageHeight
-            return CGSize(width: width, height: height)
+            print("entered")
+            return CGSize(width: view.frame.width, height: 60)
         }
     }
     
@@ -249,11 +279,14 @@ extension ChatLogViewController: UICollectionViewDelegate, UICollectionViewDataS
                 cell.textView.text = text
                 cell.textView.isHidden = false
                 cell.imgView.isHidden = true
+                cell.viewBubble.backgroundColor = UIColor(named: "BrandPurple")
+                cell.imgView.frame = CGRect.zero
             } else if let imageURL = message.imageURL {
                 let photoURL: URL? = URL(string: imageURL)
                 cell.imgView.sd_setImage(with: photoURL)
                 cell.imgView.isHidden = false
                 cell.textView.isHidden = true
+                cell.viewBubble.backgroundColor = .clear
             }
             return cell
         } else {
@@ -269,13 +302,10 @@ extension ChatLogViewController: UICollectionViewDelegate, UICollectionViewDataS
                 cell.textView.isHidden = true
             }
             
-            let index = indexPath.row
-            cell.profileImage.isHidden = false
-            if index > 0 {
-                let fromID = messages[index-1].fromID
-                if fromID == message.chatPartnerId() {
-                    cell.profileImage.isHidden = true
-                }
+            if indexPath.row == lastIndexChatPartner {
+                cell.profileImage.isHidden = false
+            } else {
+                cell.profileImage.isHidden = true
             }
             
             let photoURL: URL? = URL(string: self.user?.photoURL ?? "")

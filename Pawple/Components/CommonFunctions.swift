@@ -82,4 +82,13 @@ class CommonFunctions: NSObject {
         alert.addAction(cancel)
         objVC.present(alert, animated: true, completion: nil)
     }
+    
+    //MARK: - Save Image
+    class func writeToPhotoAlbum(image: UIImage) {
+        UIImageWriteToSavedPhotosAlbum(image, self, #selector(saveError), nil)
+    }
+
+    @objc class func saveError(_ image: UIImage, didFinishSavingWithError error: Error?, contextInfo: UnsafeRawPointer) {
+        print("Save finished!")
+    }
 }

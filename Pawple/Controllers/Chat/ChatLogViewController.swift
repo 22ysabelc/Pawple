@@ -10,27 +10,30 @@ import UIKit
 import Firebase
 
 class ChatLogViewController: UIViewController, UITextFieldDelegate, UINavigationControllerDelegate, UIActionSheetDelegate {
-    
+
+    let imagePicker = UIImagePickerController()
+    var messages = [Message]()
+    var messagesDictionary = [String: Message]()
+    var lastIndexChatPartner: Int = 0
     var user: User? {
         didSet {
             observeUserMessages()
         }
     }
-    var messages = [Message]()
-    var messagesDictionary = [String: Message]()
-    
-    var lastIndexChatPartner: Int = 0
-    
-    
+
     @IBOutlet weak var inputTextField: UITextField!
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var containerView: UIView!
     @IBOutlet var imageGestureRecognizer: UILongPressGestureRecognizer!
-    
+
     @IBAction func saveImageGesture(_ sender: UILongPressGestureRecognizer) {
+        if let imageView = sender.view as? UIImageView {
+            print(imageView.image)
+        }
+
         let alert = UIAlertController(title: "Save Image to Photo Library", message: "", preferredStyle: .alert)
         let save = UIAlertAction(title: "Save", style: .default) { _ in
-            
+
         }
         let cancel = UIAlertAction(title: "Cancel", style: .cancel) { (action) in
             return
@@ -39,36 +42,36 @@ class ChatLogViewController: UIViewController, UITextFieldDelegate, UINavigation
         alert.addAction(cancel)
         self.present(alert, animated: true, completion: nil)
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         tabBarController?.tabBar.isHidden = true
-        
+
         self.title = user?.name
-        
+
         setUpInputComponents()
         setUpKeyboardObservers()
-        
+
         collectionView.isScrollEnabled = true
         collectionView.keyboardDismissMode = .interactive
         //  TODO: figure out how to move containerView up and down with the keyboard on drag
-        
+
         imagePicker.delegate = self
         imagePicker.allowsEditing = true
     }
-    
+
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
         scrollToBottom()
     }
-    
+
     private func scrollToBottom() {
         let item = self.collectionView(self.collectionView, numberOfItemsInSection: 1) - 1
         let lastItemIndex = NSIndexPath(item: item, section: 0)
         self.collectionView.scrollToItem(at: lastItemIndex as IndexPath, at: .top, animated: true)
     }
-    
+
     func observeUserMessages() {
         guard let uid = Auth.auth().currentUser?.uid, let partnerUID = self.user?.uid else {
             return
@@ -78,13 +81,14 @@ class ChatLogViewController: UIViewController, UITextFieldDelegate, UINavigation
         userMessagesRef.observe(.childAdded) { (snapshot) in
             let messageID = snapshot.key
             let messageRef = dbRef.child("messages").child(messageID)
-            messageRef.observe(.value) { (snapshot) in
+            messageRef.observeSingleEvent(of: .value) { (snapshot) in
+
                 if let dictionary = snapshot.value as? [String: AnyObject] {
                     let message = Message().initWithDictionary(dictionary: dictionary, messageID: messageID)
                     if self.messages.last?.messageID != message.messageID {
                         self.messages.append(message)
                     }
-                    self.returnLastIndexChatPartner();
+                    self.returnLastIndexChatPartner()
                     self.messages.last?.updateMessageToRead()
                     DispatchQueue.main.async {
                         self.collectionView.reloadData()
@@ -94,37 +98,37 @@ class ChatLogViewController: UIViewController, UITextFieldDelegate, UINavigation
             }
         }
     }
-    
+
     func returnLastIndexChatPartner() {
         let message = messages.last {
             element in
-                return element.fromID == self.user?.uid
+            return element.fromID == self.user?.uid
         }
         if let msg = message {
             lastIndexChatPartner = messages.lastIndex(of: msg) ?? 0
         }
         print(lastIndexChatPartner)
     }
-    
+
     var containerViewBottomAnchor: NSLayoutConstraint?
-    
+
     func setUpInputComponents() {
         containerViewBottomAnchor = containerView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
         containerViewBottomAnchor?.isActive = true
     }
-    
+
     func setUpKeyboardObservers() {
         NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardWillShow), name: UIResponder.keyboardDidShowNotification, object: nil)
-        
+
         NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
-    
+
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(true)
-        
+
         NotificationCenter.default.removeObserver(self)
     }
-    
+
     //TODO: fix duration for going up
     @objc func handleKeyboardWillShow(notification: NSNotification) {
         let keyboardFrame = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as AnyObject).cgRectValue
@@ -137,7 +141,7 @@ class ChatLogViewController: UIViewController, UITextFieldDelegate, UINavigation
             self.scrollToBottom()
         }
     }
-    
+
     @objc func handleKeyboardWillHide(notification: NSNotification) {
         containerViewBottomAnchor?.constant = view.safeAreaInsets.bottom
         let keyboardDuration = (notification.userInfo?[UIResponder.keyboardAnimationDurationUserInfoKey] as AnyObject).doubleValue
@@ -145,13 +149,13 @@ class ChatLogViewController: UIViewController, UITextFieldDelegate, UINavigation
             self.view.layoutIfNeeded()
         }
     }
-    
+
     @IBAction func sendPressed(_ sender: UIButton) {
         if inputTextField.text != "" {
             sendTextMessage()
         }
     }
-    
+
     func sendTextMessage() {
         if let message = inputTextField.text {
             var properties = [String: Any]()
@@ -159,13 +163,12 @@ class ChatLogViewController: UIViewController, UITextFieldDelegate, UINavigation
             sendMessageToFirebase(properties: properties)
         }
     }
-    
-    let imagePicker = UIImagePickerController()
+
 
     @IBAction func uploadPhotoButton(_ sender: UIButton) {
         CommonFunctions.imagePicker(objVC: self, picker: imagePicker)
     }
-    
+
     private func sendMessageToFirebase(properties: [String: Any]) {
         let databaseRef = Database.database().reference()
         let messagesRef = databaseRef.child("messages").childByAutoId()
@@ -174,7 +177,7 @@ class ChatLogViewController: UIViewController, UITextFieldDelegate, UINavigation
         dictionary["toID"] = self.user?.uid
         dictionary["timestamp"] = Int(Date().timeIntervalSince1970)
         dictionary["isRead"] = false
-        
+
         // $0 -> key, $1 -> value
         properties.forEach { (dictionary[$0] = $1) }
         messagesRef.updateChildValues(dictionary) { (error, databaseReference) in
@@ -210,15 +213,15 @@ class ChatLogViewController: UIViewController, UITextFieldDelegate, UINavigation
 extension ChatLogViewController: UIImagePickerControllerDelegate {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo
         info: [UIImagePickerController.InfoKey: Any]) {
-        
+
         let image: UIImage = (info[UIImagePickerController.InfoKey.editedImage] as? UIImage)!
-        
+
         picker.dismiss(animated: false, completion: { () -> Void in
             if let uploadData = image.jpegData(compressionQuality: 0.2) {
                 let storageRef = Storage.storage().reference()
                 let imageName = NSUUID().uuidString
                 let spaceRef = storageRef.child(String(format: "MessageImages/%@.jpeg", imageName))
-                
+
                 spaceRef.putData(uploadData, metadata: nil) { (metadata, error) in
                     guard metadata != nil else {
                         return
@@ -229,18 +232,16 @@ extension ChatLogViewController: UIImagePickerControllerDelegate {
                         }
                         if let error = error {
                             print(error)
-                        } else {
+                        } else if let url = url {
                             print(url)
                         }
-                        print("image width ", image.size.width)
-                        print("image height ", image.size.height)
                         self.sendImageMessage(imageURL: downloadURL.absoluteString, width: Float(image.size.width), height: Float(image.size.height))
                     }
                 }
             }
         })
     }
-    
+
     private func sendImageMessage(imageURL: String, width: Float, height: Float) {
         var properties = [String: Any]()
         properties["imageURL"] = imageURL
@@ -254,40 +255,34 @@ extension ChatLogViewController: UICollectionViewDelegate, UICollectionViewDataS
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return self.messages.count
     }
-    
+
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
-    
+
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let message = messages[indexPath.row]
+
+        var height: CGFloat = 80
+        let message = messages[indexPath.item]
+        let width = view.frame.width
+
         if let imageWidth = message.imageWidth, let imageHeight = message.imageHeight {
-            print("imageWidth \(imageWidth)")
-            print("imageHeight \(imageHeight)")
-            return CGSize(width: view.frame.width, height: 200)
-        } else {
-            print("entered")
-            return CGSize(width: view.frame.width, height: 60)
+            // h1 / w1 = h2 / w2
+            // solve for h1
+            // h1 = h2 / w2 * w1
+            height = CGFloat(imageHeight / imageWidth * 280)
+        } else if let text = message.text {
+            height = CommonFunctions.estimateFrameForText(text).height + 30
         }
+        return CGSize(width: width, height: height)
     }
-    
+
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let message = messages[indexPath.row]
+        let message = messages[indexPath.item]
         if message.fromID == Auth.auth().currentUser?.uid {
             let cell: UserMessageCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "UserMessageCollectionViewCell", for: indexPath) as! UserMessageCollectionViewCell
-            if let text = message.text {
-                cell.textView.text = text
-                cell.textView.isHidden = false
-                cell.imgView.isHidden = true
-                cell.viewBubble.backgroundColor = UIColor(named: "BrandPurple")
-                cell.imgView.frame = CGRect.zero
-            } else if let imageURL = message.imageURL {
-                let photoURL: URL? = URL(string: imageURL)
-                cell.imgView.sd_setImage(with: photoURL)
-                cell.imgView.isHidden = false
-                cell.textView.isHidden = true
-                cell.viewBubble.backgroundColor = .clear
-            }
+            
+            cell.setupCell(message: message)
             return cell
         } else {
             let cell: ChatPartnerCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "ChatPartnerCollectionViewCell", for: indexPath) as! ChatPartnerCollectionViewCell
@@ -301,19 +296,17 @@ extension ChatLogViewController: UICollectionViewDelegate, UICollectionViewDataS
                 cell.imgView.isHidden = false
                 cell.textView.isHidden = true
             }
-            
-            if indexPath.row == lastIndexChatPartner {
+
+            if indexPath.item == lastIndexChatPartner {
                 cell.profileImage.isHidden = false
             } else {
                 cell.profileImage.isHidden = true
             }
-            
+
             let photoURL: URL? = URL(string: self.user?.photoURL ?? "")
             cell.profileImage.sd_setImage(with: photoURL, placeholderImage: UIImage(named: "person.circle"))
-            
+
             return cell
-            
         }
     }
-    
 }

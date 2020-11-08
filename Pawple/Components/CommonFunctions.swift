@@ -91,4 +91,24 @@ class CommonFunctions: NSObject {
     @objc class func saveError(_ image: UIImage, didFinishSavingWithError error: Error?, contextInfo: UnsafeRawPointer) {
         print("Save finished!")
     }
+
+
+    class func estimateFrameForText(_ text: String) -> CGRect {
+        let size = CGSize(width: 280, height: 1000)
+        let options = NSStringDrawingOptions.usesFontLeading.union(.usesLineFragmentOrigin)
+        return NSString(string: text).boundingRect(with: size, options: options, attributes: convertToOptionalNSAttributedStringKeyDictionary([convertFromNSAttributedStringKey(NSAttributedString.Key.font): UIFont.systemFont(ofSize: 16)]), context: nil)
+    }
+
+    // Helper function inserted by Swift 4.2 migrator.
+    private class func convertToOptionalNSAttributedStringKeyDictionary(_ input: [String: Any]?) -> [NSAttributedString.Key: Any]? {
+        guard let input = input else { return nil }
+        return Dictionary(uniqueKeysWithValues: input.map { key, value in (NSAttributedString.Key(rawValue: key), value)})
+    }
+
+    // Helper function inserted by Swift 4.2 migrator.
+    private class func convertFromNSAttributedStringKey(_ input: NSAttributedString.Key) -> String {
+        return input.rawValue
+    }
+
+
 }

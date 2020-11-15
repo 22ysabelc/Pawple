@@ -26,23 +26,6 @@ class ChatLogViewController: UIViewController, UITextFieldDelegate, UINavigation
     @IBOutlet weak var containerView: UIView!
     @IBOutlet var imageGestureRecognizer: UILongPressGestureRecognizer!
 
-    @IBAction func saveImageGesture(_ sender: UILongPressGestureRecognizer) {
-        if let imageView = sender.view as? UIImageView {
-            print(imageView.image)
-        }
-
-        let alert = UIAlertController(title: "Save Image to Photo Library", message: "", preferredStyle: .alert)
-        let save = UIAlertAction(title: "Save", style: .default) { _ in
-
-        }
-        let cancel = UIAlertAction(title: "Cancel", style: .cancel) { (action) in
-            return
-        }
-        alert.addAction(save)
-        alert.addAction(cancel)
-        self.present(alert, animated: true, completion: nil)
-    }
-
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -307,6 +290,25 @@ extension ChatLogViewController: UICollectionViewDelegate, UICollectionViewDataS
             cell.profileImage.sd_setImage(with: photoURL, placeholderImage: UIImage(named: "person.circle"))
 
             return cell
+        }
+    }
+}
+
+//MARK - SAVE IMAGE
+extension ChatLogViewController {
+    @IBAction func saveImageGesture(_ sender: UILongPressGestureRecognizer) {
+        if let imageView = sender.view as? UIImageView, let image = imageView.image {
+
+            let alert = UIAlertController(title: "Save Image to Photo Library", message: "", preferredStyle: .alert)
+            let save = UIAlertAction(title: "Save", style: .default) { _ in
+                CommonFunctions .writeToPhotoAlbum(image: image)
+            }
+            let cancel = UIAlertAction(title: "Cancel", style: .cancel) { (action) in
+                return
+            }
+            alert.addAction(save)
+            alert.addAction(cancel)
+            self.present(alert, animated: true, completion: nil)
         }
     }
 }

@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="REe-NV-oUW">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="REe-NV-oUW">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -42,7 +44,7 @@
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="65" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="FgW-hB-qnB">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="UserTableViewCell" rowHeight="70" id="eIf-ey-Nxr" customClass="UserTableViewCell" customModule="Pawple" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="414" height="70"/>
@@ -84,12 +86,12 @@
                                                 <constraint firstAttribute="width" constant="83" id="yRe-ZY-x7D"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                            <color key="textColor" systemColor="systemGrayColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="textColor" systemColor="systemGrayColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.69999999999999996" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chevron.right" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="L2G-ul-xoP">
                                             <rect key="frame" x="400" y="10" width="7" height="12"/>
-                                            <color key="tintColor" systemColor="systemGrayColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="tintColor" systemColor="systemGrayColor"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="15.5" id="JSL-5Q-yRb"/>
                                             </constraints>
@@ -158,7 +160,7 @@
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="65" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="OXQ-01-Md4">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="UserTableViewCell" rowHeight="70" id="fpD-Gf-pHH" customClass="UserTableViewCell" customModule="Pawple" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="414" height="70"/>
@@ -244,7 +246,7 @@
                                             <constraint firstAttribute="height" constant="1" id="viW-Ph-P7I"/>
                                         </constraints>
                                     </view>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FSI-38-GIP">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FSI-38-GIP">
                                         <rect key="frame" x="356" y="13.5" width="40" height="33"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="33" id="X17-bs-9Fr"/>
@@ -298,7 +300,7 @@
                             </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="A3j-cm-IKu">
                                 <rect key="frame" x="0.0" y="88" width="414" height="721"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="1" minimumInteritemSpacing="0.0" id="YGc-xX-n81">
                                     <size key="itemSize" width="414" height="60"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -334,10 +336,8 @@
                                                     <rect key="frame" x="125" y="5" width="280" height="40"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" heightSizable="YES"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <gestureRecognizers/>
-                                                    <connections>
-                                                        <outletCollection property="gestureRecognizers" destination="hZr-NI-L7j" appends="YES" id="Bzt-hE-wen"/>
-                                                    </connections>
                                                 </imageView>
                                             </subviews>
                                         </collectionViewCellContentView>
@@ -356,53 +356,36 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <subviews>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qpo-Yb-2n5">
-                                                    <rect key="frame" x="48" y="5" width="276" height="40"/>
+                                                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Qpo-Yb-2n5">
+                                                    <rect key="frame" x="48" y="5" width="280" height="40"/>
+                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES"/>
+                                                    <subviews>
+                                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" scrollEnabled="NO" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tjQ-sA-Gvo">
+                                                            <rect key="frame" x="5" y="1" width="270" height="37"/>
+                                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                                            <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                            <dataDetectorType key="dataDetectorTypes" phoneNumber="YES" link="YES" address="YES" calendarEvent="YES"/>
+                                                        </textView>
+                                                    </subviews>
                                                     <color key="backgroundColor" white="0.82965632335680739" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </view>
-                                                <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="7qq-mW-hA0">
+                                                <imageView clipsSubviews="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7qq-mW-hA0">
                                                     <rect key="frame" x="48" y="5" width="276" height="40"/>
-                                                    <gestureRecognizers/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" relation="lessThanOrEqual" constant="200" id="YDD-Ar-GuS"/>
-                                                    </constraints>
-                                                </imageView>
-                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tjQ-sA-Gvo">
-                                                    <rect key="frame" x="55" y="5" width="260" height="40"/>
+                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" relation="lessThanOrEqual" constant="260" id="b8Z-rN-lAX"/>
-                                                    </constraints>
-                                                    <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
-                                                    <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                                    <dataDetectorType key="dataDetectorTypes" phoneNumber="YES" link="YES" address="YES" calendarEvent="YES"/>
-                                                </textView>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person.circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="maW-pf-YPA">
+                                                    <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <gestureRecognizers/>
+                                                </imageView>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="person.circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="maW-pf-YPA">
                                                     <rect key="frame" x="5" y="10" width="35" height="35"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <color key="tintColor" name="BrandPurple"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="35" id="Pfx-oZ-jic"/>
-                                                        <constraint firstAttribute="height" constant="36" id="tle-de-xRC"/>
-                                                    </constraints>
                                                 </imageView>
                                             </subviews>
-                                            <constraints>
-                                                <constraint firstAttribute="bottom" secondItem="Qpo-Yb-2n5" secondAttribute="bottom" constant="5" id="08w-Jx-Onn"/>
-                                                <constraint firstAttribute="bottom" secondItem="maW-pf-YPA" secondAttribute="bottom" constant="4.5" id="2Ii-Xm-lXF"/>
-                                                <constraint firstItem="tjQ-sA-Gvo" firstAttribute="top" secondItem="8fV-14-rDo" secondAttribute="top" constant="5" id="9JS-T7-ecZ"/>
-                                                <constraint firstItem="tjQ-sA-Gvo" firstAttribute="leading" secondItem="maW-pf-YPA" secondAttribute="trailing" constant="15" id="J4e-Sf-a6m"/>
-                                                <constraint firstItem="maW-pf-YPA" firstAttribute="leading" secondItem="8fV-14-rDo" secondAttribute="leading" constant="5" id="TUj-dF-QQs"/>
-                                                <constraint firstItem="7qq-mW-hA0" firstAttribute="width" secondItem="Qpo-Yb-2n5" secondAttribute="width" id="UKq-zl-tTH"/>
-                                                <constraint firstItem="7qq-mW-hA0" firstAttribute="top" secondItem="8fV-14-rDo" secondAttribute="top" constant="5" id="cXO-aS-Ndf"/>
-                                                <constraint firstItem="7qq-mW-hA0" firstAttribute="leading" secondItem="maW-pf-YPA" secondAttribute="trailing" constant="8" id="eTP-cT-UiO"/>
-                                                <constraint firstAttribute="bottom" secondItem="tjQ-sA-Gvo" secondAttribute="bottom" constant="5" id="pLP-4g-z6Q"/>
-                                                <constraint firstItem="Qpo-Yb-2n5" firstAttribute="top" secondItem="8fV-14-rDo" secondAttribute="top" constant="5" id="r2H-MJ-zDh"/>
-                                                <constraint firstAttribute="bottom" secondItem="7qq-mW-hA0" secondAttribute="bottom" constant="5" id="rIr-1s-2Sx"/>
-                                                <constraint firstItem="Qpo-Yb-2n5" firstAttribute="leading" secondItem="maW-pf-YPA" secondAttribute="trailing" constant="8" id="u1C-Pi-Xoi"/>
-                                                <constraint firstItem="Qpo-Yb-2n5" firstAttribute="width" secondItem="tjQ-sA-Gvo" secondAttribute="width" multiplier="1.01" constant="13.399999999999977" id="zSg-1x-yt8"/>
-                                            </constraints>
                                         </collectionViewCellContentView>
                                         <size key="customSize" width="414" height="50"/>
                                         <connections>
@@ -419,7 +402,8 @@
                                 </connections>
                             </collectionView>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="Tz2-Qm-m8R"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="Ttn-av-DXu" firstAttribute="top" secondItem="A3j-cm-IKu" secondAttribute="bottom" constant="1" id="22Z-Ea-ndb"/>
                             <constraint firstItem="A3j-cm-IKu" firstAttribute="top" secondItem="Tz2-Qm-m8R" secondAttribute="top" id="4PR-5v-IrT"/>
@@ -429,7 +413,6 @@
                             <constraint firstItem="A3j-cm-IKu" firstAttribute="leading" secondItem="Tz2-Qm-m8R" secondAttribute="leading" id="jHd-eX-UD3"/>
                             <constraint firstItem="Tz2-Qm-m8R" firstAttribute="trailing" secondItem="A3j-cm-IKu" secondAttribute="trailing" id="psc-lk-wcN"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="Tz2-Qm-m8R"/>
                     </view>
                     <navigationItem key="navigationItem" id="WBa-Bu-9Gl"/>
                     <nil key="simulatedBottomBarMetrics"/>
@@ -440,17 +423,12 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6bn-Yc-iYe" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="hZr-NI-L7j">
-                    <connections>
-                        <action selector="saveImageGesture:" destination="6wI-5f-Lsv" id="NXd-nY-abB"/>
-                    </connections>
-                </pongPressGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="8342.0289855072479" y="-753.34821428571422"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="jW2-uW-c0F"/>
+        <segue reference="GDD-5m-9fF"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="bubble.right.fill" catalog="system" width="128" height="110"/>
@@ -458,9 +436,15 @@
         <image name="message.fill" catalog="system" width="128" height="113"/>
         <image name="person.circle" catalog="system" width="128" height="121"/>
         <image name="photo" catalog="system" width="128" height="93"/>
-        <image name="square.and.pencil" catalog="system" width="128" height="118"/>
+        <image name="square.and.pencil" catalog="system" width="128" height="115"/>
         <namedColor name="BrandPurple">
             <color red="0.67500001192092896" green="0.43500000238418579" blue="0.9179999828338623" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGrayColor">
+            <color red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
     </resources>
 </document>

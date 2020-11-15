@@ -24,7 +24,6 @@ class ChatLogViewController: UIViewController, UITextFieldDelegate, UINavigation
     @IBOutlet weak var inputTextField: UITextField!
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var containerView: UIView!
-    @IBOutlet var imageGestureRecognizer: UILongPressGestureRecognizer!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,6 +41,8 @@ class ChatLogViewController: UIViewController, UITextFieldDelegate, UINavigation
 
         imagePicker.delegate = self
         imagePicker.allowsEditing = true
+        
+        self.definesPresentationContext = true
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -90,7 +91,6 @@ class ChatLogViewController: UIViewController, UITextFieldDelegate, UINavigation
         if let msg = message {
             lastIndexChatPartner = messages.lastIndex(of: msg) ?? 0
         }
-        print(lastIndexChatPartner)
     }
 
     var containerViewBottomAnchor: NSLayoutConstraint?
@@ -250,9 +250,6 @@ extension ChatLogViewController: UICollectionViewDelegate, UICollectionViewDataS
         let width = view.frame.width
 
         if let imageWidth = message.imageWidth, let imageHeight = message.imageHeight {
-            // h1 / w1 = h2 / w2
-            // solve for h1
-            // h1 = h2 / w2 * w1
             height = CGFloat(imageHeight / imageWidth * 280)
         } else if let text = message.text {
             height = CommonFunctions.estimateFrameForText(text).height + 30
@@ -264,31 +261,11 @@ extension ChatLogViewController: UICollectionViewDelegate, UICollectionViewDataS
         let message = messages[indexPath.item]
         if message.fromID == Auth.auth().currentUser?.uid {
             let cell: UserMessageCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "UserMessageCollectionViewCell", for: indexPath) as! UserMessageCollectionViewCell
-            
-            cell.setupCell(message: message)
+            cell.setUpCell(message: message, objVC: self)
             return cell
         } else {
             let cell: ChatPartnerCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "ChatPartnerCollectionViewCell", for: indexPath) as! ChatPartnerCollectionViewCell
-            if let text = message.text {
-                cell.textView.text = text
-                cell.textView.isHidden = false
-                cell.imgView.isHidden = true
-            } else if let imageURL = message.imageURL {
-                let photoURL: URL? = URL(string: imageURL)
-                cell.imgView.sd_setImage(with: photoURL)
-                cell.imgView.isHidden = false
-                cell.textView.isHidden = true
-            }
-
-            if indexPath.item == lastIndexChatPartner {
-                cell.profileImage.isHidden = false
-            } else {
-                cell.profileImage.isHidden = true
-            }
-
-            let photoURL: URL? = URL(string: self.user?.photoURL ?? "")
-            cell.profileImage.sd_setImage(with: photoURL, placeholderImage: UIImage(named: "person.circle"))
-
+            cell.setUpCell(message: message, indexPath: indexPath, objVC: self)
             return cell
         }
     }
@@ -297,18 +274,19 @@ extension ChatLogViewController: UICollectionViewDelegate, UICollectionViewDataS
 //MARK - SAVE IMAGE
 extension ChatLogViewController {
     @IBAction func saveImageGesture(_ sender: UILongPressGestureRecognizer) {
-        if let imageView = sender.view as? UIImageView, let image = imageView.image {
-
+        if let imageView = sender.view as? UIImageView, let image = imageView.image, sender.state == UIGestureRecognizer.State.began {
             let alert = UIAlertController(title: "Save Image to Photo Library", message: "", preferredStyle: .alert)
             let save = UIAlertAction(title: "Save", style: .default) { _ in
-                CommonFunctions .writeToPhotoAlbum(image: image)
+                CommonFunctions.writeToPhotoAlbum(image: image)
             }
             let cancel = UIAlertAction(title: "Cancel", style: .cancel) { (action) in
                 return
             }
             alert.addAction(save)
             alert.addAction(cancel)
-            self.present(alert, animated: true, completion: nil)
+            DispatchQueue.main.async {
+                self.present(alert, animated: true, completion: nil)
+            }
         }
     }
 }

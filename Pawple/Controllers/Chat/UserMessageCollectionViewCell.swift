@@ -15,19 +15,15 @@ class UserMessageCollectionViewCell: UICollectionViewCell {
             self.imgView.layer.cornerRadius = 16
         }
     }
-    @IBOutlet weak var textView: UITextView! {
-        didSet {
-//            self.textView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-        }
-    }
+    @IBOutlet weak var textView: UITextView!
 
-    func setupCell(message: Message) {
+    func setUpCell(message: Message, objVC: UIViewController) {
         if let text = message.text {
             self.textView.text = text
             self.textView.isHidden = false
             self.imgView.isHidden = true
             self.imgView.isHidden = true
-            self.viewBubble.backgroundColor = UIColor(named: "BrandPurple")
+            self.viewBubble.isHidden = false
             let originalWidth = self.viewBubble.frame.size.width
 
             let calculatedWidth = CommonFunctions.estimateFrameForText(text).width + 22
@@ -39,16 +35,21 @@ class UserMessageCollectionViewCell: UICollectionViewCell {
             self.imgView.sd_setImage(with: photoURL)
             self.imgView.isHidden = false
             self.textView.isHidden = true
-            self.viewBubble.backgroundColor = .clear
+            self.viewBubble.isHidden = true
             self.viewBubble.frame.size.width = 280
+            let longpressGestureRecognizer = UILongPressGestureRecognizer(target: objVC, action: #selector(saveImageGesture(_:)))
+            imgView.isUserInteractionEnabled = true
+            imgView.addGestureRecognizer(longpressGestureRecognizer)
         }
     }
     
     @IBOutlet weak var viewBubble: UIView! {
         didSet {
-            //TODO: adjust to liking
             self.viewBubble.layer.cornerRadius = 16
         }
+    }
+    
+    @objc func saveImageGesture(_ sender: UILongPressGestureRecognizer) {
     }
     
 }

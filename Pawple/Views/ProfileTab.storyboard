@@ -1,14 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="EE4-NR-5SR">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="EE4-NR-5SR">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Pawple-->
+        <!--Lucky Paw-->
         <scene sceneID="dBV-ug-Kwa">
             <objects>
                 <viewController id="lQF-D6-sHQ" customClass="ProfileViewController" customModule="Pawple" customModuleProvider="target" sceneMemberID="viewController">
@@ -37,7 +39,8 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="e0N-1E-Lhb"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="Y5j-NT-AdJ" firstAttribute="top" secondItem="e0N-1E-Lhb" secondAttribute="top" id="CUt-Nd-hlK"/>
                             <constraint firstItem="Y5j-NT-AdJ" firstAttribute="top" secondItem="hQv-vu-9SF" secondAttribute="bottom" constant="-122" id="IA7-Pt-oiB"/>
@@ -47,9 +50,8 @@
                             <constraint firstItem="Y5j-NT-AdJ" firstAttribute="leading" secondItem="e0N-1E-Lhb" secondAttribute="leading" id="reZ-OV-4gd"/>
                             <constraint firstItem="e0N-1E-Lhb" firstAttribute="trailing" secondItem="Y5j-NT-AdJ" secondAttribute="trailing" id="z8X-gL-mIz"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="e0N-1E-Lhb"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Pawple" id="XMl-ad-ihO">
+                    <navigationItem key="navigationItem" title="Lucky Paw" id="XMl-ad-ihO">
                         <barButtonItem key="rightBarButtonItem" title="•••" id="TQ3-hg-htJ" userLabel="Menu">
                             <color key="tintColor" name="BrandPurple"/>
                             <connections>
@@ -68,7 +70,7 @@
             </objects>
             <point key="canvasLocation" x="6266.666666666667" y="-640.17857142857144"/>
         </scene>
-        <!--Pawple-->
+        <!--Lucky Paw-->
         <scene sceneID="zNA-Uc-BtD">
             <objects>
                 <viewController storyboardIdentifier="editProfileVC" extendedLayoutIncludesOpaqueBars="YES" id="kMH-8K-R2U" customClass="EditProfileViewController" customModule="Pawple" customModuleProvider="target" sceneMemberID="viewController">
@@ -104,7 +106,8 @@
                                 <color key="color" red="0.67450980390000004" green="0.43529411759999997" blue="0.91764705879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </activityIndicatorView>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="vyz-Xk-xlB"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="tFl-Mb-deQ" firstAttribute="centerY" secondItem="vyz-Xk-xlB" secondAttribute="centerY" constant="-32.5" id="8ft-Eh-WIE"/>
                             <constraint firstItem="tBu-Hg-TS2" firstAttribute="leading" secondItem="vyz-Xk-xlB" secondAttribute="leading" id="Aa2-xI-SFD"/>
@@ -117,9 +120,8 @@
                             <constraint firstItem="weV-qa-jwm" firstAttribute="top" secondItem="rUQ-Ny-bW9" secondAttribute="bottom" constant="22" id="uZw-BJ-bd5"/>
                             <constraint firstItem="vyz-Xk-xlB" firstAttribute="trailing" secondItem="tBu-Hg-TS2" secondAttribute="trailing" id="zgc-pD-TJH"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="vyz-Xk-xlB"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Pawple" id="Ikj-0y-JYf">
+                    <navigationItem key="navigationItem" title="Lucky Paw" id="Ikj-0y-JYf">
                         <barButtonItem key="leftBarButtonItem" title="Cancel" id="nmb-5K-s7O">
                             <connections>
                                 <action selector="cancelButtonPressed:" destination="kMH-8K-R2U" id="asj-nW-hLA"/>
@@ -177,5 +179,8 @@
         <namedColor name="BrandPurple">
             <color red="0.67500001192092896" green="0.43500000238418579" blue="0.9179999828338623" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
     </resources>
 </document>

@@ -14,7 +14,7 @@ import Firebase
 class WelcomeViewController: UIViewController {
         
     @IBOutlet weak var welcomeText: CLTypingLabel!
-    @IBOutlet weak var pawpleText: CLTypingLabel!
+    @IBOutlet weak var luckypawText: CLTypingLabel!
     @IBOutlet weak var googleSignInButton: GIDSignInButton!
     
     override func viewDidLoad() {
@@ -27,10 +27,10 @@ class WelcomeViewController: UIViewController {
         GIDSignIn.sharedInstance()?.presentingViewController = self
         GIDSignIn.sharedInstance()?.delegate = self
         
-        welcomeText.text = "    Welcome to"
-        Timer.scheduledTimer(withTimeInterval: 1.5, repeats: false) { (timer) in
-            self.pawpleText.text = " Pawple "
-        }
+//        welcomeText.text = "         Welcome to"
+//        Timer.scheduledTimer(withTimeInterval: 2.5, repeats: false) { (timer) in
+//            self.luckypawText.text = " Lucky Paw "
+//        }
     }
 }
 

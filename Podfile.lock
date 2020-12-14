@@ -158,6 +158,7 @@ PODS:
     - abseil/base/base_internal
     - abseil/base/config
     - abseil/meta/type_traits
+  - Alamofire (5.4.0)
   - AppAuth (1.4.0):
     - AppAuth/Core (= 1.4.0)
     - AppAuth/ExternalUserAgent (= 1.4.0)
@@ -285,6 +286,7 @@ PODS:
   - SwipeCellKit (2.7.1)
 
 DEPENDENCIES:
+  - Alamofire (~> 5.2)
   - CLTypingLabel (~> 0.4.0)
   - DropDown (= 2.3.13)
   - Firebase/Auth
@@ -300,6 +302,7 @@ DEPENDENCIES:
 SPEC REPOS:
   trunk:
     - abseil
+    - Alamofire
     - AppAuth
     - BoringSSL-GRPC
     - CLTypingLabel
@@ -330,6 +333,7 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   abseil: 18063d773f5366ff8736a050fe035a28f635fd27
+  Alamofire: 3b6a534a3df22db367e4dedeeca73d1ddfcf0e2f
   AppAuth: 31bcec809a638d7bd2f86ea8a52bd45f6e81e7c7
   BoringSSL-GRPC: db8764df3204ccea016e1c8dd15d9a9ad63ff318
   CLTypingLabel: 95a7d1faf7e3d1d952cd11cb0491d17d80c50934
@@ -358,6 +362,6 @@ SPEC CHECKSUMS:
   SwiftLint: 22ccbbe3b8008684be5955693bab135e0ed6a447
   SwipeCellKit: 3972254a826da74609926daf59b08d6c72e619ea
 
-PODFILE CHECKSUM: 9ec8c8470d0ca75f1273d4891cf569d9ce994ba6
+PODFILE CHECKSUM: e3296e07734330a2a8ebe3371e8d35b53410a3e6
 
 COCOAPODS: 1.9.3

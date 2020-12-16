@@ -38,6 +38,11 @@ class FilterAndFindVC: UIViewController {
         if let flowLayout = self.collectionViewFilter.collectionViewLayout as? UICollectionViewFlowLayout {
             flowLayout.sectionHeadersPinToVisibleBounds = true
         }
+
+        let objAuthService = GetOAuthTokenService()
+        let token = objAuthService.getOAuthToken()
+        print("token:\(token)")
+
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

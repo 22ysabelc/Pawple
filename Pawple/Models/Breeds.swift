@@ -9,5 +9,9 @@
 import Foundation
 
 class Breeds: NSObject, Decodable {
-    var name: String?
+    var breeds: [Name?]
+}
+
+class Name: Decodable {
+    var name: String
 }

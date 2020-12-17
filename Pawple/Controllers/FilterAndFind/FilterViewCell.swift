@@ -2,8 +2,8 @@
 //  FilterViewCell.swift
 //  CollectionViewDynamicSizing
 //
-//  Created by Shankar on 13/03/20.
-//  Copyright © 2020 Shankar. All rights reserved.
+//  Created by Hitesh Arora on 12/12/20.
+//  Copyright © 2020 Ysabel Chen. All rights reserved.
 //
 
 import UIKit

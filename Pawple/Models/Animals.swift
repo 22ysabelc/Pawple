@@ -22,13 +22,18 @@ class Animals: NSObject {
     //add the other parameters
 }
 
-class Organization: NSObject {
+class Organization: NSObject, Decodable {
+    var organizations: [OrgDetails?]
+}
+
+class OrgDetails: NSObject, Decodable {
     var email: String?
+    var name: String?
     var phone: String?
     var address: OrgAddress?
 }
 
-class OrgAddress: NSObject {
+class OrgAddress: NSObject, Decodable {
     var address1: String?
     var address2: String?
     var city: String?

@@ -18,8 +18,17 @@ class GetOAuthTokenService: NSObject {
         parameters["client_secret"] = "kIGdjXKoBjPGBsOhGoMheYQe3tUbVPxG2n65hRoy"
 
         AF.request("https://api.petfinder.com/v2/oauth2/token", method: .post, parameters: parameters).responseDecodable(of: PetFinder.self) {response in
+            print("response result: \(response.result)")
             if let petFinder = response.value as? PetFinder {
                 print("accessToken: \(petFinder.access_token)")
+
+                // get list of breeds
+
+                let objAnimalsService = AnimalsService()
+            
+                print(objAnimalsService.getListOfBreeds(token: petFinder.access_token, species: "cat"))
+
+                print(objAnimalsService.getListOfOrganizations(token: petFinder.access_token))
             }
         }
         return ""

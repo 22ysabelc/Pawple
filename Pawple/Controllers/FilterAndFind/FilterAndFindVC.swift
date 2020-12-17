@@ -34,7 +34,7 @@ class FilterAndFindVC: UIViewController {
                              (section: "Location", data: ["Enter City, State, or ZIP", "Within 10 miles", "Within 25 miles", "Within 50 miles", "Within 100 miles", "Anywhere" ], selected: 0),
                              (section: "Shelter/Rescue", data: ["Any", "🔍 Search"], selected: 0),
                              (section: "Pet Name", data: ["Any", "🔍 Search"], selected: 0)]
-
+// Header View
         if let flowLayout = self.collectionViewFilter.collectionViewLayout as? UICollectionViewFlowLayout {
             flowLayout.sectionHeadersPinToVisibleBounds = true
         }
@@ -42,6 +42,9 @@ class FilterAndFindVC: UIViewController {
         let objAuthService = GetOAuthTokenService()
         let token = objAuthService.getOAuthToken()
         print("token:\(token)")
+
+
+
 
     }
 

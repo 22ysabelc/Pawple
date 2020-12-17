@@ -9,13 +9,14 @@
 /* Begin PBXBuildFile section */
 		9D31C2CA2499C5EC00F6CB48 /* ProfileTab.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9D31C2C92499C5EC00F6CB48 /* ProfileTab.storyboard */; };
 		9D31C2CD2499E12400F6CB48 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 9D31C2CC2499E12400F6CB48 /* .swiftlint.yml */; };
-		9D332B222589944000438588 /* GetOAuthTokenService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D332B212589944000438588 /* GetOAuthTokenService.swift */; };
 		9D332B2425899A6700438588 /* PetFinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D332B2325899A6700438588 /* PetFinder.swift */; };
 		9D5E58DB2586FED400DF353F /* FilterAndFindVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D5E58DA2586FED400DF353F /* FilterAndFindVC.swift */; };
 		9D5E58DF2586FEF100DF353F /* SearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D5E58DE2586FEF100DF353F /* SearchTableViewController.swift */; };
 		9D5E58E22587010100DF353F /* FilterCollectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D5E58E12587010100DF353F /* FilterCollectionHeaderView.swift */; };
 		9D5E58E52587011A00DF353F /* FilterViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D5E58E42587011A00DF353F /* FilterViewCell.swift */; };
 		9D5E58E82587017A00DF353F /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D5E58E72587017A00DF353F /* Extension.swift */; };
+		9D5E89AD258AFDF000B62B44 /* GetOAuthTokenService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D5E89AC258AFDEF00B62B44 /* GetOAuthTokenService.swift */; };
+		9D5E89AF258AFE0100B62B44 /* AnimalsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D5E89AE258AFE0100B62B44 /* AnimalsService.swift */; };
 		AF04A5B324BB9BE7006099B9 /* UsersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF04A5B224BB9BE7006099B9 /* UsersTableViewController.swift */; };
 		AF04A5B524BBAACD006099B9 /* UserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF04A5B424BBAACC006099B9 /* UserTableViewCell.swift */; };
 		AF42AE772574431B00A7C6F4 /* Animals.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF42AE762574431A00A7C6F4 /* Animals.swift */; };
@@ -62,13 +63,14 @@
 		5A20D4E5C997825C9B97C033 /* Pods-Pawple.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pawple.debug.xcconfig"; path = "Target Support Files/Pods-Pawple/Pods-Pawple.debug.xcconfig"; sourceTree = "<group>"; };
 		9D31C2C92499C5EC00F6CB48 /* ProfileTab.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ProfileTab.storyboard; sourceTree = "<group>"; };
 		9D31C2CC2499E12400F6CB48 /* .swiftlint.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
-		9D332B212589944000438588 /* GetOAuthTokenService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = GetOAuthTokenService.swift; path = Pawple/Controllers/FilterAndFind/GetOAuthTokenService.swift; sourceTree = SOURCE_ROOT; };
 		9D332B2325899A6700438588 /* PetFinder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetFinder.swift; sourceTree = "<group>"; };
 		9D5E58DA2586FED400DF353F /* FilterAndFindVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterAndFindVC.swift; sourceTree = "<group>"; };
 		9D5E58DE2586FEF100DF353F /* SearchTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewController.swift; sourceTree = "<group>"; };
 		9D5E58E12587010100DF353F /* FilterCollectionHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterCollectionHeaderView.swift; sourceTree = "<group>"; };
 		9D5E58E42587011A00DF353F /* FilterViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterViewCell.swift; sourceTree = "<group>"; };
 		9D5E58E72587017A00DF353F /* Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
+		9D5E89AC258AFDEF00B62B44 /* GetOAuthTokenService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetOAuthTokenService.swift; sourceTree = "<group>"; };
+		9D5E89AE258AFE0100B62B44 /* AnimalsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimalsService.swift; sourceTree = "<group>"; };
 		AF04A5B224BB9BE7006099B9 /* UsersTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersTableViewController.swift; sourceTree = "<group>"; };
 		AF04A5B424BBAACC006099B9 /* UserTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTableViewCell.swift; sourceTree = "<group>"; };
 		AF42AE762574431A00A7C6F4 /* Animals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animals.swift; sourceTree = "<group>"; };
@@ -165,10 +167,11 @@
 			path = FilterAndFind;
 			sourceTree = "<group>";
 		};
-		AF42AE7C2574473700A7C6F4 /* Services */ = {
+		9D5E89AB258AFDEF00B62B44 /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				9D332B212589944000438588 /* GetOAuthTokenService.swift */,
+				9D5E89AC258AFDEF00B62B44 /* GetOAuthTokenService.swift */,
+				9D5E89AE258AFE0100B62B44 /* AnimalsService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -198,7 +201,7 @@
 				AF492D6824565DAA00ED4130 /* Pawple.entitlements */,
 				AF7C6355245140820088C0D3 /* AppDelegate.swift */,
 				AF7C6357245140820088C0D3 /* SceneDelegate.swift */,
-				AF42AE7C2574473700A7C6F4 /* Services */,
+				9D5E89AB258AFDEF00B62B44 /* Services */,
 				AF9198C32496AA6B000A0218 /* Components */,
 				AFF0B7392479B143001F332A /* Utilities */,
 				AF8CEB42246264D10033C719 /* Models */,
@@ -457,10 +460,10 @@
 				9D5E58E52587011A00DF353F /* FilterViewCell.swift in Sources */,
 				AF42AE772574431B00A7C6F4 /* Animals.swift in Sources */,
 				AFA4342524FC640B0090FF34 /* UserMessageCollectionViewCell.swift in Sources */,
-				9D332B222589944000438588 /* GetOAuthTokenService.swift in Sources */,
 				9D332B2425899A6700438588 /* PetFinder.swift in Sources */,
 				AF8CEB44246269E60033C719 /* Constants.swift in Sources */,
 				AF42AE7A2574469100A7C6F4 /* Breeds.swift in Sources */,
+				9D5E89AF258AFE0100B62B44 /* AnimalsService.swift in Sources */,
 				AFA4342724FC70100090FF34 /* ChatPartnerCollectionViewCell.swift in Sources */,
 				9D5E58E82587017A00DF353F /* Extension.swift in Sources */,
 				AF8CEB41246264CA0033C719 /* Profile.swift in Sources */,
@@ -474,6 +477,7 @@
 				AFF0B73B2479B16B001F332A /* PawpleUserDefaults.swift in Sources */,
 				AF492D6524564EA400ED4130 /* SignUpViewController.swift in Sources */,
 				AF9198C024969E43000A0218 /* User.swift in Sources */,
+				9D5E89AD258AFDF000B62B44 /* GetOAuthTokenService.swift in Sources */,
 				AFAE27522452A85100A78E05 /* RoundButton.swift in Sources */,
 				AF492D6324564E9700ED4130 /* LogInViewController.swift in Sources */,
 				AF7C635A245140820088C0D3 /* WelcomeViewController.swift in Sources */,

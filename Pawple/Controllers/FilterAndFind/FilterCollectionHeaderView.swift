@@ -3,7 +3,7 @@
 //  CollectionViewDynamicSizing
 //
 //  Created by Hitesh Arora on 12/12/20.
-//  Copyright © 2020 Shankar. All rights reserved.
+//  Copyright © 2020 Ysabel Chen. All rights reserved.
 //
 
 import UIKit

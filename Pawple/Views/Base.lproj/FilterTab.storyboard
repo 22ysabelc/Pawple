@@ -9,7 +9,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Lucky Paw-->
+        <!--Filters-->
         <scene sceneID="wB1-6V-9eH">
             <objects>
                 <viewController id="d3V-rQ-0jn" sceneMemberID="viewController">
@@ -19,7 +19,7 @@
                         <viewLayoutGuide key="safeArea" id="6oE-CQ-lx7"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Lucky Paw" id="qka-5J-J6U"/>
+                    <navigationItem key="navigationItem" title="Filters" id="qka-5J-J6U"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XTX-0G-6F6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

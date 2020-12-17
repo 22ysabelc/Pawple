@@ -32,7 +32,7 @@
 		AF9198C22496A96D000A0218 /* CustomImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF9198C12496A96D000A0218 /* CustomImagePicker.swift */; };
 		AF9198C62496AAB3000A0218 /* String+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF9198C52496AAB3000A0218 /* String+extensions.swift */; };
 		AF9198C82496ACB8000A0218 /* UIViewController+Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF9198C72496ACB8000A0218 /* UIViewController+Alert.swift */; };
-		AFA2AD1224593F820068B4ED /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFA2AD1124593F820068B4ED /* TabBarViewController.swift */; };
+		AFA2AD1224593F820068B4ED /* FilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFA2AD1124593F820068B4ED /* FilterViewController.swift */; };
 		AFA4342524FC640B0090FF34 /* UserMessageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFA4342424FC640B0090FF34 /* UserMessageCollectionViewCell.swift */; };
 		AFA4342724FC70100090FF34 /* ChatPartnerCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFA4342624FC70100090FF34 /* ChatPartnerCollectionViewCell.swift */; };
 		AFA7B9A8245E5442009C293B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AFA7B9A7245E5442009C293B /* Foundation.framework */; };
@@ -82,7 +82,7 @@
 		AF9198C12496A96D000A0218 /* CustomImagePicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomImagePicker.swift; sourceTree = "<group>"; };
 		AF9198C52496AAB3000A0218 /* String+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+extensions.swift"; sourceTree = "<group>"; };
 		AF9198C72496ACB8000A0218 /* UIViewController+Alert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Alert.swift"; sourceTree = "<group>"; };
-		AFA2AD1124593F820068B4ED /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
+		AFA2AD1124593F820068B4ED /* FilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterViewController.swift; sourceTree = "<group>"; };
 		AFA4342424FC640B0090FF34 /* UserMessageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserMessageCollectionViewCell.swift; sourceTree = "<group>"; };
 		AFA4342624FC70100090FF34 /* ChatPartnerCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatPartnerCollectionViewCell.swift; sourceTree = "<group>"; };
 		AFA7B9A0245E5074009C293B /* Pods_Pawple.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_Pawple.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -241,9 +241,9 @@
 				AF7C6359245140820088C0D3 /* WelcomeViewController.swift */,
 				AF492D6224564E9700ED4130 /* LogInViewController.swift */,
 				AF492D6424564EA400ED4130 /* SignUpViewController.swift */,
-				AFA2AD1124593F820068B4ED /* TabBarViewController.swift */,
 				AF8F9B37245A873800CAAEBF /* ProfileViewController.swift */,
 				AF8CEB4524626C580033C719 /* EditProfileViewController.swift */,
+				AFA2AD1124593F820068B4ED /* FilterViewController.swift */,
 				AFC17D1C24D75CC000CC29C7 /* Chat */,
 			);
 			path = Controllers;
@@ -427,7 +427,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AFA2AD1224593F820068B4ED /* TabBarViewController.swift in Sources */,
+				AFA2AD1224593F820068B4ED /* FilterViewController.swift in Sources */,
 				AF42AE772574431B00A7C6F4 /* Animals.swift in Sources */,
 				AFBE3C11257C94F200BAA6B9 /* Organizations.swift in Sources */,
 				AFA4342524FC640B0090FF34 /* UserMessageCollectionViewCell.swift in Sources */,

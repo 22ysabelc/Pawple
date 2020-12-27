@@ -17,6 +17,17 @@
 		9D5E58E82587017A00DF353F /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D5E58E72587017A00DF353F /* Extension.swift */; };
 		9D5E89AD258AFDF000B62B44 /* GetOAuthTokenService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D5E89AC258AFDEF00B62B44 /* GetOAuthTokenService.swift */; };
 		9D5E89AF258AFE0100B62B44 /* AnimalsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D5E89AE258AFE0100B62B44 /* AnimalsService.swift */; };
+		9D67CD41258E609B005A8366 /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D67CD40258E609B005A8366 /* SearchTableViewCell.swift */; };
+		9D67CD4325992256005A8366 /* GitRequestInterceptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D67CD4225992256005A8366 /* GitRequestInterceptor.swift */; };
+		9D67CD492599237E005A8366 /* GitHubAccessToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D67CD462599237E005A8366 /* GitHubAccessToken.swift */; };
+		9D67CD4A2599237E005A8366 /* TokenManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D67CD472599237E005A8366 /* TokenManager.swift */; };
+		9D67CD4B2599237E005A8366 /* GitHubConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D67CD482599237E005A8366 /* GitHubConstants.swift */; };
+		9D67CD50259923E6005A8366 /* SecureStoreError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D67CD4D259923E6005A8366 /* SecureStoreError.swift */; };
+		9D67CD51259923E6005A8366 /* SecureStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D67CD4E259923E6005A8366 /* SecureStore.swift */; };
+		9D67CD52259923E6005A8366 /* SecureStoreQueryable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D67CD4F259923E6005A8366 /* SecureStoreQueryable.swift */; };
+		9D67CD54259926D9005A8366 /* GitNetworkReachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D67CD53259926D9005A8366 /* GitNetworkReachability.swift */; };
+		9D67CD5625992B75005A8366 /* PawpleRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D67CD5525992B75005A8366 /* PawpleRouter.swift */; };
+		9D67CD5825992EA3005A8366 /* APIServiceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D67CD5725992EA3005A8366 /* APIServiceManager.swift */; };
 		AF04A5B324BB9BE7006099B9 /* UsersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF04A5B224BB9BE7006099B9 /* UsersTableViewController.swift */; };
 		AF04A5B524BBAACD006099B9 /* UserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF04A5B424BBAACC006099B9 /* UserTableViewCell.swift */; };
 		AF42AE772574431B00A7C6F4 /* Animals.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF42AE762574431A00A7C6F4 /* Animals.swift */; };
@@ -71,6 +82,17 @@
 		9D5E58E72587017A00DF353F /* Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 		9D5E89AC258AFDEF00B62B44 /* GetOAuthTokenService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetOAuthTokenService.swift; sourceTree = "<group>"; };
 		9D5E89AE258AFE0100B62B44 /* AnimalsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimalsService.swift; sourceTree = "<group>"; };
+		9D67CD40258E609B005A8366 /* SearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
+		9D67CD4225992256005A8366 /* GitRequestInterceptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitRequestInterceptor.swift; sourceTree = "<group>"; };
+		9D67CD462599237E005A8366 /* GitHubAccessToken.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GitHubAccessToken.swift; sourceTree = "<group>"; };
+		9D67CD472599237E005A8366 /* TokenManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TokenManager.swift; sourceTree = "<group>"; };
+		9D67CD482599237E005A8366 /* GitHubConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GitHubConstants.swift; sourceTree = "<group>"; };
+		9D67CD4D259923E6005A8366 /* SecureStoreError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecureStoreError.swift; sourceTree = "<group>"; };
+		9D67CD4E259923E6005A8366 /* SecureStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecureStore.swift; sourceTree = "<group>"; };
+		9D67CD4F259923E6005A8366 /* SecureStoreQueryable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecureStoreQueryable.swift; sourceTree = "<group>"; };
+		9D67CD53259926D9005A8366 /* GitNetworkReachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GitNetworkReachability.swift; sourceTree = "<group>"; };
+		9D67CD5525992B75005A8366 /* PawpleRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PawpleRouter.swift; sourceTree = "<group>"; };
+		9D67CD5725992EA3005A8366 /* APIServiceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIServiceManager.swift; sourceTree = "<group>"; };
 		AF04A5B224BB9BE7006099B9 /* UsersTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersTableViewController.swift; sourceTree = "<group>"; };
 		AF04A5B424BBAACC006099B9 /* UserTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTableViewCell.swift; sourceTree = "<group>"; };
 		AF42AE762574431A00A7C6F4 /* Animals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animals.swift; sourceTree = "<group>"; };
@@ -163,6 +185,7 @@
 				9D5E58E12587010100DF353F /* FilterCollectionHeaderView.swift */,
 				9D5E58DA2586FED400DF353F /* FilterAndFindVC.swift */,
 				9D5E58DE2586FEF100DF353F /* SearchTableViewController.swift */,
+				9D67CD40258E609B005A8366 /* SearchTableViewCell.swift */,
 			);
 			path = FilterAndFind;
 			sourceTree = "<group>";
@@ -172,8 +195,40 @@
 			children = (
 				9D5E89AC258AFDEF00B62B44 /* GetOAuthTokenService.swift */,
 				9D5E89AE258AFE0100B62B44 /* AnimalsService.swift */,
+				9D67CD5725992EA3005A8366 /* APIServiceManager.swift */,
+				9D67CD5525992B75005A8366 /* PawpleRouter.swift */,
+				9D67CD4225992256005A8366 /* GitRequestInterceptor.swift */,
+				9D67CD53259926D9005A8366 /* GitNetworkReachability.swift */,
 			);
 			path = Services;
+			sourceTree = "<group>";
+		};
+		9D67CD442599236A005A8366 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				9D67CD452599237E005A8366 /* Oauth */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		9D67CD452599237E005A8366 /* Oauth */ = {
+			isa = PBXGroup;
+			children = (
+				9D67CD462599237E005A8366 /* GitHubAccessToken.swift */,
+				9D67CD472599237E005A8366 /* TokenManager.swift */,
+				9D67CD482599237E005A8366 /* GitHubConstants.swift */,
+			);
+			path = Oauth;
+			sourceTree = "<group>";
+		};
+		9D67CD4C259923E6005A8366 /* SecureStore */ = {
+			isa = PBXGroup;
+			children = (
+				9D67CD4D259923E6005A8366 /* SecureStoreError.swift */,
+				9D67CD4E259923E6005A8366 /* SecureStore.swift */,
+				9D67CD4F259923E6005A8366 /* SecureStoreQueryable.swift */,
+			);
+			path = SecureStore;
 			sourceTree = "<group>";
 		};
 		AF7C6349245140820088C0D3 = {
@@ -201,6 +256,7 @@
 				AF492D6824565DAA00ED4130 /* Pawple.entitlements */,
 				AF7C6355245140820088C0D3 /* AppDelegate.swift */,
 				AF7C6357245140820088C0D3 /* SceneDelegate.swift */,
+				9D67CD442599236A005A8366 /* Networking */,
 				9D5E89AB258AFDEF00B62B44 /* Services */,
 				AF9198C32496AA6B000A0218 /* Components */,
 				AFF0B7392479B143001F332A /* Utilities */,
@@ -293,6 +349,7 @@
 		AFF0B7392479B143001F332A /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				9D67CD4C259923E6005A8366 /* SecureStore */,
 				9D5E58E72587017A00DF353F /* Extension.swift */,
 				AFF0B73A2479B16B001F332A /* PawpleUserDefaults.swift */,
 			);
@@ -464,21 +521,29 @@
 				AF8CEB44246269E60033C719 /* Constants.swift in Sources */,
 				AF42AE7A2574469100A7C6F4 /* Breeds.swift in Sources */,
 				9D5E89AF258AFE0100B62B44 /* AnimalsService.swift in Sources */,
+				9D67CD4B2599237E005A8366 /* GitHubConstants.swift in Sources */,
+				9D67CD4325992256005A8366 /* GitRequestInterceptor.swift in Sources */,
 				AFA4342724FC70100090FF34 /* ChatPartnerCollectionViewCell.swift in Sources */,
+				9D67CD41258E609B005A8366 /* SearchTableViewCell.swift in Sources */,
 				9D5E58E82587017A00DF353F /* Extension.swift in Sources */,
 				AF8CEB41246264CA0033C719 /* Profile.swift in Sources */,
 				AF9198C82496ACB8000A0218 /* UIViewController+Alert.swift in Sources */,
+				9D67CD492599237E005A8366 /* GitHubAccessToken.swift in Sources */,
 				AFE98E04249973B8002573EF /* ChatListTableViewController.swift in Sources */,
 				9D5E58DB2586FED400DF353F /* FilterAndFindVC.swift in Sources */,
+				9D67CD54259926D9005A8366 /* GitNetworkReachability.swift in Sources */,
 				9D5E58E22587010100DF353F /* FilterCollectionHeaderView.swift in Sources */,
 				AF7C6360245140820088C0D3 /* Pawple.xcdatamodeld in Sources */,
+				9D67CD51259923E6005A8366 /* SecureStore.swift in Sources */,
 				AFC17D1B24D751A700CC29C7 /* ChatLogViewController.swift in Sources */,
 				AF9198C62496AAB3000A0218 /* String+extensions.swift in Sources */,
+				9D67CD5625992B75005A8366 /* PawpleRouter.swift in Sources */,
 				AFF0B73B2479B16B001F332A /* PawpleUserDefaults.swift in Sources */,
 				AF492D6524564EA400ED4130 /* SignUpViewController.swift in Sources */,
 				AF9198C024969E43000A0218 /* User.swift in Sources */,
 				9D5E89AD258AFDF000B62B44 /* GetOAuthTokenService.swift in Sources */,
 				AFAE27522452A85100A78E05 /* RoundButton.swift in Sources */,
+				9D67CD5825992EA3005A8366 /* APIServiceManager.swift in Sources */,
 				AF492D6324564E9700ED4130 /* LogInViewController.swift in Sources */,
 				AF7C635A245140820088C0D3 /* WelcomeViewController.swift in Sources */,
 				9D5E58DF2586FEF100DF353F /* SearchTableViewController.swift in Sources */,
@@ -487,9 +552,12 @@
 				AF04A5B524BBAACD006099B9 /* UserTableViewCell.swift in Sources */,
 				AFB8E7B524E0888C00F05698 /* Message.swift in Sources */,
 				AF7C6356245140820088C0D3 /* AppDelegate.swift in Sources */,
+				9D67CD50259923E6005A8366 /* SecureStoreError.swift in Sources */,
+				9D67CD4A2599237E005A8366 /* TokenManager.swift in Sources */,
 				AFB8E7B724E098EF00F05698 /* CommonFunctions.swift in Sources */,
 				AF7C6358245140820088C0D3 /* SceneDelegate.swift in Sources */,
 				AF04A5B324BB9BE7006099B9 /* UsersTableViewController.swift in Sources */,
+				9D67CD52259923E6005A8366 /* SecureStoreQueryable.swift in Sources */,
 				AF9198C22496A96D000A0218 /* CustomImagePicker.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

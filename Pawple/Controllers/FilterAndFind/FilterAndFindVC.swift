@@ -10,9 +10,24 @@ import UIKit
 
 class FilterAndFindVC: UIViewController {
 
+    var isTokenValid: Bool {
+        let tokenExpirationTimestamp: String = TokenManager.shared.fetchTokenExpiration() ?? "0"
+        if let doubleValue = Double(tokenExpirationTimestamp) {
+            if doubleValue > Date.init().timeIntervalSince1970 {
+                return true
+            }
+        }
+        return false
+    }
+
+    var isLoggedIn: Bool {
+        if TokenManager.shared.fetchAccessToken() != nil && isTokenValid {
+            return true
+        }
+        return false
+    }
+    
     var searchFilter = [(section: String, data: [String?], selected: Int?)]()
-
-
     let purpleColor = UIColor(red: 172/255.0, green: 111/255.0, blue: 234/255.0, alpha: 1.0)
 
     @IBOutlet weak var collectionViewFilter: UICollectionView!
@@ -39,13 +54,13 @@ class FilterAndFindVC: UIViewController {
             flowLayout.sectionHeadersPinToVisibleBounds = true
         }
 
-        let objAuthService = GetOAuthTokenService()
-        let token = objAuthService.getOAuthToken()
-        print("token:\(token)")
-
-
-
-
+        if !isLoggedIn {
+            APIServiceManager.shared.fetchAccessToken { (isSuccess) in
+                if !isSuccess {
+                    print("Error fetching Access Token")
+                }
+            }
+        }
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

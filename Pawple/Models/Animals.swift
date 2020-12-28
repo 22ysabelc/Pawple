@@ -17,7 +17,7 @@ class Animals: NSObject {
     var gender: String?
     var size: String?
     var coat: String?
-    var color: String?
+    var color: Colors?
     var age: String?
     //add the other parameters
 }
@@ -40,4 +40,10 @@ class OrgAddress: NSObject, Decodable {
     var state: String?
     var postcode: String?
     var country: String?
+}
+
+class Colors: NSObject, Decodable {
+    var primary: String?
+    var secondary: String?
+    var tertiary: String?
 }

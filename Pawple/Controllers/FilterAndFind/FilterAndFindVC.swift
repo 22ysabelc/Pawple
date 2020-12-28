@@ -24,7 +24,7 @@ class FilterAndFindVC: UIViewController {
 
         self.searchFilter = [(section: "Species", data: ["Dog", "Cat"], selected: 0),
                              (section: "Breed", data: ["Any", "🔍 Search"], selected: 0),
-                             (section: "Age", data: ["Any", "Puppy", "Young", "Adult", "Senior"], selected: 4),
+                             (section: "Age", data: ["Any", "Puppy", "Young", "Adult", "Senior"], selected: 0),
                              (section: "Gender", data: ["Any", "Male", "Female"], selected: 0),
                              (section: "Size", data: ["Any", "Small (0-25 lbs)", "Medium (26-60 lbs)", "Large (61-100 lbs)", "Extra Large (> 101 lbs)"], selected: 0),
                              (section: "Color", data: ["Any", "🔍 Search"], selected: 0),

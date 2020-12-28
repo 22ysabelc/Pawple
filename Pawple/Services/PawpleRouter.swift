@@ -13,6 +13,8 @@ enum PawpleRouter {
     case fetchListOfBreeds(String)
     case fetchListOfOrganizations
     case fetchAccessToken
+    case fetchListOfColors(String)
+    case fetchListOfNames(String)
 
     var baseURL: String {
         return "https://api.petfinder.com/v2/"
@@ -23,9 +25,13 @@ enum PawpleRouter {
             case .fetchListOfBreeds(let species):
                 return "types/\(species)/breeds/"
             case .fetchListOfOrganizations:
-                return "/organizations"
+                return "organizations"
             case .fetchAccessToken:
                 return "/oauth2/token"
+            case .fetchListOfColors(let species):
+                return "types/\(species)"
+            case .fetchListOfNames(let species):
+                return "types/\(species)/names"
         }
     }
 
@@ -46,10 +52,8 @@ enum PawpleRouter {
                     "client_secret": GitHubConstants.clientSecret,
                     "grant_type": GitHubConstants.grantType
             ]
-            case .fetchListOfBreeds(_):
-            return nil
-            case .fetchListOfOrganizations:
-            return nil
+            default:
+                return nil
         }
     }
 }

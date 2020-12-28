@@ -15,8 +15,6 @@
 		9D5E58E22587010100DF353F /* FilterCollectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D5E58E12587010100DF353F /* FilterCollectionHeaderView.swift */; };
 		9D5E58E52587011A00DF353F /* FilterViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D5E58E42587011A00DF353F /* FilterViewCell.swift */; };
 		9D5E58E82587017A00DF353F /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D5E58E72587017A00DF353F /* Extension.swift */; };
-		9D5E89AD258AFDF000B62B44 /* GetOAuthTokenService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D5E89AC258AFDEF00B62B44 /* GetOAuthTokenService.swift */; };
-		9D5E89AF258AFE0100B62B44 /* AnimalsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D5E89AE258AFE0100B62B44 /* AnimalsService.swift */; };
 		9D67CD41258E609B005A8366 /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D67CD40258E609B005A8366 /* SearchTableViewCell.swift */; };
 		9D67CD4325992256005A8366 /* GitRequestInterceptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D67CD4225992256005A8366 /* GitRequestInterceptor.swift */; };
 		9D67CD492599237E005A8366 /* GitHubAccessToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D67CD462599237E005A8366 /* GitHubAccessToken.swift */; };
@@ -80,8 +78,6 @@
 		9D5E58E12587010100DF353F /* FilterCollectionHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterCollectionHeaderView.swift; sourceTree = "<group>"; };
 		9D5E58E42587011A00DF353F /* FilterViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterViewCell.swift; sourceTree = "<group>"; };
 		9D5E58E72587017A00DF353F /* Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
-		9D5E89AC258AFDEF00B62B44 /* GetOAuthTokenService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetOAuthTokenService.swift; sourceTree = "<group>"; };
-		9D5E89AE258AFE0100B62B44 /* AnimalsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimalsService.swift; sourceTree = "<group>"; };
 		9D67CD40258E609B005A8366 /* SearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
 		9D67CD4225992256005A8366 /* GitRequestInterceptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitRequestInterceptor.swift; sourceTree = "<group>"; };
 		9D67CD462599237E005A8366 /* GitHubAccessToken.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GitHubAccessToken.swift; sourceTree = "<group>"; };
@@ -193,8 +189,6 @@
 		9D5E89AB258AFDEF00B62B44 /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				9D5E89AC258AFDEF00B62B44 /* GetOAuthTokenService.swift */,
-				9D5E89AE258AFE0100B62B44 /* AnimalsService.swift */,
 				9D67CD5725992EA3005A8366 /* APIServiceManager.swift */,
 				9D67CD5525992B75005A8366 /* PawpleRouter.swift */,
 				9D67CD4225992256005A8366 /* GitRequestInterceptor.swift */,
@@ -520,7 +514,6 @@
 				9D332B2425899A6700438588 /* PetFinder.swift in Sources */,
 				AF8CEB44246269E60033C719 /* Constants.swift in Sources */,
 				AF42AE7A2574469100A7C6F4 /* Breeds.swift in Sources */,
-				9D5E89AF258AFE0100B62B44 /* AnimalsService.swift in Sources */,
 				9D67CD4B2599237E005A8366 /* GitHubConstants.swift in Sources */,
 				9D67CD4325992256005A8366 /* GitRequestInterceptor.swift in Sources */,
 				AFA4342724FC70100090FF34 /* ChatPartnerCollectionViewCell.swift in Sources */,
@@ -541,7 +534,6 @@
 				AFF0B73B2479B16B001F332A /* PawpleUserDefaults.swift in Sources */,
 				AF492D6524564EA400ED4130 /* SignUpViewController.swift in Sources */,
 				AF9198C024969E43000A0218 /* User.swift in Sources */,
-				9D5E89AD258AFDF000B62B44 /* GetOAuthTokenService.swift in Sources */,
 				AFAE27522452A85100A78E05 /* RoundButton.swift in Sources */,
 				9D67CD5825992EA3005A8366 /* APIServiceManager.swift in Sources */,
 				AF492D6324564E9700ED4130 /* LogInViewController.swift in Sources */,

@@ -10,7 +10,7 @@ import UIKit
 
 class FilterAndFindVC: UIViewController {
 
-    var isTokenValid: Bool {
+    var isTokenNotExpired: Bool {
         let tokenExpirationTimestamp: String = TokenManager.shared.fetchTokenExpiration() ?? "0"
         if let doubleValue = Double(tokenExpirationTimestamp) {
             if doubleValue > Date.init().timeIntervalSince1970 {
@@ -20,13 +20,13 @@ class FilterAndFindVC: UIViewController {
         return false
     }
 
-    var isLoggedIn: Bool {
-        if TokenManager.shared.fetchAccessToken() != nil && isTokenValid {
+    var isTokenValid: Bool {
+        if TokenManager.shared.fetchAccessToken() != nil && isTokenNotExpired {
             return true
         }
         return false
     }
-    
+    var routeNameSelected: PawpleRouter = .fetchListOfOrganizations
     var searchFilter = [(section: String, data: [String?], selected: Int?)]()
     let purpleColor = UIColor(red: 172/255.0, green: 111/255.0, blue: 234/255.0, alpha: 1.0)
 
@@ -54,7 +54,7 @@ class FilterAndFindVC: UIViewController {
             flowLayout.sectionHeadersPinToVisibleBounds = true
         }
 
-        if !isLoggedIn {
+        if !isTokenValid {
             APIServiceManager.shared.fetchAccessToken { (isSuccess) in
                 if !isSuccess {
                     print("Error fetching Access Token")
@@ -65,11 +65,12 @@ class FilterAndFindVC: UIViewController {
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "SearchTableViewController" {
-            if segue.destination is SearchTableViewController {
+
+            if let objVC = segue.destination as? SearchTableViewController {
+                objVC.routeName = self.routeNameSelected
             }
         }
     }
-
 }
 
 extension FilterAndFindVC: UICollectionViewDelegate, UICollectionViewDataSource {
@@ -123,9 +124,21 @@ extension FilterAndFindVC: UICollectionViewDelegate, UICollectionViewDataSource 
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         //        let cell = collectionView.cellForItem(at: indexPath) as! FilterViewCell
-        self.searchFilter[indexPath.section].selected = indexPath.row
-        self.performSegue(withIdentifier: "SearchTableViewController", sender: self)
-        self.collectionViewFilter.reloadSections(IndexSet(integer: indexPath.section))
+        if let _ =  self.searchFilter[indexPath.section].data[indexPath.item]?.contains("Search") {
+            let section = self.searchFilter[indexPath.section].section
+            switch section {
+                case "Breed":
+                    routeNameSelected = .fetchListOfBreeds("Dog")
+                default:
+                    routeNameSelected = .fetchListOfBreeds("Dog")
+            }
+
+            self.performSegue(withIdentifier: "SearchTableViewController", sender: self)
+        }
+        else {
+            self.searchFilter[indexPath.section].selected = indexPath.row
+            self.collectionViewFilter.reloadSections(IndexSet(integer: indexPath.section))
+        }
     }
 }
 

@@ -41,3 +41,18 @@ class OrgAddress: NSObject, Decodable {
     var postcode: String?
     var country: String?
 }
+
+class Type: NSObject, Decodable {
+    var type: TypeOfSpecies?
+}
+class TypeOfSpecies: NSObject, Decodable {
+    var name: String?
+    var coats: [String?]
+    var colors: [String?]
+    var genders: [String?]
+}
+class Colors: NSObject, Decodable {
+    var primary: String?
+    var secondary: String?
+    var tertiary: String?
+}

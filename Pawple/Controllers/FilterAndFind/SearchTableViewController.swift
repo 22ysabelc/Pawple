@@ -11,7 +11,8 @@ import UIKit
 class SearchTableViewController: UITableViewController {
 
     @IBOutlet weak var searchBar: UISearchBar!
-    var isLoggedIn: Bool {
+    var routeName: PawpleRouter = PawpleRouter.fetchListOfOrganizations
+    var isTokenValid: Bool {
         if TokenManager.shared.fetchAccessToken() != nil {
             return true
         }
@@ -24,14 +25,27 @@ class SearchTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        print("route name: \(routeName.path)")
         // Uncomment the following line to preserve selection between presentations
          self.clearsSelectionOnViewWillAppear = false
 
-        if isLoggedIn {
-            APIServiceManager.shared.searchBreeds(species: "Dog") { (breedNames) in
-                print("List of Breeds: \(breedNames)")
-                self.arrayList.append(contentsOf: breedNames)
-                self.tableView.reloadData()
+        if isTokenValid {
+            switch routeName {
+                case .fetchListOfBreeds(let species):
+                    APIServiceManager.shared.searchBreeds(species: species) { (breedNames) in
+                        self.arrayList.append(contentsOf: breedNames)
+                        self.tableView.reloadData()
+                }
+                case .fetchListOfColors(let species):
+                    APIServiceManager.shared.fetchListOfColors(species: species) { (listOfcolors) in
+                        print("Cat colors at first index: \(listOfcolors?.colors[0])")
+                }
+                case .fetchListOfOrganizations:
+                    print("Nor route present to call")
+                case .fetchListOfNames(_):
+                    print("Nor route present to call")
+                default:
+                    print("Nor route present to call")
             }
         }
     }

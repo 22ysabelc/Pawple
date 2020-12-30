@@ -27,7 +27,8 @@ class FilterAndFindVC: UIViewController {
         return false
     }
     var routeNameSelected: PawpleRouter = .fetchListOfOrganizations
-    var searchFilter = [(section: String, data: [String?], selected: Int?)]()
+    var selectedSection: Int = 0
+    var searchFilter = [(section: String, data: [String], selected: Int)]()
     let purpleColor = UIColor(red: 172/255.0, green: 111/255.0, blue: 234/255.0, alpha: 1.0)
 
     @IBOutlet weak var collectionViewFilter: UICollectionView!
@@ -49,7 +50,7 @@ class FilterAndFindVC: UIViewController {
                              (section: "Location", data: ["Enter City, State, or ZIP", "Within 10 miles", "Within 25 miles", "Within 50 miles", "Within 100 miles", "Anywhere" ], selected: 0),
                              (section: "Shelter/Rescue", data: ["Any", "🔍 Search"], selected: 0),
                              (section: "Pet Name", data: ["Any", "🔍 Search"], selected: 0)]
-// Header View
+        // Header View
         if let flowLayout = self.collectionViewFilter.collectionViewLayout as? UICollectionViewFlowLayout {
             flowLayout.sectionHeadersPinToVisibleBounds = true
         }
@@ -65,9 +66,9 @@ class FilterAndFindVC: UIViewController {
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "SearchTableViewController" {
-
             if let objVC = segue.destination as? SearchTableViewController {
-                objVC.routeName = self.routeNameSelected
+                objVC.selectedIndex = selectedSection
+                objVC.arrayFilter = self.searchFilter
             }
         }
     }
@@ -82,8 +83,6 @@ extension FilterAndFindVC: UICollectionViewDelegate, UICollectionViewDataSource 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return self.searchFilter[section].data.count
     }
-
-
 
     func collectionView(_ collectionView: UICollectionView,
                         viewForSupplementaryElementOfKind kind: String,
@@ -106,7 +105,7 @@ extension FilterAndFindVC: UICollectionViewDelegate, UICollectionViewDataSource 
         cell.labelFilterName.text = data
         let isCellSelected = self.searchFilter[indexPath.section].selected
 
-        if(indexPath.item == isCellSelected) {
+        if (indexPath.item == isCellSelected) {
             cell.labelFilterName.textColor = .purple
             cell.layer.borderColor = UIColor.purple.cgColor
             cell.layer.borderWidth = 2.5
@@ -123,19 +122,12 @@ extension FilterAndFindVC: UICollectionViewDelegate, UICollectionViewDataSource 
     }
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        //        let cell = collectionView.cellForItem(at: indexPath) as! FilterViewCell
-        if let _ =  self.searchFilter[indexPath.section].data[indexPath.item]?.contains("Search") {
-            let section = self.searchFilter[indexPath.section].section
-            switch section {
-                case "Breed":
-                    routeNameSelected = .fetchListOfBreeds("Dog")
-                default:
-                    routeNameSelected = .fetchListOfBreeds("Dog")
-            }
 
+        // if item contains search text
+        if self.searchFilter[indexPath.section].data[indexPath.item].contains("Search") {
+            self.selectedSection = indexPath.section
             self.performSegue(withIdentifier: "SearchTableViewController", sender: self)
-        }
-        else {
+        } else {
             self.searchFilter[indexPath.section].selected = indexPath.row
             self.collectionViewFilter.reloadSections(IndexSet(integer: indexPath.section))
         }

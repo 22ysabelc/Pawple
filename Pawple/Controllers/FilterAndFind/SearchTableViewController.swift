@@ -11,7 +11,6 @@ import UIKit
 class SearchTableViewController: UITableViewController {
 
     @IBOutlet weak var searchBar: UISearchBar!
-    var routeName: PawpleRouter = PawpleRouter.fetchListOfOrganizations
     var isTokenValid: Bool {
         if TokenManager.shared.fetchAccessToken() != nil {
             return true
@@ -21,16 +20,17 @@ class SearchTableViewController: UITableViewController {
     var arrayList = [Name?]()
     var searchArrayList = [Name?]()
     var searching = false
+    var arrayFilter = [(section: String, data: [String], selected: Int)]()
+    var selectedIndex: Int = 0
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        print("route name: \(routeName.path)")
         // Uncomment the following line to preserve selection between presentations
          self.clearsSelectionOnViewWillAppear = false
 
         if isTokenValid {
-            switch routeName {
+            switch getRouteName() {
                 case .fetchListOfBreeds(let species):
                     APIServiceManager.shared.searchBreeds(species: species) { (breedNames) in
                         self.arrayList.append(contentsOf: breedNames)
@@ -38,7 +38,7 @@ class SearchTableViewController: UITableViewController {
                 }
                 case .fetchListOfColors(let species):
                     APIServiceManager.shared.fetchListOfColors(species: species) { (listOfcolors) in
-                        print("Cat colors at first index: \(listOfcolors?.colors[0])")
+                        print("Cat colors at first index: \(String(describing: listOfcolors?.colors[0]))")
                 }
                 case .fetchListOfOrganizations:
                     print("Nor route present to call")
@@ -75,15 +75,47 @@ class SearchTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        var selectedItem: String?
         if searching {
-            let selectedItem = self.searchArrayList[indexPath.row]?.name
-            print(selectedItem as Any)
+            selectedItem = self.searchArrayList[indexPath.row]?.name
         } else {
-            let selectedItem = arrayList[indexPath.row]?.name
-            print(selectedItem as Any)
+            selectedItem = arrayList[indexPath.row]?.name
+
         }
         // Close keyboard when you select cell
         self.searchBar.searchTextField.endEditing(true)
+
+        if let selectedItem = selectedItem {
+            self.addItemToList(itemName: selectedItem)
+            self.popViewController()
+        }
+    }
+
+    func addItemToList(itemName: String) {
+        if self.arrayList.count >= self.selectedIndex {
+            var dataArray = self.arrayFilter[self.selectedIndex].data
+            if dataArray.count > 2 {
+                dataArray.remove(at: 1)
+            }
+            dataArray.insert(itemName, at: 1)
+
+            self.arrayFilter[self.selectedIndex].data = dataArray
+            self.arrayFilter[self.selectedIndex].selected = 1
+        }
+    }
+
+    func popViewController() {
+        if let count: Int = self.navigationController?.viewControllers.count {
+            if count >= 2 {
+                if let objFilterVC = self.navigationController?.viewControllers[count-2] as? FilterAndFindVC {
+                    objFilterVC.searchFilter = arrayFilter
+                    objFilterVC.collectionViewFilter.reloadData()
+                    self.navigationController?.popViewController(animated: true)
+                }
+            }
+
+        }
+
     }
 }
 
@@ -99,5 +131,19 @@ extension SearchTableViewController: UISearchBarDelegate {
         searching = false
         searchBar.text = ""
         tableView.reloadData()
+    }
+
+    func getRouteName() -> PawpleRouter {
+        
+        if self.arrayFilter.count >= self.selectedIndex {
+            let section = self.arrayFilter[self.selectedIndex].section
+            switch section {
+                case "Breed":
+                    return .fetchListOfBreeds("Dog")
+                default:
+                    return .fetchListOfBreeds("Dog")
+            }
+        }
+        return .fetchListOfOrganizations
     }
 }

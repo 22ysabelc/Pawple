@@ -48,7 +48,7 @@ class Type: NSObject, Decodable {
 class TypeOfSpecies: NSObject, Decodable {
     var name: String?
     var coats: [String?]
-    var colors: [String?]
+    var colors: [String]
     var genders: [String?]
 }
 class Colors: NSObject, Decodable {

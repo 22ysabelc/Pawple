@@ -39,7 +39,8 @@ class SearchTableViewController: UITableViewController {
                 }
                 case .fetchListOfColors(let species):
                     APIServiceManager.shared.fetchListOfColors(species: species) { (listOfcolors) in
-                        print("Cat colors at first index: \(String(describing: listOfcolors?.colors[0]))")
+                        self.arrayList = listOfcolors.map {$0.colors} as! [String?]
+                        self.tableView.reloadData()
                 }
                 case .fetchListOfOrganizations:
                     print("Nor route present to call")
@@ -137,6 +138,8 @@ extension SearchTableViewController: UISearchBarDelegate {
             switch section {
                 case "Breed":
                     return .fetchListOfBreeds("Dog")
+                case "Color":
+                    return .fetchListOfColors("Dog")
                 default:
                     return .fetchListOfBreeds("Dog")
             }

@@ -8,18 +8,30 @@
 
 import Foundation
 
-class Animals: NSObject {
+class Animals: NSObject, Decodable {
+    var animals: [Animal?]
+}
+
+class Animal: NSObject, Decodable {
+    var name: String?
     var id: String?
     var type: String?
-    var breed: String?
+    var breeds: AnimalBreeds?
     var organization_id: String?
     var organization: Organization?
     var gender: String?
     var size: String?
     var coat: String?
-    var color: Colors?
+    var colors: Colors?
     var age: String?
-    //add the other parameters
+    // TODO: add attributes and environment
+}
+
+class AnimalBreeds: NSObject, Decodable {
+    var primary: String?
+    var secondary: String?
+    var mixed: Bool?
+    var unknown: Bool?
 }
 
 class Organization: NSObject, Decodable {
@@ -42,6 +54,16 @@ class OrgAddress: NSObject, Decodable {
     var country: String?
 }
 
+class Type: NSObject, Decodable {
+    var type: TypeOfSpecies?
+}
+
+class TypeOfSpecies: NSObject, Decodable {
+    var name: String?
+    var coats: [String?]
+    var colors: [String]
+    var genders: [String?]
+}
 class Colors: NSObject, Decodable {
     var primary: String?
     var secondary: String?

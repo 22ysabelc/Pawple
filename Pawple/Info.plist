@@ -23,9 +23,21 @@
 		<dict>
 			<key>CFBundleTypeRole</key>
 			<string>Editor</string>
+			<key>CFBundleURLName</key>
+			<string></string>
 			<key>CFBundleURLSchemes</key>
 			<array>
 				<string>com.googleusercontent.apps.944172244329-7sj24jrutiksjq01r3426o7k1sq5v0b8</string>
+			</array>
+		</dict>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLName</key>
+			<string>com.ysabelchen.luckypaw</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>petFinderLogin</string>
 			</array>
 		</dict>
 	</array>

@@ -10,81 +10,144 @@ import UIKit
 
 class SearchTableViewController: UITableViewController {
 
+    @IBOutlet weak var searchBar: UISearchBar!
+    var isTokenValid: Bool {
+        if TokenManager.shared.fetchAccessToken() != nil {
+            return true
+        }
+        return false
+    }
+
+    var arrayList = [String?]()
+    var searchArrayList = [String?]()
+    var searching = false
+    var arrayFilter = [(section: String, data: [String], selected: Int)]()
+    var selectedIndex: Int = 0
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
+        self.clearsSelectionOnViewWillAppear = false
 
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        if isTokenValid {
+            switch getRouteName() {
+                case .fetchListOfBreeds(let species):
+                    APIServiceManager.shared.searchBreeds(species: species) { (breedNames) in
+                        self.arrayList = breedNames.map {$0?.name}
+                        self.tableView.reloadData()
+                    }
+                case .fetchListOfColors(let species):
+                    APIServiceManager.shared.fetchListOfColors(species: species) { (listOfcolors) in
+                        self.arrayList = listOfcolors.map {$0.colors} as! [String?]
+                        self.tableView.reloadData()
+                }
+                case .fetchListOfOrganizations:
+                    APIServiceManager.shared.fetchListOfOrganizations { (listOfOrgs) in
+                        print("First organization name: \(listOfOrgs[0]?.name)")
+                    }
+                case .fetchListOfNames(_):
+                    print("Nor route present to call")
+                default:
+                    print("Nor route present to call")
+            }
+        }
     }
 
     // MARK: - Table view data source
-
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
+        if searching {
+            return searchArrayList.count
+        } else {
+            return arrayList.count
+        }
     }
 
-    /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+        let cell: SearchTableViewCell = tableView.dequeueReusableCell(withIdentifier: "SearchTableViewCell", for: indexPath) as! SearchTableViewCell
 
-        // Configure the cell...
-
+        if searching {
+            cell.title?.text = self.searchArrayList[indexPath.row]
+        } else {
+            cell.title.text = arrayList[indexPath.row]
+        }
         return cell
     }
-    */
 
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        var selectedItem: String?
+        if searching {
+            selectedItem = self.searchArrayList[indexPath.row]
+        } else {
+            selectedItem = arrayList[indexPath.row]
+
+        }
+        // Close keyboard when you select cell
+        self.searchBar.searchTextField.endEditing(true)
+
+        if let selectedItem = selectedItem {
+            self.addItemToList(itemName: selectedItem)
+            self.popViewController()
+        }
     }
-    */
 
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
+    func addItemToList(itemName: String) {
+        if self.arrayList.count >= self.selectedIndex {
+            var dataArray = self.arrayFilter[self.selectedIndex].data
+            if dataArray.count > 2 {
+                dataArray.remove(at: 1)
+            }
+            dataArray.insert(itemName, at: 1)
+            self.arrayFilter[self.selectedIndex].data = dataArray
+            self.arrayFilter[self.selectedIndex].selected = 1
+        }
     }
-    */
 
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
+    func popViewController() {
+        if let count: Int = self.navigationController?.viewControllers.count {
+            if count >= 2 {
+                if let objFilterVC = self.navigationController?.viewControllers[count-2] as? FilterAndFindVC {
+                    objFilterVC.searchFilter = arrayFilter
+                    objFilterVC.collectionViewFilter.reloadData()
+                    self.navigationController?.popViewController(animated: true)
+                }
+            }
+        }
     }
-    */
+}
 
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
+// MARK: - SearchBar Delegates
+extension SearchTableViewController: UISearchBarDelegate {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        searchArrayList = arrayList.filter { $0!.lowercased().prefix(searchText.count) == searchText.lowercased() }
+        searching = true
+        tableView.reloadData()
     }
-    */
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searching = false
+        searchBar.text = ""
+        tableView.reloadData()
     }
-    */
 
+    func getRouteName() -> PawpleRouter {
+        if self.arrayFilter.count >= self.selectedIndex {
+            let section = self.arrayFilter[self.selectedIndex].section
+            switch section {
+                case "Breed":
+                    return .fetchListOfBreeds("Dog")
+                case "Color":
+                    return .fetchListOfColors("Dog")
+                case "Shelter/Rescue":
+                    return .fetchListOfOrganizations
+                default:
+                    return .fetchListOfBreeds("Dog")
+            }
+        }
+        return .fetchListOfOrganizations
+    }
 }

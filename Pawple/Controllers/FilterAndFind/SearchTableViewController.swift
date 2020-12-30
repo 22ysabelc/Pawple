@@ -17,8 +17,9 @@ class SearchTableViewController: UITableViewController {
         }
         return false
     }
-    var arrayList = [Name?]()
-    var searchArrayList = [Name?]()
+
+    var arrayList = [String?]()
+    var searchArrayList = [String?]()
     var searching = false
     var arrayFilter = [(section: String, data: [String], selected: Int)]()
     var selectedIndex: Int = 0
@@ -33,7 +34,7 @@ class SearchTableViewController: UITableViewController {
             switch getRouteName() {
                 case .fetchListOfBreeds(let species):
                     APIServiceManager.shared.searchBreeds(species: species) { (breedNames) in
-                        self.arrayList.append(contentsOf: breedNames)
+                        self.arrayList = breedNames.map {$0?.name}
                         self.tableView.reloadData()
                 }
                 case .fetchListOfColors(let species):
@@ -67,9 +68,9 @@ class SearchTableViewController: UITableViewController {
         let cell: SearchTableViewCell = tableView.dequeueReusableCell(withIdentifier: "SearchTableViewCell", for: indexPath) as! SearchTableViewCell
 
         if searching {
-            cell.title?.text = self.searchArrayList[indexPath.row]?.name
+            cell.title?.text = self.searchArrayList[indexPath.row]
         } else {
-            cell.title.text = arrayList[indexPath.row]?.name
+            cell.title.text = arrayList[indexPath.row]
         }
         return cell
     }
@@ -77,9 +78,9 @@ class SearchTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         var selectedItem: String?
         if searching {
-            selectedItem = self.searchArrayList[indexPath.row]?.name
+            selectedItem = self.searchArrayList[indexPath.row]
         } else {
-            selectedItem = arrayList[indexPath.row]?.name
+            selectedItem = arrayList[indexPath.row]
 
         }
         // Close keyboard when you select cell
@@ -122,7 +123,7 @@ class SearchTableViewController: UITableViewController {
 // MARK: - SearchBar Delegates
 extension SearchTableViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        searchArrayList = arrayList.filter { $0!.name.lowercased().prefix(searchText.count) == searchText.lowercased() }
+        searchArrayList = arrayList.filter { $0!.lowercased().prefix(searchText.count) == searchText.lowercased() }
         searching = true
         tableView.reloadData()
     }

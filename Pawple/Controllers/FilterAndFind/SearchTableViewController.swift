@@ -35,13 +35,15 @@ class SearchTableViewController: UITableViewController {
                     APIServiceManager.shared.searchBreeds(species: species) { (breedNames) in
                         self.arrayList.append(contentsOf: breedNames)
                         self.tableView.reloadData()
-                }
+                    }
                 case .fetchListOfColors(let species):
-                    APIServiceManager.shared.fetchListOfColors(species: species) { (listOfcolors) in
-                        print("Cat colors at first index: \(listOfcolors?.colors[0])")
-                }
+                    APIServiceManager.shared.fetchListOfColors(species: species) { (listOfColors) in
+                        print("Cat colors at first index: \(listOfColors?.colors[0])")
+                    }
                 case .fetchListOfOrganizations:
-                    print("Nor route present to call")
+                    APIServiceManager.shared.fetchListOfOrganizations { (listOfOrgs) in
+                        print("First organization name: \(listOfOrgs[0]?.name)")
+                    }
                 case .fetchListOfNames(_):
                     print("Nor route present to call")
                 default:

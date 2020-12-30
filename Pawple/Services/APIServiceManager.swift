@@ -57,7 +57,6 @@ class APIServiceManager {
     }
 
     func fetchListOfOrganizations(completion: @escaping (([OrgDetails?]) -> Void)) {
-
         sessionManager.request(PawpleRouter.fetchListOfOrganizations as URLRequestConvertible).responseDecodable(of: Organization.self) { response in
             guard let orgNames = response.value?.organizations else {
                 return completion([])
@@ -67,12 +66,20 @@ class APIServiceManager {
     }
 
     func fetchListOfColors(species: String = "dog", completion: @escaping ((TypeOfSpecies?) -> Void)) {
-
         sessionManager.request(PawpleRouter.fetchListOfColors(species) as URLRequestConvertible).responseDecodable(of: Type.self) { response in
             guard let speciesType = response.value?.type else {
                 return completion(nil)
             }
             completion(speciesType)
+        }
+    }
+    
+    func fetchResults(completion: @escaping ([Animal?]) -> Void) {
+        sessionManager.request(PawpleRouter.fetchResults as URLRequestConvertible).responseDecodable(of: Animals.self) { response in
+            guard let results = response.value?.animals else {
+                return completion([])
+            }
+            completion(results)
         }
     }
 }

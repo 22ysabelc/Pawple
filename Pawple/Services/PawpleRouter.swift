@@ -15,45 +15,48 @@ enum PawpleRouter {
     case fetchAccessToken
     case fetchListOfColors(String)
     case fetchListOfNames(String)
-
+    case fetchResults
+    
     var baseURL: String {
         return "https://api.petfinder.com/v2/"
     }
-
+    
     var path: String {
         switch self {
-            case .fetchListOfBreeds(let species):
-                return "types/\(species)/breeds/"
-            case .fetchListOfOrganizations:
-                return "organizations"
-            case .fetchAccessToken:
-                return "/oauth2/token"
-            case .fetchListOfColors(let species):
-                return "types/\(species)"
-            case .fetchListOfNames(let species):
-                return "types/\(species)/names"
+        case .fetchListOfBreeds(let species):
+            return "types/\(species)/breeds/"
+        case .fetchListOfOrganizations:
+            return "organizations"
+        case .fetchAccessToken:
+            return "/oauth2/token"
+        case .fetchListOfColors(let species):
+            return "types/\(species)"
+        case .fetchListOfNames(let species):
+            return "types/\(species)/names"
+        case .fetchResults:
+            return "animals?type=dog&breed=Golden%20Retriever&size=large&page=1&="
         }
     }
-
+    
     var method: HTTPMethod {
         switch self {
-            case .fetchAccessToken:
-                return .post
-            default:
-                return .get
+        case .fetchAccessToken:
+            return .post
+        default:
+            return .get
         }
     }
-
+    
     var parameters: [String: String]? {
         switch self {
-            case .fetchAccessToken:
-                return [
-                    "client_id": GitHubConstants.clientID,
-                    "client_secret": GitHubConstants.clientSecret,
-                    "grant_type": GitHubConstants.grantType
+        case .fetchAccessToken:
+            return [
+                "client_id": GitHubConstants.clientID,
+                "client_secret": GitHubConstants.clientSecret,
+                "grant_type": GitHubConstants.grantType
             ]
-            default:
-                return nil
+        default:
+            return nil
         }
     }
 }

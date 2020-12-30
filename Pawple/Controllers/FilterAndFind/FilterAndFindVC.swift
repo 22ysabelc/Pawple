@@ -129,6 +129,10 @@ extension FilterAndFindVC: UICollectionViewDelegate, UICollectionViewDataSource 
             switch section {
                 case "Breed":
                     routeNameSelected = .fetchListOfBreeds("Dog")
+                case "Color":
+                    routeNameSelected = .fetchListOfColors("Dog")
+                case "Shelter/Rescue":
+                    routeNameSelected = .fetchListOfOrganizations
                 default:
                     routeNameSelected = .fetchListOfBreeds("Dog")
             }

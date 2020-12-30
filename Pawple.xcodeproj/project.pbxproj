@@ -58,6 +58,7 @@
 		AFA7B9AE245E5557009C293B /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AFA7B9AD245E5556009C293B /* CoreGraphics.framework */; };
 		AFAE27522452A85100A78E05 /* RoundButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFAE27512452A85100A78E05 /* RoundButton.swift */; };
 		AFB3D13824798B9C00FA76DC /* FilterTab.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AFB3D13624798B9C00FA76DC /* FilterTab.storyboard */; };
+		AFB5BD25259C2C2B005B7AAF /* ResultsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFB5BD24259C2C2B005B7AAF /* ResultsCollectionViewCell.swift */; };
 		AFB8E7B524E0888C00F05698 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFB8E7B424E0888C00F05698 /* Message.swift */; };
 		AFB8E7B724E098EF00F05698 /* CommonFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFB8E7B624E098EF00F05698 /* CommonFunctions.swift */; };
 		AFC17D1B24D751A700CC29C7 /* ChatLogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFC17D1A24D751A700CC29C7 /* ChatLogViewController.swift */; };
@@ -127,6 +128,7 @@
 		AFA7B9AD245E5556009C293B /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		AFAE27512452A85100A78E05 /* RoundButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundButton.swift; sourceTree = "<group>"; };
 		AFB3D13724798B9C00FA76DC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/FilterTab.storyboard; sourceTree = "<group>"; };
+		AFB5BD24259C2C2B005B7AAF /* ResultsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsCollectionViewCell.swift; sourceTree = "<group>"; };
 		AFB8E7B424E0888C00F05698 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		AFB8E7B624E098EF00F05698 /* CommonFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonFunctions.swift; sourceTree = "<group>"; };
 		AFC17D1A24D751A700CC29C7 /* ChatLogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatLogViewController.swift; sourceTree = "<group>"; };
@@ -182,6 +184,7 @@
 				9D5E58DA2586FED400DF353F /* FilterAndFindVC.swift */,
 				9D5E58DE2586FEF100DF353F /* SearchTableViewController.swift */,
 				9D67CD40258E609B005A8366 /* SearchTableViewCell.swift */,
+				AFB5BD24259C2C2B005B7AAF /* ResultsCollectionViewCell.swift */,
 			);
 			path = FilterAndFind;
 			sourceTree = "<group>";
@@ -550,6 +553,7 @@
 				AF7C6358245140820088C0D3 /* SceneDelegate.swift in Sources */,
 				AF04A5B324BB9BE7006099B9 /* UsersTableViewController.swift in Sources */,
 				9D67CD52259923E6005A8366 /* SecureStoreQueryable.swift in Sources */,
+				AFB5BD25259C2C2B005B7AAF /* ResultsCollectionViewCell.swift in Sources */,
 				AF9198C22496A96D000A0218 /* CustomImagePicker.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

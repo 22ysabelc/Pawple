@@ -28,7 +28,7 @@ class SearchTableViewController: UITableViewController {
         super.viewDidLoad()
 
         // Uncomment the following line to preserve selection between presentations
-         self.clearsSelectionOnViewWillAppear = false
+        self.clearsSelectionOnViewWillAppear = false
 
         if isTokenValid {
             switch getRouteName() {
@@ -99,7 +99,6 @@ class SearchTableViewController: UITableViewController {
                 dataArray.remove(at: 1)
             }
             dataArray.insert(itemName, at: 1)
-
             self.arrayFilter[self.selectedIndex].data = dataArray
             self.arrayFilter[self.selectedIndex].selected = 1
         }
@@ -114,9 +113,7 @@ class SearchTableViewController: UITableViewController {
                     self.navigationController?.popViewController(animated: true)
                 }
             }
-
         }
-
     }
 }
 
@@ -135,7 +132,6 @@ extension SearchTableViewController: UISearchBarDelegate {
     }
 
     func getRouteName() -> PawpleRouter {
-        
         if self.arrayFilter.count >= self.selectedIndex {
             let section = self.arrayFilter[self.selectedIndex].section
             switch section {

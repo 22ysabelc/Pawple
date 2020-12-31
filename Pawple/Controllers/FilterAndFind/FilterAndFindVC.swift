@@ -128,14 +128,14 @@ extension FilterAndFindVC: UICollectionViewDelegate, UICollectionViewDataSource 
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-            // if item contains search text
-            if self.searchFilter[indexPath.section].data[indexPath.item].contains("Search") {
-                self.selectedSection = indexPath.section
-                self.performSegue(withIdentifier: "SearchTableViewController", sender: self)
-            } else {
-                self.searchFilter[indexPath.section].selected = indexPath.row
-                self.collectionViewFilter.reloadSections(IndexSet(integer: indexPath.section))
-            }
+        // if item contains search text
+        if self.searchFilter[indexPath.section].data[indexPath.item].contains("Search") {
+            self.selectedSection = indexPath.section
+            self.performSegue(withIdentifier: "SearchTableViewController", sender: self)
+        } else {
+            self.searchFilter[indexPath.section].selected = indexPath.row
+            self.collectionViewFilter.reloadSections(IndexSet(integer: indexPath.section))
+        }
     }
 }
 
@@ -155,42 +155,43 @@ extension FilterAndFindVC: UICollectionViewDelegateFlowLayout {
         let totalSpacingWidth = (collectionView.numberOfItems(inSection: section) - 1)
         
         let leftInset = (collectionView.layer.frame.size.width - CGFloat(totalCellWidth + totalSpacingWidth)) / 2
-        let rightInset = leftInset
+        //        let rightInset = leftInset
         
         return UIEdgeInsets(top: 5, left: 10, bottom: 5, right: 10)
         
         
-        
-        let collectionViewWidth = collectionView.bounds.size.width
-        
-        //Where elements_count is the count of all your items in that
-        //Collection view...
-        let cellCount = CGFloat(self.searchFilter[section].data.count)
-        
-        //If the cell count is zero, there is no point in calculating anything.
-        if cellCount > 0 {
-            let flowLayout = collectionViewLayout as! UICollectionViewFlowLayout
-            let cellWidth = flowLayout.itemSize.width + flowLayout.minimumInteritemSpacing
-            
-            //20.00 was just extra spacing I wanted to add to my cell.
-            let totalCellWidth = cellWidth*cellCount + 0.00 * (cellCount-1)
-            let contentWidth = collectionView.frame.size.width - collectionView.contentInset.left - collectionView.contentInset.right
-            
-            if (totalCellWidth < contentWidth) {
-                //If the number of cells that exists take up less room than the
-                //collection view width... then there is an actual point to centering them.
-                
-                //Calculate the right amount of padding to center the cells.
-                let padding = (contentWidth - totalCellWidth) / 2.0
-                return UIEdgeInsets(top: 5, left: padding, bottom: 5, right: padding)
-            } else {
-                //Pretty much if the number of cells that exist take up
-                //more room than the actual collectionView width, there is no
-                // point in trying to center them. So we leave the default behavior.
-                return UIEdgeInsets(top: 5, left: 40, bottom: 5, right: 40)
-            }
-        }
-        return UIEdgeInsets.zero
+        /*
+         let collectionViewWidth = collectionView.bounds.size.width
+
+         //Where elements_count is the count of all your items in that
+         //Collection view...
+         let cellCount = CGFloat(self.searchFilter[section].data.count)
+
+         //If the cell count is zero, there is no point in calculating anything.
+         if cellCount > 0 {
+         let flowLayout = collectionViewLayout as! UICollectionViewFlowLayout
+         let cellWidth = flowLayout.itemSize.width + flowLayout.minimumInteritemSpacing
+
+         //20.00 was just extra spacing I wanted to add to my cell.
+         let totalCellWidth = cellWidth*cellCount + 0.00 * (cellCount-1)
+         let contentWidth = collectionView.frame.size.width - collectionView.contentInset.left - collectionView.contentInset.right
+
+         if (totalCellWidth < contentWidth) {
+         //If the number of cells that exists take up less room than the
+         //collection view width... then there is an actual point to centering them.
+
+         //Calculate the right amount of padding to center the cells.
+         let padding = (contentWidth - totalCellWidth) / 2.0
+         return UIEdgeInsets(top: 5, left: padding, bottom: 5, right: padding)
+         } else {
+         //Pretty much if the number of cells that exist take up
+         //more room than the actual collectionView width, there is no
+         // point in trying to center them. So we leave the default behavior.
+         return UIEdgeInsets(top: 5, left: 40, bottom: 5, right: 40)
+         }
+         }
+         return UIEdgeInsets.zero
+         */
     }
 }
 

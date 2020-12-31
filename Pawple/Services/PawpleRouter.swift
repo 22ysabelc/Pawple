@@ -34,7 +34,7 @@ enum PawpleRouter {
         case .fetchListOfNames(let species):
             return "types/\(species)/names"
         case .fetchResults:
-            return "animals?type=dog&breed=Golden%20Retriever&size=large&page=1&="
+            return "animals?type=dog&breed=Golden Retriever&size=large&page=1&="
         }
     }
     

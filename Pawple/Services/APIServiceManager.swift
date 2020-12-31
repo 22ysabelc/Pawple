@@ -74,7 +74,7 @@ class APIServiceManager {
         }
     }
     
-    func fetchResults(completion: @escaping ([Animal?]) -> Void) {
+    func fetchResults(completion: @escaping ([AnimalDetails?]) -> Void) {
         sessionManager.request(PawpleRouter.fetchResults as URLRequestConvertible).responseDecodable(of: Animals.self) { response in
             guard let results = response.value?.animals else {
                 return completion([])

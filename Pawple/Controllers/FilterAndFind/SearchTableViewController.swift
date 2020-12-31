@@ -36,7 +36,7 @@ class SearchTableViewController: UITableViewController {
                     APIServiceManager.shared.searchBreeds(species: species) { (breedNames) in
                         self.arrayList = breedNames.map {$0?.name}
                         self.tableView.reloadData()
-                    }
+                }
                 case .fetchListOfColors(let species):
                     APIServiceManager.shared.fetchListOfColors(species: species) { (listOfcolors) in
                         self.arrayList = listOfcolors.map {$0.colors} as! [String?]
@@ -45,7 +45,7 @@ class SearchTableViewController: UITableViewController {
                 case .fetchListOfOrganizations:
                     APIServiceManager.shared.fetchListOfOrganizations { (listOfOrgs) in
                         print("First organization name: \(listOfOrgs[0]?.name)")
-                    }
+                }
                 case .fetchListOfNames(_):
                     print("Nor route present to call")
                 default:

@@ -189,7 +189,7 @@
         <!--Results-->
         <scene sceneID="9yK-7g-xGb">
             <objects>
-                <collectionViewController title="Results" id="sox-hb-lgE" customClass="ResultsCollectionViewController" customModule="Pawple" customModuleProvider="target" sceneMemberID="viewController">
+                <collectionViewController title="Results" id="sox-hb-lgE" customClass="ResultsCollectionVC" customModule="Pawple" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="nWA-aQ-eo9">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

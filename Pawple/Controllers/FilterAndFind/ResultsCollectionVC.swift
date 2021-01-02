@@ -10,7 +10,7 @@ import UIKit
 
 private let reuseIdentifier = "Cell"
 
-class ResultsCollectionViewController: UICollectionViewController {
+class ResultsCollectionVC: UICollectionViewController {
 
     var arrayResults: [AnimalDetails?] = []
     
@@ -26,7 +26,6 @@ class ResultsCollectionViewController: UICollectionViewController {
         APIServiceManager.shared.fetchResults { (animals) in
             self.arrayResults = animals
             self.collectionView.reloadData()
-            print("animals: \(animals)")
         }
     }
 

@@ -31,12 +31,6 @@ class FilterAndFindVC: UIViewController {
     var searchFilter = [(section: String, data: [String], selected: Int)]()
     let purpleColor = UIColor(red: 172/255.0, green: 111/255.0, blue: 234/255.0, alpha: 1.0)
     
-    @IBAction func findAPet(_ sender: UIBarButtonItem) {
-        APIServiceManager.shared.fetchResults { (animals) in
-            print("animals: \(animals)")
-        }
-    }
-    
     @IBOutlet weak var collectionViewFilter: UICollectionView!
     
     override var preferredStatusBarStyle: UIStatusBarStyle { return .lightContent }

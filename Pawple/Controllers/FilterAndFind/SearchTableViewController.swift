@@ -44,7 +44,8 @@ class SearchTableViewController: UITableViewController {
                 }
                 case .fetchListOfOrganizations:
                     APIServiceManager.shared.fetchListOfOrganizations { (listOfOrgs) in
-                        print("First organization name: \(listOfOrgs[0]?.name)")
+                        self.arrayList = listOfOrgs.map {$0?.name}
+                        self.tableView.reloadData()
                 }
                 case .fetchListOfNames(_):
                     print("Nor route present to call")

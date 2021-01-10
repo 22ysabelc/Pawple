@@ -55,6 +55,13 @@ class ResultsCollectionVC: UICollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(ofType: ResultsCollectionViewCell.self, for: indexPath)
         cell.petName.text = arrayResults[indexPath.item]?.name
+        guard let arrayPhotos = arrayResults[indexPath.item]?.photos
+        else {
+            return cell
+        }
+        if arrayPhotos.count > 0 {
+            cell.petImage.sd_setImage(with: URL(string: (arrayPhotos[0]?.medium)!))
+        }
         return cell
     }
 

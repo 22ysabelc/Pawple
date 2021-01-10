@@ -209,32 +209,40 @@
                                     <rect key="frame" x="0.0" y="0.0" width="202" height="260"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ORa-LG-qKP" userLabel="Profile Image">
-                                            <rect key="frame" x="15" y="24" width="172" height="215"/>
-                                            <color key="backgroundColor" red="0.3692403011" green="0.87020320600000001" blue="0.63588803599999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.20000000000000001" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Zfe-RO-e8X">
+                                            <rect key="frame" x="8" y="14" width="186" height="230"/>
+                                            <color key="backgroundColor" red="0.74509803919999995" green="0.1960784314" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </imageView>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pawprint" translatesAutoresizingMaskIntoConstraints="NO" id="ORa-LG-qKP" userLabel="Profile Image">
+                                            <rect key="frame" x="15" y="21" width="172" height="215"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="215" id="Gxh-kT-ESH"/>
                                                 <constraint firstAttribute="width" constant="172" id="n6S-9d-LC1"/>
                                             </constraints>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ao0-3y-g2r">
-                                            <rect key="frame" x="21" y="217" width="160" height="35"/>
+                                            <rect key="frame" x="21" y="224" width="160" height="35"/>
                                             <color key="backgroundColor" name="BrandPurple"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="35" id="BRI-TF-ntE"/>
                                                 <constraint firstAttribute="width" priority="750" constant="160" id="hWp-OU-Wt7"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" name="ChalkboardSE-Regular" family="Chalkboard SE" pointSize="20"/>
-                                            <nil key="textColor"/>
+                                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstAttribute="bottom" secondItem="Ao0-3y-g2r" secondAttribute="bottom" constant="8" id="6JZ-fs-NkC"/>
+                                        <constraint firstAttribute="bottom" secondItem="Zfe-RO-e8X" secondAttribute="bottom" constant="16" id="4J6-eD-KOw"/>
+                                        <constraint firstAttribute="bottom" secondItem="Ao0-3y-g2r" secondAttribute="bottom" constant="1" id="6JZ-fs-NkC"/>
                                         <constraint firstItem="Ao0-3y-g2r" firstAttribute="centerX" secondItem="tdH-s7-ccq" secondAttribute="centerX" id="7Tg-9D-wls"/>
-                                        <constraint firstAttribute="bottom" secondItem="ORa-LG-qKP" secondAttribute="bottom" constant="21" id="875-u2-g3q"/>
+                                        <constraint firstAttribute="bottom" secondItem="ORa-LG-qKP" secondAttribute="bottom" constant="24" id="875-u2-g3q"/>
+                                        <constraint firstItem="Zfe-RO-e8X" firstAttribute="centerX" secondItem="tdH-s7-ccq" secondAttribute="centerX" id="Mbs-Rk-cDJ"/>
                                         <constraint firstItem="ORa-LG-qKP" firstAttribute="centerX" secondItem="tdH-s7-ccq" secondAttribute="centerX" id="RLm-Os-qXk"/>
-                                        <constraint firstItem="ORa-LG-qKP" firstAttribute="top" secondItem="tdH-s7-ccq" secondAttribute="top" constant="24" id="giq-ea-2nU"/>
+                                        <constraint firstItem="Zfe-RO-e8X" firstAttribute="top" secondItem="tdH-s7-ccq" secondAttribute="top" constant="14" id="caA-6P-VYy"/>
+                                        <constraint firstItem="ORa-LG-qKP" firstAttribute="top" secondItem="tdH-s7-ccq" secondAttribute="top" constant="21" id="giq-ea-2nU"/>
+                                        <constraint firstAttribute="trailing" secondItem="Zfe-RO-e8X" secondAttribute="trailing" constant="8" id="qoS-tm-hts"/>
+                                        <constraint firstItem="Zfe-RO-e8X" firstAttribute="leading" secondItem="tdH-s7-ccq" secondAttribute="leading" constant="8" id="s0X-ym-NH7"/>
                                     </constraints>
                                 </collectionViewCellContentView>
                                 <size key="customSize" width="202" height="260"/>
@@ -253,7 +261,7 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ns5-rK-n9Y" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7038" y="1213"/>
+            <point key="canvasLocation" x="7037.68115942029" y="1212.7232142857142"/>
         </scene>
         <!--Filter and Find-->
         <scene sceneID="tkw-uQ-fiY">
@@ -281,6 +289,7 @@
     </scenes>
     <resources>
         <image name="heart.fill" catalog="system" width="128" height="109"/>
+        <image name="pawprint" width="153" height="153"/>
         <namedColor name="BrandPurple">
             <color red="0.67500001192092896" green="0.43500000238418579" blue="0.9179999828338623" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

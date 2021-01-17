@@ -31,7 +31,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // MARK: - GIDSignIn Delegate Methods
     
     @available(iOS 9.0, *)
-    func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any]) -> Bool {
+    func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey: Any]) -> Bool {
       return GIDSignIn.sharedInstance().handle(url)
     }
     

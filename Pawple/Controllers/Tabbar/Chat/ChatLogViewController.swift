@@ -270,7 +270,7 @@ extension ChatLogViewController: UICollectionViewDelegate, UICollectionViewDataS
     }
 }
 
-// MARK - SAVE IMAGE
+// MARK: - SAVE IMAGE
 extension ChatLogViewController {
     @IBAction func saveImageGesture(_ sender: UILongPressGestureRecognizer) {
         if let imageView = sender.view as? UIImageView, let image = imageView.image, sender.state == UIGestureRecognizer.State.began {

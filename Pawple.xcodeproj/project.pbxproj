@@ -26,6 +26,7 @@
 		9D67CD54259926D9005A8366 /* GitNetworkReachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D67CD53259926D9005A8366 /* GitNetworkReachability.swift */; };
 		9D67CD5625992B75005A8366 /* PawpleRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D67CD5525992B75005A8366 /* PawpleRouter.swift */; };
 		9D67CD5825992EA3005A8366 /* APIServiceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D67CD5725992EA3005A8366 /* APIServiceManager.swift */; };
+		9DAAA9C125B4B8EF00F88372 /* SpeciesFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DAAA9C025B4B8EF00F88372 /* SpeciesFilter.swift */; };
 		AF04A5B324BB9BE7006099B9 /* UsersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF04A5B224BB9BE7006099B9 /* UsersTableViewController.swift */; };
 		AF04A5B524BBAACD006099B9 /* UserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF04A5B424BBAACC006099B9 /* UserTableViewCell.swift */; };
 		AF42AE772574431B00A7C6F4 /* Animals.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF42AE762574431A00A7C6F4 /* Animals.swift */; };
@@ -91,6 +92,7 @@
 		9D67CD53259926D9005A8366 /* GitNetworkReachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GitNetworkReachability.swift; sourceTree = "<group>"; };
 		9D67CD5525992B75005A8366 /* PawpleRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PawpleRouter.swift; sourceTree = "<group>"; };
 		9D67CD5725992EA3005A8366 /* APIServiceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIServiceManager.swift; sourceTree = "<group>"; };
+		9DAAA9C025B4B8EF00F88372 /* SpeciesFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeciesFilter.swift; sourceTree = "<group>"; };
 		AF04A5B224BB9BE7006099B9 /* UsersTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersTableViewController.swift; sourceTree = "<group>"; };
 		AF04A5B424BBAACC006099B9 /* UserTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTableViewCell.swift; sourceTree = "<group>"; };
 		AF42AE762574431A00A7C6F4 /* Animals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animals.swift; sourceTree = "<group>"; };
@@ -181,9 +183,10 @@
 		9D5E58D92586FED400DF353F /* FilterAndFind */ = {
 			isa = PBXGroup;
 			children = (
+				9D5E58DA2586FED400DF353F /* FilterAndFindVC.swift */,
+				9DAAA9C025B4B8EF00F88372 /* SpeciesFilter.swift */,
 				9D5E58E42587011A00DF353F /* FilterViewCell.swift */,
 				9D5E58E12587010100DF353F /* FilterCollectionHeaderView.swift */,
-				9D5E58DA2586FED400DF353F /* FilterAndFindVC.swift */,
 				9D5E58DE2586FEF100DF353F /* SearchTableViewController.swift */,
 				9D67CD40258E609B005A8366 /* SearchTableViewCell.swift */,
 				AFBC29A3259ECA7600E3381E /* ResultsCollectionViewCell.swift */,
@@ -229,6 +232,36 @@
 				9D67CD4F259923E6005A8366 /* SecureStoreQueryable.swift */,
 			);
 			path = SecureStore;
+			sourceTree = "<group>";
+		};
+		9DAAA9BD25B4B78A00F88372 /* Tabbar */ = {
+			isa = PBXGroup;
+			children = (
+				AFA2AD1124593F820068B4ED /* TabBarViewController.swift */,
+				9DAAA9BE25B4B7AD00F88372 /* Profile */,
+				AFC17D1C24D75CC000CC29C7 /* Chat */,
+				9D5E58D92586FED400DF353F /* FilterAndFind */,
+			);
+			path = Tabbar;
+			sourceTree = "<group>";
+		};
+		9DAAA9BE25B4B7AD00F88372 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				AF8F9B37245A873800CAAEBF /* ProfileViewController.swift */,
+				AF8CEB4524626C580033C719 /* EditProfileViewController.swift */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		9DAAA9BF25B4B7D000F88372 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				AF7C6359245140820088C0D3 /* WelcomeViewController.swift */,
+				AF492D6224564E9700ED4130 /* LogInViewController.swift */,
+				AF492D6424564EA400ED4130 /* SignUpViewController.swift */,
+			);
+			path = Login;
 			sourceTree = "<group>";
 		};
 		AF7C6349245140820088C0D3 = {
@@ -321,14 +354,8 @@
 		AFAE274E2452A48300A78E05 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				9D5E58D92586FED400DF353F /* FilterAndFind */,
-				AF7C6359245140820088C0D3 /* WelcomeViewController.swift */,
-				AF492D6224564E9700ED4130 /* LogInViewController.swift */,
-				AF492D6424564EA400ED4130 /* SignUpViewController.swift */,
-				AFA2AD1124593F820068B4ED /* TabBarViewController.swift */,
-				AF8F9B37245A873800CAAEBF /* ProfileViewController.swift */,
-				AF8CEB4524626C580033C719 /* EditProfileViewController.swift */,
-				AFC17D1C24D75CC000CC29C7 /* Chat */,
+				9DAAA9BD25B4B78A00F88372 /* Tabbar */,
+				9DAAA9BF25B4B7D000F88372 /* Login */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -539,6 +566,7 @@
 				AFC17D1B24D751A700CC29C7 /* ChatLogViewController.swift in Sources */,
 				AF9198C62496AAB3000A0218 /* String+extensions.swift in Sources */,
 				9D67CD5625992B75005A8366 /* PawpleRouter.swift in Sources */,
+				9DAAA9C125B4B8EF00F88372 /* SpeciesFilter.swift in Sources */,
 				AFF0B73B2479B16B001F332A /* PawpleUserDefaults.swift in Sources */,
 				AF492D6524564EA400ED4130 /* SignUpViewController.swift in Sources */,
 				AF9198C024969E43000A0218 /* User.swift in Sources */,

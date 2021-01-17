@@ -34,22 +34,12 @@ class FilterAndFindVC: UIViewController {
     @IBOutlet weak var collectionViewFilter: UICollectionView!
     
     override var preferredStatusBarStyle: UIStatusBarStyle { return .lightContent }
-    
+    var speciesFilter = SpeciesFilter()
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        self.searchFilter = [(section: "Species", data: ["Dog", "Cat"], selected: 0),
-                             (section: "Breed", data: ["Any", "🔍 Search"], selected: 0),
-                             (section: "Age", data: ["Any", "Puppy", "Young", "Adult", "Senior"], selected: 0),
-                             (section: "Gender", data: ["Any", "Male", "Female"], selected: 0),
-                             (section: "Size", data: ["Any", "Small (0-25 lbs)", "Medium (26-60 lbs)", "Large (61-100 lbs)", "Extra Large (> 101 lbs)"], selected: 0),
-                             (section: "Color", data: ["Any", "🔍 Search"], selected: 0),
-                             (section: "Coat Length", data: ["Any", "Hairless", "Short", "Medium", "Long", "Wire", "Curly"], selected: 0),
-                             (section: "Care", data: ["Any", "House-trained", "Special needs"], selected: 0),
-                             (section: "Good with", data: ["Any", "Kids", "Dogs", "Cats"], selected: 0),
-                             (section: "Location", data: ["Enter City, State, or ZIP", "Within 10 miles", "Within 25 miles", "Within 50 miles", "Within 100 miles", "Anywhere" ], selected: 0),
-                             (section: "Shelter/Rescue", data: ["Any", "🔍 Search"], selected: 0),
-                             (section: "Pet Name", data: ["Any", "🔍 Search"], selected: 0)]
+        speciesFilter.selectedSpecies = .none
+        self.searchFilter = speciesFilter.returnSpecies()
         // Header View
         if let flowLayout = self.collectionViewFilter.collectionViewLayout as? UICollectionViewFlowLayout {
             flowLayout.sectionHeadersPinToVisibleBounds = true
@@ -122,12 +112,19 @@ extension FilterAndFindVC: UICollectionViewDelegate, UICollectionViewDataSource 
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+
         // if item contains search text
         if self.searchFilter[indexPath.section].data[indexPath.item].contains("Search") {
             self.selectedSection = indexPath.section
             self.performSegue(withIdentifier: "SearchTableViewController", sender: self)
         } else {
-            self.searchFilter[indexPath.section].selected = indexPath.row
+            // Check for Species
+            if (indexPath.section == 0){
+                speciesFilter.selectedSpecies = indexPath.item == 0 ? Species.dog : Species.cat
+                self.searchFilter = speciesFilter.returnSpecies()
+                self.collectionViewFilter.reloadData()
+            }
+            self.searchFilter[indexPath.section].selected = indexPath.item
             self.collectionViewFilter.reloadSections(IndexSet(integer: indexPath.section))
         }
     }

@@ -84,8 +84,7 @@ class ChatLogViewController: UIViewController, UITextFieldDelegate, UINavigation
     }
 
     func returnLastIndexChatPartner() {
-        let message = messages.last {
-            element in
+        let message = messages.last { element in
             return element.fromID == self.user?.uid
         }
         if let msg = message {
@@ -163,7 +162,7 @@ class ChatLogViewController: UIViewController, UITextFieldDelegate, UINavigation
 
         // $0 -> key, $1 -> value
         properties.forEach { (dictionary[$0] = $1) }
-        messagesRef.updateChildValues(dictionary) { (error, databaseReference) in
+        messagesRef.updateChildValues(dictionary) { (error, _) in
             if error != nil {
                 self.alert(title: "Error updating database", message: error?.localizedDescription)
                 return
@@ -180,7 +179,7 @@ class ChatLogViewController: UIViewController, UITextFieldDelegate, UINavigation
             if let messageID = messagesRef.key {
                 var dict = [String: Any]()
                 dict[messageID] = 1
-                fromIDRef.updateChildValues(dict) { (error, databaseReference) in
+                fromIDRef.updateChildValues(dict) { (error, _) in
                     if error != nil {
                         self.alert(title: "Error updating database for user messages", message: error?.localizedDescription)
                         return
@@ -271,7 +270,7 @@ extension ChatLogViewController: UICollectionViewDelegate, UICollectionViewDataS
     }
 }
 
-//MARK - SAVE IMAGE
+// MARK: - SAVE IMAGE
 extension ChatLogViewController {
     @IBAction func saveImageGesture(_ sender: UILongPressGestureRecognizer) {
         if let imageView = sender.view as? UIImageView, let image = imageView.image, sender.state == UIGestureRecognizer.State.began {
@@ -279,7 +278,7 @@ extension ChatLogViewController {
             let save = UIAlertAction(title: "Save", style: .default) { _ in
                 CommonFunctions.writeToPhotoAlbum(image: image)
             }
-            let cancel = UIAlertAction(title: "Cancel", style: .cancel) { (action) in
+            let cancel = UIAlertAction(title: "Cancel", style: .cancel) { (_) in
                 return
             }
             alert.addAction(save)

@@ -26,15 +26,10 @@ class WelcomeViewController: UIViewController {
         
         GIDSignIn.sharedInstance()?.presentingViewController = self
         GIDSignIn.sharedInstance()?.delegate = self
-        
-//        welcomeText.text = "         Welcome to"
-//        Timer.scheduledTimer(withTimeInterval: 2.5, repeats: false) { (timer) in
-//            self.luckypawText.text = " Lucky Paw "
-//        }
     }
 }
 
-//MARK: - Google Sign In
+// MARK: - Google Sign In
 extension WelcomeViewController: GIDSignInDelegate {
     func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!,
               withError error: Error!) {
@@ -51,7 +46,7 @@ extension WelcomeViewController: GIDSignInDelegate {
         guard let authentication = user.authentication else { return }
         let credential = GoogleAuthProvider.credential(withIDToken: authentication.idToken, accessToken: authentication.accessToken)
         
-        Auth.auth().signIn(with: credential) { (authResult, error) in
+        Auth.auth().signIn(with: credential) { (_, error) in
           if let error = error {
             let authError = error as NSError
             self.alert(title: "Error signing in", message: authError.localizedDescription)
@@ -73,7 +68,7 @@ extension WelcomeViewController: GIDSignInDelegate {
             if let name = user?.displayName, let email = user?.email {
                 values["name"] = name
                 values["email"] = email
-                userRef.updateChildValues(values) { (error, databaseReference) in
+                userRef.updateChildValues(values) { (error, _) in
                     if error != nil {
                         self.alert(title: "Error updating database", message: error?.localizedDescription)
                         return

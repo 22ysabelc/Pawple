@@ -107,7 +107,7 @@ extension ChatListTableViewController {
             if let uid = Auth.auth().currentUser?.uid {
                 let message = messages[indexPath.row]
                 if let chatPartnerId = message.chatPartnerId() {
-                    Database.database().reference().child("user-messages").child(uid).child(chatPartnerId).removeValue { (error, dbReference) in
+                    Database.database().reference().child("user-messages").child(uid).child(chatPartnerId).removeValue { (error, _) in
                         if error != nil {
                             self.alert(title: "Error", message: "Failed to delete chat")
                             return

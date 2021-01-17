@@ -88,12 +88,12 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
             if let userID = Auth.auth().currentUser?.uid {
                 let spaceRef = storageRef.child(String(format: "ProfilePictures/%@.jpeg", userID))
                 
-                spaceRef.putData(uploadData, metadata: nil) { (metadata, error) in
+                spaceRef.putData(uploadData, metadata: nil) { (metadata, _) in
                     guard metadata != nil else {
                         self.activityIndicator.isHidden = true
                         return
                     }
-                    spaceRef.downloadURL { (url, error) in
+                    spaceRef.downloadURL { (url, _) in
                         guard let downloadURL = url else {
                             self.activityIndicator.isHidden = true
                             return

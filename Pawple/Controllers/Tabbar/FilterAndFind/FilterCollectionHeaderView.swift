@@ -12,3 +12,8 @@ class FilterCollectionHeaderView: UICollectionReusableView {
     @IBOutlet weak var title: UILabel!
     
 }
+
+class FilterCollectionFooterView: UICollectionReusableView {
+    @IBOutlet weak var findAPetButton: UIButton!
+
+}

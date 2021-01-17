@@ -38,7 +38,7 @@ class UserTableViewCell: UITableViewCell {
         }
         if let text = message.text {
             self.subtitle.text = text
-        } else if (message.imageURL != nil) {
+        } else if message.imageURL != nil {
             self.subtitle.text = "Sent an image..."
         }
         self.isRead.isHidden = message.isRead ?? true

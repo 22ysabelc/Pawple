@@ -43,6 +43,7 @@ class FilterAndFindVC: UIViewController {
         // Header View
         if let flowLayout = self.collectionViewFilter.collectionViewLayout as? UICollectionViewFlowLayout {
             flowLayout.sectionHeadersPinToVisibleBounds = true
+            flowLayout.sectionFootersPinToVisibleBounds = true
         }
         
         if !isTokenValid {
@@ -79,6 +80,9 @@ extension FilterAndFindVC: UICollectionViewDelegate, UICollectionViewDataSource 
                         at indexPath: IndexPath) -> UICollectionReusableView {
 
         guard kind == UICollectionView.elementKindSectionHeader else {
+            if let footerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "FilterCollectionFooterView", for: indexPath) as? FilterCollectionFooterView {
+                return footerView
+            }
             return UICollectionReusableView()
         }
         if let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "FilterCollectionHeaderView", for: indexPath) as? FilterCollectionHeaderView {
@@ -135,8 +139,17 @@ extension FilterAndFindVC: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         referenceSizeForHeaderInSection section: Int) -> CGSize {
-        
         return CGSize(width: collectionView.bounds.size.width, height: 40)
+    }
+
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        referenceSizeForFooterInSection section: Int) -> CGSize {
+        let arrayFilterCount = self.searchFilter.count
+        if arrayFilterCount > 1 && section == arrayFilterCount - 1 {
+            return CGSize(width: collectionView.bounds.size.width, height: 70)
+        }
+        return CGSize(width: collectionView.bounds.size.width, height: 0)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {

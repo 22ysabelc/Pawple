@@ -21,7 +21,7 @@ class SignUpViewController: UIViewController {
                 self.alert(title: "Email is invalid", message: "")
                 return
             }
-            Auth.auth().createUser(withEmail: email, password: password) { authResult, error in
+            Auth.auth().createUser(withEmail: email, password: password) { _, error in
                 if let e = error {
                     self.alert(title: "Error with email or password", message: e.localizedDescription)
                 } else {

@@ -23,7 +23,7 @@
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="mFx-a4-FI9">
                                     <size key="itemSize" width="147" height="50"/>
                                     <size key="headerReferenceSize" width="50" height="50"/>
-                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="50" height="70"/>
                                     <inset key="sectionInset" minX="5" minY="5" maxX="5" maxY="5"/>
                                 </collectionViewFlowLayout>
                                 <cells>
@@ -78,7 +78,11 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Twp-c5-2hy">
-                                            <rect key="frame" x="113" y="0.0" width="189" height="50"/>
+                                            <rect key="frame" x="112.5" y="0.0" width="189" height="50"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="50" id="BKT-M2-TWl"/>
+                                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="189" id="xcT-yE-xK8"/>
+                                            </constraints>
                                             <fontDescription key="fontDescription" name="ChalkboardSE-Bold" family="Chalkboard SE" pointSize="20"/>
                                             <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <nil key="highlightedColor"/>
@@ -86,13 +90,36 @@
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
-                                        <constraint firstItem="Twp-c5-2hy" firstAttribute="leading" secondItem="gXM-gE-Ux3" secondAttribute="leading" constant="113" id="KFT-xZ-8l2"/>
-                                        <constraint firstAttribute="bottom" secondItem="Twp-c5-2hy" secondAttribute="bottom" id="ehB-uM-OtQ"/>
-                                        <constraint firstAttribute="trailing" secondItem="Twp-c5-2hy" secondAttribute="trailing" constant="112" id="hj7-Md-VJ0"/>
-                                        <constraint firstItem="Twp-c5-2hy" firstAttribute="top" secondItem="gXM-gE-Ux3" secondAttribute="top" id="liE-LC-RFn"/>
+                                        <constraint firstItem="Twp-c5-2hy" firstAttribute="centerX" secondItem="gXM-gE-Ux3" secondAttribute="centerX" id="I2G-KF-PQO"/>
+                                        <constraint firstItem="Twp-c5-2hy" firstAttribute="centerY" secondItem="gXM-gE-Ux3" secondAttribute="centerY" id="Sdk-Li-tlU"/>
                                     </constraints>
                                     <connections>
                                         <outlet property="title" destination="Twp-c5-2hy" id="Heb-ka-8om"/>
+                                    </connections>
+                                </collectionReusableView>
+                                <collectionReusableView key="sectionFooterView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="FilterCollectionFooterView" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="FilterCollectionFooterView" id="BtN-CS-jxq" customClass="FilterCollectionFooterView" customModule="Pawple" customModuleProvider="target">
+                                    <rect key="frame" x="0.0" y="110" width="414" height="70"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fe8-NW-0gU">
+                                            <rect key="frame" x="8" y="8" width="398" height="62"/>
+                                            <fontDescription key="fontDescription" name="ChalkboardSE-Bold" family="Chalkboard SE" pointSize="20"/>
+                                            <state key="normal" title="Find a Pet">
+                                                <color key="titleColor" red="0.58108848329999996" green="0.41508457059999998" blue="0.72333413359999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </state>
+                                            <connections>
+                                                <segue destination="sox-hb-lgE" kind="show" identifier="goToResults" id="MsZ-57-r97"/>
+                                            </connections>
+                                        </button>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="fe8-NW-0gU" firstAttribute="leading" secondItem="BtN-CS-jxq" secondAttribute="leading" constant="8" id="Kym-ye-Swz"/>
+                                        <constraint firstAttribute="bottom" secondItem="fe8-NW-0gU" secondAttribute="bottom" id="SzL-Rq-RWE"/>
+                                        <constraint firstAttribute="trailing" secondItem="fe8-NW-0gU" secondAttribute="trailing" constant="8" id="iVt-Kp-Srq"/>
+                                        <constraint firstItem="fe8-NW-0gU" firstAttribute="top" secondItem="BtN-CS-jxq" secondAttribute="top" constant="8" id="zsz-kw-opT"/>
+                                    </constraints>
+                                    <connections>
+                                        <outlet property="findAPetButton" destination="fe8-NW-0gU" id="C2M-hq-GKp"/>
                                     </connections>
                                 </collectionReusableView>
                                 <connections>
@@ -110,14 +137,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6oE-CQ-lx7"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Filters " id="qka-5J-J6U">
-                        <barButtonItem key="rightBarButtonItem" title="Find a Pet" id="zoP-9l-biE">
-                            <connections>
-                                <action selector="findAPet:" destination="d3V-rQ-0jn" id="ByS-vT-Dkc"/>
-                                <segue destination="sox-hb-lgE" kind="show" identifier="goToResults" id="5Zh-X2-J3I"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Filters " id="qka-5J-J6U"/>
                     <connections>
                         <outlet property="collectionViewFilter" destination="gsN-e9-EIP" id="fRc-zp-9sL"/>
                         <segue destination="mgJ-94-QMt" kind="show" identifier="SearchTableViewController" id="iN6-ef-DR2"/>

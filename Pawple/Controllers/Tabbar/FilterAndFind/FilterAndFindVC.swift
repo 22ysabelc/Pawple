@@ -77,7 +77,7 @@ extension FilterAndFindVC: UICollectionViewDelegate, UICollectionViewDataSource 
     func collectionView(_ collectionView: UICollectionView,
                         viewForSupplementaryElementOfKind kind: String,
                         at indexPath: IndexPath) -> UICollectionReusableView {
-        
+
         guard kind == UICollectionView.elementKindSectionHeader else {
             return UICollectionReusableView()
         }
@@ -95,7 +95,7 @@ extension FilterAndFindVC: UICollectionViewDelegate, UICollectionViewDataSource 
         cell.labelFilterName.text = data
         let isCellSelected = self.searchFilter[indexPath.section].selected
         
-        if (indexPath.item == isCellSelected) {
+        if indexPath.item == isCellSelected {
             cell.labelFilterName.textColor = .purple
             cell.layer.borderColor = UIColor.purple.cgColor
             cell.layer.borderWidth = 2.5
@@ -119,7 +119,7 @@ extension FilterAndFindVC: UICollectionViewDelegate, UICollectionViewDataSource 
             self.performSegue(withIdentifier: "SearchTableViewController", sender: self)
         } else {
             // Check for Species
-            if (indexPath.section == 0){
+            if indexPath.section == 0 {
                 speciesFilter.selectedSpecies = indexPath.item == 0 ? Species.dog : Species.cat
                 self.searchFilter = speciesFilter.returnSpecies()
                 self.collectionViewFilter.reloadData()

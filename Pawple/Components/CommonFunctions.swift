@@ -15,7 +15,6 @@ class CommonFunctions: NSObject {
         dateFormatter.timeStyle = DateFormatter.Style.medium
         dateFormatter.dateStyle = DateFormatter.Style.medium
         dateFormatter.timeZone = .current
-//        let localDate = dateFormatter.string(from: date)
 
         var formattedString = ""
         
@@ -74,7 +73,7 @@ class CommonFunctions: NSObject {
                 objVC.alert(title: "Photo Library is not available", message: "")
             }
         }
-        let cancel = UIAlertAction(title: "Cancel", style: .cancel) { (action) in
+        let cancel = UIAlertAction(title: "Cancel", style: .cancel) { (_) in
             return
         }
         alert.addAction(camera)
@@ -82,8 +81,7 @@ class CommonFunctions: NSObject {
         alert.addAction(cancel)
         objVC.present(alert, animated: true, completion: nil)
     }
-    
-    //MARK: - Save Image
+    // MARK: - Save Image
     class func writeToPhotoAlbum(image: UIImage) {
         UIImageWriteToSavedPhotosAlbum(image, self, #selector(saveError), nil)
     }
@@ -109,6 +107,4 @@ class CommonFunctions: NSObject {
     private class func convertFromNSAttributedStringKey(_ input: NSAttributedString.Key) -> String {
         return input.rawValue
     }
-
-
 }

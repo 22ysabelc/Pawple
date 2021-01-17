@@ -84,8 +84,7 @@ class ChatLogViewController: UIViewController, UITextFieldDelegate, UINavigation
     }
 
     func returnLastIndexChatPartner() {
-        let message = messages.last {
-            element in
+        let message = messages.last { element in
             return element.fromID == self.user?.uid
         }
         if let msg = message {

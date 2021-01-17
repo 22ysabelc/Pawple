@@ -30,8 +30,6 @@ class SpeciesFilter: NSObject {
         }
     }
 
-
-
     func catFilter() -> [(section: String, data: [String], selected: Int)] {
         return [(section: "Species", data: ["Dog", "Cat"], selected: 1),
                 (section: "Breed", data: ["Any", "🔍 Search"], selected: 0),

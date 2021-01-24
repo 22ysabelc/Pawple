@@ -49,7 +49,8 @@ class SpeciesFilter: NSObject {
                 (section: "Good with", queryName: "type", data: ["All (Kids, Dogs, Cats)", "None", "Kids", "Dogs", "Cats"], selected: 0),
                 (section: "Location", queryName: "location", data: ["🔍 City, State, or ZIP", "Within 10 miles", "Within 25 miles", "Within 50 miles", "Within 100 miles", "Anywhere" ], selected: 5),
                 (section: "Shelter/Rescue", queryName: "organization", data: ["Any", "🔍 Search"], selected: 0),
-                (section: "Pet Name", queryName: "name", data: ["Any", "🔍 Search"], selected: 0)]
+                (section: "Pet Name", queryName: "name", data: ["Any", "🔍 Search"], selected: 0),
+                (section: "Days The Pet Has Been Available", queryName: "name", data: ["Any", "1", "7", "14", "30+"], selected: 0)]
     }
 
     func dogFilter() -> [(section: String, queryName: String, data: [String], selected: Int)] {
@@ -64,7 +65,8 @@ class SpeciesFilter: NSObject {
                 (section: "Good with", queryName: "type", data: ["All (Kids, Dogs, Cats)", "None", "Kids", "Dogs", "Cats"], selected: 0),
                 (section: "Location", queryName: "Location", data: ["🔍 City, State, or ZIP", "Within 10 miles", "Within 25 miles", "Within 50 miles", "Within 100 miles", "Anywhere" ], selected: 5),
                 (section: "Shelter/Rescue", queryName: "organization", data: ["Any", "🔍 Search"], selected: 0),
-                (section: "Pet Name", queryName: "name", data: ["Any", "🔍 Search"], selected: 0)]
+                (section: "Pet Name", queryName: "name", data: ["Any", "🔍 Search"], selected: 0),
+                (section: "Days The Pet Has Been Available", queryName: "name", data: ["Any", "1", "7", "14", "30+"], selected: 0)]
     }
 
     func addItemToList(array: inout [(section: String, queryName: String, data: [String], selected: Int)], name: String, index: Int) {
@@ -80,16 +82,13 @@ class SpeciesFilter: NSObject {
     }
 
     func createSearchQuery(array: [(section: String, queryName: String, data: [String], selected: Int)]) -> String {
-        var dict = [String: String]()
 
         var queryString = ""
         for index in array {
-            dict[index.queryName] = index.data[index.selected]
             queryString.append("\(index.queryName)=\(index.data[index.selected]),")
         }
         queryString.append("status=adoptable")
         print("++++++++++++++++\(queryString)")
-        print(dict)
         return queryString
     }
 }

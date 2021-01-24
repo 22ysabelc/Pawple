@@ -103,9 +103,10 @@
                                     <rect key="frame" x="0.0" y="110" width="414" height="70"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fe8-NW-0gU">
-                                            <rect key="frame" x="8" y="8" width="398" height="62"/>
-                                            <color key="backgroundColor" red="0.82215598459999994" green="0.71154912400000003" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="fe8-NW-0gU">
+                                            <rect key="frame" x="57" y="4" width="300" height="62"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES"/>
+                                            <color key="backgroundColor" name="BrandPurple"/>
                                             <fontDescription key="fontDescription" name="ChalkboardSE-Bold" family="Chalkboard SE" pointSize="20"/>
                                             <state key="normal" title="Find a Pet">
                                                 <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -116,10 +117,9 @@
                                         </button>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="fe8-NW-0gU" firstAttribute="leading" secondItem="BtN-CS-jxq" secondAttribute="leading" constant="8" id="Kym-ye-Swz"/>
-                                        <constraint firstAttribute="bottom" secondItem="fe8-NW-0gU" secondAttribute="bottom" id="SzL-Rq-RWE"/>
-                                        <constraint firstAttribute="trailing" secondItem="fe8-NW-0gU" secondAttribute="trailing" constant="8" id="iVt-Kp-Srq"/>
-                                        <constraint firstItem="fe8-NW-0gU" firstAttribute="top" secondItem="BtN-CS-jxq" secondAttribute="top" constant="8" id="zsz-kw-opT"/>
+                                        <constraint firstAttribute="bottom" secondItem="fe8-NW-0gU" secondAttribute="bottom" constant="4" id="SzL-Rq-RWE"/>
+                                        <constraint firstItem="fe8-NW-0gU" firstAttribute="centerX" secondItem="BtN-CS-jxq" secondAttribute="centerX" id="tMG-kl-E8G"/>
+                                        <constraint firstItem="fe8-NW-0gU" firstAttribute="top" secondItem="BtN-CS-jxq" secondAttribute="top" constant="4" id="zsz-kw-opT"/>
                                     </constraints>
                                     <connections>
                                         <outlet property="findAPetButton" destination="fe8-NW-0gU" id="C2M-hq-GKp"/>

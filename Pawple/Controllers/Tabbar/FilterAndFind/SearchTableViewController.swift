@@ -17,11 +17,10 @@ class SearchTableViewController: UITableViewController {
         }
         return false
     }
-    var speciesFilter = SpeciesFilter()
     var arrayList = [String?]()
     var searchArrayList = [String?]()
     var searching = false
-    var arrayFilter = [(section: String, data: [String], selected: Int)]()
+    var arrayFilter = [(section: String, queryName: String, data: [String], selected: Int)]()
     var selectedIndex: Int = 0
 
     override func viewDidLoad() {
@@ -29,16 +28,15 @@ class SearchTableViewController: UITableViewController {
 
         // Uncomment the following line to preserve selection between presentations
         self.clearsSelectionOnViewWillAppear = false
-
         if isTokenValid {
             switch getRouteName() {
                 case .fetchListOfBreeds(let species):
-                    APIServiceManager.shared.searchBreeds(species: species) { (breedNames) in
+                    APIServiceManager.shared.searchBreeds(species: SpeciesFilter.shared.selectedSpecies.description) { (breedNames) in
                         self.arrayList = breedNames.map {$0?.name}
                         self.tableView.reloadData()
                 }
                 case .fetchListOfColors(let species):
-                    APIServiceManager.shared.fetchListOfColors(species: species) { (listOfcolors) in
+                    APIServiceManager.shared.fetchListOfColors(species: SpeciesFilter.shared.selectedSpecies.description) { (listOfcolors) in
                         self.arrayList = listOfcolors.map {$0.colors} as! [String?]
                         self.tableView.reloadData()
                 }
@@ -91,7 +89,7 @@ class SearchTableViewController: UITableViewController {
         self.searchBar.searchTextField.endEditing(true)
 
         if let selectedItem = selectedItem {
-            speciesFilter.addItemToList(array: &self.arrayFilter, name: selectedItem, index: self.selectedIndex)
+            SpeciesFilter.shared.addItemToList(array: &self.arrayFilter, name: selectedItem, index: self.selectedIndex)
             self.popViewController()
         }
     }

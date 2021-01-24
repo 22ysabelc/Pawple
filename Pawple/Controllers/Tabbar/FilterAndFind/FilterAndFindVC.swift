@@ -28,18 +28,17 @@ class FilterAndFindVC: UIViewController {
     }
     var routeNameSelected: PawpleRouter = .fetchListOfOrganizations
     var selectedSection: Int = 0
-    var searchFilter = [(section: String, data: [String], selected: Int)]()
+    var searchFilter = [(section: String, queryName: String, data: [String], selected: Int)]()
     let purpleColor = UIColor(red: 172/255.0, green: 111/255.0, blue: 234/255.0, alpha: 1.0)
     
     @IBOutlet weak var collectionViewFilter: UICollectionView!
     
     override var preferredStatusBarStyle: UIStatusBarStyle { return .lightContent }
-    var speciesFilter = SpeciesFilter()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        speciesFilter.selectedSpecies = .none
-        self.searchFilter = speciesFilter.returnSpecies()
+        SpeciesFilter.shared.selectedSpecies = .none
+        self.searchFilter = SpeciesFilter.shared.returnSpecies()
         // Header View
         if let flowLayout = self.collectionViewFilter.collectionViewLayout as? UICollectionViewFlowLayout {
             flowLayout.sectionHeadersPinToVisibleBounds = true
@@ -60,6 +59,10 @@ class FilterAndFindVC: UIViewController {
             if let objVC = segue.destination as? SearchTableViewController {
                 objVC.selectedIndex = selectedSection
                 objVC.arrayFilter = self.searchFilter
+            }
+        } else if segue.identifier == "goToResults" {
+            if let objVC = segue.destination as? ResultsCollectionVC {
+                SpeciesFilter.shared.createSearchQuery(array: self.searchFilter)
             }
         }
     }
@@ -120,30 +123,33 @@ extension FilterAndFindVC: UICollectionViewDelegate, UICollectionViewDataSource 
         // if item contains search text
         if self.searchFilter[indexPath.section].data[indexPath.item].contains("Search") {
             self.selectedSection = indexPath.section
-            self.performSegue(withIdentifier: "SearchTableViewController", sender: self)
-        } else if self.searchFilter[indexPath.section].data[indexPath.item].contains("name") {
-            self.selectedSection = indexPath.section
-            var inputTextField: UITextField?
 
-            let alert = UIAlertController(title: nil, message: "Please enter dog name", preferredStyle: .alert)
-            alert.addTextField { (textfield) in
-                inputTextField = textfield
-            }
-            alert.addAction(UIAlertAction(title: "Submit", style: .default, handler: { (_) in
-                if let text = inputTextField?.text {
-                    self.speciesFilter.addItemToList(array: &self.searchFilter, name: text.capitalized, index: indexPath.section)
-                    self.collectionViewFilter.reloadSections(IndexSet(integer: indexPath.section))
+            if self.searchFilter[indexPath.section].section == "Pet Name" {
+                var inputTextField: UITextField?
+
+                let alert = UIAlertController(title: nil, message: "Please Enter A \(SpeciesFilter.shared.selectedSpecies.description.capitalized) Name", preferredStyle: .alert)
+                alert.addTextField { (textfield) in
+                    inputTextField = textfield
                 }
-            }))
-            self.present(alert, animated: true)
+                alert.addAction(UIAlertAction(title: "Submit", style: .default, handler: { (_) in
+                    if (inputTextField?.text?.count)! > 0 {
+                        SpeciesFilter.shared.addItemToList(array: &self.searchFilter, name: inputTextField!.text!.capitalized, index: indexPath.section)
+                        self.collectionViewFilter.reloadSections(IndexSet(integer: indexPath.section))
+                    }
+                }))
+                self.present(alert, animated: true)
+            } else {
+                self.performSegue(withIdentifier: "SearchTableViewController", sender: self)
+            }
         } else {
             // Check for Species
             if indexPath.section == 0 {
-                speciesFilter.selectedSpecies = indexPath.item == 0 ? Species.dog : Species.cat
-                self.searchFilter = speciesFilter.returnSpecies()
+                SpeciesFilter.shared.selectedSpecies = indexPath.item == 0 ? Species.dog : Species.cat
+                self.searchFilter = SpeciesFilter.shared.returnSpecies()
                 self.collectionViewFilter.reloadData()
             }
             self.searchFilter[indexPath.section].selected = indexPath.item
+            self.collectionViewFilter.reloadSections(IndexSet(integer: indexPath.section))
         }
     }
 }

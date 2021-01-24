@@ -187,8 +187,8 @@
 				9D5E58E12587010100DF353F /* FilterCollectionHeaderView.swift */,
 				9D5E58DE2586FEF100DF353F /* SearchTableViewController.swift */,
 				9D67CD40258E609B005A8366 /* SearchTableViewCell.swift */,
-				AFBC29A3259ECA7600E3381E /* ResultsCollectionViewCell.swift */,
 				AFD2BDD525A0E1140095C3AE /* ResultsCollectionVC.swift */,
+				AFBC29A3259ECA7600E3381E /* ResultsCollectionViewCell.swift */,
 			);
 			path = FilterAndFind;
 			sourceTree = "<group>";

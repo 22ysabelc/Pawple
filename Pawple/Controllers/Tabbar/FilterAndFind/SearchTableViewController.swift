@@ -17,7 +17,7 @@ class SearchTableViewController: UITableViewController {
         }
         return false
     }
-
+    var speciesFilter = SpeciesFilter()
     var arrayList = [String?]()
     var searchArrayList = [String?]()
     var searching = false
@@ -91,20 +91,8 @@ class SearchTableViewController: UITableViewController {
         self.searchBar.searchTextField.endEditing(true)
 
         if let selectedItem = selectedItem {
-            self.addItemToList(itemName: selectedItem)
+            speciesFilter.addItemToList(array: &self.arrayFilter, name: selectedItem, index: self.selectedIndex)
             self.popViewController()
-        }
-    }
-
-    func addItemToList(itemName: String) {
-        if self.arrayList.count >= self.selectedIndex {
-            var dataArray = self.arrayFilter[self.selectedIndex].data
-            if dataArray.count > 2 {
-                dataArray.remove(at: 1)
-            }
-            dataArray.insert(itemName, at: 1)
-            self.arrayFilter[self.selectedIndex].data = dataArray
-            self.arrayFilter[self.selectedIndex].selected = 1
         }
     }
 

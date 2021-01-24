@@ -42,7 +42,7 @@ class SpeciesFilter: NSObject {
                 (section: "Good with", data: ["Any", "Kids", "Dogs", "Other cats"], selected: 0),
                 (section: "Location", data: ["Enter City, State, or ZIP", "Within 10 miles", "Within 25 miles", "Within 50 miles", "Within 100 miles", "Anywhere" ], selected: 0),
                 (section: "Shelter/Rescue", data: ["Any", "🔍 Search"], selected: 0),
-                (section: "Pet Name", data: ["Any", "🔍 Search"], selected: 0)]
+                (section: "Pet Name", data: ["Any", "🔍 name"], selected: 0)]
     }
 
     func dogFilter() -> [(section: String, data: [String], selected: Int)] {
@@ -57,6 +57,18 @@ class SpeciesFilter: NSObject {
                 (section: "Good with", data: ["Any", "Kids", "Dogs", "Cats"], selected: 0),
                 (section: "Location", data: ["Enter City, State, or ZIP", "Within 10 miles", "Within 25 miles", "Within 50 miles", "Within 100 miles", "Anywhere" ], selected: 0),
                 (section: "Shelter/Rescue", data: ["Any", "🔍 Search"], selected: 0),
-                (section: "Pet Name", data: ["Any", "🔍 Search"], selected: 0)]
+                (section: "Pet Name", data: ["Any", "🔍 name"], selected: 0)]
+    }
+
+    func addItemToList(array: inout [(section: String, data: [String], selected: Int)], name: String, index: Int) {
+        if array.count >= index {
+            var dataArray = array[index].data
+            if dataArray.count > 2 {
+                dataArray.remove(at: 1)
+            }
+            dataArray.insert(name, at: 1)
+            array[index].data = dataArray
+            array[index].selected = 1
+        }
     }
 }

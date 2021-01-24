@@ -121,6 +121,21 @@ extension FilterAndFindVC: UICollectionViewDelegate, UICollectionViewDataSource 
         if self.searchFilter[indexPath.section].data[indexPath.item].contains("Search") {
             self.selectedSection = indexPath.section
             self.performSegue(withIdentifier: "SearchTableViewController", sender: self)
+        } else if self.searchFilter[indexPath.section].data[indexPath.item].contains("name") {
+            self.selectedSection = indexPath.section
+            var inputTextField: UITextField?
+
+            let alert = UIAlertController(title: nil, message: "Please enter dog name", preferredStyle: .alert)
+            alert.addTextField { (textfield) in
+                inputTextField = textfield
+            }
+            alert.addAction(UIAlertAction(title: "Submit", style: .default, handler: { (_) in
+                if let text = inputTextField?.text {
+                    self.speciesFilter.addItemToList(array: &self.searchFilter, name: text.capitalized, index: indexPath.section)
+                    self.collectionViewFilter.reloadSections(IndexSet(integer: indexPath.section))
+                }
+            }))
+            self.present(alert, animated: true)
         } else {
             // Check for Species
             if indexPath.section == 0 {
@@ -129,7 +144,6 @@ extension FilterAndFindVC: UICollectionViewDelegate, UICollectionViewDataSource 
                 self.collectionViewFilter.reloadData()
             }
             self.searchFilter[indexPath.section].selected = indexPath.item
-            self.collectionViewFilter.reloadSections(IndexSet(integer: indexPath.section))
         }
     }
 }

@@ -40,9 +40,10 @@ class SpeciesFilter: NSObject {
                 (section: "Coat Length", data: ["Any", "Hairless", "Short", "Medium", "Long"], selected: 0),
                 (section: "Care", data: ["Any", "House-trained", "Declawed", "Special needs"], selected: 0),
                 (section: "Good with", data: ["Any", "Kids", "Dogs", "Other cats"], selected: 0),
-                (section: "Location", data: ["Enter City, State, or ZIP", "Within 10 miles", "Within 25 miles", "Within 50 miles", "Within 100 miles", "Anywhere" ], selected: 0),
+                (section: "Location", data: ["Enter City, State, or ZIP", "Within 10 miles", "Within 25 miles", "Within 50 miles", "Within 100 miles", "Anywhere" ], selected: 5),
                 (section: "Shelter/Rescue", data: ["Any", "🔍 Search"], selected: 0),
-                (section: "Pet Name", data: ["Any", "🔍 Search"], selected: 0)]
+                (section: "Pet Name", data: ["Any", "🔍 Search"], selected: 0),
+                (section: "Days The Pet Has Been Available", data: ["Any", "1", "7", "14", "30+"], selected: 0)]
     }
 
     func dogFilter() -> [(section: String, data: [String], selected: Int)] {
@@ -57,6 +58,7 @@ class SpeciesFilter: NSObject {
                 (section: "Good with", data: ["Any", "Kids", "Dogs", "Cats"], selected: 0),
                 (section: "Location", data: ["Enter City, State, or ZIP", "Within 10 miles", "Within 25 miles", "Within 50 miles", "Within 100 miles", "Anywhere" ], selected: 0),
                 (section: "Shelter/Rescue", data: ["Any", "🔍 Search"], selected: 0),
-                (section: "Pet Name", data: ["Any", "🔍 Search"], selected: 0)]
+                (section: "Pet Name", data: ["Any", "🔍 Search"], selected: 0),
+                (section: "Days The Pet Has Been Available", data: ["Any", "1", "7", "14", "30+"], selected: 0)]
     }
 }

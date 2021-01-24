@@ -14,6 +14,10 @@ class FilterCollectionHeaderView: UICollectionReusableView {
 }
 
 class FilterCollectionFooterView: UICollectionReusableView {
-    @IBOutlet weak var findAPetButton: UIButton!
+    @IBOutlet weak var findAPetButton: UIButton! {
+        didSet {
+            self.findAPetButton.layer.cornerRadius = self.findAPetButton.frame.height / 2
+        }
+    }
 
 }

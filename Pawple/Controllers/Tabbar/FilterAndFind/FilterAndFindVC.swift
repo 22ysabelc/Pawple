@@ -28,7 +28,7 @@ class FilterAndFindVC: UIViewController {
     }
     var routeNameSelected: PawpleRouter = .fetchListOfOrganizations
     var selectedSection: Int = 0
-    var searchFilter = [(section: String, queryName: String, data: [String], selected: Int)]()
+    var searchFilter = [(section: String, queryName: String, data: [String], selected: [Int], multipleSelection: Bool)]()
     let purpleColor = UIColor(red: 172/255.0, green: 111/255.0, blue: 234/255.0, alpha: 1.0)
     
     @IBOutlet weak var collectionViewFilter: UICollectionView!
@@ -61,7 +61,7 @@ class FilterAndFindVC: UIViewController {
                 objVC.arrayFilter = self.searchFilter
             }
         } else if segue.identifier == "goToResults" {
-            if let objVC = segue.destination as? ResultsCollectionVC {
+            if segue.destination is ResultsCollectionVC {
                 SpeciesFilter.shared.createSearchQuery(array: self.searchFilter)
             }
         }
@@ -100,9 +100,10 @@ extension FilterAndFindVC: UICollectionViewDelegate, UICollectionViewDataSource 
         let cell = collectionView.dequeueReusableCell(ofType: FilterViewCell.self, for: indexPath)
         let data = self.searchFilter[indexPath.section].data[indexPath.item]
         cell.labelFilterName.text = data
-        let isCellSelected = self.searchFilter[indexPath.section].selected
-        
-        if indexPath.item == isCellSelected {
+
+        let isCellSelected =  self.searchFilter[indexPath.section].selected.contains(indexPath.item)
+
+        if isCellSelected {
             cell.labelFilterName.textColor = .purple
             cell.layer.borderColor = UIColor.purple.cgColor
             cell.layer.borderWidth = 2.5
@@ -148,7 +149,21 @@ extension FilterAndFindVC: UICollectionViewDelegate, UICollectionViewDataSource 
                 self.searchFilter = SpeciesFilter.shared.returnSpecies()
                 self.collectionViewFilter.reloadData()
             }
-            self.searchFilter[indexPath.section].selected = indexPath.item
+
+            if self.searchFilter[indexPath.section].multipleSelection == true {
+                var array = self.searchFilter[indexPath.section].selected
+                if indexPath.item == 0 {
+                    array = [indexPath.item]
+                } else if !array.contains(indexPath.item) {
+                    if let index = array.firstIndex(of: 0) {
+                        array.remove(at: index)
+                    }
+                    array.append(indexPath.item)
+                }
+                self.searchFilter[indexPath.section].selected = array
+            } else {
+                self.searchFilter[indexPath.section].selected = [indexPath.item]
+            }
             self.collectionViewFilter.reloadSections(IndexSet(integer: indexPath.section))
         }
     }

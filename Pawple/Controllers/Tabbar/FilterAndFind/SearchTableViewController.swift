@@ -37,8 +37,10 @@ class SearchTableViewController: UITableViewController {
                 }
                 case .fetchListOfColors(let species):
                     APIServiceManager.shared.fetchListOfColors(species: SpeciesFilter.shared.selectedSpecies.description) { (listOfcolors) in
-                        self.arrayList = listOfcolors.map {$0.colors} as! [String?]
-                        self.tableView.reloadData()
+                        if listOfcolors != nil {
+                            self.arrayList = listOfcolors.map {$0.colors}!
+                            self.tableView.reloadData()
+                        }
                 }
                 case .fetchListOfOrganizations:
                     APIServiceManager.shared.fetchListOfOrganizations { (listOfOrgs) in

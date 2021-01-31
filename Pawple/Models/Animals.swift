@@ -63,15 +63,15 @@ class OrgAddress: NSObject, Decodable {
     var country: String?
 }
 
-class Type: NSObject, Decodable {
-    var type: TypeOfSpecies?
+class TypeOfSpecies: NSObject, Decodable {
+    var type: SpeciesProperties?
 }
 
-class TypeOfSpecies: NSObject, Decodable {
+class SpeciesProperties: NSObject, Decodable {
     var name: String?
-    var coats: [String?]
+    var coats: [String]
     var colors: [String]
-    var genders: [String?]
+    var genders: [String]
 }
 class Colors: NSObject, Decodable {
     var primary: String?

@@ -65,8 +65,9 @@ class APIServiceManager {
         }
     }
 
-    func fetchListOfColors(species: String = "dog", completion: @escaping ((TypeOfSpecies?) -> Void)) {
-        sessionManager.request(PawpleRouter.fetchListOfColors(species) as URLRequestConvertible).responseDecodable(of: Type.self) { response in
+    func fetchListOfColors(species: String = "dog", completion: @escaping ((SpeciesProperties?) -> Void)) {
+
+        sessionManager.request(PawpleRouter.fetchListOfColors(species) as URLRequestConvertible).responseDecodable(of: TypeOfSpecies.self) { response in
             guard let speciesType = response.value?.type else {
                 return completion(nil)
             }

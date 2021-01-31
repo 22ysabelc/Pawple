@@ -148,23 +148,30 @@ extension FilterAndFindVC: UICollectionViewDelegate, UICollectionViewDataSource 
                 SpeciesFilter.shared.selectedSpecies = indexPath.item == 0 ? Species.dog : Species.cat
                 self.searchFilter = SpeciesFilter.shared.returnSpecies()
                 self.collectionViewFilter.reloadData()
-            }
-
-            if self.searchFilter[indexPath.section].multipleSelection == true {
-                var array = self.searchFilter[indexPath.section].selected
-                if indexPath.item == 0 {
-                    array = [indexPath.item]
-                } else if !array.contains(indexPath.item) {
-                    if let index = array.firstIndex(of: 0) {
-                        array.remove(at: index)
-                    }
-                    array.append(indexPath.item)
-                }
-                self.searchFilter[indexPath.section].selected = array
             } else {
-                self.searchFilter[indexPath.section].selected = [indexPath.item]
+                if self.searchFilter[indexPath.section].multipleSelection == true {
+                    var array = self.searchFilter[indexPath.section].selected
+
+                    // If first item (Any) is selected, we will just select that item
+                    if indexPath.item == 0 {
+                        array = [indexPath.item]
+                    } else if array.contains(indexPath.item) {
+                        if let index = array.firstIndex(of: indexPath.item) {
+                            array.remove(at: index)
+                        }
+                        array = array.count == 0 ? [0] : array
+                    } else if !array.contains(indexPath.item) {
+                        if let index = array.firstIndex(of: 0) {
+                            array.remove(at: index)
+                        }
+                        array.append(indexPath.item)
+                    }
+                    self.searchFilter[indexPath.section].selected = array
+                } else {
+                    self.searchFilter[indexPath.section].selected = [indexPath.item]
+                }
+                self.collectionViewFilter.reloadSections(IndexSet(integer: indexPath.section))
             }
-            self.collectionViewFilter.reloadSections(IndexSet(integer: indexPath.section))
         }
     }
 }
@@ -197,40 +204,6 @@ extension FilterAndFindVC: UICollectionViewDelegateFlowLayout {
         //        let rightInset = leftInset
         
         return UIEdgeInsets(top: 5, left: 10, bottom: 5, right: 10)
-        
-        
-        /*
-         let collectionViewWidth = collectionView.bounds.size.width
-
-         //Where elements_count is the count of all your items in that
-         //Collection view...
-         let cellCount = CGFloat(self.searchFilter[section].data.count)
-
-         //If the cell count is zero, there is no point in calculating anything.
-         if cellCount > 0 {
-         let flowLayout = collectionViewLayout as! UICollectionViewFlowLayout
-         let cellWidth = flowLayout.itemSize.width + flowLayout.minimumInteritemSpacing
-
-         //20.00 was just extra spacing I wanted to add to my cell.
-         let totalCellWidth = cellWidth*cellCount + 0.00 * (cellCount-1)
-         let contentWidth = collectionView.frame.size.width - collectionView.contentInset.left - collectionView.contentInset.right
-
-         if (totalCellWidth < contentWidth) {
-         //If the number of cells that exists take up less room than the
-         //collection view width... then there is an actual point to centering them.
-
-         //Calculate the right amount of padding to center the cells.
-         let padding = (contentWidth - totalCellWidth) / 2.0
-         return UIEdgeInsets(top: 5, left: padding, bottom: 5, right: padding)
-         } else {
-         //Pretty much if the number of cells that exist take up
-         //more room than the actual collectionView width, there is no
-         // point in trying to center them. So we leave the default behavior.
-         return UIEdgeInsets(top: 5, left: 40, bottom: 5, right: 40)
-         }
-         }
-         return UIEdgeInsets.zero
-         */
     }
 }
 

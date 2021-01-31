@@ -20,7 +20,7 @@ class SearchTableViewController: UITableViewController {
     var arrayList = [String?]()
     var searchArrayList = [String?]()
     var searching = false
-    var arrayFilter = [(section: String, queryName: String, data: [String], selected: [Int], multipleSelection: Bool)]()
+    var arrayFilter = [(section: String, queryName: [String], data: [String], selected: [Int], multipleSelection: Bool)]()
     var selectedIndex: Int = 0
 
     override func viewDidLoad() {

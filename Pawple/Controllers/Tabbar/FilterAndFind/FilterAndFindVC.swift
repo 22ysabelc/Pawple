@@ -28,7 +28,7 @@ class FilterAndFindVC: UIViewController {
     }
     var routeNameSelected: PawpleRouter = .fetchListOfOrganizations
     var selectedSection: Int = 0
-    var searchFilter = [(section: String, queryName: String, data: [String], selected: [Int], multipleSelection: Bool)]()
+    var searchFilter = [(section: String, queryName: [String], data: [String], selected: [Int], multipleSelection: Bool)]()
     let purpleColor = UIColor(red: 172/255.0, green: 111/255.0, blue: 234/255.0, alpha: 1.0)
     
     @IBOutlet weak var collectionViewFilter: UICollectionView!
@@ -170,8 +170,8 @@ extension FilterAndFindVC: UICollectionViewDelegate, UICollectionViewDataSource 
                 } else {
                     self.searchFilter[indexPath.section].selected = [indexPath.item]
                 }
-                self.collectionViewFilter.reloadSections(IndexSet(integer: indexPath.section))
             }
+            self.collectionViewFilter.reloadSections(IndexSet(integer: indexPath.section))
         }
     }
 }

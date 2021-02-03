@@ -85,7 +85,20 @@ class SpeciesFilter: NSObject {
 
         var queryString = ""
         for index in array {
-            queryString.append("\(index.queryName)=\(index.data[index.selected.first ?? 0]),")
+
+            if index.queryName.count > 1 && index.queryName.count >= index.selected.count {
+                for item in index.selected {
+                    if item == 0 {
+                        for query in index.queryName {
+                            queryString.append("\(query)=true,")
+                        }
+                    } else {
+                        queryString.append("\(index.queryName[item-1])=true,")
+                    }
+                }
+            } else {
+                queryString.append("\(index.queryName.first!)=\(index.data[index.selected.first ?? 0]),")
+            }
         }
         queryString.append("status=adoptable")
         print("++++++++++++++++\(queryString)")

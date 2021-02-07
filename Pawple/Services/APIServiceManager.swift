@@ -11,6 +11,8 @@ import Alamofire
 
 class APIServiceManager {
     static let shared = APIServiceManager()
+    var totalPages: Int = 1
+    var currentPage: Int = 1
 
     let sessionManager: Session = {
         let configuration = URLSessionConfiguration.af.default
@@ -75,12 +77,20 @@ class APIServiceManager {
         }
     }
     
-    func fetchResults(completion: @escaping ([AnimalDetails?]) -> Void) {
-        sessionManager.request(PawpleRouter.fetchResults as URLRequestConvertible).responseDecodable(of: Animals.self) { response in
-            guard let results = response.value?.animals else {
-                return completion([])
+    func fetchResults(pageNumber: Int, completion: @escaping ([AnimalDetails?], Pagination?) -> Void) {
+
+//        sessionManager.request(PawpleRouter.fetchResults).responseJSON { (response) in
+//            print(response)
+//        }
+//        completion([])
+
+        sessionManager.request(PawpleRouter.fetchResults(pageNumber) as URLRequestConvertible).responseDecodable(of: Animals.self) { response in
+
+
+            guard let animalsArray = response.value?.animals, let pagination = response.value?.pagination  else {
+                return completion([], nil)
             }
-            completion(results)
+            completion(animalsArray, pagination)
         }
     }
 }

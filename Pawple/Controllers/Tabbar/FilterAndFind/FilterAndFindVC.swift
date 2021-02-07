@@ -106,7 +106,7 @@ extension FilterAndFindVC: UICollectionViewDelegate, UICollectionViewDataSource 
         if isCellSelected {
             cell.labelFilterName.textColor = .purple
             cell.layer.borderColor = UIColor.purple.cgColor
-            cell.layer.borderWidth = 2.5
+            cell.layer.borderWidth = 3
             
         } else {
             cell.labelFilterName.textColor = .darkGray

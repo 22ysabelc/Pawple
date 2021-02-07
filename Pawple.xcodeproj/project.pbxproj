@@ -34,6 +34,7 @@
 		AF492D6524564EA400ED4130 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF492D6424564EA400ED4130 /* SignUpViewController.swift */; };
 		AF492D6724565BA500ED4130 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AF492D6624565BA500ED4130 /* GoogleService-Info.plist */; };
 		AF544808249C166100A5AAA0 /* ChatTab.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AF544807249C166100A5AAA0 /* ChatTab.storyboard */; };
+		AF59F34C25CF5D8400D8A46D /* IndividualResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF59F34B25CF5D8300D8A46D /* IndividualResultViewController.swift */; };
 		AF7C6356245140820088C0D3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF7C6355245140820088C0D3 /* AppDelegate.swift */; };
 		AF7C6358245140820088C0D3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF7C6357245140820088C0D3 /* SceneDelegate.swift */; };
 		AF7C635A245140820088C0D3 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF7C6359245140820088C0D3 /* WelcomeViewController.swift */; };
@@ -100,6 +101,7 @@
 		AF492D6624565BA500ED4130 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		AF492D6824565DAA00ED4130 /* Pawple.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Pawple.entitlements; sourceTree = "<group>"; };
 		AF544807249C166100A5AAA0 /* ChatTab.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ChatTab.storyboard; sourceTree = "<group>"; };
+		AF59F34B25CF5D8300D8A46D /* IndividualResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndividualResultViewController.swift; sourceTree = "<group>"; };
 		AF7C6352245140820088C0D3 /* Pawple.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pawple.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF7C6355245140820088C0D3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AF7C6357245140820088C0D3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -189,6 +191,7 @@
 				9D67CD40258E609B005A8366 /* SearchTableViewCell.swift */,
 				AFD2BDD525A0E1140095C3AE /* ResultsCollectionVC.swift */,
 				AFBC29A3259ECA7600E3381E /* ResultsCollectionViewCell.swift */,
+				AF59F34B25CF5D8300D8A46D /* IndividualResultViewController.swift */,
 			);
 			path = FilterAndFind;
 			sourceTree = "<group>";
@@ -539,6 +542,7 @@
 			files = (
 				AFA2AD1224593F820068B4ED /* TabBarViewController.swift in Sources */,
 				9D5E58E52587011A00DF353F /* FilterViewCell.swift in Sources */,
+				AF59F34C25CF5D8400D8A46D /* IndividualResultViewController.swift in Sources */,
 				AF42AE772574431B00A7C6F4 /* Animals.swift in Sources */,
 				AFA4342524FC640B0090FF34 /* UserMessageCollectionViewCell.swift in Sources */,
 				AF8CEB44246269E60033C719 /* Constants.swift in Sources */,

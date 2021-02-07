@@ -23,6 +23,8 @@ class SpeciesFilter: NSObject {
 
     static let shared = SpeciesFilter()
     var arbitaryNumber: Int = 9999
+    var queryString: String = ""
+
     var searchFilter = [(section: String, queryName: [String], data: [String], selected: [Int], multipleSelection: Bool)]()
     var selectedSpecies: Species = .none
 
@@ -47,7 +49,7 @@ class SpeciesFilter: NSObject {
                 (section: "Coat Length", queryName: ["coat"], data: ["Any", "Hairless", "Short", "Medium", "Long"], selected: [0], multipleSelection: false),
                 (section: "Care", queryName: ["house_trained", "declawed", "special_needs"], data: ["Any", "House-trained", "Declawed", "Special needs"], selected: [0], multipleSelection: true),
                 (section: "Good with", queryName: ["good_with_children", "good_with_dogs", "good_with_cats"], data: ["Any", "Kids", "Dogs", "Other cats"], selected: [0], multipleSelection: true),
-                (section: "Location", queryName: ["location"], data: ["🔍 City, State, or ZIP", "Within 10 miles", "Within 25 miles", "Within 50 miles", "Within 100 miles", "Anywhere" ], selected: [5], multipleSelection: false),
+                (section: "Location", queryName: ["location"], data: ["Anywhere", "🔍 City, State, or ZIP", "Within 10 miles", "Within 25 miles", "Within 50 miles", "Within 100 miles"], selected: [0], multipleSelection: false),
                 (section: "Shelter/Rescue", queryName: ["organization"], data: ["Any", "🔍 Search"], selected: [0], multipleSelection: false),
                 (section: "Pet Name", queryName: ["name"], data: ["Any", "🔍 Search"], selected: [0], multipleSelection: false),
                 (section: "Days The Pet Has Been Available", queryName: ["name"], data: ["Any", "1", "7", "14", "30+"], selected: [0], multipleSelection: false)]
@@ -56,17 +58,16 @@ class SpeciesFilter: NSObject {
     func dogFilter() -> [(section: String, queryName: [String], data: [String], selected: [Int], multipleSelection: Bool)] {
         return [(section: "Species", queryName: ["type"], data: ["Dog", "Cat"], selected: [0], multipleSelection: false),
                 (section: "Breed", queryName: ["breed"], data: ["Any", "🔍 Search"], selected: [0], multipleSelection: false),
-                (section: "Age", queryName: ["age"], data: ["Any", "Puppy", "Young", "Adult", "Senior"], selected: [0], multipleSelection: false),
+                (section: "Age", queryName: ["age"], data: ["Any", "Baby", "Young", "Adult", "Senior"], selected: [0], multipleSelection: false),
                 (section: "Gender", queryName: ["gender"], data: ["Any", "Male", "Female"], selected: [0], multipleSelection: false),
                 (section: "Size", queryName: ["size"], data: ["Any", "Small (0-25 lbs)", "Medium (26-60 lbs)", "Large (61-100 lbs)", "Extra Large (> 101 lbs)"], selected: [0], multipleSelection: false),
                 (section: "Color", queryName: ["color"], data: ["Any", "🔍 Search"], selected: [0], multipleSelection: false),
                 (section: "Coat Length", queryName: ["coat"], data: ["Any", "Hairless", "Short", "Medium", "Long", "Wire", "Curly"], selected: [0], multipleSelection: false),
                 (section: "Care", queryName: ["house_trained", "special_needs"], data: ["Any", "House-trained", "Special needs"], selected: [0], multipleSelection: true),
                 (section: "Good with", queryName: ["good_with_children", "good_with_dogs", "good_with_cats"], data: ["Any", "Kids", "Other dogs", "Cats"], selected: [0], multipleSelection: true),
-                (section: "Location", queryName: ["location"], data: ["🔍 City, State, or ZIP", "Within 10 miles", "Within 25 miles", "Within 50 miles", "Within 100 miles", "Anywhere" ], selected: [5], multipleSelection: false),
+                (section: "Location", queryName: ["location"], data: ["Anywhere", "🔍 City, State, or ZIP", "Within 10 miles", "Within 25 miles", "Within 50 miles", "Within 100 miles"], selected: [0], multipleSelection: false),
                 (section: "Shelter/Rescue", queryName: ["organization"], data: ["Any", "🔍 Search"], selected: [0], multipleSelection: false),
-                (section: "Pet Name", queryName: ["name"], data: ["Any", "🔍 Search"], selected: [0], multipleSelection: false),
-                (section: "Days The Pet Has Been Available", queryName: ["name"], data: ["Any", "1", "7", "14", "30+"], selected: [0], multipleSelection: false)]
+                (section: "Pet Name", queryName: ["name"], data: ["Any", "🔍 Search"], selected: [0], multipleSelection: false)]
     }
 
     func addItemToList(array: inout [(section: String, queryName: [String], data: [String], selected: [Int], multipleSelection: Bool)], name: String, index: Int) {
@@ -81,27 +82,26 @@ class SpeciesFilter: NSObject {
         }
     }
 
-    func createSearchQuery(array: [(section: String, queryName: [String], data: [String], selected: [Int], multipleSelection: Bool)]) -> String {
+    func createSearchQuery(array: [(section: String, queryName: [String], data: [String], selected: [Int], multipleSelection: Bool)]) {
 
-        var queryString = ""
+        self.queryString = "animals?"
         for index in array {
 
-            if index.queryName.count > 1 && index.queryName.count >= index.selected.count {
+            if (index.data[index.selected.first ?? 0]).contains("Any") {
+                continue
+            }
+
+            if index.multipleSelection && index.queryName.count >= index.selected.count {
                 for item in index.selected {
-                    if item == 0 {
-                        for query in index.queryName {
-                            queryString.append("\(query)=true,")
-                        }
-                    } else {
-                        queryString.append("\(index.queryName[item-1])=true,")
+                    if item != 0 {
+                        self.queryString.append("\(index.queryName[item-1])=true&")
                     }
                 }
             } else {
-                queryString.append("\(index.queryName.first!)=\(index.data[index.selected.first ?? 0]),")
+                self.queryString.append("\(index.queryName.first!)=\(index.data[index.selected.first ?? 0])&")
             }
         }
-        queryString.append("status=adoptable")
+        self.queryString.append("status=adoptable")
         print("++++++++++++++++\(queryString)")
-        return queryString
     }
 }

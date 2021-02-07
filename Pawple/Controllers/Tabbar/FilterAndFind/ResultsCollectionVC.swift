@@ -13,31 +13,17 @@ private let reuseIdentifier = "Cell"
 class ResultsCollectionVC: UICollectionViewController {
 
     var arrayResults: [AnimalDetails?] = []
+    var pagination: Pagination?
+    var currentPage: Int = 1
+    let searchQuery: String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
+        self.fetchAnimals()
         // Register cell classes
         self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
-
-        APIServiceManager.shared.fetchResults { (animals) in
-            self.arrayResults = animals
-            self.collectionView.reloadData()
-        }
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using [segue destinationViewController].
-        // Pass the selected object to the new view controller.
-    }
-    */
 
     // MARK: UICollectionViewDataSource
 
@@ -66,34 +52,23 @@ class ResultsCollectionVC: UICollectionViewController {
     }
 
     // MARK: UICollectionViewDelegate
+    override func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
 
-    /*
-    // Uncomment this method to specify if the specified item should be highlighted during tracking
-    override func collectionView(_ collectionView: UICollectionView, shouldHighlightItemAt indexPath: IndexPath) -> Bool {
-        return true
+        if self.currentPage < self.pagination?.total_pages ?? 0 && (indexPath.item == self.arrayResults.count-2) {
+            self.currentPage += 1
+            self.fetchAnimals()
+        }
     }
-    */
+}
 
-    /*
-    // Uncomment this method to specify if the specified item should be selected
-    override func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
-        return true
+extension ResultsCollectionVC {
+    func fetchAnimals() {
+        APIServiceManager.shared.fetchResults(pageNumber: self.currentPage) { (animals, resultPagination) in
+            self.arrayResults.append(contentsOf: animals)
+            if let result = resultPagination {
+                self.pagination = result
+            }
+            self.collectionView.reloadData()
+        }
     }
-    */
-
-    /*
-    // Uncomment these methods to specify if an action menu should be displayed for the specified item, and react to actions performed on the item
-    override func collectionView(_ collectionView: UICollectionView, shouldShowMenuForItemAt indexPath: IndexPath) -> Bool {
-        return false
-    }
-
-    override func collectionView(_ collectionView: UICollectionView, canPerformAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) -> Bool {
-        return false
-    }
-
-    override func collectionView(_ collectionView: UICollectionView, performAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) {
-    
-    }
-    */
-
 }

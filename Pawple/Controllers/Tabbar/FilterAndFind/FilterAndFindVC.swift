@@ -62,7 +62,7 @@ class FilterAndFindVC: UIViewController {
             }
         } else if segue.identifier == "goToResults" {
             if segue.destination is ResultsCollectionVC {
-                SpeciesFilter.shared.createSearchQuery(array: self.searchFilter)
+                let searchQuery = SpeciesFilter.shared.createSearchQuery(array: self.searchFilter)
             }
         }
     }

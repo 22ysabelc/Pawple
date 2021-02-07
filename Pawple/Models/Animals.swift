@@ -10,6 +10,14 @@ import Foundation
 
 class Animals: NSObject, Decodable {
     var animals: [AnimalDetails?]
+    var pagination: Pagination?
+}
+
+class Pagination: NSObject, Decodable {
+    var count_per_page: Int
+    var total_count: Int
+    var current_page: Int
+    var total_pages: Int
 }
 
 class AnimalDetails: NSObject, Decodable {
@@ -45,6 +53,7 @@ class AnimalPhotos: NSObject, Decodable {
 
 class Organization: NSObject, Decodable {
     var organizations: [OrgDetails?]
+    var pagination: Pagination?
 }
 
 class OrgDetails: NSObject, Decodable {

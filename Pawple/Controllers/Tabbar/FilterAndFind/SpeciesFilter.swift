@@ -23,6 +23,8 @@ class SpeciesFilter: NSObject {
 
     static let shared = SpeciesFilter()
     var arbitaryNumber: Int = 9999
+    var queryString: String = ""
+
     var searchFilter = [(section: String, queryName: [String], data: [String], selected: [Int], multipleSelection: Bool)]()
     var selectedSpecies: Species = .none
 
@@ -81,27 +83,26 @@ class SpeciesFilter: NSObject {
         }
     }
 
-    func createSearchQuery(array: [(section: String, queryName: [String], data: [String], selected: [Int], multipleSelection: Bool)]) -> String {
+    func createSearchQuery(array: [(section: String, queryName: [String], data: [String], selected: [Int], multipleSelection: Bool)]) {
 
-        var queryString = ""
+        self.queryString = "animals?"
         for index in array {
 
-            if index.queryName.count > 1 && index.queryName.count >= index.selected.count {
+            if (index.data[index.selected.first ?? 0]).contains("Any") {
+                continue
+            }
+
+            if index.multipleSelection && index.queryName.count >= index.selected.count {
                 for item in index.selected {
-                    if item == 0 {
-                        for query in index.queryName {
-                            queryString.append("\(query)=true,")
-                        }
-                    } else {
-                        queryString.append("\(index.queryName[item-1])=true,")
+                    if item != 0 {
+                        self.queryString.append("\(index.queryName[item-1])=true&")
                     }
                 }
             } else {
-                queryString.append("\(index.queryName.first!)=\(index.data[index.selected.first ?? 0]),")
+                self.queryString.append("\(index.queryName.first!)=\(index.data[index.selected.first ?? 0])&")
             }
         }
-        queryString.append("status=adoptable")
+        self.queryString.append("status=adoptable")
         print("++++++++++++++++\(queryString)")
-        return queryString
     }
 }

@@ -24,6 +24,7 @@ class IndividualResultViewController: UIViewController {
             self.petDescription.layer.cornerRadius = self.petDescription.frame.height/8
         }
     }
+    
     @IBOutlet weak var petGeneralInfo: UILabel! {
         didSet {
             self.petGeneralInfo.layer.borderWidth = 2.5
@@ -32,10 +33,30 @@ class IndividualResultViewController: UIViewController {
         }
     }
     
+    @IBOutlet weak var chatShelter: UIButton! {
+        didSet {
+            self.chatShelter.layer.cornerRadius = self.chatShelter.frame.height/2
+        }
+    }
+    
+    @IBOutlet weak var saveProfile: UIButton! {
+        didSet {
+            self.saveProfile.layer.cornerRadius = self.saveProfile.frame.height/2
+        }
+    }
+    
+    @IBOutlet weak var submitForm: UIButton! {
+        didSet {
+            self.submitForm.layer.cornerRadius = self.submitForm.frame.height/3
+        }
+    }
+    
+    var details: AnimalDetails?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        
     }
     
 

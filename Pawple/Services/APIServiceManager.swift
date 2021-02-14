@@ -58,12 +58,12 @@ class APIServiceManager {
         }
     }
 
-    func fetchListOfOrganizations(completion: @escaping (([OrgDetails?]) -> Void)) {
+    func fetchListOfOrganizations(pageNumber: Int, completion: @escaping (([OrgDetails?], Pagination?) -> Void)) {
         sessionManager.request(PawpleRouter.fetchListOfOrganizations as URLRequestConvertible).responseDecodable(of: Organization.self) { response in
-            guard let orgNames = response.value?.organizations else {
-                return completion([])
+            guard let orgNames = response.value?.organizations, let pagination = response.value?.pagination else {
+                return completion([], nil)
             }
-            completion(orgNames)
+            completion(orgNames, pagination)
         }
     }
 
@@ -87,7 +87,7 @@ class APIServiceManager {
         sessionManager.request(PawpleRouter.fetchResults(pageNumber) as URLRequestConvertible).responseDecodable(of: Animals.self) { response in
 
 
-            guard let animalsArray = response.value?.animals, let pagination = response.value?.pagination  else {
+            guard let animalsArray = response.value?.animals, let pagination = response.value?.pagination else {
                 return completion([], nil)
             }
             completion(animalsArray, pagination)

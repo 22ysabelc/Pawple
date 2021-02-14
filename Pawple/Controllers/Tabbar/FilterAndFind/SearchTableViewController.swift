@@ -22,6 +22,8 @@ class SearchTableViewController: UITableViewController {
     var searching = false
     var arrayFilter = [(section: String, queryName: [String], data: [String], selected: [Int], multipleSelection: Bool)]()
     var selectedIndex: Int = 0
+    var pagination: Pagination?
+    var currentPage: Int = 1
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,7 +45,7 @@ class SearchTableViewController: UITableViewController {
                         }
                 }
                 case .fetchListOfOrganizations:
-                    APIServiceManager.shared.fetchListOfOrganizations { (listOfOrgs) in
+                    APIServiceManager.shared.fetchListOfOrganizations(pageNumber: self.currentPage) { (listOfOrgs, pagination) in
                         self.arrayList = listOfOrgs.map {$0?.name}
                         self.tableView.reloadData()
                 }
@@ -105,6 +107,26 @@ class SearchTableViewController: UITableViewController {
                     self.navigationController?.popViewController(animated: true)
                 }
             }
+        }
+    }
+    
+    // MARK: UICollectionViewDelegate
+    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        if self.currentPage < self.pagination?.total_pages ?? 0 && (indexPath.item == self.arrayList.count-2) {
+            self.currentPage += 1
+            self.fetchListOfOrgs()
+        }
+    }
+}
+
+extension SearchTableViewController {
+    func fetchListOfOrgs() {
+        APIServiceManager.shared.fetchListOfOrganizations(pageNumber: self.currentPage) { (orgs, resultPagination) in
+            self.arrayList.append(contentsOf: orgs.map {$0?.name})
+            if let result = resultPagination {
+                self.pagination = result
+            }
+            self.tableView.reloadData()
         }
     }
 }

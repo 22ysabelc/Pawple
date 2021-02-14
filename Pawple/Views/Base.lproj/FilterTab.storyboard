@@ -270,7 +270,7 @@
                                 <connections>
                                     <outlet property="petImage" destination="ORa-LG-qKP" id="pOo-fu-FCZ"/>
                                     <outlet property="petName" destination="Ao0-3y-g2r" id="0HY-Zx-cUb"/>
-                                    <segue destination="9hO-Ch-OtK" kind="show" id="aBE-gS-RKX"/>
+                                    <segue destination="9hO-Ch-OtK" kind="show" identifier="ResultsToIndividual" id="aBE-gS-RKX"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>
@@ -333,7 +333,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" editable="NO" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="riw-1S-vjp">
-                                <rect key="frame" x="37" y="359" width="340" height="320"/>
+                                <rect key="frame" x="37" y="358" width="340" height="320"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <color key="textColor" systemColor="labelColor"/>
@@ -341,9 +341,38 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <view contentMode="scaleToFill" id="fZX-rB-3ok">
-                                <rect key="frame" x="22" y="697" width="370" height="101"/>
+                                <rect key="frame" x="21" y="682" width="372" height="60"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" heightSizable="YES"/>
-                                <color key="backgroundColor" systemColor="systemBlueColor"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="xKW-jl-uzH" userLabel="Chat Button">
+                                        <rect key="frame" x="12" y="3" width="169" height="54"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" red="0.66422420739999999" green="0.66424006219999998" blue="0.66423153879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <fontDescription key="fontDescription" name="ChalkboardSE-Light" family="Chalkboard SE" pointSize="18"/>
+                                        <state key="normal" title="Chat the shelter">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" hasAttributedTitle="YES" id="zw0-iC-8h4" userLabel="Save Profile Button">
+                                        <rect key="frame" x="191" y="3" width="169" height="54"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" red="0.66422420739999999" green="0.66424006219999998" blue="0.66423153879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <state key="normal">
+                                            <attributedString key="attributedTitle">
+                                                <fragment content="Save to Potential Paw Friends">
+                                                    <attributes>
+                                                        <color key="NSColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <font key="NSFont" size="18" name="ChalkboardSE-Light"/>
+                                                        <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                    </attributes>
+                                                </fragment>
+                                            </attributedString>
+                                        </state>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="zw0-iC-8h4" firstAttribute="leading" secondItem="xKW-jl-uzH" secondAttribute="trailing" constant="18" id="zwj-bI-NLO"/>
+                                </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="General Info" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="gF0-VJ-feC">
                                 <rect key="frame" x="226" y="211" width="175" height="95"/>
@@ -352,31 +381,45 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="irP-bN-2Fx" userLabel="Submit Form Button">
+                                <rect key="frame" x="90" y="749" width="234" height="60"/>
+                                <color key="backgroundColor" red="0.5643646121" green="0.81120783090000004" blue="0.49798649550000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <fontDescription key="fontDescription" name="ChalkboardSE-Regular" family="Chalkboard SE" pointSize="21"/>
+                                <state key="normal" title="Submit an application!">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="kxU-pr-yS8"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="kxU-pr-yS8" firstAttribute="trailing" secondItem="riw-1S-vjp" secondAttribute="trailing" constant="37" id="6g3-oO-7ab"/>
                             <constraint firstItem="gF0-VJ-feC" firstAttribute="width" secondItem="jjU-G9-EBP" secondAttribute="width" id="Bjl-Ys-ROG"/>
+                            <constraint firstItem="kxU-pr-yS8" firstAttribute="bottom" secondItem="irP-bN-2Fx" secondAttribute="bottom" constant="4" id="C4r-AZ-eCb"/>
+                            <constraint firstItem="kxU-pr-yS8" firstAttribute="trailing" secondItem="fZX-rB-3ok" secondAttribute="trailing" constant="21" id="CM2-CR-CST"/>
                             <constraint firstItem="gF0-VJ-feC" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="yay-z0-fO6" secondAttribute="trailing" constant="8" symbolic="YES" id="Dyd-KU-fGt"/>
-                            <constraint firstItem="fZX-rB-3ok" firstAttribute="top" secondItem="riw-1S-vjp" secondAttribute="bottom" constant="18" id="MZS-8s-bvR"/>
+                            <constraint firstItem="kxU-pr-yS8" firstAttribute="trailing" secondItem="irP-bN-2Fx" secondAttribute="trailing" constant="90" id="IR7-MC-4bu"/>
                             <constraint firstItem="kxU-pr-yS8" firstAttribute="trailing" secondItem="jjU-G9-EBP" secondAttribute="trailing" constant="15" id="Ojh-Gi-m3B"/>
-                            <constraint firstItem="riw-1S-vjp" firstAttribute="top" secondItem="yay-z0-fO6" secondAttribute="bottom" constant="15" id="R5b-eL-eIE"/>
+                            <constraint firstItem="riw-1S-vjp" firstAttribute="top" secondItem="yay-z0-fO6" secondAttribute="bottom" constant="14" id="R5b-eL-eIE"/>
                             <constraint firstItem="jjU-G9-EBP" firstAttribute="leading" secondItem="aXN-OY-9Qh" secondAttribute="trailing" constant="16" id="RJB-cx-Lh6"/>
                             <constraint firstItem="gF0-VJ-feC" firstAttribute="top" secondItem="jjU-G9-EBP" secondAttribute="bottom" constant="15" id="aD8-h9-Tkj"/>
-                            <constraint firstItem="kxU-pr-yS8" firstAttribute="trailing" secondItem="fZX-rB-3ok" secondAttribute="trailing" constant="22" id="dsc-8v-BA2"/>
                             <constraint firstItem="kxU-pr-yS8" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="gF0-VJ-feC" secondAttribute="trailing" constant="15" id="hVC-gn-ECO"/>
-                            <constraint firstItem="fZX-rB-3ok" firstAttribute="leading" secondItem="kxU-pr-yS8" secondAttribute="leading" constant="22" id="jYf-UQ-YxX"/>
                             <constraint firstItem="riw-1S-vjp" firstAttribute="leading" secondItem="kxU-pr-yS8" secondAttribute="leading" constant="37" id="l89-QW-8uU"/>
-                            <constraint firstItem="kxU-pr-yS8" firstAttribute="bottom" secondItem="fZX-rB-3ok" secondAttribute="bottom" constant="15" id="s0g-JV-MOZ"/>
+                            <constraint firstItem="fZX-rB-3ok" firstAttribute="leading" secondItem="kxU-pr-yS8" secondAttribute="leading" constant="21" id="rfl-DJ-SYL"/>
+                            <constraint firstItem="irP-bN-2Fx" firstAttribute="leading" secondItem="kxU-pr-yS8" secondAttribute="leading" constant="90" id="rgi-70-yc4"/>
+                            <constraint firstItem="irP-bN-2Fx" firstAttribute="top" secondItem="fZX-rB-3ok" secondAttribute="bottom" constant="7" id="tKU-Li-6KU"/>
+                            <constraint firstItem="fZX-rB-3ok" firstAttribute="top" secondItem="riw-1S-vjp" secondAttribute="bottom" constant="4" id="wNi-mf-Amp"/>
                             <constraint firstItem="aXN-OY-9Qh" firstAttribute="top" secondItem="jjU-G9-EBP" secondAttribute="bottom" constant="-82" id="zPy-Nj-0ys"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="W9I-c9-XZN"/>
                     <connections>
+                        <outlet property="chatShelter" destination="xKW-jl-uzH" id="f43-IS-5eG"/>
                         <outlet property="petDescription" destination="riw-1S-vjp" id="uSH-0V-ffw"/>
                         <outlet property="petGeneralInfo" destination="gF0-VJ-feC" id="iEm-Hq-MWk"/>
                         <outlet property="petName" destination="jjU-G9-EBP" id="LwJ-2h-v1m"/>
+                        <outlet property="saveProfile" destination="zw0-iC-8h4" id="s52-t7-3Hj"/>
+                        <outlet property="submitForm" destination="irP-bN-2Fx" id="7Jv-vw-jMg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6Bw-b2-Rb5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -418,9 +461,6 @@
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="systemBlueColor">
-            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

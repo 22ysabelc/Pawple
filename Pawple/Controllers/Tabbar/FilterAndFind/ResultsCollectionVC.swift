@@ -27,6 +27,12 @@ class ResultsCollectionVC: UICollectionViewController {
 
     // MARK: UICollectionViewDataSource
 
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let cell = collectionView.cellForItem(at: indexPath) as? ResultsCollectionViewCell
+        let animal = arrayResults[indexPath.row]
+        performSegue(withIdentifier: "ResultsToIndividual", sender: cell)
+    }
+    
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1

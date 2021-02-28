@@ -39,7 +39,7 @@ class SearchTableViewController: UITableViewController {
             }
             case .fetchListOfOrganizations:
                 APIServiceManager.shared.fetchListOfOrganizations(pageNumber: self.currentPage) { (listOfOrgs, orgPagination) in
-                    self.arrayList = listOfOrgs.map {$0?.name}
+                    self.arrayList.append(contentsOf: listOfOrgs.map {$0?.name})
                     self.pagination = orgPagination
                     self.tableView.reloadData()
             }
@@ -81,7 +81,6 @@ class SearchTableViewController: UITableViewController {
             selectedItem = self.searchArrayList[indexPath.row]
         } else {
             selectedItem = arrayList[indexPath.row]
-            
         }
         // Close keyboard when you select cell
         self.searchBar.searchTextField.endEditing(true)
@@ -148,11 +147,11 @@ extension SearchTableViewController: UISearchBarDelegate {
                 case "Color":
                     return .fetchListOfColors("Dog")
                 case "Shelter/Rescue":
-                    return .fetchListOfOrganizations
+                    return .fetchListOfOrganizations(1)
                 default:
                     return .fetchListOfBreeds("Dog")
             }
         }
-        return .fetchListOfOrganizations
+        return .fetchListOfOrganizations(1)
     }
 }

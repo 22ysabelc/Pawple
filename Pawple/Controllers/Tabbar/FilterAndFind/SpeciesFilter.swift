@@ -51,8 +51,7 @@ class SpeciesFilter: NSObject {
                 (section: "Good with", queryName: ["good_with_children", "good_with_dogs", "good_with_cats"], data: ["Any", "Kids", "Dogs", "Other cats"], selected: [0], multipleSelection: true),
                 (section: "Location", queryName: ["location"], data: ["Anywhere", "🔍 City, State, or ZIP", "Within 10 miles", "Within 25 miles", "Within 50 miles", "Within 100 miles"], selected: [0], multipleSelection: false),
                 (section: "Shelter/Rescue", queryName: ["organization"], data: ["Any", "🔍 Search"], selected: [0], multipleSelection: true),
-                (section: "Pet Name", queryName: ["name"], data: ["Any", "🔍 Search"], selected: [0], multipleSelection: false),
-                (section: "Days The Pet Has Been Available", queryName: ["name"], data: ["Any", "1", "7", "14", "30+"], selected: [0], multipleSelection: false)]
+                (section: "Pet Name", queryName: ["name"], data: ["Any", "🔍 Search"], selected: [0], multipleSelection: false)]
     }
 
     func dogFilter() -> [(section: String, queryName: [String], data: [String], selected: [Int], multipleSelection: Bool)] {
@@ -67,8 +66,7 @@ class SpeciesFilter: NSObject {
                 (section: "Good with", queryName: ["good_with_children", "good_with_dogs", "good_with_cats"], data: ["Any", "Kids", "Other dogs", "Cats"], selected: [0], multipleSelection: true),
                 (section: "Location", queryName: ["location"], data: ["Anywhere", "🔍 City, State, or ZIP", "Within 10 miles", "Within 25 miles", "Within 50 miles", "Within 100 miles"], selected: [0], multipleSelection: false),
                 (section: "Shelter/Rescue", queryName: ["organization"], data: ["Any", "🔍 Search"], selected: [0], multipleSelection: true),
-                (section: "Pet Name", queryName: ["name"], data: ["Any", "🔍 Search"], selected: [0], multipleSelection: false),
-                (section: "Days The Pet Has Been Available", queryName: ["name"], data: ["Any", "1", "7", "14", "30+"], selected: [0], multipleSelection: false)]
+                (section: "Pet Name", queryName: ["name"], data: ["Any", "🔍 Search"], selected: [0], multipleSelection: false)]
     }
 
     func addItemToList(array: inout [(section: String, queryName: [String], data: [String], selected: [Int], multipleSelection: Bool)], name: String, index: Int) {
@@ -96,8 +94,8 @@ class SpeciesFilter: NSObject {
                 continue
             }
             
-            if index.multipleSelection && index.queryName.count >= index.selected.count {
-                if index.queryName.count > 1 {
+            if index.multipleSelection {
+                if index.queryName.count >= index.selected.count && index.queryName.count > 1 {
                     for item in index.selected {
                         if item != 0 {
                             self.queryString.append("\(index.queryName[item-1])=true&")

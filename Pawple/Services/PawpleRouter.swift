@@ -11,7 +11,7 @@ import Alamofire
 
 enum PawpleRouter {
     case fetchListOfBreeds(String)
-    case fetchListOfOrganizations
+    case fetchListOfOrganizations(Int)
     case fetchAccessToken
     case fetchListOfColors(String)
     case fetchListOfNames(String)
@@ -25,8 +25,8 @@ enum PawpleRouter {
         switch self {
         case .fetchListOfBreeds(let species):
             return "types/\(species)/breeds/"
-        case .fetchListOfOrganizations:
-            return "organizations"
+        case .fetchListOfOrganizations(let pageNumber):
+            return "organizations?page=\(pageNumber)&="
         case .fetchAccessToken:
             return "oauth2/token"
         case .fetchListOfColors(let species):

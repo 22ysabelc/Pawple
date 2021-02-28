@@ -61,6 +61,7 @@ class OrgDetails: NSObject, Decodable {
     var name: String?
     var phone: String?
     var address: OrgAddress?
+    var id: String?
 }
 
 class OrgAddress: NSObject, Decodable {

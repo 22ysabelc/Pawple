@@ -10,7 +10,7 @@ import UIKit
 
 class FilterAndFindVC: UIViewController {
 
-    var routeNameSelected: PawpleRouter = .fetchListOfOrganizations
+//    var routeNameSelected: PawpleRouter = .fetchListOfOrganizations
     var selectedSection: Int = 0
     var searchFilter = [(section: String, queryName: [String], data: [String], selected: [Int], multipleSelection: Bool)]()
     let purpleColor = UIColor(red: 172/255.0, green: 111/255.0, blue: 234/255.0, alpha: 1.0)

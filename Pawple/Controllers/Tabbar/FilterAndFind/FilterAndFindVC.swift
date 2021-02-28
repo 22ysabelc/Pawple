@@ -147,6 +147,10 @@ extension FilterAndFindVC: UICollectionViewDelegate, UICollectionViewDataSource 
                             array.remove(at: index)
                         }
                         array.append(indexPath.item)
+
+                        if array.count == self.searchFilter[indexPath.section].data.count - 1 {
+                            array = [0]
+                        }
                     }
                     self.searchFilter[indexPath.section].selected = array
                 } else {

@@ -74,12 +74,16 @@ class SpeciesFilter: NSObject {
     func addItemToList(array: inout [(section: String, queryName: [String], data: [String], selected: [Int], multipleSelection: Bool)], name: String, index: Int) {
         if array.count >= index {
             var dataArray = array[index].data
-            if dataArray.count > 2 {
-                dataArray.remove(at: 1)
+
+            // check if item already exist in the list.
+            if !dataArray.contains(name) {
+                if dataArray.count > 5 {
+                    dataArray.remove(at: 4)
+                }
+                dataArray.insert(name, at: 1)
+                array[index].data = dataArray
+                array[index].selected = [1]
             }
-            dataArray.insert(name, at: 1)
-            array[index].data = dataArray
-            array[index].selected = [1]
         }
     }
 

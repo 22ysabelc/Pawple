@@ -19,5 +19,4 @@ class FilterCollectionFooterView: UICollectionReusableView {
             self.findAPetButton.layer.cornerRadius = self.findAPetButton.frame.height / 2
         }
     }
-
 }

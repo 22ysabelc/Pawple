@@ -36,15 +36,15 @@ class APIServiceManager {
     }()
 
 
-    func fetchAccessToken(completion: @escaping (Bool) -> Void) {
+    func fetchAccessToken(completion: @escaping (Bool, String) -> Void) {
         sessionManager.request(PawpleRouter.fetchAccessToken as URLRequestConvertible)
             .responseDecodable(of: GitHubAccessToken.self) { response in
                 guard let token = response.value else {
-                    return completion(false)
+                    return completion(false, "")
                 }
                 TokenManager.shared.saveAccessToken(gitToken: token)
                 TokenManager.shared.saveTokenExpiration(gitToken: token)
-                completion(true)
+                completion(true, token.accessToken)
         }
     }
 
@@ -79,10 +79,9 @@ class APIServiceManager {
     
     func fetchResults(pageNumber: Int, completion: @escaping ([AnimalDetails?], Pagination?) -> Void) {
 
-//        sessionManager.request(PawpleRouter.fetchResults).responseJSON { (response) in
-//            print(response)
-//        }
-//        completion([])
+        sessionManager.request(PawpleRouter.fetchResults(1)).responseJSON { (response) in
+            print("+++++++++++++++\(response)")
+        }
 
         sessionManager.request(PawpleRouter.fetchResults(pageNumber) as URLRequestConvertible).responseDecodable(of: Animals.self) { response in
 

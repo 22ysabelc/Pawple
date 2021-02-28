@@ -17,8 +17,10 @@ class GitRequestInterceptor: RequestInterceptor {
     func adapt(_ urlRequest: URLRequest, for session: Session, completion: @escaping (Result<URLRequest, Error>) -> Void) {
 
         var urlRequest = urlRequest
-        if let token = TokenManager.shared.fetchAccessToken() {
-            urlRequest.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+        TokenManager.shared.fetchAccessToken { (token) in
+            if let token = token {
+                urlRequest.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+            }
         }
         completion(.success(urlRequest))
     }

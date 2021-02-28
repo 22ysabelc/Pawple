@@ -25,6 +25,7 @@
 		9D67CD54259926D9005A8366 /* GitNetworkReachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D67CD53259926D9005A8366 /* GitNetworkReachability.swift */; };
 		9D67CD5625992B75005A8366 /* PawpleRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D67CD5525992B75005A8366 /* PawpleRouter.swift */; };
 		9D67CD5825992EA3005A8366 /* APIServiceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D67CD5725992EA3005A8366 /* APIServiceManager.swift */; };
+		9D9888A425EB630D0089DABA /* Filter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D9888A325EB630D0089DABA /* Filter.swift */; };
 		9DAAA9C125B4B8EF00F88372 /* SpeciesFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DAAA9C025B4B8EF00F88372 /* SpeciesFilter.swift */; };
 		AF04A5B324BB9BE7006099B9 /* UsersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF04A5B224BB9BE7006099B9 /* UsersTableViewController.swift */; };
 		AF04A5B524BBAACD006099B9 /* UserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF04A5B424BBAACC006099B9 /* UserTableViewCell.swift */; };
@@ -91,6 +92,7 @@
 		9D67CD53259926D9005A8366 /* GitNetworkReachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GitNetworkReachability.swift; sourceTree = "<group>"; };
 		9D67CD5525992B75005A8366 /* PawpleRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PawpleRouter.swift; sourceTree = "<group>"; };
 		9D67CD5725992EA3005A8366 /* APIServiceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIServiceManager.swift; sourceTree = "<group>"; };
+		9D9888A325EB630D0089DABA /* Filter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Filter.swift; sourceTree = "<group>"; };
 		9DAAA9C025B4B8EF00F88372 /* SpeciesFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeciesFilter.swift; sourceTree = "<group>"; };
 		AF04A5B224BB9BE7006099B9 /* UsersTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersTableViewController.swift; sourceTree = "<group>"; };
 		AF04A5B424BBAACC006099B9 /* UserTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTableViewCell.swift; sourceTree = "<group>"; };
@@ -315,6 +317,7 @@
 				AFB8E7B424E0888C00F05698 /* Message.swift */,
 				AF42AE762574431A00A7C6F4 /* Animals.swift */,
 				AF42AE792574469100A7C6F4 /* Breeds.swift */,
+				9D9888A325EB630D0089DABA /* Filter.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -553,6 +556,7 @@
 				9D67CD41258E609B005A8366 /* SearchTableViewCell.swift in Sources */,
 				9D5E58E82587017A00DF353F /* Extension.swift in Sources */,
 				AFBC29A4259ECA7600E3381E /* ResultsCollectionViewCell.swift in Sources */,
+				9D9888A425EB630D0089DABA /* Filter.swift in Sources */,
 				AF8CEB41246264CA0033C719 /* Profile.swift in Sources */,
 				AF9198C82496ACB8000A0218 /* UIViewController+Alert.swift in Sources */,
 				9D67CD492599237E005A8366 /* GitHubAccessToken.swift in Sources */,

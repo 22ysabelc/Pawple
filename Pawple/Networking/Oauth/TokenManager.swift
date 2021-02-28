@@ -49,13 +49,30 @@ class TokenManager {
         }
     }
 
-    func fetchAccessToken() -> String? {
+    func fetchAccessToken(completion: @escaping (String?) -> Void) {
         do {
-            return try secureStore.getValue(for: userAccount)
+            if (isTokenNotExpired) {
+                let token = try secureStore.getValue(for: userAccount)
+                completion(token)
+            } else {
+                APIServiceManager.shared.fetchAccessToken { (_, token) in
+                    completion(token)
+                }
+            }
         } catch let exception {
             print("Error fetching access token: \(exception)")
         }
-        return nil
+        completion(nil)
+    }
+
+    var isTokenNotExpired: Bool {
+        let tokenExpirationTimestamp: String = TokenManager.shared.fetchTokenExpiration() ?? "0"
+        if let doubleValue = Double(tokenExpirationTimestamp) {
+            if doubleValue > Date.init().timeIntervalSince1970 {
+                return true
+            }
+        }
+        return false
     }
 
     func clearAccessToken() {

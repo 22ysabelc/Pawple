@@ -9,23 +9,7 @@
 import UIKit
 
 class FilterAndFindVC: UIViewController {
-    
-    var isTokenNotExpired: Bool {
-        let tokenExpirationTimestamp: String = TokenManager.shared.fetchTokenExpiration() ?? "0"
-        if let doubleValue = Double(tokenExpirationTimestamp) {
-            if doubleValue > Date.init().timeIntervalSince1970 {
-                return true
-            }
-        }
-        return false
-    }
-    
-    var isTokenValid: Bool {
-        if TokenManager.shared.fetchAccessToken() != nil && isTokenNotExpired {
-            return true
-        }
-        return false
-    }
+
     var routeNameSelected: PawpleRouter = .fetchListOfOrganizations
     var selectedSection: Int = 0
     var searchFilter = [(section: String, queryName: [String], data: [String], selected: [Int], multipleSelection: Bool)]()
@@ -45,11 +29,9 @@ class FilterAndFindVC: UIViewController {
             flowLayout.sectionFootersPinToVisibleBounds = true
         }
         
-        if !isTokenValid {
-            APIServiceManager.shared.fetchAccessToken { (isSuccess) in
-                if !isSuccess {
-                    print("Error fetching Access Token")
-                }
+        APIServiceManager.shared.fetchAccessToken { (isSuccess, _) in
+            if !isSuccess {
+                print("Error fetching Access Token")
             }
         }
     }

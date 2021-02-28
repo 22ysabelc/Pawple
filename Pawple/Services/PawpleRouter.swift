@@ -28,7 +28,7 @@ enum PawpleRouter {
         case .fetchListOfOrganizations:
             return "organizations"
         case .fetchAccessToken:
-            return "/oauth2/token"
+            return "oauth2/token"
         case .fetchListOfColors(let species):
             return "types/\(species)"
         case .fetchListOfNames(let species):

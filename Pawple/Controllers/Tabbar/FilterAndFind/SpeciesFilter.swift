@@ -31,9 +31,9 @@ class SpeciesFilter: NSObject {
     func returnSpecies() -> [(section: String, queryName: [String], data: [String], selected: [Int], multipleSelection: Bool)] {
         switch selectedSpecies {
             case .cat:
-                 return catFilter()
+                return catFilter()
             case .dog:
-                 return dogFilter()
+                return dogFilter()
             case .none:
                 return [(section: "Species", queryName: ["type"], data: ["Dog", "Cat"], selected: [arbitaryNumber], multipleSelection: false)]
         }
@@ -91,13 +91,28 @@ class SpeciesFilter: NSObject {
             if (index.data[index.selected.first ?? 0]).contains("Any") {
                 continue
             }
-
+            
             if index.multipleSelection && index.queryName.count >= index.selected.count {
-                for item in index.selected {
-                    if item != 0 {
-                        self.queryString.append("\(index.queryName[item-1])=true&")
+                if index.queryName.count > 1 {
+                    for item in index.selected {
+                        if item != 0 {
+                            self.queryString.append("\(index.queryName[item-1])=true&")
+                        }
                     }
+                } else {
+                    var concatenatedString = ""
+                    for item in index.selected {
+                        if item != 0 {
+                            if index.data[item] == "Puppy" {
+                                concatenatedString.append("baby,")
+                            } else {
+                                concatenatedString.append("\(index.data[item]),")
+                            }
+                        }
+                    }
+                    self.queryString.append("\(index.queryName.first!)=\(concatenatedString)&")
                 }
+
             } else {
                 self.queryString.append("\(index.queryName.first!)=\(index.data[index.selected.first ?? 0])&")
             }

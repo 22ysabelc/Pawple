@@ -138,6 +138,7 @@ extension FilterAndFindVC: UICollectionViewDelegate, UICollectionViewDataSource 
                     if indexPath.item == 0 {
                         array = [indexPath.item]
                     } else if array.contains(indexPath.item) {
+                        // removing element from selected list if user tap on the selected item.
                         if let index = array.firstIndex(of: indexPath.item) {
                             array.remove(at: index)
                         }
@@ -147,7 +148,7 @@ extension FilterAndFindVC: UICollectionViewDelegate, UICollectionViewDataSource 
                             array.remove(at: index)
                         }
                         array.append(indexPath.item)
-
+                        // If user selects every data element, we are defaulting it to Any
                         if array.count == self.searchFilter[indexPath.section].data.count - 1 {
                             array = [0]
                         }

@@ -45,8 +45,9 @@ class SearchTableViewController: UITableViewController {
                         }
                 }
                 case .fetchListOfOrganizations:
-                    APIServiceManager.shared.fetchListOfOrganizations(pageNumber: self.currentPage) { (listOfOrgs, pagination) in
+                    APIServiceManager.shared.fetchListOfOrganizations(pageNumber: self.currentPage) { (listOfOrgs, orgPagination) in
                         self.arrayList = listOfOrgs.map {$0?.name}
+                        self.pagination = orgPagination
                         self.tableView.reloadData()
                 }
                 case .fetchListOfNames(_):

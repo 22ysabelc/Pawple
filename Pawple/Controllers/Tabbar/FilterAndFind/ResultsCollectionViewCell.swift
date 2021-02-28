@@ -9,6 +9,11 @@
 import UIKit
 
 class ResultsCollectionViewCell: UICollectionViewCell {
+
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        self.petImage.image = UIImage(named: "pawprint")
+    }
     
     @IBOutlet weak var petImage: UIImageView!
     @IBOutlet weak var petName: UILabel! {

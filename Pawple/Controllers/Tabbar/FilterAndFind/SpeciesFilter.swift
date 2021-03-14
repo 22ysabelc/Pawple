@@ -130,7 +130,7 @@ func returnKeyName (searchKey: String) -> String {
     } else if searchKey.contains("Extra Large") {
         return "xlarge"
     } else if searchKey.contains("Large") {
-        return "xlarge"
+        return "large"
     } else if searchKey.contains("Puppy") {
         return "baby"
     }

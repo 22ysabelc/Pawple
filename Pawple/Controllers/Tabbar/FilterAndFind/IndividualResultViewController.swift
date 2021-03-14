@@ -10,6 +10,7 @@ import UIKit
 
 class IndividualResultViewController: UIViewController {
 
+    @IBOutlet weak var profileImage: UIImageView!
     @IBOutlet weak var petName: UILabel! {
         didSet {
             self.petName.layer.cornerRadius = self.petName.frame.height/6
@@ -55,7 +56,12 @@ class IndividualResultViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
+        setDetails()
+    }
+
+    func setDetails () {
+        self.petName.text = details?.name
+        self.profileImage.sd_setImage(with: URL(string: (details?.photos[0]?.medium)!))
+
     }
 }

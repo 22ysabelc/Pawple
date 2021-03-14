@@ -28,7 +28,8 @@ class ResultsCollectionVC: UICollectionViewController {
     // MARK: UICollectionViewDataSource
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-       
+        let index = indexPath.item
+        self.performSegue(withIdentifier: "IndividualResultViewController", sender: index)
     }
     
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -73,6 +74,16 @@ extension ResultsCollectionVC {
                 self.pagination = result
             }
             self.collectionView.reloadData()
+        }
+    }
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "IndividualResultViewController" {
+            if let objVC = segue.destination as? IndividualResultViewController {
+                if let index = sender as? Int {
+                    objVC.details = arrayResults[index]
+                }
+            }
         }
     }
 }

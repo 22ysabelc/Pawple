@@ -105,11 +105,7 @@ class SpeciesFilter: NSObject {
                     var concatenatedString = ""
                     for item in index.selected {
                         if item != 0 {
-                            if index.data[item] == "Puppy" {
-                                concatenatedString.append("baby,")
-                            } else {
-                                concatenatedString.append("\(index.data[item]),")
-                            }
+                            concatenatedString.append("\(returnKeyName(searchKey: index.data[item])),")
                         }
                     }
                     self.queryString.append("\(index.queryName.first!)=\(concatenatedString)&")
@@ -122,4 +118,21 @@ class SpeciesFilter: NSObject {
         self.queryString.append("status=adoptable")
         print("++++++++++++++++\(queryString)")
     }
+}
+
+
+func returnKeyName (searchKey: String) -> String {
+
+    if searchKey.contains("Small") {
+        return "small"
+    } else if searchKey.contains("Medium") {
+        return "medium"
+    } else if searchKey.contains("Extra Large") {
+        return "xlarge"
+    } else if searchKey.contains("Large") {
+        return "xlarge"
+    } else if searchKey.contains("Puppy") {
+        return "baby"
+    }
+    return searchKey
 }

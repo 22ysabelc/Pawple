@@ -13,6 +13,9 @@ class SearchTableViewController: UITableViewController {
     @IBOutlet weak var searchBar: UISearchBar!
     var arrayList = [String?]()
     var searchArrayList = [String?]()
+    var arrayOrgs = [OrgDetails?]()
+    var searchArrayOrgs = [OrgDetails?]()
+    var isUserSearchingForOrg: Bool = false
     var searching = false
     var arrayFilter = [(section: String, queryName: [String], data: [String], selected: [Int], multipleSelection: Bool)]()
     var selectedIndex: Int = 0
@@ -38,15 +41,17 @@ class SearchTableViewController: UITableViewController {
                     }
             }
             case .fetchListOfOrganizations:
+                self.isUserSearchingForOrg = true
                 APIServiceManager.shared.fetchListOfOrganizations(pageNumber: self.currentPage) { (listOfOrgs, orgPagination) in
+                    self.arrayOrgs = listOfOrgs
                     self.arrayList.append(contentsOf: listOfOrgs.map {$0?.name})
                     self.pagination = orgPagination
                     self.tableView.reloadData()
             }
             case .fetchListOfNames(_):
-                print("Nor route present to call")
+                print("No route present to call")
             default:
-                print("Nor route present to call")
+                print("No route present to call")
         }
         
     }
@@ -77,14 +82,26 @@ class SearchTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         var selectedItem: String?
-        if searching {
-            selectedItem = self.searchArrayList[indexPath.row]
+        if isUserSearchingForOrg {
+            if searching {
+                selectedItem = self.searchArrayOrgs[indexPath.row]?.id
+            } else {
+                selectedItem = self.arrayOrgs[indexPath.row]?.id
+            }
         } else {
-            selectedItem = arrayList[indexPath.row]
+            if searching {
+                selectedItem = self.searchArrayList[indexPath.row]
+            } else {
+                selectedItem = arrayList[indexPath.row]
+            }
+        }
+
+        if isUserSearchingForOrg {
+            self.currentPage = 1
+            self.fetchListOfOrgs()
         }
         // Close keyboard when you select cell
         self.searchBar.searchTextField.endEditing(true)
-        
         if let selectedItem = selectedItem {
             SpeciesFilter.shared.addItemToList(array: &self.arrayFilter, name: selectedItem, index: self.selectedIndex)
             self.popViewController()
@@ -107,15 +124,28 @@ class SearchTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         if self.currentPage < self.pagination?.total_pages ?? 0 && (indexPath.item == self.arrayList.count-2) {
             self.currentPage += 1
-            self.fetchListOfOrgs()
+            self.fetchListOfOrgs(isUserScrolling: true)
         }
     }
 }
 
 extension SearchTableViewController {
-    func fetchListOfOrgs() {
-        APIServiceManager.shared.fetchListOfOrganizations(pageNumber: self.currentPage) { (orgs, resultPagination) in
-            self.arrayList.append(contentsOf: orgs.map {$0?.name})
+    func fetchListOfOrgs(isUserScrolling: Bool = false) {
+
+        APIServiceManager.shared.fetchListOfOrganizations(name: self.searchBar.searchTextField.text ?? "", pageNumber: self.currentPage) { (orgs, resultPagination) in
+
+            if self.currentPage == 1 {
+                self.arrayOrgs = orgs
+                self.arrayList = orgs.map {$0?.name}
+            } else {
+                self.arrayOrgs.append(contentsOf: orgs)
+                self.arrayList.append(contentsOf: orgs.map {$0?.name})
+            }
+
+            if self.searching {
+                self.searchArrayList = self.arrayList
+                self.searchArrayOrgs = orgs
+            }
             if let result = resultPagination {
                 self.pagination = result
             }
@@ -127,10 +157,19 @@ extension SearchTableViewController {
 // MARK: - SearchBar Delegates
 extension SearchTableViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        searchArrayList = arrayList.filter { $0!.lowercased().prefix(searchText.count) == searchText.lowercased() }
-        searching = true
+        searchArrayList = arrayList.filter { $0!.lowercased().contains(searchText.lowercased()) }
+
+        self.searchArrayOrgs = self.arrayOrgs.filter { ($0?.name?.lowercased().contains(searchText.lowercased()) ?? false)
+        }
+        self.searching = true
+
+        if isUserSearchingForOrg {
+            self.currentPage = 1
+            self.fetchListOfOrgs()
+        }
         tableView.reloadData()
     }
+    
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         searching = false
@@ -147,11 +186,18 @@ extension SearchTableViewController: UISearchBarDelegate {
                 case "Color":
                     return .fetchListOfColors("Dog")
                 case "Shelter/Rescue":
-                    return .fetchListOfOrganizations(1)
+                    return .fetchListOfOrganizations("", 1)
                 default:
                     return .fetchListOfBreeds("Dog")
             }
         }
-        return .fetchListOfOrganizations(1)
+        return .fetchListOfOrganizations("", 1)
+    }
+}
+
+
+extension Dictionary where Value: Equatable {
+    func someKey(forValue val: Value) -> Key? {
+        return first(where: { $1 == val })?.key
     }
 }

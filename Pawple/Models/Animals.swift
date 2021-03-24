@@ -63,6 +63,10 @@ class Organization: NSObject, Decodable {
     var pagination: Pagination?
 }
 
+class Org: NSObject, Decodable {
+    var organization: OrgDetails?
+}
+
 class OrgDetails: NSObject, Decodable {
     var email: String?
     var name: String?

@@ -72,6 +72,17 @@ class APIServiceManager {
         }
     }
 
+    func fetchOrganizationDetails(orgId: String, completion: @escaping ((OrgDetails?) -> Void)) {
+
+        sessionManager.request(PawpleRouter.fetchOrganizationDetails(orgId) as URLRequestConvertible).responseDecodable(of: Org.self) { response in
+            guard let orgDetails = response.value?.organization
+                else {
+                return completion(nil)
+            }
+            completion(orgDetails)
+        }
+    }
+
     func fetchListOfColors(species: String = "dog", completion: @escaping ((SpeciesProperties?) -> Void)) {
 
         sessionManager.request(PawpleRouter.fetchListOfColors(species) as URLRequestConvertible).responseDecodable(of: TypeOfSpecies.self) { response in

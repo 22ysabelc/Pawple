@@ -57,7 +57,14 @@ class IndividualResultViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
         setDetails()
+        if let orgId = details?.organization_id {
+            APIServiceManager.shared.fetchOrganizationDetails(orgId: orgId) { (organizationDetails) in
+                self.org = organizationDetails
+                // set org name here.
+            }
+        }
     }
 
     func setDetails() {

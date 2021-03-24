@@ -13,6 +13,7 @@ enum PawpleRouter {
     case fetchListOfBreeds(String)
     case fetchListOfOrganizations(String, Int)
     case fetchAccessToken
+    case fetchOrganizationDetails(String)
     case fetchListOfColors(String)
     case fetchListOfNames(String)
     case fetchResults(Int)
@@ -40,6 +41,8 @@ enum PawpleRouter {
             return "types/\(species)/names"
         case .fetchResults(let pageNumber):
             return "\(SpeciesFilter.shared.queryString)&page=\(pageNumber)&="
+        case .fetchOrganizationDetails(let orgId):
+            return "organizations/\(orgId)"
         }
     }
     

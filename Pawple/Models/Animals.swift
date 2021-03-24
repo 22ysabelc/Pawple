@@ -34,7 +34,14 @@ class AnimalDetails: NSObject, Decodable {
     var age: String?
     var photos: [AnimalPhotos?]
     var status: String?
-    // TODO: add attributes and environment
+    var contact: ContactInfo?
+    var desc: String?
+}
+
+class ContactInfo: NSObject, Decodable {
+    var email: String?
+    var phone: String?
+    var address: OrgAddress?
 }
 
 class AnimalBreeds: NSObject, Decodable {

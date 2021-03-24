@@ -53,15 +53,83 @@ class IndividualResultViewController: UIViewController {
     }
     
     var details: AnimalDetails?
+    var org: OrgDetails?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setDetails()
     }
 
-    func setDetails () {
+    func setDetails() {
         self.petName.text = details?.name
         self.profileImage.sd_setImage(with: URL(string: (details?.photos[0]?.medium)!))
-
+        self.petGeneralInfo.text = setGeneralInfo()
+        self.petDescription.text = setPetDescription()
+    }
+    
+    func setGeneralInfo() -> String {
+        var breedString = "Breed: "
+        if let breed = details?.breeds?.primary {
+            breedString += "\(breed)"
+            if let mixed = details?.breeds?.mixed {
+                if mixed {
+                    breedString += " mix"
+                }
+            }
+        } else {
+            breedString += "Not listed"
+        }
+        var genderString = "Gender: "
+        if let gender = details?.gender {
+            genderString += "\(gender)"
+        } else {
+            genderString += "Not listed"
+        }
+        var sizeString = "Size: "
+        if let size = details?.size {
+            sizeString += "\(size)"
+        } else {
+            sizeString += "Not listed"
+        }
+        var ageString = "Age: "
+        if let age = details?.age {
+            if age.contains("Baby") {
+                if let type = details?.type {
+                    if type.contains("Dog") {
+                        ageString += "Puppy"
+                    } else {
+                        ageString += "Kitten"
+                    }
+                }
+            } else {
+                ageString += "\(age)"
+            }
+        } else {
+            ageString += "Not listed"
+        }
+        
+        let generalInfo = breedString + "\n" + genderString + "\n" + sizeString + "\n" + ageString
+        return generalInfo
+    }
+    
+    func setPetDescription() -> String {
+        var orgName = ""
+        if let name = org?.name {
+            orgName += name
+        } else {
+            orgName += "Organization not listed"
+        }
+        var locationString = ""
+        if let location = details?.contact {
+            if let address = location.address {
+                if let city = address.city, let state = address.state {
+                    locationString += city + ", " + state
+                }
+            }
+        } else {
+            locationString += "Location not listed"
+        }
+        let petDescription = orgName + "\n" + locationString + "\n" + "\n"
+        return petDescription
     }
 }

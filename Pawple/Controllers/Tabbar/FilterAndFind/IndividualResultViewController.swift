@@ -57,21 +57,16 @@ class IndividualResultViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         setDetails()
-        if let orgId = details?.organization_id {
-            APIServiceManager.shared.fetchOrganizationDetails(orgId: orgId) { (organizationDetails) in
-                self.org = organizationDetails
-                // set org name here.
-            }
-        }
     }
 
     func setDetails() {
         self.petName.text = details?.name
-        self.profileImage.sd_setImage(with: URL(string: (details?.photos[0]?.medium)!))
+        if details?.photos.count ?? 0 > 0, let image = details?.photos[0]?.medium {
+            self.profileImage.sd_setImage(with: URL(string: image))
+        }
         self.petGeneralInfo.text = setGeneralInfo()
-        self.petDescription.text = setPetDescription()
+        setPetDescription()
     }
     
     func setGeneralInfo() -> String {
@@ -119,13 +114,7 @@ class IndividualResultViewController: UIViewController {
         return generalInfo
     }
     
-    func setPetDescription() -> String {
-        var orgName = ""
-        if let name = org?.name {
-            orgName += name
-        } else {
-            orgName += "Organization not listed"
-        }
+    func setPetDescription() {
         var locationString = ""
         if let location = details?.contact {
             if let address = location.address {
@@ -136,7 +125,28 @@ class IndividualResultViewController: UIViewController {
         } else {
             locationString += "Location not listed"
         }
-        let petDescription = orgName + "\n" + locationString + "\n" + "\n"
-        return petDescription
+        var description = ""
+        if let d = details?.desc {
+            description = d
+        } else {
+            description = "No description"
+        }
+        getOrgName { (name) in
+            let petDescription = name + "\n" + locationString + "\n" + "\n" + description
+            self.petDescription.text = petDescription
+        }
+    }
+    
+    func getOrgName(completion: @escaping (String) -> Void) {
+        if let orgId = details?.organization_id {
+            APIServiceManager.shared.fetchOrganizationDetails(orgId: orgId) { (organizationDetails) in
+                self.org = organizationDetails
+                if let name = self.org?.name {
+                    completion(name)
+                } else {
+                    completion("Organization not listed")
+                }
+            }
+        }
     }
 }

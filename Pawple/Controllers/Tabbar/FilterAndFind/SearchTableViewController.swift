@@ -25,6 +25,8 @@ class SearchTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.tableView.keyboardDismissMode = .onDrag
+        
         self.clearsSelectionOnViewWillAppear = false
         switch getRouteName() {
             case .fetchListOfBreeds( _):
@@ -156,6 +158,10 @@ extension SearchTableViewController {
 // MARK: - SearchBar Delegates
 extension SearchTableViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if searchText == "" {
+            self.searchBarCancelButtonClicked(searchBar)
+            return
+        }
         searchArrayList = arrayList.filter { $0!.lowercased().contains(searchText.lowercased()) }
 
         self.searchArrayOrgs = self.arrayOrgs.filter { ($0?.name?.lowercased().contains(searchText.lowercased()) ?? false)
@@ -173,6 +179,7 @@ extension SearchTableViewController: UISearchBarDelegate {
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         searching = false
         searchBar.text = ""
+        searchBar.endEditing(true)
         tableView.reloadData()
     }
     

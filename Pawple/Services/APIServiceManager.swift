@@ -101,7 +101,6 @@ class APIServiceManager {
 
         sessionManager.request(PawpleRouter.fetchResults(pageNumber) as URLRequestConvertible).responseDecodable(of: Animals.self) { response in
 
-
             guard let animalsArray = response.value?.animals, let pagination = response.value?.pagination else {
                 return completion([], nil)
             }

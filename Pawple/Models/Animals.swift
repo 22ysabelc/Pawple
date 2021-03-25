@@ -21,7 +21,7 @@ class Pagination: NSObject, Decodable {
 }
 
 class AnimalDetails: NSObject, Decodable {
-    var id: Int64
+    var id: Int64 = 0
     var organization_id: String?
     var name: String?
     var type: String?
@@ -32,10 +32,29 @@ class AnimalDetails: NSObject, Decodable {
     var coat: String?
     var colors: Colors?
     var age: String?
-    var photos: [AnimalPhotos?]
+    var photos: [AnimalPhotos?] = []
     var status: String?
     var contact: ContactInfo?
     var desc: String?
+
+    enum CodingKeys: String, CodingKey {
+
+        case id
+        case organization_id
+        case name
+        case type
+        case breeds
+        case organization
+        case gender
+        case size
+        case coat
+        case colors
+        case age
+        case photos
+        case status
+        case contact
+        case desc = "description"
+    }
 }
 
 class ContactInfo: NSObject, Decodable {

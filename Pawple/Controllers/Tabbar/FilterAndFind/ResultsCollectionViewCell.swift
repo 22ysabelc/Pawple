@@ -23,3 +23,7 @@ class ResultsCollectionViewCell: UICollectionViewCell {
         }
     }
 }
+
+class ResultsCollectionReusableView: UICollectionReusableView {
+        
+}

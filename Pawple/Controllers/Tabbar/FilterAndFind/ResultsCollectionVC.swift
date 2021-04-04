@@ -20,9 +20,11 @@ class ResultsCollectionVC: UICollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        if let flowLayout = self.collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
+            flowLayout.sectionFootersPinToVisibleBounds = true
+        }
+
         self.fetchAnimals()
-        // Register cell classes
-        self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
     }
     
     // MARK: UICollectionViewDataSource
@@ -33,14 +35,26 @@ class ResultsCollectionVC: UICollectionViewController {
     }
     
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1
     }
     
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of items
         return arrayResults.count
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView,
+                        viewForSupplementaryElementOfKind kind: String,
+                        at indexPath: IndexPath) -> UICollectionReusableView {
+
+        guard kind == UICollectionView.elementKindSectionHeader else {
+            if let footerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "ResultsCollectionReusableView", for: indexPath) as? ResultsCollectionReusableView {
+                footerView.backgroundColor = .cyan
+                return footerView
+            }
+            return UICollectionReusableView()
+        }
+        return UICollectionReusableView()
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -58,7 +72,6 @@ class ResultsCollectionVC: UICollectionViewController {
     
     // MARK: UICollectionViewDelegate
     override func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        
         if self.currentPage < self.pagination?.total_pages ?? 0 && (indexPath.item == self.arrayResults.count-2) {
             self.currentPage += 1
             self.fetchAnimals()
@@ -85,5 +98,18 @@ extension ResultsCollectionVC {
                 }
             }
         }
+    }
+}
+
+extension ResultsCollectionVC: UICollectionViewDelegateFlowLayout {
+
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        referenceSizeForFooterInSection section: Int) -> CGSize {
+        let arrayResultsCount = self.arrayResults.count
+        if arrayResultsCount > 1 {
+            return CGSize(width: collectionView.bounds.size.width, height: 0)
+        }
+        return CGSize(width: collectionView.bounds.size.width, height: collectionView.bounds.size.height - 150)
     }
 }

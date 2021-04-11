@@ -36,7 +36,12 @@ class FilterAndFindVC: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "SearchTableViewController" {
+        if segue.identifier == "SearchLocationTableViewController" {
+            if let objVC = segue.destination as? SearchLocationTableViewController {
+                objVC.selectedIndex = selectedSection
+                objVC.arrayFilter = self.searchFilter
+            }
+        } else if segue.identifier == "SearchTableViewController" {
             if let objVC = segue.destination as? SearchTableViewController {
                 objVC.selectedIndex = selectedSection
                 objVC.arrayFilter = self.searchFilter
@@ -103,7 +108,10 @@ extension FilterAndFindVC: UICollectionViewDelegate, UICollectionViewDataSource 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
 
         // if item contains search text
-        if self.searchFilter[indexPath.section].data[indexPath.item].contains("Search") {
+        if self.searchFilter[indexPath.section].data[indexPath.item].contains("City or State") {
+            self.selectedSection = indexPath.section
+            self.performSegue(withIdentifier: "SearchLocationTableViewController", sender: self)
+        } else if self.searchFilter[indexPath.section].data[indexPath.item].contains("Search") {
             self.selectedSection = indexPath.section
 
             if self.searchFilter[indexPath.section].section == "Pet Name" {

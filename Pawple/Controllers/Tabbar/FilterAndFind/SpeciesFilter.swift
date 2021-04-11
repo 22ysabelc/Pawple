@@ -49,7 +49,7 @@ class SpeciesFilter: NSObject {
                 (section: "Coat Length", queryName: ["coat"], data: ["Any", "Hairless", "Short", "Medium", "Long"], selected: [0], multipleSelection: true),
                 (section: "Care", queryName: ["house_trained", "declawed", "special_needs"], data: ["Any", "House-trained", "Declawed", "Special needs"], selected: [0], multipleSelection: true),
                 (section: "Good with", queryName: ["good_with_children", "good_with_dogs", "good_with_cats"], data: ["Any", "Kids", "Dogs", "Other cats"], selected: [0], multipleSelection: true),
-                (section: "Location", queryName: ["location"], data: ["Anywhere", "🔍 City or State", "Within 10 miles", "Within 25 miles", "Within 50 miles", "Within 100 miles"], selected: [0], multipleSelection: false),
+                (section: "Location", queryName: ["location"], data: ["Anywhere", "🔍 City or State"], selected: [0], multipleSelection: false),
                 (section: "Shelter/Rescue", queryName: ["organization"], data: ["Any", "🔍 Search"], selected: [0], multipleSelection: true),
                 (section: "Pet Name", queryName: ["name"], data: ["Any", "🔍 Search"], selected: [0], multipleSelection: false)]
     }
@@ -64,7 +64,7 @@ class SpeciesFilter: NSObject {
                 (section: "Coat Length", queryName: ["coat"], data: ["Any", "Hairless", "Short", "Medium", "Long", "Wire", "Curly"], selected: [0], multipleSelection: true),
                 (section: "Care", queryName: ["house_trained", "special_needs"], data: ["Any", "House-trained", "Special needs"], selected: [0], multipleSelection: true),
                 (section: "Good with", queryName: ["good_with_children", "good_with_dogs", "good_with_cats"], data: ["Any", "Kids", "Other dogs", "Cats"], selected: [0], multipleSelection: true),
-                (section: "Location", queryName: ["location"], data: ["Anywhere", "🔍 City or State", "Within 10 miles", "Within 25 miles", "Within 50 miles", "Within 100 miles"], selected: [0], multipleSelection: false),
+                (section: "Location", queryName: ["location"], data: ["Anywhere", "🔍 City or State"], selected: [0], multipleSelection: false),
                 (section: "Shelter/Rescue", queryName: ["organization"], data: ["Any", "🔍 Search"], selected: [0], multipleSelection: true),
                 (section: "Pet Name", queryName: ["name"], data: ["Any", "🔍 Search"], selected: [0], multipleSelection: false)]
     }
@@ -81,6 +81,32 @@ class SpeciesFilter: NSObject {
                 dataArray.insert(name, at: 1)
                 array[index].data = dataArray
                 array[index].selected = [1]
+            }
+        }
+    }
+
+    func addLocationToArray(array: inout [(section: String, queryName: [String], data: [String], selected: [Int], multipleSelection: Bool)], name: String, index: Int, isMilesSelected: Bool = false) {
+
+        if array.count >= index {
+            var dataArray = array[index].data
+
+            // check if item already exist in the list.
+            if !dataArray.contains(name) {
+                if isMilesSelected {
+                    if dataArray.count > 3 {
+                        dataArray.remove(at: 2)
+                    }
+                    dataArray.insert(name, at: 2)
+                    array[index].data = dataArray
+                    array[index].selected = [1, 2]
+                } else {
+                    if dataArray.count > 3 {
+                        dataArray.remove(at: 1)
+                    }
+                    dataArray.insert(name, at: 1)
+                    array[index].data = dataArray
+                    array[index].selected = [1]
+                }
             }
         }
     }
@@ -111,6 +137,13 @@ class SpeciesFilter: NSObject {
                     self.queryString.append("\(index.queryName.first!)=\(concatenatedString)&")
                 }
 
+            } else if index.queryName.first == "location" {
+                if let location = index.data[1] as? String {
+                    self.queryString.append("location=\(location)&")
+                }
+                if let miles = index.data[2] as? String {
+                    self.queryString.append("distance=\(miles[7..<miles.count-6])&")
+                }
             } else {
                 self.queryString.append("\(index.queryName.first!)=\(index.data[index.selected.first ?? 0])&")
             }
@@ -135,4 +168,18 @@ func returnKeyName (searchKey: String) -> String {
         return "baby"
     }
     return searchKey
+}
+
+extension String {
+    subscript(_ range: CountableRange<Int>) -> String {
+        let start = index(startIndex, offsetBy: max(0, range.lowerBound))
+        let end = index(start, offsetBy: min(self.count - range.lowerBound,
+                                             range.upperBound - range.lowerBound))
+        return String(self[start..<end])
+    }
+
+    subscript(_ range: CountablePartialRangeFrom<Int>) -> String {
+        let start = index(startIndex, offsetBy: max(0, range.lowerBound))
+        return String(self[start...])
+    }
 }

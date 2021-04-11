@@ -16,7 +16,12 @@ class WelcomeViewController: UIViewController {
     @IBOutlet weak var welcomeText: CLTypingLabel!
     @IBOutlet weak var luckypawText: CLTypingLabel!
     @IBOutlet weak var googleSignInButton: GIDSignInButton!
+
+
     
+    @IBAction func signInWithGoogleAction(_ sender: Any) {
+          GIDSignIn.sharedInstance().signIn()
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         

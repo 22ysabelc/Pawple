@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class IndividualResultViewController: UIViewController {
 
@@ -17,6 +18,7 @@ class IndividualResultViewController: UIViewController {
             self.petName.clipsToBounds = true
         }
     }
+    var isAnimalProfileFavorite: Bool = false
     
     @IBOutlet weak var petDescription: UITextView! {
         didSet {
@@ -57,7 +59,10 @@ class IndividualResultViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.saveProfile.titleLabel?.numberOfLines = 0
+
         setDetails()
+        self.observeUserSavedProfiles()
     }
 
     func setDetails() {
@@ -148,5 +153,75 @@ class IndividualResultViewController: UIViewController {
                 }
             }
         }
+    }
+
+    @IBAction func savePetProfile(_ sender: Any) {
+        if self.isAnimalProfileFavorite {
+            self.removePetFromFavorites()
+        } else {
+            self.addPetToFavorites()
+        }
+    }
+
+    func changeFavStatus (isFav: Bool) {
+        if isFav {
+            self.saveProfile.setImage(UIImage(systemName: "heart.fill"), for: .normal)
+        } else {
+            self.saveProfile.setImage(UIImage(systemName: "heart"), for: .normal)
+        }
+        self.isAnimalProfileFavorite = isFav
+    }
+}
+
+
+extension IndividualResultViewController {
+    // Firebase stuff
+
+    func observeUserSavedProfiles() {
+        if let userProfileRef = self.getUserProfile(), let animalId = self.details?.id {
+            userProfileRef.observe(.value) { (snapshot) in
+                DispatchQueue.main.async {
+                    if snapshot.hasChild("\(animalId)") {
+                        self.changeFavStatus(isFav: true)
+                    } else {
+                        self.changeFavStatus(isFav: false)
+                    }
+                }
+            }
+        }
+    }
+
+    func addPetToFavorites() {
+        if let userProfileRef = self.getUserProfile(), let animalId = self.details?.id {
+            var dict = [String: Any]()
+            dict["\(animalId)"] = 1
+            userProfileRef.updateChildValues(dict) { (error, _) in
+                if error != nil {
+                    self.alert(title: "Error updating database for user saved profiles", message: error?.localizedDescription)
+                    return
+                }
+            }
+        }
+    }
+
+    func removePetFromFavorites() {
+        if let userProfileRef = self.getUserProfile(), let animalId = self.details?.id {
+            userProfileRef.child("\(animalId)").removeValue { (error, _) in
+                if error != nil {
+                    self.alert(title: "Error", message: "Failed to remove profile from favorites")
+                    return
+                }
+            }
+        }
+    }
+
+    func getUserProfile () -> DatabaseReference? {
+
+        let dbRef = Database.database().reference()
+        guard let uid = Auth.auth().currentUser?.uid else {
+            return nil
+        }
+        let userProfileRef = dbRef.child("user-savedProfiles").child(uid)
+        return userProfileRef
     }
 }

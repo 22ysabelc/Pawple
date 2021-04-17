@@ -49,7 +49,7 @@ class SpeciesFilter: NSObject {
                 (section: "Coat Length", queryName: ["coat"], data: ["Any", "Hairless", "Short", "Medium", "Long"], selected: [0], multipleSelection: true),
                 (section: "Care", queryName: ["house_trained", "declawed", "special_needs"], data: ["Any", "House-trained", "Declawed", "Special needs"], selected: [0], multipleSelection: true),
                 (section: "Good with", queryName: ["good_with_children", "good_with_dogs", "good_with_cats"], data: ["Any", "Kids", "Dogs", "Other cats"], selected: [0], multipleSelection: true),
-                (section: "Location", queryName: ["location"], data: ["Anywhere", "🔍 City or State"], selected: [0], multipleSelection: false),
+                (section: "Location", queryName: ["location"], data: ["Anywhere", "🔍 City or State"], selected: [0], multipleSelection: true),
                 (section: "Shelter/Rescue", queryName: ["organization"], data: ["Any", "🔍 Search"], selected: [0], multipleSelection: true),
                 (section: "Pet Name", queryName: ["name"], data: ["Any", "🔍 Search"], selected: [0], multipleSelection: false)]
     }
@@ -64,7 +64,7 @@ class SpeciesFilter: NSObject {
                 (section: "Coat Length", queryName: ["coat"], data: ["Any", "Hairless", "Short", "Medium", "Long", "Wire", "Curly"], selected: [0], multipleSelection: true),
                 (section: "Care", queryName: ["house_trained", "special_needs"], data: ["Any", "House-trained", "Special needs"], selected: [0], multipleSelection: true),
                 (section: "Good with", queryName: ["good_with_children", "good_with_dogs", "good_with_cats"], data: ["Any", "Kids", "Other dogs", "Cats"], selected: [0], multipleSelection: true),
-                (section: "Location", queryName: ["location"], data: ["Anywhere", "🔍 City or State"], selected: [0], multipleSelection: false),
+                (section: "Location", queryName: ["location"], data: ["Anywhere", "🔍 City or State"], selected: [0], multipleSelection: true),
                 (section: "Shelter/Rescue", queryName: ["organization"], data: ["Any", "🔍 Search"], selected: [0], multipleSelection: true),
                 (section: "Pet Name", queryName: ["name"], data: ["Any", "🔍 Search"], selected: [0], multipleSelection: false)]
     }

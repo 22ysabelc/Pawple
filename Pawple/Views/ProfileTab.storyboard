@@ -1,19 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="EE4-NR-5SR">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="EE4-NR-5SR">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--Lucky Paw-->
         <scene sceneID="dBV-ug-Kwa">
             <objects>
-                <viewController id="lQF-D6-sHQ" customClass="ProfileViewController" customModule="Pawple" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="lQF-D6-sHQ" customClass="ProfileViewController" customModule="Lucky_Paw" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="91p-St-Se2">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -38,18 +37,87 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Qkd-ua-ezA">
+                                <rect key="frame" x="0.0" y="288" width="414" height="525"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="XwO-0U-KXW">
+                                    <size key="itemSize" width="128" height="128"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ResultsCollectionViewCell" id="pUu-vH-MEo" customClass="ResultsCollectionViewCell" customModule="Lucky_Paw" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="202" height="260"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="2sO-Cs-ADz">
+                                            <rect key="frame" x="0.0" y="0.0" width="202" height="260"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.20000000298023224" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="9rI-Nu-dkM">
+                                                    <rect key="frame" x="8" y="14" width="186" height="230"/>
+                                                    <color key="backgroundColor" red="0.74509803919999995" green="0.1960784314" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </imageView>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pawprint" translatesAutoresizingMaskIntoConstraints="NO" id="6Cg-DC-wc7" userLabel="Profile Image">
+                                                    <rect key="frame" x="15" y="21" width="172" height="215"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="215" id="ffa-Aa-I5Z"/>
+                                                        <constraint firstAttribute="width" constant="172" id="mxW-eq-MjD"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wH7-La-1fy">
+                                                    <rect key="frame" x="21" y="224" width="160" height="35"/>
+                                                    <color key="backgroundColor" name="BrandPurple"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" priority="750" constant="160" id="IIW-3h-Lpe"/>
+                                                        <constraint firstAttribute="height" constant="35" id="chz-07-YRB"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="ChalkboardSE-Regular" family="Chalkboard SE" pointSize="20"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="wH7-La-1fy" secondAttribute="bottom" constant="1" id="IjS-75-GqX"/>
+                                                <constraint firstItem="wH7-La-1fy" firstAttribute="centerX" secondItem="2sO-Cs-ADz" secondAttribute="centerX" id="LzE-n5-mj4"/>
+                                                <constraint firstAttribute="bottom" secondItem="9rI-Nu-dkM" secondAttribute="bottom" constant="16" id="RwH-Si-0FH"/>
+                                                <constraint firstItem="6Cg-DC-wc7" firstAttribute="top" secondItem="2sO-Cs-ADz" secondAttribute="top" constant="21" id="SDf-UZ-FWQ"/>
+                                                <constraint firstItem="9rI-Nu-dkM" firstAttribute="leading" secondItem="2sO-Cs-ADz" secondAttribute="leading" constant="8" id="j3F-TI-rQ0"/>
+                                                <constraint firstAttribute="bottom" secondItem="6Cg-DC-wc7" secondAttribute="bottom" constant="24" id="jCX-ZO-r8x"/>
+                                                <constraint firstAttribute="trailing" secondItem="9rI-Nu-dkM" secondAttribute="trailing" constant="8" id="max-Lw-2Vt"/>
+                                                <constraint firstItem="9rI-Nu-dkM" firstAttribute="top" secondItem="2sO-Cs-ADz" secondAttribute="top" constant="14" id="n5P-HB-FMH"/>
+                                                <constraint firstItem="6Cg-DC-wc7" firstAttribute="centerX" secondItem="2sO-Cs-ADz" secondAttribute="centerX" id="qeV-Qi-S8q"/>
+                                                <constraint firstItem="9rI-Nu-dkM" firstAttribute="centerX" secondItem="2sO-Cs-ADz" secondAttribute="centerX" id="r9x-Fk-yEU"/>
+                                            </constraints>
+                                        </collectionViewCellContentView>
+                                        <size key="customSize" width="202" height="260"/>
+                                        <connections>
+                                            <outlet property="petImage" destination="6Cg-DC-wc7" id="Tgy-e3-ZK4"/>
+                                            <outlet property="petName" destination="wH7-La-1fy" id="NJe-Sv-cjc"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="lQF-D6-sHQ" id="8Tf-ob-3ly"/>
+                                    <outlet property="delegate" destination="lQF-D6-sHQ" id="SRJ-wB-bfE"/>
+                                </connections>
+                            </collectionView>
                         </subviews>
-                        <viewLayoutGuide key="safeArea" id="e0N-1E-Lhb"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="Y5j-NT-AdJ" firstAttribute="top" secondItem="e0N-1E-Lhb" secondAttribute="top" id="CUt-Nd-hlK"/>
                             <constraint firstItem="Y5j-NT-AdJ" firstAttribute="top" secondItem="hQv-vu-9SF" secondAttribute="bottom" constant="-122" id="IA7-Pt-oiB"/>
                             <constraint firstItem="hQv-vu-9SF" firstAttribute="centerX" secondItem="e0N-1E-Lhb" secondAttribute="centerX" id="IkH-r8-8nU"/>
                             <constraint firstItem="d4X-bI-9vo" firstAttribute="top" secondItem="hQv-vu-9SF" secondAttribute="bottom" constant="18" id="ToZ-Qs-tqN"/>
+                            <constraint firstItem="e0N-1E-Lhb" firstAttribute="trailing" secondItem="Qkd-ua-ezA" secondAttribute="trailing" id="Ucj-db-HQK"/>
+                            <constraint firstItem="Qkd-ua-ezA" firstAttribute="leading" secondItem="e0N-1E-Lhb" secondAttribute="leading" id="g07-fH-msi"/>
                             <constraint firstItem="d4X-bI-9vo" firstAttribute="centerX" secondItem="Y5j-NT-AdJ" secondAttribute="centerX" id="jEl-n1-duk"/>
                             <constraint firstItem="Y5j-NT-AdJ" firstAttribute="leading" secondItem="e0N-1E-Lhb" secondAttribute="leading" id="reZ-OV-4gd"/>
+                            <constraint firstItem="e0N-1E-Lhb" firstAttribute="bottom" secondItem="Qkd-ua-ezA" secondAttribute="bottom" id="t2M-E0-XS9"/>
+                            <constraint firstItem="Qkd-ua-ezA" firstAttribute="top" secondItem="Y5j-NT-AdJ" secondAttribute="bottom" constant="-3" id="xMN-Au-8eC"/>
                             <constraint firstItem="e0N-1E-Lhb" firstAttribute="trailing" secondItem="Y5j-NT-AdJ" secondAttribute="trailing" id="z8X-gL-mIz"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="e0N-1E-Lhb"/>
                     </view>
                     <navigationItem key="navigationItem" title="Lucky Paw" id="XMl-ad-ihO">
                         <barButtonItem key="rightBarButtonItem" title="•••" id="TQ3-hg-htJ" userLabel="Menu">
@@ -60,6 +128,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="collectionView" destination="Qkd-ua-ezA" id="BMH-hX-sbR"/>
                         <outlet property="menuButton" destination="TQ3-hg-htJ" id="ehg-CV-rjw"/>
                         <outlet property="userImage" destination="hQv-vu-9SF" id="s1G-9K-Ftn"/>
                         <outlet property="userName" destination="d4X-bI-9vo" id="yoK-bF-tAl"/>
@@ -73,7 +142,7 @@
         <!--Lucky Paw-->
         <scene sceneID="zNA-Uc-BtD">
             <objects>
-                <viewController storyboardIdentifier="editProfileVC" extendedLayoutIncludesOpaqueBars="YES" id="kMH-8K-R2U" customClass="EditProfileViewController" customModule="Pawple" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="editProfileVC" extendedLayoutIncludesOpaqueBars="YES" id="kMH-8K-R2U" customClass="EditProfileViewController" customModule="Lucky_Paw" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Hi6-fB-1K6">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -106,8 +175,7 @@
                                 <color key="color" red="0.67450980390000004" green="0.43529411759999997" blue="0.91764705879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </activityIndicatorView>
                         </subviews>
-                        <viewLayoutGuide key="safeArea" id="vyz-Xk-xlB"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="tFl-Mb-deQ" firstAttribute="centerY" secondItem="vyz-Xk-xlB" secondAttribute="centerY" constant="-32.5" id="8ft-Eh-WIE"/>
                             <constraint firstItem="tBu-Hg-TS2" firstAttribute="leading" secondItem="vyz-Xk-xlB" secondAttribute="leading" id="Aa2-xI-SFD"/>
@@ -120,6 +188,7 @@
                             <constraint firstItem="weV-qa-jwm" firstAttribute="top" secondItem="rUQ-Ny-bW9" secondAttribute="bottom" constant="22" id="uZw-BJ-bd5"/>
                             <constraint firstItem="vyz-Xk-xlB" firstAttribute="trailing" secondItem="tBu-Hg-TS2" secondAttribute="trailing" id="zgc-pD-TJH"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="vyz-Xk-xlB"/>
                     </view>
                     <navigationItem key="navigationItem" title="Lucky Paw" id="Ikj-0y-JYf">
                         <barButtonItem key="leftBarButtonItem" title="Cancel" id="nmb-5K-s7O">
@@ -174,13 +243,11 @@
         </scene>
     </scenes>
     <resources>
+        <image name="pawprint" width="153" height="153"/>
         <image name="person.circle" catalog="system" width="128" height="121"/>
         <image name="person.fill" catalog="system" width="128" height="120"/>
         <namedColor name="BrandPurple">
             <color red="0.67500001192092896" green="0.43500000238418579" blue="0.9179999828338623" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
     </resources>
 </document>

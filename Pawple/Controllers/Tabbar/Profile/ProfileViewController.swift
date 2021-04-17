@@ -13,6 +13,7 @@ import SDWebImage
 
 class ProfileViewController: UIViewController {
     
+    @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var menuButton: UIBarButtonItem!
     @IBOutlet weak var userImage: UIImageView!
     @IBOutlet weak var userName: UILabel!
@@ -112,4 +113,12 @@ class ProfileViewController: UIViewController {
         menuButtonDropdown.show()
     }
     
+}
+
+extension ProfileViewController {
+
+    // This will list the favorite pets
+    // 1. Fetch pet ids from Firebase
+    // 2. Make API calls to PetFinder to fetch animal based on the id
+    // 3.
 }

@@ -17,12 +17,14 @@ class ProfileViewController: UIViewController {
     @IBOutlet weak var menuButton: UIBarButtonItem!
     @IBOutlet weak var userImage: UIImageView!
     @IBOutlet weak var userName: UILabel!
+    var arrayFavPets: [String] = []
     
     let menuButtonDropdown = DropDown()
     let db = Firestore.firestore()
             
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.observeUserSavedProfiles()
         
         setupMenuButtonDropdown()
         
@@ -115,10 +117,76 @@ class ProfileViewController: UIViewController {
     
 }
 
-extension ProfileViewController {
+extension ProfileViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 2
+    }
+
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let index = indexPath.item
+//        self.performSegue(withIdentifier: "IndividualResultViewController", sender: index)
+    }
+
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 0
+    }
+
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(ofType: ResultsCollectionViewCell.self, for: indexPath)
+        cell.petName.text = ""
+//        guard let arrayPhotos = arrayResults[indexPath.item]?.photos
+//            else {
+//                return cell
+//        }
+//        if arrayPhotos.count > 0 {
+//            cell.petImage.sd_setImage(with: URL(string: (arrayPhotos[0]?.medium)!))
+//        }
+        return cell
+    }
+
 
     // This will list the favorite pets
     // 1. Fetch pet ids from Firebase
     // 2. Make API calls to PetFinder to fetch animal based on the id
     // 3.
+}
+
+extension ProfileViewController {
+    // will access Firebase operations here.
+
+    func getUserProfile () -> DatabaseReference? {
+
+        let dbRef = Database.database().reference()
+        guard let uid = Auth.auth().currentUser?.uid else {
+            return nil
+        }
+        let userProfileRef = dbRef.child("user-savedProfiles").child(uid)
+        return userProfileRef
+    }
+
+    func observeUserSavedProfiles() {
+        if let userProfileRef = self.getUserProfile() {
+            userProfileRef.observe(.childAdded) { (snapshot) in
+                DispatchQueue.main.async {
+                    if let dict = snapshot.value as? [String: Int] {
+                        // Here we will make the API call.
+                        self.arrayFavPets.append(contentsOf: dict.keys)
+//                        self.arrayFavPets = Array(dict.keys)
+                    }
+                }
+            }
+            // Listen for deleted comments in the Firebase database
+
+            userProfileRef.observe(.childRemoved) { (snapshot) in
+                DispatchQueue.main.async {
+                    if let dict = snapshot.value as? [String: Int] {
+                        
+//                        self.arrayFavPets.r = Array(dict.keys)
+                    }
+                }
+            }
+        }
+    }
+    // Make API calls with the animal id.
+
 }

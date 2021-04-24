@@ -48,6 +48,21 @@ class APIServiceManager {
         }
     }
 
+    func fetchAnimalDetail(animalId: String, completion: @escaping ([AnimalDetails?]) -> Void) {
+
+        sessionManager.request(PawpleRouter.fetchAnimalDetails(animalId)).responseJSON { (response) in
+            print("+++++++++++++++\(response)")
+        }
+
+//        sessionManager.request(PawpleRouter.fetchAnimalDetails(animalId) as URLRequestConvertible)
+//            .responseDecodable(of: Animals.self) { response in
+//                guard let animalBreedNames = response.value?.breeds else {
+//                    return completion([])
+//                }
+//                completion(animalBreedNames)
+//        }
+    }
+
     func searchBreeds(species: String, completion: @escaping ([Name?]) -> Void) {
         sessionManager.request(PawpleRouter.fetchListOfBreeds(species) as URLRequestConvertible)
             .responseDecodable(of: Breeds.self) { response in

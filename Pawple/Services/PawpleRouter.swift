@@ -17,6 +17,7 @@ enum PawpleRouter {
     case fetchListOfColors(String)
     case fetchListOfNames(String)
     case fetchResults(Int)
+    case fetchAnimalDetails(String)
     
     var baseURL: String {
         return "https://api.petfinder.com/v2/"
@@ -43,6 +44,8 @@ enum PawpleRouter {
             return "\(SpeciesFilter.shared.queryString)&page=\(pageNumber)&="
         case .fetchOrganizationDetails(let orgId):
             return "organizations/\(orgId)"
+        case .fetchAnimalDetails(let animalId):
+            return "animal/\(animalId)"
         }
     }
     

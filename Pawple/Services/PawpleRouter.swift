@@ -45,7 +45,7 @@ enum PawpleRouter {
         case .fetchOrganizationDetails(let orgId):
             return "organizations/\(orgId)"
         case .fetchAnimalDetails(let animalId):
-            return "animal/\(animalId)"
+            return "animals/\(animalId)"
         }
     }
     

@@ -13,6 +13,10 @@ class Animals: NSObject, Decodable {
     var pagination: Pagination?
 }
 
+class Animal: NSObject, Decodable {
+    var animal: AnimalDetails?
+}
+
 class Pagination: NSObject, Decodable {
     var count_per_page: Int
     var total_count: Int

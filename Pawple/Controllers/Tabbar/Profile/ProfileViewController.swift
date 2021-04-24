@@ -18,7 +18,8 @@ class ProfileViewController: UIViewController {
     @IBOutlet weak var userImage: UIImageView!
     @IBOutlet weak var userName: UILabel!
     var arrayFavPets: [String] = []
-    
+    var dictFavPets: [String: AnimalDetails] = [:]
+
     let menuButtonDropdown = DropDown()
     let db = Firestore.firestore()
             
@@ -119,28 +120,38 @@ class ProfileViewController: UIViewController {
 
 extension ProfileViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 2
+        return self.arrayFavPets.count
     }
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let index = indexPath.item
-//        self.performSegue(withIdentifier: "IndividualResultViewController", sender: index)
+
+        let storyboard = UIStoryboard(name: "FilterTab", bundle: nil)
+        if let animalDetailsVC = storyboard.instantiateViewController(withIdentifier: "IndividualResultViewController") as? IndividualResultViewController {
+            let animalId = self.arrayFavPets[indexPath.item]
+            let animalDetails = dictFavPets[animalId]
+
+            animalDetailsVC.details = animalDetails
+            self.navigationController?.pushViewController(animalDetailsVC, animated: true)
+        }
     }
 
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 0
+        return 1
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(ofType: ResultsCollectionViewCell.self, for: indexPath)
-        cell.petName.text = ""
-//        guard let arrayPhotos = arrayResults[indexPath.item]?.photos
-//            else {
-//                return cell
-//        }
-//        if arrayPhotos.count > 0 {
-//            cell.petImage.sd_setImage(with: URL(string: (arrayPhotos[0]?.medium)!))
-//        }
+
+        let animalId = self.arrayFavPets[indexPath.row]
+        let animalDetails = dictFavPets[animalId]
+        cell.petName.text = animalDetails?.name
+        guard let arrayPhotos = animalDetails?.photos
+            else {
+                return cell
+        }
+        if arrayPhotos.count > 0 {
+            cell.petImage.sd_setImage(with: URL(string: (arrayPhotos[0]?.medium)!))
+        }
         return cell
     }
 
@@ -168,25 +179,31 @@ extension ProfileViewController {
         if let userProfileRef = self.getUserProfile() {
             userProfileRef.observe(.childAdded) { (snapshot) in
                 DispatchQueue.main.async {
-                    if let dict = snapshot.value as? [String: Int] {
-                        // Here we will make the API call.
-                        self.arrayFavPets.append(contentsOf: dict.keys)
-//                        self.arrayFavPets = Array(dict.keys)
-                    }
+                    self.getAnimalDetails(animalId: snapshot.key)
+                    self.arrayFavPets.append(snapshot.key)
                 }
             }
-            // Listen for deleted comments in the Firebase database
 
+            // Listen for deleted comments in the Firebase database
             userProfileRef.observe(.childRemoved) { (snapshot) in
                 DispatchQueue.main.async {
-                    if let dict = snapshot.value as? [String: Int] {
-                        
-//                        self.arrayFavPets.r = Array(dict.keys)
+                    if let keyyy = self.dictFavPets[snapshot.key] {
+                        self.collectionView.reloadData()
+                    }
+
+                    if let index = self.arrayFavPets.firstIndex(of: snapshot.key) {
+                        self.arrayFavPets.remove(at: index)
                     }
                 }
             }
         }
     }
-    // Make API calls with the animal id.
 
+    // API call to fetch animal details
+    func getAnimalDetails(animalId: String) {
+        APIServiceManager.shared.fetchAnimalDetails(animalId: animalId) { (animalDetails) in
+            self.dictFavPets[animalId] = animalDetails
+             self.collectionView.reloadData()
+        }
+    }
 }

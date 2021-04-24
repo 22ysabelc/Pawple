@@ -306,7 +306,7 @@
         <!--Pet Profile-->
         <scene sceneID="6sa-0n-mNG">
             <objects>
-                <viewController title="Pet Profile" id="9hO-Ch-OtK" customClass="IndividualResultViewController" customModule="Lucky_Paw" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="IndividualResultViewController" title="Pet Profile" useStoryboardIdentifierAsRestorationIdentifier="YES" id="9hO-Ch-OtK" customClass="IndividualResultViewController" customModule="Lucky_Paw" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="tHX-zk-M9b">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

@@ -35,7 +35,6 @@ class APIServiceManager {
             eventMonitors: [])
     }()
 
-
     func fetchAccessToken(completion: @escaping (Bool, String) -> Void) {
         sessionManager.request(PawpleRouter.fetchAccessToken as URLRequestConvertible)
             .responseDecodable(of: GitHubAccessToken.self) { response in
@@ -48,19 +47,14 @@ class APIServiceManager {
         }
     }
 
-    func fetchAnimalDetail(animalId: String, completion: @escaping ([AnimalDetails?]) -> Void) {
-
-        sessionManager.request(PawpleRouter.fetchAnimalDetails(animalId)).responseJSON { (response) in
-            print("+++++++++++++++\(response)")
+    func fetchAnimalDetails(animalId: String, completion: @escaping (AnimalDetails?) -> Void) {
+        sessionManager.request(PawpleRouter.fetchAnimalDetails(animalId) as URLRequestConvertible)
+            .responseDecodable(of: Animal.self) { response in
+                guard let animalDetails = response.value else {
+                    return completion(nil)
+                }
+                completion(animalDetails.animal)
         }
-
-//        sessionManager.request(PawpleRouter.fetchAnimalDetails(animalId) as URLRequestConvertible)
-//            .responseDecodable(of: Animals.self) { response in
-//                guard let animalBreedNames = response.value?.breeds else {
-//                    return completion([])
-//                }
-//                completion(animalBreedNames)
-//        }
     }
 
     func searchBreeds(species: String, completion: @escaping ([Name?]) -> Void) {

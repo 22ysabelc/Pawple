@@ -40,6 +40,7 @@ class AnimalDetails: NSObject, Decodable {
     var status: String?
     var contact: ContactInfo?
     var desc: String?
+    var profileURL: String?
 
     enum CodingKeys: String, CodingKey {
 
@@ -58,6 +59,7 @@ class AnimalDetails: NSObject, Decodable {
         case status
         case contact
         case desc = "description"
+        case profileURL = "url"
     }
 }
 

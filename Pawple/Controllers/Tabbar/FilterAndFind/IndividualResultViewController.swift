@@ -131,8 +131,8 @@ class IndividualResultViewController: UIViewController {
             locationString += "Location not listed"
         }
         var description = ""
-        if let d = details?.desc {
-            description = d
+        if let desc = details?.desc, let profileURL = details?.profileURL {
+            description = "\(desc) \n\n \(profileURL)"
         } else {
             description = "No description"
         }

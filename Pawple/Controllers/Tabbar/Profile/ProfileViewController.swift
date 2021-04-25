@@ -120,18 +120,23 @@ class ProfileViewController: UIViewController {
 
 extension ProfileViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.arrayFavPets.count
+
+        if self.arrayFavPets.count > 0 {
+            return self.arrayFavPets.count
+        }
+        return 1
     }
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if self.arrayFavPets.count > 0 {
+            let storyboard = UIStoryboard(name: "FilterTab", bundle: nil)
+            if let animalDetailsVC = storyboard.instantiateViewController(withIdentifier: "IndividualResultViewController") as? IndividualResultViewController {
+                let animalId = self.arrayFavPets[indexPath.item]
+                let animalDetails = dictFavPets[animalId]
 
-        let storyboard = UIStoryboard(name: "FilterTab", bundle: nil)
-        if let animalDetailsVC = storyboard.instantiateViewController(withIdentifier: "IndividualResultViewController") as? IndividualResultViewController {
-            let animalId = self.arrayFavPets[indexPath.item]
-            let animalDetails = dictFavPets[animalId]
-
-            animalDetailsVC.details = animalDetails
-            self.navigationController?.pushViewController(animalDetailsVC, animated: true)
+                animalDetailsVC.details = animalDetails
+                self.navigationController?.pushViewController(animalDetailsVC, animated: true)
+            }
         }
     }
 
@@ -140,21 +145,26 @@ extension ProfileViewController: UICollectionViewDelegate, UICollectionViewDataS
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(ofType: ResultsCollectionViewCell.self, for: indexPath)
 
-        let animalId = self.arrayFavPets[indexPath.row]
-        let animalDetails = dictFavPets[animalId]
-        cell.petName.text = animalDetails?.name
-        guard let arrayPhotos = animalDetails?.photos
-            else {
-                return cell
+        if self.arrayFavPets.count > 0 {
+            let cell = collectionView.dequeueReusableCell(ofType: ResultsCollectionViewCell.self, for: indexPath)
+
+            let animalId = self.arrayFavPets[indexPath.row]
+            let animalDetails = dictFavPets[animalId]
+            cell.petName.text = animalDetails?.name
+            guard let arrayPhotos = animalDetails?.photos
+                else {
+                    return cell
+            }
+            if arrayPhotos.count > 0 {
+                cell.petImage.sd_setImage(with: URL(string: (arrayPhotos[0]?.medium)!))
+            }
+            return cell
+        } else {
+            let cell = collectionView.dequeueReusableCell(ofType: GetStartedCollectionViewCell.self, for: indexPath)
+            return cell
         }
-        if arrayPhotos.count > 0 {
-            cell.petImage.sd_setImage(with: URL(string: (arrayPhotos[0]?.medium)!))
-        }
-        return cell
     }
-
 
     // This will list the favorite pets
     // 1. Fetch pet ids from Firebase

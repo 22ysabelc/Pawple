@@ -119,8 +119,15 @@ class SpeciesFilter: NSObject {
             if (index.data[index.selected.first ?? 0]).contains("Any") {
                 continue
             }
-            
-            if index.multipleSelection {
+
+            if index.queryName.first == "location" {
+                if let location = index.data[1] as? String {
+                    self.queryString.append("location=\(location)&")
+                }
+                if let miles = index.data[2] as? String {
+                    self.queryString.append("distance=\(miles[7..<miles.count-6])&")
+                }
+            } else if index.multipleSelection {
                 if index.queryName.count >= index.selected.count && index.queryName.count > 1 {
                     for item in index.selected {
                         if item != 0 {
@@ -137,13 +144,6 @@ class SpeciesFilter: NSObject {
                     self.queryString.append("\(index.queryName.first!)=\(concatenatedString)&")
                 }
 
-            } else if index.queryName.first == "location" {
-                if let location = index.data[1] as? String {
-                    self.queryString.append("location=\(location)&")
-                }
-                if let miles = index.data[2] as? String {
-                    self.queryString.append("distance=\(miles[7..<miles.count-6])&")
-                }
             } else {
                 self.queryString.append("\(index.queryName.first!)=\(index.data[index.selected.first ?? 0])&")
             }

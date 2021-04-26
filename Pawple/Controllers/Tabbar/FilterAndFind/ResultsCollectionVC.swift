@@ -49,7 +49,7 @@ class ResultsCollectionVC: UICollectionViewController {
 
         guard kind == UICollectionView.elementKindSectionHeader else {
             if let footerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "ResultsCollectionReusableView", for: indexPath) as? ResultsCollectionReusableView {
-                footerView.backgroundColor = .cyan
+                footerView.backgroundColor = .clear
                 return footerView
             }
             return UICollectionReusableView()

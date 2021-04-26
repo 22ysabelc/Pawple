@@ -116,7 +116,7 @@ extension SearchLocationTableViewController: UISearchBarDelegate {
 extension SearchLocationTableViewController: UIActionSheetDelegate {
     func showMilesActionSheet() {
 
-         let actionSheet = UIAlertController(title: "Within ___ ", message: "", preferredStyle: .actionSheet )
+         let actionSheet = UIAlertController(title: "Distance from this city", message: "", preferredStyle: .actionSheet )
         let cancelActionButton = UIAlertAction(title: "Cancel", style: .cancel) { _ in
             print("Cancel")
         }

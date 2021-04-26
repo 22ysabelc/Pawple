@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="EE4-NR-5SR">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="EE4-NR-5SR">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -35,7 +37,7 @@
                                             <constraint firstAttribute="height" constant="30" id="9sq-Oi-i4V"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="20"/>
-                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d4X-bI-9vo" userLabel="User Name">
@@ -139,11 +141,12 @@
                                             <rect key="frame" x="0.0" y="0.0" width="202" height="260"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="To get started, go to the Filter &amp; Find tab and tap the heart on the profile you like." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="34Z-el-qyC">
-                                                    <rect key="frame" x="0.0" y="14" width="202" height="230"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="34Z-el-qyC">
+                                                    <rect key="frame" x="6" y="15" width="190" height="230"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
+                                                    <color key="backgroundColor" systemColor="systemGray3Color"/>
+                                                    <string key="text">To start finding your potential paw friends, go to the Filter &amp; Find tab and tap the heart on the profiles you're interested in!</string>
+                                                    <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="16"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -161,7 +164,8 @@
                                 </connections>
                             </collectionView>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="e0N-1E-Lhb"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="e0N-1E-Lhb" firstAttribute="trailing" secondItem="ueN-uS-d5k" secondAttribute="trailing" id="SKk-5y-yKw"/>
                             <constraint firstItem="e0N-1E-Lhb" firstAttribute="trailing" secondItem="Qkd-ua-ezA" secondAttribute="trailing" id="Ucj-db-HQK"/>
@@ -171,7 +175,6 @@
                             <constraint firstItem="e0N-1E-Lhb" firstAttribute="bottom" secondItem="Qkd-ua-ezA" secondAttribute="bottom" id="t2M-E0-XS9"/>
                             <constraint firstItem="e0N-1E-Lhb" firstAttribute="top" secondItem="ueN-uS-d5k" secondAttribute="top" constant="6" id="vyp-C2-a9Q"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="e0N-1E-Lhb"/>
                     </view>
                     <navigationItem key="navigationItem" title="Lucky Paw" id="XMl-ad-ihO">
                         <barButtonItem key="rightBarButtonItem" title="•••" id="TQ3-hg-htJ" userLabel="Menu">
@@ -229,7 +232,8 @@
                                 <color key="color" red="0.67450980390000004" green="0.43529411759999997" blue="0.91764705879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </activityIndicatorView>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="vyz-Xk-xlB"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="tFl-Mb-deQ" firstAttribute="centerY" secondItem="vyz-Xk-xlB" secondAttribute="centerY" constant="-32.5" id="8ft-Eh-WIE"/>
                             <constraint firstItem="tBu-Hg-TS2" firstAttribute="leading" secondItem="vyz-Xk-xlB" secondAttribute="leading" id="Aa2-xI-SFD"/>
@@ -242,7 +246,6 @@
                             <constraint firstItem="weV-qa-jwm" firstAttribute="top" secondItem="rUQ-Ny-bW9" secondAttribute="bottom" constant="22" id="uZw-BJ-bd5"/>
                             <constraint firstItem="vyz-Xk-xlB" firstAttribute="trailing" secondItem="tBu-Hg-TS2" secondAttribute="trailing" id="zgc-pD-TJH"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="vyz-Xk-xlB"/>
                     </view>
                     <navigationItem key="navigationItem" title="Lucky Paw" id="Ikj-0y-JYf">
                         <barButtonItem key="leftBarButtonItem" title="Cancel" id="nmb-5K-s7O">
@@ -303,5 +306,11 @@
         <namedColor name="BrandPurple">
             <color red="0.67500001192092896" green="0.43500000238418579" blue="0.9179999828338623" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGray3Color">
+            <color red="0.7803921568627451" green="0.7803921568627451" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
     </resources>
 </document>

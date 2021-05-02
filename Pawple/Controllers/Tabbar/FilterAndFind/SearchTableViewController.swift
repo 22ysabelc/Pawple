@@ -10,8 +10,10 @@ import UIKit
 
 class SearchTableViewController: UITableViewController {
     
+    @IBOutlet weak var doneButton: UIBarButtonItem!
     @IBOutlet weak var searchBar: UISearchBar!
     var arrayList = [String?]()
+    var arraySelectedCells = [String]()
     var searchArrayList = [String?]()
     var arrayOrgs = [OrgDetails?]()
     var searchArrayOrgs = [OrgDetails?]()
@@ -30,7 +32,8 @@ class SearchTableViewController: UITableViewController {
         self.clearsSelectionOnViewWillAppear = false
         switch getRouteName() {
             case .fetchListOfBreeds( _):
-                APIServiceManager.shared.searchBreeds(species: SpeciesFilter.shared.selectedSpecies.description) { (breedNames) in
+                APIServiceManager.shared.searchBreeds(species: SpeciesFilter.shared.selectedSpecies.description) {
+                    (breedNames) in
                     self.arrayList = breedNames.map {$0?.name}
                     self.tableView.reloadData()
             }
@@ -49,14 +52,22 @@ class SearchTableViewController: UITableViewController {
                     self.pagination = orgPagination
                     self.tableView.reloadData()
             }
-            case .fetchListOfNames(_):
-                print("No route present to call")
             default:
                 print("No route present to call")
         }
+
+        self.arraySelectedCells = self.arrayFilter[self.selectedIndex].data
         
     }
     
+    @IBAction func doneButtonClicked(_ sender: Any) {
+
+        print("Done button clicked")
+        // Get selected cells and pop view controller
+        let selected = tableView.indexPathsForSelectedRows
+        print("selected rows: \(String(describing: selected))")
+        self.popViewController()
+    }
     // MARK: - Table view data source
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -76,8 +87,17 @@ class SearchTableViewController: UITableViewController {
         if searching {
             cell.title?.text = self.searchArrayList[indexPath.row]
         } else {
-            cell.title.text = arrayList[indexPath.row]
+            let name = self.arrayList[indexPath.row]
+            cell.title.text = name
         }
+
+        if arraySelectedCells.contains(cell.title.text ?? "") {
+            print("name of the cell: \(cell.title.text)")
+            cell.setSelected(true, animated: true)
+        } else {
+            cell.isSelected = false
+        }
+
         return cell
     }
     
@@ -104,8 +124,9 @@ class SearchTableViewController: UITableViewController {
         // Close keyboard when you select cell
         self.searchBar.searchTextField.endEditing(true)
         if let selectedItem = selectedItem {
+
             SpeciesFilter.shared.addItemToList(array: &self.arrayFilter, name: selectedItem, index: self.selectedIndex)
-            self.popViewController()
+//            self.popViewController()
         }
     }
     
@@ -128,6 +149,7 @@ class SearchTableViewController: UITableViewController {
             self.fetchListOfOrgs(isUserScrolling: true)
         }
     }
+
 }
 
 extension SearchTableViewController {

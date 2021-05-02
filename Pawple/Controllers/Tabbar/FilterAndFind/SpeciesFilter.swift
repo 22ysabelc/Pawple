@@ -75,12 +75,19 @@ class SpeciesFilter: NSObject {
 
             // check if item already exist in the list.
             if !dataArray.contains(name) {
-                if dataArray.count > 5 {
-                    dataArray.remove(at: 4)
+                if dataArray.count > 11 {
+                    dataArray.remove(at: 10)
                 }
                 dataArray.insert(name, at: 1)
                 array[index].data = dataArray
-                array[index].selected = [1]
+                var arraySelected = array[index].selected
+                let newIndex = (arraySelected.last ?? 0) + 1
+                if let indexOfAny = arraySelected.firstIndex(of: 0) {
+                    arraySelected.remove(at: indexOfAny)
+                }
+                arraySelected.append(newIndex)
+                array[index].selected = arraySelected
+
             }
         }
     }

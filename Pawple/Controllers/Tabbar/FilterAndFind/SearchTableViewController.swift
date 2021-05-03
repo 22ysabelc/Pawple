@@ -57,7 +57,7 @@ class SearchTableViewController: UITableViewController {
         }
 
         self.arraySelectedCells = self.arrayFilter[self.selectedIndex].data
-        
+
     }
     
     @IBAction func doneButtonClicked(_ sender: Any) {

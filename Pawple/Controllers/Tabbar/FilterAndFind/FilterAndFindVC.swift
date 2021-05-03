@@ -35,6 +35,11 @@ class FilterAndFindVC: UIViewController {
         }
     }
     
+    @IBAction func resetFilterAction(_ sender: Any) {
+        SpeciesFilter.shared.selectedSpecies = .none
+        self.searchFilter = SpeciesFilter.shared.returnSpecies()
+        self.collectionViewFilter.reloadData()
+    }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "SearchLocationTableViewController" {
             if let objVC = segue.destination as? SearchLocationTableViewController {

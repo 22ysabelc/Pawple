@@ -138,7 +138,13 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6oE-CQ-lx7"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Filters " id="qka-5J-J6U"/>
+                    <navigationItem key="navigationItem" title="Filters " id="qka-5J-J6U">
+                        <barButtonItem key="rightBarButtonItem" title="Reset Filter" id="T3W-e1-tpU">
+                            <connections>
+                                <action selector="resetFilterAction:" destination="d3V-rQ-0jn" id="SOp-ij-52U"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="collectionViewFilter" destination="gsN-e9-EIP" id="fRc-zp-9sL"/>
                         <segue destination="mgJ-94-QMt" kind="show" identifier="SearchTableViewController" id="iN6-ef-DR2"/>

@@ -19,7 +19,7 @@ class SearchTableViewController: UITableViewController {
     var searchArrayOrgs = [OrgDetails?]()
     var isUserSearchingForOrg: Bool = false
     var searching = false
-    var arrayFilter = [(section: String, queryName: [String], data: [String], selected: [Int], multipleSelection: Bool)]()
+    var arrayFilter = [(section: String, queryName: [String], data: [String], displayName: [String], selected: [Int], multipleSelection: Bool)]()
     var selectedIndex: Int = 0
     var pagination: Pagination?
     var currentPage: Int = 1
@@ -103,29 +103,30 @@ class SearchTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         var selectedItem: String?
+        var displayName: String?
         if isUserSearchingForOrg {
             if searching {
                 selectedItem = self.searchArrayOrgs[indexPath.row]?.id
+                displayName = self.searchArrayOrgs[indexPath.row]?.name
             } else {
                 selectedItem = self.arrayOrgs[indexPath.row]?.id
+                displayName = self.arrayOrgs[indexPath.row]?.name
             }
         } else {
             if searching {
                 selectedItem = self.searchArrayList[indexPath.row]
+                displayName = self.searchArrayList[indexPath.row]
             } else {
-                selectedItem = arrayList[indexPath.row]
+                selectedItem = self.arrayList[indexPath.row]
+                displayName = self.arrayList[indexPath.row]
             }
         }
 
-        if isUserSearchingForOrg {
-            self.currentPage = 1
-            self.fetchListOfOrgs()
-        }
         // Close keyboard when you select cell
         self.searchBar.searchTextField.endEditing(true)
         if let selectedItem = selectedItem {
 
-            SpeciesFilter.shared.addItemToList(array: &self.arrayFilter, name: selectedItem, index: self.selectedIndex)
+            SpeciesFilter.shared.addItemToList(array: &self.arrayFilter, name: selectedItem, displayName: displayName ?? "", index: self.selectedIndex)
 //            self.popViewController()
         }
     }

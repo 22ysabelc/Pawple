@@ -15,7 +15,7 @@ class SearchLocationTableViewController: UITableViewController {
     var searchArrayList = [Location?]()
     var searching: Bool = false
     var selectedIndex: Int = 0
-    var arrayFilter = [(section: String, queryName: [String], data: [String], selected: [Int], multipleSelection: Bool)]()
+    var arrayFilter = [(section: String, queryName: [String], data: [String], displayName: [String], selected: [Int], multipleSelection: Bool)]()
 
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -11,7 +11,7 @@ import UIKit
 class FilterAndFindVC: UIViewController {
 
     var selectedSection: Int = 0
-    var searchFilter = [(section: String, queryName: [String], data: [String], selected: [Int], multipleSelection: Bool)]()
+    var searchFilter = [(section: String, queryName: [String], data: [String], displayName: [String], selected: [Int], multipleSelection: Bool)]()
     let purpleColor = UIColor(red: 172/255.0, green: 111/255.0, blue: 234/255.0, alpha: 1.0)
     
     @IBOutlet weak var collectionViewFilter: UICollectionView!
@@ -89,8 +89,11 @@ extension FilterAndFindVC: UICollectionViewDelegate, UICollectionViewDataSource 
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(ofType: FilterViewCell.self, for: indexPath)
-        let data = self.searchFilter[indexPath.section].data[indexPath.item]
-        cell.labelFilterName.text = data
+        var displayName = self.searchFilter[indexPath.section].data[indexPath.item]
+        if indexPath.section == self.searchFilter.count - 2 {
+            displayName = self.searchFilter[indexPath.section].displayName[indexPath.item]
+        }
+        cell.labelFilterName.text = displayName
 
         let isCellSelected =  self.searchFilter[indexPath.section].selected.contains(indexPath.item)
 
@@ -128,7 +131,7 @@ extension FilterAndFindVC: UICollectionViewDelegate, UICollectionViewDataSource 
                 }
                 alert.addAction(UIAlertAction(title: "Submit", style: .default, handler: { (_) in
                     if (inputTextField?.text?.count)! > 0 {
-                        SpeciesFilter.shared.addItemToList(array: &self.searchFilter, name: inputTextField!.text!.capitalized, index: indexPath.section)
+                        SpeciesFilter.shared.addItemToList(array: &self.searchFilter, name: inputTextField!.text!.capitalized, displayName: inputTextField!.text!.capitalized, index: indexPath.section)
                         self.collectionViewFilter.reloadSections(IndexSet(integer: indexPath.section))
                     }
                 }))

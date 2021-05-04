@@ -83,20 +83,16 @@ class SearchTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: SearchTableViewCell = tableView.dequeueReusableCell(withIdentifier: "SearchTableViewCell", for: indexPath) as! SearchTableViewCell
-        
-        if searching {
-            cell.title?.text = self.searchArrayList[indexPath.row]
-        } else {
-            let name = self.arrayList[indexPath.row]
-            cell.title.text = name
-        }
 
-        if arraySelectedCells.contains(cell.title.text ?? "") {
-            print("name of the cell: \(cell.title.text)")
-            cell.setSelected(true, animated: true)
+        let cellTitle = searching ? self.searchArrayList[indexPath.row]: self.arrayList[indexPath.row]
+
+        if arraySelectedCells.contains(cellTitle ?? "") {
+            print("Name: \(String(describing: cellTitle))")
+            cell.accessoryType = .checkmark
         } else {
-            cell.isSelected = false
+            cell.accessoryType = .none
         }
+        cell.title.text = cellTitle
 
         return cell
     }
@@ -129,6 +125,12 @@ class SearchTableViewController: UITableViewController {
             SpeciesFilter.shared.addItemToList(array: &self.arrayFilter, name: selectedItem, displayName: displayName ?? "", index: self.selectedIndex)
 //            self.popViewController()
         }
+
+        // set checkmark
+        if let tableviewCell = tableView.cellForRow(at: indexPath) {
+            tableviewCell.accessoryType = .checkmark
+        }
+//        tableView.accesso UITableViewCell.AccessoryType.checkmark
     }
     
     func popViewController() {

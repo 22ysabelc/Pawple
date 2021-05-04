@@ -92,6 +92,15 @@ class SpeciesFilter: NSObject {
                 arraySelected.append(newIndex)
                 array[index].selected = arraySelected
 
+            } else {
+                // if the name already exists, then delete it - maybe?
+                //find at what index the name exists before we remove it.
+                if index == dataArray.firstIndex(of: name) {
+                    dataArray.remove(at: index)
+                    displayNameArray.remove(at: index)
+                    array[index].data = dataArray
+                    array[index].displayName = displayNameArray
+                }
             }
         }
     }

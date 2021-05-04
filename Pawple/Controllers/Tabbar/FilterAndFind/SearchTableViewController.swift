@@ -121,16 +121,16 @@ class SearchTableViewController: UITableViewController {
         // Close keyboard when you select cell
         self.searchBar.searchTextField.endEditing(true)
         if let selectedItem = selectedItem {
-
+            if let tableviewCell = tableView.cellForRow(at: indexPath) {
+                if tableviewCell.accessoryType == .checkmark {
+                    tableviewCell.accessoryType = .none
+                } else {
+                    tableviewCell.accessoryType = .checkmark
+                }
+            }
             SpeciesFilter.shared.addItemToList(array: &self.arrayFilter, name: selectedItem, displayName: displayName ?? "", index: self.selectedIndex)
 //            self.popViewController()
         }
-
-        // set checkmark
-        if let tableviewCell = tableView.cellForRow(at: indexPath) {
-            tableviewCell.accessoryType = .checkmark
-        }
-//        tableView.accesso UITableViewCell.AccessoryType.checkmark
     }
     
     func popViewController() {

@@ -20,8 +20,7 @@ class FilterAndFindVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        SpeciesFilter.shared.selectedSpecies = .none
-        self.searchFilter = SpeciesFilter.shared.returnSpecies()
+        self.resetFiltersAction()
         // Header View
         if let flowLayout = self.collectionViewFilter.collectionViewLayout as? UICollectionViewFlowLayout {
             flowLayout.sectionHeadersPinToVisibleBounds = true
@@ -35,7 +34,7 @@ class FilterAndFindVC: UIViewController {
         }
     }
     
-    @IBAction func resetFilterAction(_ sender: Any) {
+    @IBAction func resetFiltersAction() {
         SpeciesFilter.shared.selectedSpecies = .none
         self.searchFilter = SpeciesFilter.shared.returnSpecies()
         self.collectionViewFilter.reloadData()
@@ -90,6 +89,8 @@ extension FilterAndFindVC: UICollectionViewDelegate, UICollectionViewDataSource 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(ofType: FilterViewCell.self, for: indexPath)
         var displayName = self.searchFilter[indexPath.section].data[indexPath.item]
+
+        // we are getting the organization section
         if indexPath.section == self.searchFilter.count - 2 {
             displayName = self.searchFilter[indexPath.section].displayName[indexPath.item]
         }

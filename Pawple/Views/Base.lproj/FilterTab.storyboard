@@ -139,9 +139,10 @@
                         <viewLayoutGuide key="safeArea" id="6oE-CQ-lx7"/>
                     </view>
                     <navigationItem key="navigationItem" title="Filters " id="qka-5J-J6U">
-                        <barButtonItem key="rightBarButtonItem" title="Reset Filter" id="T3W-e1-tpU">
+                        <barButtonItem key="rightBarButtonItem" title="Reset Filters" id="T3W-e1-tpU">
+                            <color key="tintColor" red="0.74509803919999995" green="0.1960784314" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
-                                <action selector="resetFilterAction:" destination="d3V-rQ-0jn" id="SOp-ij-52U"/>
+                                <action selector="resetFiltersAction" destination="d3V-rQ-0jn" id="WTe-Yc-P3G"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>

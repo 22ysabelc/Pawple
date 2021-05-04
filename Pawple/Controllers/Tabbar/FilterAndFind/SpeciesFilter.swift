@@ -35,38 +35,38 @@ class SpeciesFilter: NSObject {
             case .dog:
                 return dogFilter()
             case .none:
-                return [(section: "Species", queryName: ["type"], data: ["Dog", "Cat"], displayName: [], selected: [arbitaryNumber], multipleSelection: false)]
+                return [(section: "Species", queryName: ["type"], data: ["Dog", "Cat"], displayName: [""], selected: [arbitaryNumber], multipleSelection: false)]
         }
     }
 
     func catFilter() -> [(section: String, queryName: [String], data: [String], displayName: [String], selected: [Int], multipleSelection: Bool)] {
-        return [(section: "Species", queryName: ["type"], data: ["Dog", "Cat"], displayName: [], selected: [1], multipleSelection: false),
-                (section: "Breed", queryName: ["breed"], data: ["Any", "🔍 Search"], displayName: [], selected: [0], multipleSelection: true),
-                (section: "Age", queryName: ["age"], data: ["Any", "Kitten", "Young", "Adult", "Senior"], displayName: [], selected: [0], multipleSelection: true),
-                (section: "Gender", queryName: ["gender"], data: ["Any", "Male", "Female"], displayName: [], selected: [0], multipleSelection: true),
-                (section: "Size", queryName: ["size"], data: ["Any", "Small (0-6 lbs)", "Medium (7-11 lbs)", "Large (12-16 lbs)", "Extra Large (> 17 lbs)"], displayName: [], selected: [0], multipleSelection: true),
-                (section: "Color", queryName: ["color"], data: ["Any", "🔍 Search"], displayName: [], selected: [0], multipleSelection: true),
-                (section: "Coat Length", queryName: ["coat"], data: ["Any", "Hairless", "Short", "Medium", "Long"], displayName: [], selected: [0], multipleSelection: true),
-                (section: "Care", queryName: ["house_trained", "declawed", "special_needs"], data: ["Any", "House-trained", "Declawed", "Special needs"], displayName: [], selected: [0], multipleSelection: true),
-                (section: "Good with", queryName: ["good_with_children", "good_with_dogs", "good_with_cats"], data: ["Any", "Kids", "Dogs", "Other cats"], displayName: [], selected: [0], multipleSelection: true),
-                (section: "Location", queryName: ["location"], data: ["Anywhere", "🔍 City or State"], displayName: [], selected: [0], multipleSelection: true),
+        return [(section: "Species", queryName: ["type"], data: ["Dog", "Cat"], displayName: [""], selected: [1], multipleSelection: false),
+                (section: "Breed", queryName: ["breed"], data: ["Any", "🔍 Search"], displayName: [""], selected: [0], multipleSelection: true),
+                (section: "Age", queryName: ["age"], data: ["Any", "Kitten", "Young", "Adult", "Senior"], displayName: [""], selected: [0], multipleSelection: true),
+                (section: "Gender", queryName: ["gender"], data: ["Any", "Male", "Female"], displayName: [""], selected: [0], multipleSelection: true),
+                (section: "Size", queryName: ["size"], data: ["Any", "Small (0-6 lbs)", "Medium (7-11 lbs)", "Large (12-16 lbs)", "Extra Large (> 17 lbs)"], displayName: [""], selected: [0], multipleSelection: true),
+                (section: "Color", queryName: ["color"], data: ["Any", "🔍 Search"], displayName: [""], selected: [0], multipleSelection: true),
+                (section: "Coat Length", queryName: ["coat"], data: ["Any", "Hairless", "Short", "Medium", "Long"], displayName: [""], selected: [0], multipleSelection: true),
+                (section: "Care", queryName: ["house_trained", "declawed", "special_needs"], data: ["Any", "House-trained", "Declawed", "Special needs"], displayName: [""], selected: [0], multipleSelection: true),
+                (section: "Good with", queryName: ["good_with_children", "good_with_dogs", "good_with_cats"], data: ["Any", "Kids", "Dogs", "Other cats"], displayName: [""], selected: [0], multipleSelection: true),
+                (section: "Location", queryName: ["location"], data: ["Anywhere", "🔍 City or State"], displayName: [""], selected: [0], multipleSelection: true),
                 (section: "Shelter/Rescue", queryName: ["organization"], data: ["Any", "🔍 Search"], displayName: ["Any", "🔍 Search"], selected: [0], multipleSelection: true),
-                (section: "Pet Name", queryName: ["name"], data: ["Any", "🔍 Search"], displayName: [], selected: [0], multipleSelection: false)]
+                (section: "Pet Name", queryName: ["name"], data: ["Any", "🔍 Search"], displayName: [""], selected: [0], multipleSelection: false)]
     }
 
     func dogFilter() -> [(section: String, queryName: [String], data: [String], displayName: [String], selected: [Int], multipleSelection: Bool)] {
-        return [(section: "Species", queryName: ["type"], data: ["Dog", "Cat"], displayName: [], selected: [0], multipleSelection: false),
-                (section: "Breed", queryName: ["breed"], data: ["Any", "🔍 Search"], displayName: [], selected: [0], multipleSelection: true),
-                (section: "Age", queryName: ["age"], data: ["Any", "Puppy", "Young", "Adult", "Senior"], displayName: [], selected: [0], multipleSelection: true),
-                (section: "Gender", queryName: ["gender"], data: ["Any", "Male", "Female"], displayName: [], selected: [0], multipleSelection: true),
-                (section: "Size", queryName: ["size"], data: ["Any", "Small (0-25 lbs)", "Medium (26-60 lbs)", "Large (61-100 lbs)", "Extra Large (> 101 lbs)"], displayName: [], selected: [0], multipleSelection: true),
-                (section: "Color", queryName: ["color"], data: ["Any", "🔍 Search"], displayName: [], selected: [0], multipleSelection: true),
-                (section: "Coat Length", queryName: ["coat"], data: ["Any", "Hairless", "Short", "Medium", "Long", "Wire", "Curly"], displayName: [], selected: [0], multipleSelection: true),
-                (section: "Care", queryName: ["house_trained", "special_needs"], data: ["Any", "House-trained", "Special needs"], displayName: [], selected: [0], multipleSelection: true),
-                (section: "Good with", queryName: ["good_with_children", "good_with_dogs", "good_with_cats"], data: ["Any", "Kids", "Other dogs", "Cats"], displayName: [], selected: [0], multipleSelection: true),
-                (section: "Location", queryName: ["location"], data: ["Anywhere", "🔍 City or State"], displayName: [], selected: [0], multipleSelection: true),
+        return [(section: "Species", queryName: ["type"], data: ["Dog", "Cat"], displayName: [""], selected: [0], multipleSelection: false),
+                (section: "Breed", queryName: ["breed"], data: ["Any", "🔍 Search"], displayName: [""], selected: [0], multipleSelection: true),
+                (section: "Age", queryName: ["age"], data: ["Any", "Puppy", "Young", "Adult", "Senior"], displayName: [""], selected: [0], multipleSelection: true),
+                (section: "Gender", queryName: ["gender"], data: ["Any", "Male", "Female"], displayName: [""], selected: [0], multipleSelection: true),
+                (section: "Size", queryName: ["size"], data: ["Any", "Small (0-25 lbs)", "Medium (26-60 lbs)", "Large (61-100 lbs)", "Extra Large (> 101 lbs)"], displayName: [""], selected: [0], multipleSelection: true),
+                (section: "Color", queryName: ["color"], data: ["Any", "🔍 Search"], displayName: [""], selected: [0], multipleSelection: true),
+                (section: "Coat Length", queryName: ["coat"], data: ["Any", "Hairless", "Short", "Medium", "Long", "Wire", "Curly"], displayName: [""], selected: [0], multipleSelection: true),
+                (section: "Care", queryName: ["house_trained", "special_needs"], data: ["Any", "House-trained", "Special needs"], displayName: [""], selected: [0], multipleSelection: true),
+                (section: "Good with", queryName: ["good_with_children", "good_with_dogs", "good_with_cats"], data: ["Any", "Kids", "Other dogs", "Cats"], displayName: [""], selected: [0], multipleSelection: true),
+                (section: "Location", queryName: ["location"], data: ["Anywhere", "🔍 City or State"], displayName: [""], selected: [0], multipleSelection: true),
                 (section: "Shelter/Rescue", queryName: ["organization"], data: ["Any", "🔍 Search"], displayName: ["Any", "🔍 Search"], selected: [0], multipleSelection: true),
-                (section: "Pet Name", queryName: ["name"], data: ["Any", "🔍 Search"], displayName: [], selected: [0], multipleSelection: false)]
+                (section: "Pet Name", queryName: ["name"], data: ["Any", "🔍 Search"], displayName: [""], selected: [0], multipleSelection: false)]
     }
 
     func addItemToList(array: inout [(section: String, queryName: [String], data: [String], displayName: [String], selected: [Int], multipleSelection: Bool)], name: String, displayName: String = "", index: Int) {

@@ -56,7 +56,7 @@ class SearchTableViewController: UITableViewController {
                 print("No route present to call")
         }
 
-        self.arraySelectedCells = self.arrayFilter[self.selectedIndex].data
+        self.arraySelectedCells = self.arrayFilter[self.selectedIndex].displayName
 
     }
     
@@ -124,12 +124,21 @@ class SearchTableViewController: UITableViewController {
             if let tableviewCell = tableView.cellForRow(at: indexPath) {
                 if tableviewCell.accessoryType == .checkmark {
                     tableviewCell.accessoryType = .none
+                    SpeciesFilter.shared.addItemToList(array: &self.arrayFilter, name: selectedItem, displayName: displayName ?? "", index: self.selectedIndex)
                 } else {
-                    tableviewCell.accessoryType = .checkmark
+                    if self.arrayFilter[self.selectedIndex].displayName.count > 10 {
+                        DispatchQueue.main.async {
+                            self.alert(title: "maximum number of selection is 10", message: "")
+
+                        }
+                    } else {
+                        SpeciesFilter.shared.addItemToList(array: &self.arrayFilter, name: selectedItem, displayName: displayName ?? "", index: self.selectedIndex)
+                        tableviewCell.accessoryType = .checkmark
+                    }
                 }
+                tableView.deselectRow(at: indexPath, animated: true)
+
             }
-            SpeciesFilter.shared.addItemToList(array: &self.arrayFilter, name: selectedItem, displayName: displayName ?? "", index: self.selectedIndex)
-//            self.popViewController()
         }
     }
     

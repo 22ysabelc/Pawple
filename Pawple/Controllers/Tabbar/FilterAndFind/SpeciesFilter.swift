@@ -73,6 +73,7 @@ class SpeciesFilter: NSObject {
         if array.count >= index {
             var dataArray = array[index].data
             var displayNameArray = array[index].displayName
+            var arraySelected = array[index].selected
 
             // check if item already exist in the list.
             if !dataArray.contains(name) {
@@ -84,14 +85,6 @@ class SpeciesFilter: NSObject {
                 displayNameArray.insert(displayName, at: 1)
                 array[index].data = dataArray
                 array[index].displayName = displayNameArray
-                var arraySelected = array[index].selected
-                let newIndex = (arraySelected.last ?? 0) + 1
-                if let indexOfAny = arraySelected.firstIndex(of: 0) {
-                    arraySelected.remove(at: indexOfAny)
-                }
-                arraySelected.append(newIndex)
-                array[index].selected = arraySelected
-
             } else {
                 // if the name already exists, then delete it - maybe?
                 //find at what index the name exists before we remove it.
@@ -100,6 +93,16 @@ class SpeciesFilter: NSObject {
                     array[index].data = dataArray
                     array[index].displayName = displayNameArray
                 }
+            }
+
+            if array[index].displayName.count > 2 {
+                if let indexOfAny = arraySelected.firstIndex(of: 0) {
+                    arraySelected.remove(at: indexOfAny)
+                }
+                for indx in 0...array[index].displayName.count-2 {
+                    arraySelected.append(indx+1)
+                }
+                array[index].selected = arraySelected
             }
         }
     }

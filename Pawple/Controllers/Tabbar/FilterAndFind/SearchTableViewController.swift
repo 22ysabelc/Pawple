@@ -128,7 +128,7 @@ class SearchTableViewController: UITableViewController {
                 } else {
                     if self.arrayFilter[self.selectedIndex].displayName.count > 10 {
                         DispatchQueue.main.async {
-                            self.alert(title: "maximum number of selection is 10", message: "")
+                            self.alert(title: "Maximum number of selection is 10", message: "")
 
                         }
                     } else {

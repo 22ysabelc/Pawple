@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="kPJ-gN-Zo7">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="kPJ-gN-Zo7">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -19,7 +21,7 @@
                         <subviews>
                             <collectionView clipsSubviews="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" delaysContentTouches="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="gsN-e9-EIP">
                                 <rect key="frame" x="0.0" y="88" width="414" height="725"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="mFx-a4-FI9">
                                     <size key="itemSize" width="147" height="50"/>
                                     <size key="headerReferenceSize" width="50" height="50"/>
@@ -101,7 +103,7 @@
                                     <rect key="frame" x="0.0" y="110" width="414" height="70"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="fe8-NW-0gU">
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="fe8-NW-0gU">
                                             <rect key="frame" x="57" y="4" width="300" height="62"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES"/>
                                             <color key="backgroundColor" name="BrandPurple"/>
@@ -129,18 +131,18 @@
                                 </connections>
                             </collectionView>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="6oE-CQ-lx7"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="gsN-e9-EIP" firstAttribute="leading" secondItem="6oE-CQ-lx7" secondAttribute="leading" id="9GS-FW-lpw"/>
                             <constraint firstItem="6oE-CQ-lx7" firstAttribute="bottom" secondItem="gsN-e9-EIP" secondAttribute="bottom" id="AKz-1B-J1t"/>
                             <constraint firstItem="gsN-e9-EIP" firstAttribute="top" secondItem="6oE-CQ-lx7" secondAttribute="top" id="CkH-T9-iez"/>
                             <constraint firstItem="6oE-CQ-lx7" firstAttribute="trailing" secondItem="gsN-e9-EIP" secondAttribute="trailing" id="gpc-FM-SwO"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="6oE-CQ-lx7"/>
                     </view>
                     <navigationItem key="navigationItem" title="Filters " id="qka-5J-J6U">
                         <barButtonItem key="rightBarButtonItem" title="Reset Filters" id="T3W-e1-tpU">
-                            <color key="tintColor" red="0.74509803919999995" green="0.1960784314" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="tintColor" name="BrandPurple"/>
                             <connections>
                                 <action selector="resetFiltersAction" destination="d3V-rQ-0jn" id="WTe-Yc-P3G"/>
                             </connections>
@@ -163,7 +165,7 @@
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsMultipleSelection="YES" rowHeight="50" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="oka-iQ-pLK">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <searchBar key="tableHeaderView" contentMode="redraw" id="pOE-Ba-GWJ">
                             <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
@@ -174,7 +176,7 @@
                         </searchBar>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="SearchTableViewCell" rowHeight="50" id="eLD-Ha-J62" customClass="SearchTableViewCell" customModule="Lucky_Paw" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="72" width="414" height="50"/>
+                                <rect key="frame" x="0.0" y="68.5" width="414" height="50"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="eLD-Ha-J62" id="lW2-my-vWM">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
@@ -228,7 +230,7 @@
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="nWA-aQ-eo9">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="7OK-El-oNg">
                             <size key="itemSize" width="202" height="260"/>
                             <size key="estimatedItemSize" width="202" height="260"/>
@@ -344,7 +346,7 @@
                                         </constraints>
                                     </imageView>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstItem="ymn-tT-8bt" firstAttribute="centerX" secondItem="aXN-OY-9Qh" secondAttribute="centerX" id="6lH-Yd-ApO"/>
                                     <constraint firstItem="aXN-OY-9Qh" firstAttribute="centerX" secondItem="yay-z0-fO6" secondAttribute="centerX" id="OrA-SF-9MD"/>
@@ -368,8 +370,8 @@
                             </label>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" editable="NO" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="riw-1S-vjp">
                                 <rect key="frame" x="37" y="358" width="340" height="319"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="textColor" systemColor="labelColor"/>
                                 <fontDescription key="fontDescription" name="ChalkboardSE-Light" family="Chalkboard SE" pointSize="18"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                 <dataDetectorType key="dataDetectorTypes" link="YES"/>
@@ -413,7 +415,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="irP-bN-2Fx" userLabel="Submit Form Button">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="irP-bN-2Fx" userLabel="Submit Form Button">
                                 <rect key="frame" x="90" y="748" width="234" height="61"/>
                                 <color key="backgroundColor" red="0.5643646121" green="0.81120783090000004" blue="0.49798649550000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <fontDescription key="fontDescription" name="ChalkboardSE-Regular" family="Chalkboard SE" pointSize="21"/>
@@ -422,7 +424,8 @@
                                 </state>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="kxU-pr-yS8"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="kxU-pr-yS8" firstAttribute="trailing" secondItem="riw-1S-vjp" secondAttribute="trailing" constant="37" id="6g3-oO-7ab"/>
                             <constraint firstItem="gF0-VJ-feC" firstAttribute="width" secondItem="jjU-G9-EBP" secondAttribute="width" id="Bjl-Ys-ROG"/>
@@ -442,7 +445,6 @@
                             <constraint firstItem="fZX-rB-3ok" firstAttribute="top" secondItem="riw-1S-vjp" secondAttribute="bottom" constant="4" id="wNi-mf-Amp"/>
                             <constraint firstItem="aXN-OY-9Qh" firstAttribute="top" secondItem="jjU-G9-EBP" secondAttribute="bottom" constant="-82" id="zPy-Nj-0ys"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="kxU-pr-yS8"/>
                     </view>
                     <navigationItem key="navigationItem" id="W9I-c9-XZN"/>
                     <connections>
@@ -489,7 +491,7 @@
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="9SH-7h-A93">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <searchBar key="tableHeaderView" contentMode="redraw" placeholder="Enter city or state" id="jkI-zG-X70">
                             <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
@@ -500,7 +502,7 @@
                         </searchBar>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SearchTableViewCell" rowHeight="50" id="6kO-fs-ma1" customClass="SearchTableViewCell" customModule="Lucky_Paw" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="72" width="414" height="50"/>
+                                <rect key="frame" x="0.0" y="68.5" width="414" height="50"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="6kO-fs-ma1" id="FBp-6H-TyC">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
@@ -549,5 +551,11 @@
         <namedColor name="BrandPurple">
             <color red="0.67500001192092896" green="0.43500000238418579" blue="0.9179999828338623" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
     </resources>
 </document>

@@ -73,14 +73,22 @@ class FilterAndFindVC: UIViewController {
         self.present(alert, animated: true)
     }
 
-    func getDisplayName(indexPath: IndexPath) -> String {
+    func getDisplayName(indexPath: IndexPath, isOrgNameRequired: Bool = false) -> String {
         var displayName = self.searchFilter[indexPath.section].data[indexPath.item]
 
         // we are getting the organization section
-        if indexPath.section == self.searchFilter.count - 2 {
+        if isOrgNameRequired && (indexPath.section == self.searchFilter.count - 2) {
             displayName = self.searchFilter[indexPath.section].displayName[indexPath.item]
         }
         return displayName
+    }
+
+    func removeItemFromSelection (indexPath: IndexPath) {
+
+        let selectedItem = self.getDisplayName(indexPath: indexPath)
+        if (indexPath.section == 1 || indexPath.section == 5 || indexPath.section == 10) {
+            SpeciesFilter.shared.addItemToList(array: &self.searchFilter, name: selectedItem, displayName: "", index: indexPath.section)
+        }
     }
 }
 
@@ -115,7 +123,7 @@ extension FilterAndFindVC: UICollectionViewDelegate, UICollectionViewDataSource 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(ofType: FilterViewCell.self, for: indexPath)
 
-        cell.labelFilterName.text = self.getDisplayName(indexPath: indexPath)
+        cell.labelFilterName.text = self.getDisplayName(indexPath: indexPath, isOrgNameRequired: true)
 
         let isCellSelected =  self.searchFilter[indexPath.section].selected.contains(indexPath.item)
 
@@ -158,19 +166,19 @@ extension FilterAndFindVC: UICollectionViewDelegate, UICollectionViewDataSource 
             } else {
                 if self.searchFilter[indexPath.section].multipleSelection == true {
                     var array = self.searchFilter[indexPath.section].selected
-                    let selectedItem = self.getDisplayName(indexPath: indexPath)
                     // If first item (Any) is selected, we will just select that item
                     if indexPath.item == 0 {
                         array = [indexPath.item]
                     } else if array.contains(indexPath.item) {
                         // removing element from selected list if user tap on the selected item.
                         if let index = array.firstIndex(of: indexPath.item) {
-                            SpeciesFilter.shared.addItemToList(array: &self.searchFilter, name: selectedItem, displayName: "", index: indexPath.section)
+                            self.removeItemFromSelection(indexPath: indexPath)
                             array.remove(at: index)
                         }
                         array = array.count == 0 ? [0] : array
                     } else if !array.contains(indexPath.item) {
                         if let index = array.firstIndex(of: 0) {
+                            self.removeItemFromSelection(indexPath: indexPath)
                             array.remove(at: index)
                         }
                         array.append(indexPath.item)

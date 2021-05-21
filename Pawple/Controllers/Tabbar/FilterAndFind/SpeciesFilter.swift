@@ -89,7 +89,9 @@ class SpeciesFilter: NSObject {
                 // if the name already exists, then delete it - maybe?
                 //find at what index the name exists before we remove it.
                 if let indexToDelete = dataArray.firstIndex(of: name) {                    dataArray.remove(at: indexToDelete)
-                    displayNameArray.remove(at: indexToDelete)
+                    if displayNameArray.count > indexToDelete {
+                        displayNameArray.remove(at: indexToDelete)
+                    }
                     array[index].data = dataArray
                     array[index].displayName = displayNameArray
                 }

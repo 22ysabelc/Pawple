@@ -62,10 +62,7 @@ class SearchTableViewController: UITableViewController {
     
     @IBAction func doneButtonClicked(_ sender: Any) {
 
-        print("Done button clicked")
         // Get selected cells and pop view controller
-        let selected = tableView.indexPathsForSelectedRows
-        print("selected rows: \(String(describing: selected))")
         self.popViewController()
     }
     // MARK: - Table view data source

@@ -73,7 +73,7 @@ class SpeciesFilter: NSObject {
         if array.count >= index {
             var dataArray = array[index].data
             var displayNameArray = array[index].displayName
-            var arraySelected = array[index].selected
+            var arraySelected = [Int]()
 
             // check if item already exist in the list.
             if !dataArray.contains(name) {
@@ -97,14 +97,14 @@ class SpeciesFilter: NSObject {
                 }
             }
 
-            if array[index].displayName.count > 2 {
-                if let indexOfAny = arraySelected.firstIndex(of: 0) {
-                    arraySelected.remove(at: indexOfAny)
-                }
-                for indx in 0...array[index].displayName.count-2 {
+            if array[index].data.count > 2 {
+                array[index].selected = []
+                for indx in 0...array[index].data.count-3 {
                     arraySelected.append(indx+1)
                 }
                 array[index].selected = arraySelected
+            } else {
+                array[index].selected = [0]
             }
         }
     }

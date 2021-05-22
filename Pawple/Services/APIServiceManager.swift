@@ -69,7 +69,6 @@ class APIServiceManager {
 
     func fetchListOfOrganizations(name: String = "", pageNumber: Int, completion: @escaping (([OrgDetails?], Pagination?) -> Void)) {
 
-
 //        sessionManager.request(PawpleRouter.fetchListOfOrganizations(name, pageNumber)).responseJSON { (response) in
 //            print("+++++++++++++++\(response)")
 //        }
@@ -103,10 +102,6 @@ class APIServiceManager {
     }
     
     func fetchResults(pageNumber: Int, completion: @escaping ([AnimalDetails?], Pagination?) -> Void) {
-
-        sessionManager.request(PawpleRouter.fetchResults(1)).responseJSON { (response) in
-            print("+++++++++++++++\(response)")
-        }
 
         sessionManager.request(PawpleRouter.fetchResults(pageNumber) as URLRequestConvertible).responseDecodable(of: Animals.self) { response in
 

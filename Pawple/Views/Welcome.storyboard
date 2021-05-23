@@ -1,17 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="tVs-Kb-5ai">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="tVs-Kb-5ai">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--Welcome View Controller-->
         <scene sceneID="nCf-hM-Q53">
             <objects>
-                <viewController storyboardIdentifier="welcomeVC" title="Welcome View Controller" useStoryboardIdentifierAsRestorationIdentifier="YES" id="PL4-o6-Sug" customClass="WelcomeViewController" customModule="Pawple" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="welcomeVC" title="Welcome View Controller" useStoryboardIdentifierAsRestorationIdentifier="YES" id="PL4-o6-Sug" customClass="WelcomeViewController" customModule="Lucky_Paw" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="hU1-g1-CM5">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -63,13 +65,13 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="CFC-eK-ZrY" userLabel="SignInStackView">
                                                 <rect key="frame" x="20" y="93.5" width="374" height="200"/>
                                                 <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f61-77-QlW" customClass="RoundButton" customModule="Pawple" customModuleProvider="target">
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f61-77-QlW" customClass="RoundButton" customModule="Lucky_Paw" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="374" height="60"/>
                                                         <color key="backgroundColor" red="0.67450980390000004" green="0.43529411759999997" blue="0.91764705879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="60" id="uvn-BA-lRJ"/>
                                                         </constraints>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="23"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                         <state key="normal" title="Sign In with Google">
                                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
@@ -82,13 +84,13 @@
                                                             <action selector="signInWithGoogleAction:" destination="PL4-o6-Sug" eventType="touchUpInside" id="8tq-Cm-Fnd"/>
                                                         </connections>
                                                     </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zmH-3Q-hry" customClass="RoundButton" customModule="Pawple" customModuleProvider="target">
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zmH-3Q-hry" customClass="RoundButton" customModule="Lucky_Paw" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="70" width="374" height="60"/>
                                                         <color key="backgroundColor" red="0.67450980390000004" green="0.43529411759999997" blue="0.91764705879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="60" id="Luj-lQ-GCM"/>
                                                         </constraints>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="23"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                         <state key="normal" title="Log in">
                                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
@@ -98,13 +100,13 @@
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
                                                     </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zvS-WC-Q9A" customClass="RoundButton" customModule="Pawple" customModuleProvider="target">
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zvS-WC-Q9A" customClass="RoundButton" customModule="Lucky_Paw" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="140" width="374" height="60"/>
                                                         <color key="backgroundColor" name="BrandPurple"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="60" id="Ga6-zz-7l4"/>
                                                         </constraints>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="23"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                         <state key="normal" title="Sign up">
                                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
@@ -134,14 +136,14 @@
                                 </constraints>
                             </stackView>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="CIX-GI-00z"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="mQC-7O-S5p" firstAttribute="leading" secondItem="CIX-GI-00z" secondAttribute="leading" id="5st-DY-ZDL"/>
                             <constraint firstItem="mQC-7O-S5p" firstAttribute="top" secondItem="CIX-GI-00z" secondAttribute="top" id="gfy-b1-s24"/>
                             <constraint firstItem="mQC-7O-S5p" firstAttribute="trailing" secondItem="CIX-GI-00z" secondAttribute="trailing" id="oax-oo-ae3"/>
                             <constraint firstItem="mQC-7O-S5p" firstAttribute="bottom" secondItem="CIX-GI-00z" secondAttribute="bottom" id="wfF-XS-26R"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="CIX-GI-00z"/>
                     </view>
                     <navigationItem key="navigationItem" id="2rB-Q8-B0H"/>
                     <connections>
@@ -156,7 +158,7 @@
         <!--Log in View Controller-->
         <scene sceneID="q2t-WP-ptZ">
             <objects>
-                <viewController title="Log in View Controller" id="MwE-IC-2hw" customClass="LogInViewController" customModule="Pawple" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Log in View Controller" id="MwE-IC-2hw" customClass="LogInViewController" customModule="Lucky_Paw" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="0cK-nf-UxO">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -198,7 +200,7 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                         <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                     </textField>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e38-Ig-7iz">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e38-Ig-7iz">
                                         <rect key="frame" x="0.0" y="124" width="414" height="53"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                         <state key="normal" title="Log In">
@@ -226,7 +228,8 @@
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="uQK-60-Iy8"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="eyr-QI-Q38" firstAttribute="trailing" secondItem="uQK-60-Iy8" secondAttribute="trailing" id="7MR-sJ-FXH"/>
                             <constraint firstItem="Xzs-hF-LVg" firstAttribute="leading" secondItem="uQK-60-Iy8" secondAttribute="leading" id="CTW-1b-XKE"/>
@@ -235,7 +238,6 @@
                             <constraint firstItem="Xzs-hF-LVg" firstAttribute="trailing" secondItem="uQK-60-Iy8" secondAttribute="trailing" id="Sg8-hJ-bq0"/>
                             <constraint firstItem="eyr-QI-Q38" firstAttribute="top" secondItem="uQK-60-Iy8" secondAttribute="top" id="Wp9-pD-pZK"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="uQK-60-Iy8"/>
                     </view>
                     <navigationItem key="navigationItem" title="Lucky Paw" id="vPS-yN-DJm"/>
                     <connections>
@@ -250,7 +252,7 @@
         <!--Sign up View Controller-->
         <scene sceneID="UHf-pX-8aq">
             <objects>
-                <viewController title="Sign up View Controller" id="UeB-PA-JWQ" customClass="SignUpViewController" customModule="Pawple" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Sign up View Controller" id="UeB-PA-JWQ" customClass="SignUpViewController" customModule="Lucky_Paw" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="t52-3Q-240">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -283,7 +285,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8J5-8l-Hzf" userLabel="PasswordView">
                                 <rect key="frame" x="0.0" y="193" width="414" height="177"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Izq-J6-akB" userLabel="Sign Up">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Izq-J6-akB" userLabel="Sign Up">
                                         <rect key="frame" x="0.0" y="111" width="414" height="66"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                         <state key="normal" title="Sign Up">
@@ -320,7 +322,8 @@
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="dFA-36-dKS"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="wh5-Qj-QqI" firstAttribute="trailing" secondItem="8J5-8l-Hzf" secondAttribute="trailing" id="FLp-xY-pR5"/>
                             <constraint firstItem="8J5-8l-Hzf" firstAttribute="top" secondItem="wh5-Qj-QqI" secondAttribute="bottom" constant="-100" id="Lkv-xJ-S7b"/>
@@ -329,7 +332,6 @@
                             <constraint firstItem="wh5-Qj-QqI" firstAttribute="centerX" secondItem="t52-3Q-240" secondAttribute="centerX" id="b1S-jC-Iq4"/>
                             <constraint firstItem="wh5-Qj-QqI" firstAttribute="leading" secondItem="dFA-36-dKS" secondAttribute="leading" id="qiZ-nc-ejg"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="dFA-36-dKS"/>
                     </view>
                     <navigationItem key="navigationItem" title="Lucky Paw" id="7Hq-OX-2DE"/>
                     <connections>
@@ -363,10 +365,26 @@
             <point key="canvasLocation" x="2038" y="141"/>
         </scene>
     </scenes>
+    <designables>
+        <designable name="CxG-81-gg9"/>
+        <designable name="Vv3-Ig-QAL"/>
+        <designable name="f61-77-QlW">
+            <size key="intrinsicContentSize" width="155" height="34"/>
+        </designable>
+        <designable name="zmH-3Q-hry">
+            <size key="intrinsicContentSize" width="49" height="34"/>
+        </designable>
+        <designable name="zvS-WC-Q9A">
+            <size key="intrinsicContentSize" width="61" height="34"/>
+        </designable>
+    </designables>
     <resources>
         <image name="textfield" width="298" height="93"/>
         <namedColor name="BrandPurple">
             <color red="0.67500001192092896" green="0.43500000238418579" blue="0.9179999828338623" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
     </resources>
 </document>

@@ -293,19 +293,27 @@
                             <rect key="frame" x="0.0" y="260" width="414" height="400"/>
                             <autoresizingMask key="autoresizingMask"/>
                             <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No results matched your search" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="po9-Na-g4w">
-                                    <rect key="frame" x="49" y="283" width="317" height="32"/>
-                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                    <fontDescription key="fontDescription" name="ChalkboardSE-Regular" family="Chalkboard SE" pointSize="22"/>
-                                    <nil key="textColor"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="whiteDog+cat" id="MzB-YN-dGY">
                                     <rect key="frame" x="17" y="8" width="380" height="295"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 </imageView>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No results matched your search" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="PDH-Zc-1SZ">
+                                    <rect key="frame" x="48" y="284" width="317" height="32"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                    <fontDescription key="fontDescription" name="ChalkboardSE-Regular" family="Chalkboard SE" pointSize="22"/>
+                                    <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
                             </subviews>
                             <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstItem="PDH-Zc-1SZ" firstAttribute="top" secondItem="MzB-YN-dGY" secondAttribute="bottom" constant="-19" id="0HA-Qa-6jT"/>
+                                <constraint firstItem="MzB-YN-dGY" firstAttribute="leading" secondItem="ji1-yh-KdS" secondAttribute="leading" constant="17" id="Hon-SG-Sdh"/>
+                                <constraint firstItem="MzB-YN-dGY" firstAttribute="top" secondItem="ji1-yh-KdS" secondAttribute="top" constant="8" id="XW7-Jz-PZp"/>
+                                <constraint firstAttribute="trailing" secondItem="MzB-YN-dGY" secondAttribute="trailing" constant="17" id="YgX-R6-dXr"/>
+                                <constraint firstItem="PDH-Zc-1SZ" firstAttribute="centerX" secondItem="ji1-yh-KdS" secondAttribute="centerX" id="mxf-D7-bsh"/>
+                                <constraint firstItem="PDH-Zc-1SZ" firstAttribute="centerX" secondItem="MzB-YN-dGY" secondAttribute="centerX" id="zSn-04-KJg"/>
+                            </constraints>
                         </collectionReusableView>
                         <connections>
                             <outlet property="dataSource" destination="sox-hb-lgE" id="Su4-Js-2yJ"/>
@@ -377,21 +385,12 @@
                                 <dataDetectorType key="dataDetectorTypes" link="YES"/>
                             </textView>
                             <view contentMode="scaleToFill" id="fZX-rB-3ok">
-                                <rect key="frame" x="21" y="681" width="372" height="60"/>
+                                <rect key="frame" x="21" y="681" width="372" height="122"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" heightSizable="YES"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="xKW-jl-uzH" userLabel="Chat Button">
-                                        <rect key="frame" x="19" y="4" width="60" height="55"/>
-                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <state key="normal" image="message" catalog="system">
-                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="35"/>
-                                        </state>
-                                    </button>
                                     <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" id="zw0-iC-8h4" userLabel="Save Profile Button">
-                                        <rect key="frame" x="293" y="4" width="60" height="55"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                        <rect key="frame" x="165" y="40" width="42" height="37"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" name="ChalkboardSE-Light" family="Chalkboard SE" pointSize="25"/>
                                         <color key="tintColor" red="0.74509803919999995" green="0.1960784314" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -403,9 +402,22 @@
                                             <action selector="savePetProfile:" destination="9hO-Ch-OtK" eventType="touchUpInside" id="rVY-C9-5R7"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="xKW-jl-uzH" userLabel="Chat Button">
+                                        <rect key="frame" x="128" y="71" width="116" height="35"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" name="ChalkboardSE-Regular" family="Chalkboard SE" pointSize="16"/>
+                                        <state key="normal" title="Save Pet Profile">
+                                            <color key="titleColor" red="0.74509803919999995" green="0.1960784314" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="35"/>
+                                        </state>
+                                    </button>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="zw0-iC-8h4" firstAttribute="leading" secondItem="xKW-jl-uzH" secondAttribute="trailing" constant="18" id="zwj-bI-NLO"/>
+                                    <constraint firstItem="zw0-iC-8h4" firstAttribute="top" secondItem="fZX-rB-3ok" secondAttribute="top" constant="40" id="APM-SQ-RaH"/>
+                                    <constraint firstItem="zw0-iC-8h4" firstAttribute="centerX" secondItem="fZX-rB-3ok" secondAttribute="centerX" id="cha-eb-SjN"/>
+                                    <constraint firstItem="xKW-jl-uzH" firstAttribute="top" secondItem="zw0-iC-8h4" secondAttribute="bottom" constant="-6" id="v18-DA-52k"/>
+                                    <constraint firstItem="xKW-jl-uzH" firstAttribute="centerX" secondItem="fZX-rB-3ok" secondAttribute="centerX" id="vhi-ef-mmf"/>
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="General Info" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="gF0-VJ-feC">
@@ -415,24 +427,14 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="irP-bN-2Fx" userLabel="Submit Form Button">
-                                <rect key="frame" x="90" y="748" width="234" height="61"/>
-                                <color key="backgroundColor" red="0.5643646121" green="0.81120783090000004" blue="0.49798649550000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <fontDescription key="fontDescription" name="ChalkboardSE-Regular" family="Chalkboard SE" pointSize="21"/>
-                                <state key="normal" title="Submit an application!">
-                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="kxU-pr-yS8"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="kxU-pr-yS8" firstAttribute="trailing" secondItem="riw-1S-vjp" secondAttribute="trailing" constant="37" id="6g3-oO-7ab"/>
                             <constraint firstItem="gF0-VJ-feC" firstAttribute="width" secondItem="jjU-G9-EBP" secondAttribute="width" id="Bjl-Ys-ROG"/>
-                            <constraint firstItem="kxU-pr-yS8" firstAttribute="bottom" secondItem="irP-bN-2Fx" secondAttribute="bottom" constant="4" id="C4r-AZ-eCb"/>
                             <constraint firstItem="kxU-pr-yS8" firstAttribute="trailing" secondItem="fZX-rB-3ok" secondAttribute="trailing" constant="21" id="CM2-CR-CST"/>
                             <constraint firstItem="gF0-VJ-feC" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="yay-z0-fO6" secondAttribute="trailing" constant="8" symbolic="YES" id="Dyd-KU-fGt"/>
-                            <constraint firstItem="kxU-pr-yS8" firstAttribute="trailing" secondItem="irP-bN-2Fx" secondAttribute="trailing" constant="90" id="IR7-MC-4bu"/>
                             <constraint firstItem="kxU-pr-yS8" firstAttribute="trailing" secondItem="jjU-G9-EBP" secondAttribute="trailing" constant="15" id="Ojh-Gi-m3B"/>
                             <constraint firstItem="riw-1S-vjp" firstAttribute="top" secondItem="yay-z0-fO6" secondAttribute="bottom" constant="14" id="R5b-eL-eIE"/>
                             <constraint firstItem="jjU-G9-EBP" firstAttribute="leading" secondItem="aXN-OY-9Qh" secondAttribute="trailing" constant="16" id="RJB-cx-Lh6"/>
@@ -440,21 +442,17 @@
                             <constraint firstItem="kxU-pr-yS8" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="gF0-VJ-feC" secondAttribute="trailing" constant="15" id="hVC-gn-ECO"/>
                             <constraint firstItem="riw-1S-vjp" firstAttribute="leading" secondItem="kxU-pr-yS8" secondAttribute="leading" constant="37" id="l89-QW-8uU"/>
                             <constraint firstItem="fZX-rB-3ok" firstAttribute="leading" secondItem="kxU-pr-yS8" secondAttribute="leading" constant="21" id="rfl-DJ-SYL"/>
-                            <constraint firstItem="irP-bN-2Fx" firstAttribute="leading" secondItem="kxU-pr-yS8" secondAttribute="leading" constant="90" id="rgi-70-yc4"/>
-                            <constraint firstItem="irP-bN-2Fx" firstAttribute="top" secondItem="fZX-rB-3ok" secondAttribute="bottom" constant="7" id="tKU-Li-6KU"/>
                             <constraint firstItem="fZX-rB-3ok" firstAttribute="top" secondItem="riw-1S-vjp" secondAttribute="bottom" constant="4" id="wNi-mf-Amp"/>
                             <constraint firstItem="aXN-OY-9Qh" firstAttribute="top" secondItem="jjU-G9-EBP" secondAttribute="bottom" constant="-82" id="zPy-Nj-0ys"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="W9I-c9-XZN"/>
                     <connections>
-                        <outlet property="chatShelter" destination="xKW-jl-uzH" id="f43-IS-5eG"/>
                         <outlet property="petDescription" destination="riw-1S-vjp" id="uSH-0V-ffw"/>
                         <outlet property="petGeneralInfo" destination="gF0-VJ-feC" id="iEm-Hq-MWk"/>
                         <outlet property="petName" destination="jjU-G9-EBP" id="LwJ-2h-v1m"/>
                         <outlet property="profileImage" destination="ymn-tT-8bt" id="9xA-fS-JRL"/>
                         <outlet property="saveProfile" destination="zw0-iC-8h4" id="s52-t7-3Hj"/>
-                        <outlet property="submitForm" destination="irP-bN-2Fx" id="7Jv-vw-jMg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6Bw-b2-Rb5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -545,7 +543,6 @@
     <resources>
         <image name="heart" catalog="system" width="128" height="109"/>
         <image name="heart.fill" catalog="system" width="128" height="109"/>
-        <image name="message" catalog="system" width="128" height="113"/>
         <image name="pawprint" width="153" height="153"/>
         <image name="whiteDog+cat" width="244" height="138"/>
         <namedColor name="BrandPurple">

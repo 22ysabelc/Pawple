@@ -47,7 +47,11 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
     
     func insertUserInfo() {
         let user = Auth.auth().currentUser
-        userImage.sd_setImage(with: user?.photoURL, placeholderImage: UIImage(named: "person.circle"))
+        if user?.photoURL != nil {
+            userImage.sd_setImage(with: user?.photoURL, placeholderImage: UIImage(named: "person.circle"))
+        } else {
+            userImage.image = UIImage(systemName: "person.circle")
+        }
         userName.text = user?.displayName
     }
     

@@ -67,8 +67,16 @@ class ProfileViewController: UIViewController {
     
     func loadProfile() {
         let user = Auth.auth().currentUser
-        userImage.sd_setImage(with: user?.photoURL, placeholderImage: UIImage(named: "person.circle"))
-        userName.text = user?.displayName
+        if user?.photoURL != nil {
+            userImage.sd_setImage(with: user?.photoURL, placeholderImage: UIImage(named: "person.circle"))
+        } else {
+            userImage.image = UIImage(systemName: "person.circle")
+        }
+        if user?.displayName != nil {
+            userName.text = user?.displayName
+        } else {
+            userName.text = "Name"
+        }
     }
     
     func customizeDropDown() {

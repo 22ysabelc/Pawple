@@ -25,20 +25,23 @@ class ProfileViewController: UIViewController {
             
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.observeUserSavedProfiles()
         
         setupMenuButtonDropdown()
         
         userImage.layer.masksToBounds = false
         userImage.layer.cornerRadius = userImage.frame.width / 2
         userImage.clipsToBounds = true
-        
     }
+    
+   // override func viewDidAppear(_ animated: Bool) {
+        
+    //}
     
     override func viewWillAppear(_ animated: Bool) {
         tabBarController?.tabBar.isHidden = false
         getLoginState()
         loadProfile()
+        self.observeUserSavedProfiles()
     }
     
     func getLoginState() {
@@ -48,6 +51,8 @@ class ProfileViewController: UIViewController {
     }
     
     func handleLogout() {
+        arrayFavPets = []
+        dictFavPets = [:]
         do {
             try Auth.auth().signOut()
             NotificationCenter.default.post(name: Notification.Name("userSignedOutEvent"), object: nil)
@@ -119,6 +124,7 @@ class ProfileViewController: UIViewController {
 }
 
 extension ProfileViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
 
         if self.arrayFavPets.count > 0 {
@@ -176,7 +182,6 @@ extension ProfileViewController {
     // will access Firebase operations here.
 
     func getUserProfile () -> DatabaseReference? {
-
         let dbRef = Database.database().reference()
         guard let uid = Auth.auth().currentUser?.uid else {
             return nil
@@ -213,7 +218,7 @@ extension ProfileViewController {
     func getAnimalDetails(animalId: String) {
         APIServiceManager.shared.fetchAnimalDetails(animalId: animalId) { (animalDetails) in
             self.dictFavPets[animalId] = animalDetails
-             self.collectionView.reloadData()
+            self.collectionView.reloadData()
         }
     }
 }

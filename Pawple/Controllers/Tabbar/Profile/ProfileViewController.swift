@@ -25,6 +25,7 @@ class ProfileViewController: UIViewController {
             
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.observeUserSavedProfiles()
         
         setupMenuButtonDropdown()
         
@@ -41,7 +42,6 @@ class ProfileViewController: UIViewController {
         tabBarController?.tabBar.isHidden = false
         getLoginState()
         loadProfile()
-        self.observeUserSavedProfiles()
     }
     
     func getLoginState() {

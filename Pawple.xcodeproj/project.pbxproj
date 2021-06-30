@@ -114,7 +114,7 @@
 		AF492D6824565DAA00ED4130 /* Pawple.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Pawple.entitlements; sourceTree = "<group>"; };
 		AF544807249C166100A5AAA0 /* ChatTab.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ChatTab.storyboard; sourceTree = "<group>"; };
 		AF59F34B25CF5D8300D8A46D /* IndividualResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndividualResultViewController.swift; sourceTree = "<group>"; };
-		AF7C6352245140820088C0D3 /* Lucky Paw.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Lucky Paw.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		AF7C6352245140820088C0D3 /* Pawple.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pawple.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF7C6355245140820088C0D3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AF7C6357245140820088C0D3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		AF7C6359245140820088C0D3 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
@@ -301,7 +301,7 @@
 		AF7C6353245140820088C0D3 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				AF7C6352245140820088C0D3 /* Lucky Paw.app */,
+				AF7C6352245140820088C0D3 /* Pawple.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -411,9 +411,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		AF7C6351245140820088C0D3 /* Lucky Paw */ = {
+		AF7C6351245140820088C0D3 /* Pawple */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = AF7C6369245140860088C0D3 /* Build configuration list for PBXNativeTarget "Lucky Paw" */;
+			buildConfigurationList = AF7C6369245140860088C0D3 /* Build configuration list for PBXNativeTarget "Pawple" */;
 			buildPhases = (
 				A163C877FE9C8C01D7E22390 /* [CP] Check Pods Manifest.lock */,
 				AF7C634E245140820088C0D3 /* Sources */,
@@ -427,9 +427,9 @@
 			);
 			dependencies = (
 			);
-			name = "Lucky Paw";
+			name = Pawple;
 			productName = Pawple;
-			productReference = AF7C6352245140820088C0D3 /* Lucky Paw.app */;
+			productReference = AF7C6352245140820088C0D3 /* Pawple.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -460,7 +460,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				AF7C6351245140820088C0D3 /* Lucky Paw */,
+				AF7C6351245140820088C0D3 /* Pawple */,
 			);
 		};
 /* End PBXProject section */
@@ -818,7 +818,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		AF7C6369245140860088C0D3 /* Build configuration list for PBXNativeTarget "Lucky Paw" */ = {
+		AF7C6369245140860088C0D3 /* Build configuration list for PBXNativeTarget "Pawple" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				AF7C636A245140860088C0D3 /* Debug */,

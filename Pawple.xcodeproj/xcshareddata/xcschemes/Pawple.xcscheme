@@ -15,8 +15,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "AF7C6351245140820088C0D3"
-               BuildableName = "Lucky Paw.app"
-               BlueprintName = "Lucky Paw"
+               BuildableName = "Pawple.app"
+               BlueprintName = "Pawple"
                ReferencedContainer = "container:Pawple.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -45,8 +45,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "AF7C6351245140820088C0D3"
-            BuildableName = "Lucky Paw.app"
-            BlueprintName = "Lucky Paw"
+            BuildableName = "Pawple.app"
+            BlueprintName = "Pawple"
             ReferencedContainer = "container:Pawple.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -62,8 +62,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "AF7C6351245140820088C0D3"
-            BuildableName = "Lucky Paw.app"
-            BlueprintName = "Lucky Paw"
+            BuildableName = "Pawple.app"
+            BlueprintName = "Pawple"
             ReferencedContainer = "container:Pawple.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>

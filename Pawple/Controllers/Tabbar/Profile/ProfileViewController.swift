@@ -42,6 +42,9 @@ class ProfileViewController: UIViewController {
         tabBarController?.tabBar.isHidden = false
         getLoginState()
         loadProfile()
+        if arrayFavPets.count == 0 {
+            self.observeUserSavedProfiles()
+        }
     }
     
     func getLoginState() {

@@ -15,7 +15,11 @@ class ProfileViewController: UIViewController {
     
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var menuButton: UIBarButtonItem!
-    @IBOutlet weak var userImage: UIImageView!
+    @IBOutlet weak var userImage: UIImageView! {
+        didSet {
+            self.userImage.layer.cornerRadius = self.userImage.frame.height / 2
+        }
+    }
     @IBOutlet weak var userName: UILabel!
     var arrayFavPets: [String] = []
     var dictFavPets: [String: AnimalDetails] = [:]
@@ -33,10 +37,6 @@ class ProfileViewController: UIViewController {
         userImage.layer.cornerRadius = userImage.frame.width / 2
         userImage.clipsToBounds = true
     }
-    
-   // override func viewDidAppear(_ animated: Bool) {
-        
-    //}
     
     override func viewWillAppear(_ animated: Bool) {
         tabBarController?.tabBar.isHidden = false
@@ -179,11 +179,6 @@ extension ProfileViewController: UICollectionViewDelegate, UICollectionViewDataS
             return cell
         }
     }
-
-    // This will list the favorite pets
-    // 1. Fetch pet ids from Firebase
-    // 2. Make API calls to PetFinder to fetch animal based on the id
-    // 3.
 }
 
 extension ProfileViewController {

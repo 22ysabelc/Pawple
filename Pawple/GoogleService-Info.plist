@@ -13,21 +13,21 @@
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.ysabelchen.pawple</string>
+	<string>com.luckypaw.luckypawapp</string>
 	<key>PROJECT_ID</key>
 	<string>pawple-ef436</string>
 	<key>STORAGE_BUCKET</key>
 	<string>pawple-ef436.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
-	<false></false>
+	<false/>
 	<key>IS_ANALYTICS_ENABLED</key>
-	<false></false>
+	<false/>
 	<key>IS_APPINVITE_ENABLED</key>
-	<true></true>
+	<true/>
 	<key>IS_GCM_ENABLED</key>
-	<true></true>
+	<true/>
 	<key>IS_SIGNIN_ENABLED</key>
-	<true></true>
+	<true/>
 	<key>GOOGLE_APP_ID</key>
 	<string>1:944172244329:ios:2dc7da249a184768f0f1f8</string>
 	<key>DATABASE_URL</key>

@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		46AF2B1F0C942FA2D2861151 /* Pods_Lucky_Paw.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D13ADC5C4F9B49288989B0D /* Pods_Lucky_Paw.framework */; };
 		9D0CF3902635FD3000F7A4DA /* GetStartedCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D0CF38F2635FD3000F7A4DA /* GetStartedCollectionViewCell.swift */; };
 		9D31C2CA2499C5EC00F6CB48 /* ProfileTab.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9D31C2C92499C5EC00F6CB48 /* ProfileTab.storyboard */; };
 		9D31C2CD2499E12400F6CB48 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 9D31C2CC2499E12400F6CB48 /* .swiftlint.yml */; };
@@ -32,6 +31,7 @@
 		9DBC5A1226234C8B00469D4B /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DBC5A1126234C8B00469D4B /* Location.swift */; };
 		9DBC5A1726234F0400469D4B /* SearchLocationTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DBC5A1626234F0400469D4B /* SearchLocationTableViewController.swift */; };
 		9DDDE6A12623769600D405C8 /* CityState.json in Resources */ = {isa = PBXBuildFile; fileRef = 9DDDE6A02623769600D405C8 /* CityState.json */; };
+		AAF6A41EAFD76BF5BF8293B8 /* Pods_Lucky_Paw.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE6AAA0D70BB9F24B99CE94A /* Pods_Lucky_Paw.framework */; };
 		AF04A5B324BB9BE7006099B9 /* UsersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF04A5B224BB9BE7006099B9 /* UsersTableViewController.swift */; };
 		AF04A5B524BBAACD006099B9 /* UserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF04A5B424BBAACC006099B9 /* UserTableViewCell.swift */; };
 		AF42AE772574431B00A7C6F4 /* Animals.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF42AE762574431A00A7C6F4 /* Animals.swift */; };
@@ -60,7 +60,6 @@
 		AFA4342524FC640B0090FF34 /* UserMessageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFA4342424FC640B0090FF34 /* UserMessageCollectionViewCell.swift */; };
 		AFA4342724FC70100090FF34 /* ChatPartnerCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFA4342624FC70100090FF34 /* ChatPartnerCollectionViewCell.swift */; };
 		AFA7B9A8245E5442009C293B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AFA7B9A7245E5442009C293B /* Foundation.framework */; };
-		AFA7B9AC245E546C009C293B /* DropDown.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AFA7B9AB245E546C009C293B /* DropDown.framework */; };
 		AFA7B9AE245E5557009C293B /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AFA7B9AD245E5556009C293B /* CoreGraphics.framework */; };
 		AFAE27522452A85100A78E05 /* RoundButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFAE27512452A85100A78E05 /* RoundButton.swift */; };
 		AFB3D13824798B9C00FA76DC /* FilterTab.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AFB3D13624798B9C00FA76DC /* FilterTab.storyboard */; };
@@ -75,12 +74,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		1DC696E96C95EEDBA1BCB9A0 /* Pods-Pawple.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pawple.release.xcconfig"; path = "Target Support Files/Pods-Pawple/Pods-Pawple.release.xcconfig"; sourceTree = "<group>"; };
-		32F2DA29F2FB992101FE4BBB /* Pods_Pawple.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Pawple.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		5A20D4E5C997825C9B97C033 /* Pods-Pawple.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pawple.debug.xcconfig"; path = "Target Support Files/Pods-Pawple/Pods-Pawple.debug.xcconfig"; sourceTree = "<group>"; };
 		62126866E7C5142C8720FA7E /* Pods-Lucky Paw.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lucky Paw.debug.xcconfig"; path = "Target Support Files/Pods-Lucky Paw/Pods-Lucky Paw.debug.xcconfig"; sourceTree = "<group>"; };
 		9D0CF38F2635FD3000F7A4DA /* GetStartedCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetStartedCollectionViewCell.swift; sourceTree = "<group>"; };
-		9D13ADC5C4F9B49288989B0D /* Pods_Lucky_Paw.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Lucky_Paw.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D31C2C92499C5EC00F6CB48 /* ProfileTab.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ProfileTab.storyboard; sourceTree = "<group>"; };
 		9D31C2CC2499E12400F6CB48 /* .swiftlint.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		9D5E58DA2586FED400DF353F /* FilterAndFindVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterAndFindVC.swift; sourceTree = "<group>"; };
@@ -134,10 +129,8 @@
 		AFA2AD1124593F820068B4ED /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		AFA4342424FC640B0090FF34 /* UserMessageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserMessageCollectionViewCell.swift; sourceTree = "<group>"; };
 		AFA4342624FC70100090FF34 /* ChatPartnerCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatPartnerCollectionViewCell.swift; sourceTree = "<group>"; };
-		AFA7B9A2245E5087009C293B /* DropDown.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = DropDown.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AFA7B9A4245E50C4009C293B /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
 		AFA7B9A7245E5442009C293B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		AFA7B9AB245E546C009C293B /* DropDown.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = DropDown.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AFA7B9AD245E5556009C293B /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		AFAE27512452A85100A78E05 /* RoundButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundButton.swift; sourceTree = "<group>"; };
 		AFB3D13724798B9C00FA76DC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/FilterTab.storyboard; sourceTree = "<group>"; };
@@ -149,6 +142,7 @@
 		AFE98E03249973B8002573EF /* ChatListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatListTableViewController.swift; sourceTree = "<group>"; };
 		AFF0B73A2479B16B001F332A /* PawpleUserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PawpleUserDefaults.swift; sourceTree = "<group>"; };
 		AFF0B73C2479C165001F332A /* Welcome.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Welcome.storyboard; sourceTree = "<group>"; };
+		BE6AAA0D70BB9F24B99CE94A /* Pods_Lucky_Paw.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Lucky_Paw.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F011E88680A3EF501897DB4D /* Pods-Lucky Paw.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lucky Paw.release.xcconfig"; path = "Target Support Files/Pods-Lucky Paw/Pods-Lucky Paw.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -159,8 +153,7 @@
 			files = (
 				AFA7B9AE245E5557009C293B /* CoreGraphics.framework in Frameworks */,
 				AFA7B9A8245E5442009C293B /* Foundation.framework in Frameworks */,
-				AFA7B9AC245E546C009C293B /* DropDown.framework in Frameworks */,
-				46AF2B1F0C942FA2D2861151 /* Pods_Lucky_Paw.framework in Frameworks */,
+				AAF6A41EAFD76BF5BF8293B8 /* Pods_Lucky_Paw.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -170,8 +163,6 @@
 		19179F8E42017DC0704DEC4E /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				5A20D4E5C997825C9B97C033 /* Pods-Pawple.debug.xcconfig */,
-				1DC696E96C95EEDBA1BCB9A0 /* Pods-Pawple.release.xcconfig */,
 				62126866E7C5142C8720FA7E /* Pods-Lucky Paw.debug.xcconfig */,
 				F011E88680A3EF501897DB4D /* Pods-Lucky Paw.release.xcconfig */,
 			);
@@ -182,12 +173,9 @@
 			isa = PBXGroup;
 			children = (
 				AFA7B9AD245E5556009C293B /* CoreGraphics.framework */,
-				AFA7B9AB245E546C009C293B /* DropDown.framework */,
 				AFA7B9A7245E5442009C293B /* Foundation.framework */,
 				AFA7B9A4245E50C4009C293B /* CoreFoundation.framework */,
-				AFA7B9A2245E5087009C293B /* DropDown.framework */,
-				32F2DA29F2FB992101FE4BBB /* Pods_Pawple.framework */,
-				9D13ADC5C4F9B49288989B0D /* Pods_Lucky_Paw.framework */,
+				BE6AAA0D70BB9F24B99CE94A /* Pods_Lucky_Paw.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -771,14 +759,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = LuckyPawAppIcon;
 				CODE_SIGN_ENTITLEMENTS = Pawple/Pawple.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 4AUBN86BKH;
+				DEVELOPMENT_TEAM = X4X6QH574X;
 				INFOPLIST_FILE = Pawple/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.ysabelchen.pawple;
+				PRODUCT_BUNDLE_IDENTIFIER = com.luckypaw.luckypawapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -792,14 +780,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = LuckyPawAppIcon;
 				CODE_SIGN_ENTITLEMENTS = Pawple/Pawple.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 4AUBN86BKH;
+				DEVELOPMENT_TEAM = X4X6QH574X;
 				INFOPLIST_FILE = Pawple/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.ysabelchen.pawple;
+				PRODUCT_BUNDLE_IDENTIFIER = com.luckypaw.luckypawapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

@@ -132,7 +132,7 @@ class IndividualResultViewController: UIViewController {
         }
         var description = ""
         if let desc = details?.desc, let profileURL = details?.profileURL {
-            description = "\(desc) \n\n \(profileURL)"
+            description = "\(desc) \n\n \(profileURL)" + "\n" + "Powered by PetFinder"
         } else {
             description = "No description"
         }

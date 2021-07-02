@@ -25,7 +25,11 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
     }
     
     
-    @IBOutlet weak var userImage: UIImageView!
+    @IBOutlet weak var userImage: UIImageView! {
+        didSet {
+            self.userImage.layer.cornerRadius = self.userImage.frame.height / 2
+        }
+    }
     @IBOutlet weak var userName: UITextField!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
@@ -83,7 +87,8 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
         activityIndicator.isHidden = false
         
         guard let username = userName.text, username != "" else {
-            self.alert(title: "Username is empty", message: "")
+            activityIndicator.isHidden = true
+            self.alert(title: "Name is empty", message: "")
             return
         }
         

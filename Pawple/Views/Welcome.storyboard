@@ -63,17 +63,17 @@
                                         <rect key="frame" x="0.0" y="387" width="414" height="387"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="CFC-eK-ZrY" userLabel="SignInStackView">
-                                                <rect key="frame" x="20" y="93.5" width="374" height="200"/>
+                                                <rect key="frame" x="20" y="58.5" width="374" height="270"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f61-77-QlW" customClass="RoundButton" customModule="Lucky_Paw" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="374" height="60"/>
-                                                        <color key="backgroundColor" red="0.67450980390000004" green="0.43529411759999997" blue="0.91764705879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <color key="backgroundColor" systemColor="systemGray4Color"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="60" id="uvn-BA-lRJ"/>
                                                         </constraints>
                                                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                         <state key="normal" title="Sign In with Google">
-                                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <color key="titleColor" systemColor="systemBlueColor"/>
                                                         </state>
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -84,8 +84,28 @@
                                                             <action selector="signInWithGoogleAction:" destination="PL4-o6-Sug" eventType="touchUpInside" id="8tq-Cm-Fnd"/>
                                                         </connections>
                                                     </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zmH-3Q-hry" customClass="RoundButton" customModule="Lucky_Paw" customModuleProvider="target">
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M8b-aK-ylH" userLabel="Sign In with Apple" customClass="RoundButton" customModule="Lucky_Paw" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="70" width="374" height="60"/>
+                                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="60" id="yMd-hx-Gwx"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                        <color key="tintColor" name="BrandPurple"/>
+                                                        <state key="normal" title="Sign In with Apple">
+                                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        </state>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                <real key="value" value="30"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <action selector="signInWithAppleAction:" destination="PL4-o6-Sug" eventType="touchUpInside" id="uzy-HX-zXd"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zmH-3Q-hry" customClass="RoundButton" customModule="Lucky_Paw" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="140" width="374" height="60"/>
                                                         <color key="backgroundColor" red="0.67450980390000004" green="0.43529411759999997" blue="0.91764705879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="60" id="Luj-lQ-GCM"/>
@@ -104,7 +124,7 @@
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zvS-WC-Q9A" customClass="RoundButton" customModule="Lucky_Paw" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="140" width="374" height="60"/>
+                                                        <rect key="frame" x="0.0" y="210" width="374" height="60"/>
                                                         <color key="backgroundColor" name="BrandPurple"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="60" id="Ga6-zz-7l4"/>
@@ -150,6 +170,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="2rB-Q8-B0H"/>
                     <connections>
+                        <outlet property="appleSignInButton" destination="M8b-aK-ylH" id="xyB-PH-WqQ"/>
                         <outlet property="luckypawText" destination="CxG-81-gg9" id="fdP-w0-uLg"/>
                         <outlet property="welcomeText" destination="Vv3-Ig-QAL" id="hJ0-Xw-RHM"/>
                     </connections>
@@ -370,6 +391,9 @@
     </scenes>
     <designables>
         <designable name="CxG-81-gg9"/>
+        <designable name="M8b-aK-ylH">
+            <size key="intrinsicContentSize" width="144" height="34"/>
+        </designable>
         <designable name="Vv3-Ig-QAL"/>
         <designable name="f61-77-QlW">
             <size key="intrinsicContentSize" width="155" height="34"/>
@@ -388,6 +412,12 @@
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBlueColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemGray4Color">
+            <color red="0.81960784313725488" green="0.81960784313725488" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
